@@ -1,0 +1,30 @@
+# Sends a repository_dispatch event to lib-main-infra when a PR is closed,
+# triggering cleanup of ephemeral dev/test resources.
+
+name: Dispatch PR Closed to Infra
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ vars.DISPATCH_APP_ID }}
+          private-key: ${{ secrets.DISPATCH_APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: lib-main-infra
+
+      - name: Dispatch to lib-main-infra
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+        run: |
+          gh api --method POST \
+            /repos/${{ github.repository_owner }}/lib-main-infra/dispatches \
+            -f "event_type=drupal-pr-closed" \
+            -f "client_payload[pr_number]=${{ github.event.pull_request.number }}"
