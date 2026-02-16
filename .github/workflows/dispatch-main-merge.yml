@@ -1,11 +1,12 @@
-# Sends a repository_dispatch event to lib-main-infra when a PR is closed,
-# triggering cleanup of ephemeral dev/test resources.
+# Sends a repository_dispatch event to lib-main-infra when code is pushed
+# to the main branch (typically via dev → main PR merge), triggering
+# the production deployment and dev VM cleanup.
 
-name: Dispatch PR Closed to Infra
+name: Dispatch Main Merge to Infra
 
 on:
-  pull_request:
-    types: [closed]
+  push:
+    branches: [main]
 
 jobs:
   dispatch:
@@ -26,5 +27,5 @@ jobs:
         run: |
           gh api --method POST \
             /repos/${{ github.repository_owner }}/lib-main-infra/dispatches \
-            -f "event_type=drupal-pr-closed" \
-            -f "client_payload[pr_number]=${{ github.event.pull_request.number }}"
+            -f "event_type=drupal-main-merge" \
+            -f "client_payload[drupal_sha]=${{ github.sha }}"

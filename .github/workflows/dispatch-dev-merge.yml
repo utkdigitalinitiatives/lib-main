@@ -1,11 +1,12 @@
-# Sends a repository_dispatch event to lib-main-infra when a PR is opened or
-# updated, triggering the dev/test image build and deployment pipeline.
+# Sends a repository_dispatch event to lib-main-infra when code is pushed
+# to the dev branch (typically via PR merge), triggering the image build
+# and dev VM deployment pipeline.
 
-name: Dispatch PR to Infra
+name: Dispatch Dev Merge to Infra
 
 on:
-  pull_request:
-    types: [opened, synchronize, reopened]
+  push:
+    branches: [dev]
 
 jobs:
   dispatch:
@@ -26,8 +27,7 @@ jobs:
         run: |
           gh api --method POST \
             /repos/${{ github.repository_owner }}/lib-main-infra/dispatches \
-            -f "event_type=drupal-pr" \
+            -f "event_type=drupal-dev-merge" \
             -f "client_payload[drupal_repo]=${{ github.event.repository.clone_url }}" \
-            -f "client_payload[drupal_ref]=${{ github.head_ref }}" \
-            -f "client_payload[drupal_sha]=${{ github.event.pull_request.head.sha }}" \
-            -f "client_payload[pr_number]=${{ github.event.pull_request.number }}"
+            -f "client_payload[drupal_ref]=dev" \
+            -f "client_payload[drupal_sha]=${{ github.sha }}"
