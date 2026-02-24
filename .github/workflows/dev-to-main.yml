@@ -9,7 +9,7 @@ jobs:
   enforce:
     runs-on: ubuntu-latest
     steps:
-      - name: Allow only dev -> main PRs
+      - name: dev-to-main
         run: |
           echo "Base (target) branch: ${{ github.event.pull_request.base.ref }}"
           echo "Head (source) branch: ${{ github.event.pull_request.head.ref }}"
