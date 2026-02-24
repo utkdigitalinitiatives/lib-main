@@ -3,7 +3,7 @@ name: dev-to-main
 on:
   pull_request:
     types: [opened, reopened, synchronize, edited]
-    branches: [main]   # only PRs targeting main
+    branches: [**]   # all PRs
 
 jobs:
   enforce:
