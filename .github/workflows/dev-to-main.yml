@@ -1,0 +1,28 @@
+name: dev-to-main
+
+on:
+  pull_request:
+    branches:
+      - '**'
+    types: [opened, reopened, synchronize, edited]
+
+jobs:
+  enforce:
+    runs-on: ubuntu-latest
+    steps:
+      - name: dev-to-main
+        run: |
+          echo "Base (target) branch: ${{ github.event.pull_request.base.ref }}"
+          echo "Head (source) branch: ${{ github.event.pull_request.head.ref }}"
+
+          if [ "${{ github.event.pull_request.base.ref }}" != "main" ]; then
+            echo "This check only applies to PRs into main."
+            exit 0
+          fi
+
+          if [ "${{ github.event.pull_request.head.ref }}" != "dev" ]; then
+            echo "ERROR: PRs into main must come from dev only."
+            exit 1
+          fi
+
+          echo "OK: dev -> main PR."
