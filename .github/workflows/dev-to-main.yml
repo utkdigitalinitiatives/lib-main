@@ -2,8 +2,9 @@ name: dev-to-main
 
 on:
   pull_request:
+    branches:
+      - '**'
     types: [opened, reopened, synchronize, edited]
-    branches: [**]   # all PRs
 
 jobs:
   enforce:
