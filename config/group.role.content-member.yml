@@ -12,4 +12,5 @@ admin: false
 scope: insider
 global_role: authenticated
 group_type: content
-permissions: {  }
+permissions:
+  - 'access group_node overview'
