@@ -26,6 +26,7 @@ permissions:
   - 'update own group_node:news entity'
   - 'update own group_node:service_page entity'
   - 'update own group_node:spotlight entity'
+  - 'view group'
   - 'view group_node:about_page entity'
   - 'view group_node:news entity'
   - 'view group_node:service_page entity'
