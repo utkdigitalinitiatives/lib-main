@@ -15,6 +15,7 @@ group_type: content
 permissions:
   - 'access group_node overview'
   - 'view group'
+  - 'view group_membership relationship'
   - 'view group_node:about_page entity'
   - 'view group_node:news entity'
   - 'view group_node:service_page entity'
