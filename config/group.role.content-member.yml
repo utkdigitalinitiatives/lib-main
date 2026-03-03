@@ -1,0 +1,42 @@
+uuid: b557eebe-4a62-4a6e-8f7a-f5ec0efbb142
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.content
+    - user.role.authenticated
+id: content-member
+label: Member
+weight: -100
+admin: false
+scope: insider
+global_role: authenticated
+group_type: content
+permissions:
+  - 'access group_node overview'
+  - 'create group_node:about_page entity'
+  - 'create group_node:news entity'
+  - 'create group_node:service_page entity'
+  - 'create group_node:spotlight entity'
+  - 'update any group_node:about_page entity'
+  - 'update any group_node:news entity'
+  - 'update any group_node:service_page entity'
+  - 'update any group_node:spotlight entity'
+  - 'update own group_node:about_page entity'
+  - 'update own group_node:news entity'
+  - 'update own group_node:service_page entity'
+  - 'update own group_node:spotlight entity'
+  - 'view group'
+  - 'view group_membership relationship'
+  - 'view group_node:about_page entity'
+  - 'view group_node:news entity'
+  - 'view group_node:service_page entity'
+  - 'view group_node:spotlight entity'
+  - 'view own unpublished group_node:about_page entity'
+  - 'view own unpublished group_node:news entity'
+  - 'view own unpublished group_node:service_page entity'
+  - 'view own unpublished group_node:spotlight entity'
+  - 'view unpublished group_node:about_page entity'
+  - 'view unpublished group_node:news entity'
+  - 'view unpublished group_node:service_page entity'
+  - 'view unpublished group_node:spotlight entity'

@@ -3,10 +3,15 @@ langcode: en
 status: true
 dependencies:
   config:
+    - node.type.about_page
+    - node.type.news
+    - node.type.service_page
+    - node.type.spotlight
     - taxonomy.vocabulary.tags
   module:
     - contextual
     - file
+    - group
     - node
     - path
     - system
@@ -20,16 +25,36 @@ weight: 2
 is_admin: false
 permissions:
   - 'access administration pages'
-  - 'access content overview'
   - 'access contextual links'
   - 'access files overview'
+  - 'access group overview'
   - 'access toolbar'
   - 'administer url aliases'
+  - 'create about_page content'
+  - 'create news content'
+  - 'create service_page content'
+  - 'create spotlight content'
   - 'create terms in tags'
   - 'create url aliases'
   - 'delete own files'
+  - 'edit any about_page content'
+  - 'edit any news content'
+  - 'edit any service_page content'
+  - 'edit any spotlight content'
+  - 'edit own about_page content'
+  - 'edit own news content'
+  - 'edit own service_page content'
+  - 'edit own spotlight content'
   - 'edit terms in tags'
+  - 'revert about_page revisions'
   - 'revert all revisions'
+  - 'revert news revisions'
+  - 'revert service_page revisions'
+  - 'revert spotlight revisions'
+  - 'view about_page revisions'
   - 'view all revisions'
+  - 'view news revisions'
   - 'view own unpublished content'
+  - 'view service_page revisions'
+  - 'view spotlight revisions'
   - 'view the administration theme'
