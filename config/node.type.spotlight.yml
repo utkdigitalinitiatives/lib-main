@@ -11,7 +11,7 @@ third_party_settings:
     parent: 'main:'
 name: Spotlight
 type: spotlight
-description: null
+description: 'Links highlighted on homepage'
 help: null
 new_revision: true
 preview_mode: 1
