@@ -1,0 +1,15 @@
+uuid: f2d3d88f-4514-4ee6-8743-29d309713603
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.content
+    - user.role.administrator
+id: content-admin_in
+label: Administrator
+weight: 102
+admin: true
+scope: insider
+global_role: administrator
+group_type: content
+permissions: {  }

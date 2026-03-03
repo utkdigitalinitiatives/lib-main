@@ -1,0 +1,15 @@
+uuid: d0de7956-6668-41b2-ab7b-b6cdfc87efd4
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.content
+    - user.role.administrator
+id: content-admin_out
+label: Administrator
+weight: 101
+admin: true
+scope: outsider
+global_role: administrator
+group_type: content
+permissions: {  }

@@ -1,0 +1,15 @@
+uuid: 54d4d628-2f38-4bb6-8053-0b037046dc41
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.content
+    - user.role.authenticated
+id: content-outsider
+label: Outsider
+weight: -101
+admin: false
+scope: outsider
+global_role: authenticated
+group_type: content
+permissions: {  }

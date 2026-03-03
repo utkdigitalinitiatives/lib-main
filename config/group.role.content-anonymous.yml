@@ -1,0 +1,15 @@
+uuid: cf5f21ed-a23d-437e-9995-0c7a4279aff7
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.content
+    - user.role.anonymous
+id: content-anonymous
+label: Anonymous
+weight: -102
+admin: false
+scope: outsider
+global_role: anonymous
+group_type: content
+permissions: {  }

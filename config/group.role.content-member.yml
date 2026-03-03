@@ -1,0 +1,15 @@
+uuid: b557eebe-4a62-4a6e-8f7a-f5ec0efbb142
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.content
+    - user.role.authenticated
+id: content-member
+label: Member
+weight: -100
+admin: false
+scope: insider
+global_role: authenticated
+group_type: content
+permissions: {  }
