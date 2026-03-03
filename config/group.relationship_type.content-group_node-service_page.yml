@@ -1,0 +1,17 @@
+uuid: a1b3ef22-3a74-42da-af8c-dd243c51d021
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.content
+    - node.type.service_page
+  module:
+    - gnode
+    - node
+id: content-group_node-service_page
+group_type: content
+content_plugin: 'group_node:service_page'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false

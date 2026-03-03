@@ -1,0 +1,15 @@
+uuid: 256c1ab8-ad4e-4ed8-8850-7154db0dd14b
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.content
+  module:
+    - user
+id: content-group_membership
+group_type: content
+content_plugin: group_membership
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false

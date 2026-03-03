@@ -1,0 +1,22 @@
+uuid: 54d4d628-2f38-4bb6-8053-0b037046dc41
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.content
+    - user.role.authenticated
+id: content-outsider
+label: Outsider
+weight: -101
+admin: false
+scope: outsider
+global_role: authenticated
+group_type: content
+permissions:
+  - 'access group_node overview'
+  - 'view group'
+  - 'view group_membership relationship'
+  - 'view group_node:about_page entity'
+  - 'view group_node:news entity'
+  - 'view group_node:service_page entity'
+  - 'view group_node:spotlight entity'

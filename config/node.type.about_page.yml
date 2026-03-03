@@ -1,0 +1,17 @@
+uuid: ed36273f-b75a-4568-9911-77390a14f6ae
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'About Page'
+type: about_page
+description: 'Pages that explain the library as an organization'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

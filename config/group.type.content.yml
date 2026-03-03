@@ -1,0 +1,11 @@
+uuid: 177e3148-4156-4aed-b5f2-99c44c3736c8
+langcode: en
+status: true
+dependencies: {  }
+id: content
+label: Content
+description: 'Content groups allow team members to edit all content associated with that group.'
+new_revision: true
+creator_membership: true
+creator_wizard: true
+creator_roles: {  }
