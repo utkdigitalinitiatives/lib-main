@@ -1,0 +1,24 @@
+uuid: e6c7de1b-415b-4abe-a284-94beaa99fbd7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading_text
+    - filter.format.restricted_html
+    - paragraphs.paragraphs_type.heading_h2
+  module:
+    - text
+id: paragraph.heading_h2.field_heading_text
+field_name: field_heading_text
+entity_type: paragraph
+bundle: heading_h2
+label: 'Heading text'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - restricted_html
+field_type: text
