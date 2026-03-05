@@ -1,0 +1,15 @@
+uuid: 4e00d291-76d9-427a-950f-18095d5c68e4
+langcode: en
+status: true
+dependencies: {  }
+name: 'Editor HTML'
+format: editor_html
+weight: 0
+filters:
+  filter_url:
+    id: filter_url
+    provider: filter
+    status: true
+    weight: 0
+    settings:
+      filter_url_length: null
