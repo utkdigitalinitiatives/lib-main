@@ -1,0 +1,21 @@
+uuid: 492ad815-3fe6-4903-bccd-affd0cf39046
+langcode: en
+status: true
+dependencies: {  }
+name: directory_card_320_x_320
+label: 'Directory Card (320 x 320)'
+effects:
+  95adf2c3-492d-4c03-ac29-0f1ce97a2084:
+    uuid: 95adf2c3-492d-4c03-ac29-0f1ce97a2084
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 320
+      height: 320
+      anchor: center-center
+  aa4a6704-90a7-4062-9018-f53d354fcb0d:
+    uuid: aa4a6704-90a7-4062-9018-f53d354fcb0d
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

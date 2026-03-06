@@ -1,0 +1,21 @@
+uuid: 40aee9cb-e305-4a35-9f34-092bf48ac303
+langcode: en
+status: true
+dependencies: {  }
+name: hero_1920
+label: 'Hero (1920)'
+effects:
+  c85cbd0c-beba-46bd-8491-39a18af63a4a:
+    uuid: c85cbd0c-beba-46bd-8491-39a18af63a4a
+    id: image_scale
+    weight: 1
+    data:
+      width: 1920
+      height: null
+      upscale: true
+  c9dad43e-6e82-4e5b-969a-04c779aeb58e:
+    uuid: c9dad43e-6e82-4e5b-969a-04c779aeb58e
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp
