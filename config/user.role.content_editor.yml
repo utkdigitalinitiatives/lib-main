@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - filter.format.editor_html
     - node.type.about_page
     - node.type.news
     - node.type.service_page
@@ -11,6 +12,7 @@ dependencies:
   module:
     - contextual
     - file
+    - filter
     - group
     - node
     - path
@@ -51,6 +53,7 @@ permissions:
   - 'revert news revisions'
   - 'revert service_page revisions'
   - 'revert spotlight revisions'
+  - 'use text format editor_html'
   - 'view about_page revisions'
   - 'view all revisions'
   - 'view news revisions'
