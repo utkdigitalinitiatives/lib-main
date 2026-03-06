@@ -1,0 +1,24 @@
+uuid: e30b07e0-488a-48f3-a6d4-e7c9ea73c2eb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_card_title
+    - filter.format.editor_html
+    - paragraphs.paragraphs_type.card
+  module:
+    - text
+id: paragraph.card.field_card_title
+field_name: field_card_title
+entity_type: paragraph
+bundle: card
+label: 'Card Title'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - editor_html
+field_type: text

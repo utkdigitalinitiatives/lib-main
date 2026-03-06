@@ -5,8 +5,10 @@ dependencies:
   config:
     - field.field.node.about_page.field_about_page_category
     - field.field.node.about_page.field_page_summary
+    - field.field.node.about_page.field_sections
     - node.type.about_page
   module:
+    - entity_reference_revisions
     - text
     - user
 id: node.about_page.default
@@ -28,6 +30,15 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 102
+    region: content
+  field_sections:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 103
     region: content
   links:
     settings: {  }

@@ -1,0 +1,34 @@
+uuid: 9441f330-3e83-4250-942f-c835412acd41
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.tall
+    - field.field.media.image.field_media_image
+    - image.style.tall_450h
+    - media.type.image
+  module:
+    - image
+_core:
+  default_config_hash: 73xaTNkI5J6sfFcBmNYeuk070X3mQS_iwwWaPYyfG2M
+id: media.image.tall
+targetEntityType: media
+bundle: image
+mode: tall
+content:
+  field_media_image:
+    type: image
+    label: visually_hidden
+    settings:
+      image_link: ''
+      image_style: tall_450h
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  created: true
+  name: true
+  thumbnail: true
+  uid: true

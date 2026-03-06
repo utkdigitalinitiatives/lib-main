@@ -1,0 +1,11 @@
+uuid: e1bc8643-f76d-4210-82ac-83b901b59d5c
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.service_contact
+label: 'Service Contact'
+description: null
+targetEntityType: media
+cache: true

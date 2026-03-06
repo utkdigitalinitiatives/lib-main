@@ -1,0 +1,66 @@
+uuid: b8cd93f4-8d1e-49cd-86ba-965d543e7feb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_sections
+    - node.type.about_page
+    - paragraphs.paragraphs_type.card
+    - paragraphs.paragraphs_type.card_group
+    - paragraphs.paragraphs_type.embedded_video
+    - paragraphs.paragraphs_type.file_attachment
+    - paragraphs.paragraphs_type.heading_h2
+    - paragraphs.paragraphs_type.image
+    - paragraphs.paragraphs_type.tall_image
+    - paragraphs.paragraphs_type.text
+  module:
+    - entity_reference_revisions
+id: node.about_page.field_sections
+field_name: field_sections
+entity_type: node
+bundle: about_page
+label: Sections
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      heading_h2: heading_h2
+      text: text
+      image: image
+      tall_image: tall_image
+      card: card
+      card_group: card_group
+      embedded_video: embedded_video
+      file_attachment: file_attachment
+    negate: 0
+    target_bundles_drag_drop:
+      card:
+        weight: -13
+        enabled: true
+      card_group:
+        weight: -12
+        enabled: true
+      embedded_video:
+        weight: -11
+        enabled: true
+      file_attachment:
+        weight: -10
+        enabled: true
+      heading_h2:
+        weight: -17
+        enabled: true
+      image:
+        weight: -15
+        enabled: true
+      tall_image:
+        weight: -14
+        enabled: true
+      text:
+        weight: -16
+        enabled: true
+field_type: entity_reference_revisions
