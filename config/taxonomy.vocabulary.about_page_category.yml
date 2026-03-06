@@ -1,0 +1,9 @@
+uuid: 55fbf937-9e17-4c38-a3a3-aba3f27b77af
+langcode: en
+status: true
+dependencies: {  }
+name: 'About page category'
+vid: about_page_category
+description: null
+weight: 0
+new_revision: false

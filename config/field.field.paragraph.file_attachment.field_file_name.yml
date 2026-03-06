@@ -1,0 +1,19 @@
+uuid: 98bc75df-97c8-4673-8169-82a51d5ea3b0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_file_name
+    - paragraphs.paragraphs_type.file_attachment
+id: paragraph.file_attachment.field_file_name
+field_name: field_file_name
+entity_type: paragraph
+bundle: file_attachment
+label: 'File Display Name'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

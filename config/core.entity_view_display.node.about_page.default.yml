@@ -1,0 +1,37 @@
+uuid: 7d55c8a1-d980-427b-a27d-c7366f6dd8a1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.about_page.field_about_page_category
+    - field.field.node.about_page.field_page_summary
+    - node.type.about_page
+  module:
+    - text
+    - user
+id: node.about_page.default
+targetEntityType: node
+bundle: about_page
+mode: default
+content:
+  field_about_page_category:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_page_summary:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }
