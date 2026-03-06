@@ -1,0 +1,21 @@
+uuid: d30e1e57-4271-4b88-bf3d-029f143a08e0
+langcode: en
+status: true
+dependencies: {  }
+name: column_380
+label: 'Column (380)'
+effects:
+  1ef330c5-a951-46f3-a9be-28c25346b578:
+    uuid: 1ef330c5-a951-46f3-a9be-28c25346b578
+    id: image_scale
+    weight: 1
+    data:
+      width: 380
+      height: null
+      upscale: false
+  f0f129f7-aa1b-47e9-a23c-bd5cefe12231:
+    uuid: f0f129f7-aa1b-47e9-a23c-bd5cefe12231
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

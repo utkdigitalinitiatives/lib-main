@@ -1,0 +1,21 @@
+uuid: bc30ffb4-e630-42dc-8c3b-25fb42ab18ba
+langcode: en
+status: true
+dependencies: {  }
+name: news_image_800
+label: 'News Image (800)'
+effects:
+  e560ef9e-4d3f-48ed-a005-a02fb59c002a:
+    uuid: e560ef9e-4d3f-48ed-a005-a02fb59c002a
+    id: image_scale
+    weight: 1
+    data:
+      width: 800
+      height: null
+      upscale: false
+  4eb739fc-1f2c-44f5-a5df-bbb20354019f:
+    uuid: 4eb739fc-1f2c-44f5-a5df-bbb20354019f
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

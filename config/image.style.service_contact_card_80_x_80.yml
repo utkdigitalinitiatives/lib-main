@@ -1,0 +1,21 @@
+uuid: e3e6b977-74c5-40e2-9f5f-02704254f82a
+langcode: en
+status: true
+dependencies: {  }
+name: service_contact_card_80_x_80
+label: 'Service Contact Card (80 x 80)'
+effects:
+  bf9b0cb7-32bf-42c8-b40b-f8c161f9080b:
+    uuid: bf9b0cb7-32bf-42c8-b40b-f8c161f9080b
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 80
+      height: 80
+      anchor: center-center
+  0b7ffa4d-b274-4026-b49f-c5f79381b423:
+    uuid: 0b7ffa4d-b274-4026-b49f-c5f79381b423
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

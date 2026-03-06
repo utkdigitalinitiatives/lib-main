@@ -1,0 +1,21 @@
+uuid: 08aaf17f-8a9c-4bbf-a2fb-dfe4dafe6775
+langcode: en
+status: true
+dependencies: {  }
+name: tall_450h
+label: 'Tall (450h)'
+effects:
+  47883df8-8c6f-4251-98b4-15fdf26cf566:
+    uuid: 47883df8-8c6f-4251-98b4-15fdf26cf566
+    id: image_scale
+    weight: 1
+    data:
+      width: null
+      height: 450
+      upscale: false
+  e4069acc-e5d9-4d2c-b300-e0fff715825e:
+    uuid: e4069acc-e5d9-4d2c-b300-e0fff715825e
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp
