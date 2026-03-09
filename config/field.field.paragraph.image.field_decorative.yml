@@ -1,0 +1,21 @@
+uuid: 7ff5e3c7-94fa-4c2e-ba98-88d0bf567151
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_decorative
+    - paragraphs.paragraphs_type.image
+id: paragraph.image.field_decorative
+field_name: field_decorative
+entity_type: paragraph
+bundle: image
+label: Decorative
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

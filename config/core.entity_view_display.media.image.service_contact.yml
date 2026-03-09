@@ -1,0 +1,34 @@
+uuid: db5b203c-1535-4399-82d6-7952023b60af
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.service_contact
+    - field.field.media.image.field_media_image
+    - image.style.service_contact_card_80_x_80
+    - media.type.image
+  module:
+    - image
+_core:
+  default_config_hash: 73xaTNkI5J6sfFcBmNYeuk070X3mQS_iwwWaPYyfG2M
+id: media.image.service_contact
+targetEntityType: media
+bundle: image
+mode: service_contact
+content:
+  field_media_image:
+    type: image
+    label: visually_hidden
+    settings:
+      image_link: ''
+      image_style: service_contact_card_80_x_80
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  created: true
+  name: true
+  thumbnail: true
+  uid: true

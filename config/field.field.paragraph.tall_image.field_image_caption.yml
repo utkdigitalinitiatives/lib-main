@@ -1,0 +1,24 @@
+uuid: aac074a5-1b1f-4ad4-985a-0c5bfcb056c1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_image_caption
+    - filter.format.editor_html
+    - paragraphs.paragraphs_type.tall_image
+  module:
+    - text
+id: paragraph.tall_image.field_image_caption
+field_name: field_image_caption
+entity_type: paragraph
+bundle: tall_image
+label: 'Image Caption'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - editor_html
+field_type: text

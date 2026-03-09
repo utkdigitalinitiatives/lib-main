@@ -1,0 +1,11 @@
+uuid: 65db15ce-3080-403e-9fb3-a32dc96237d2
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.column
+label: Column
+description: null
+targetEntityType: media
+cache: true
