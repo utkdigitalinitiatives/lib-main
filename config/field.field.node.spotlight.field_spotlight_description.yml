@@ -1,0 +1,24 @@
+uuid: 297b6cfe-ff04-4859-91c5-7b36b2cc46b8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_spotlight_description
+    - filter.format.editor_html
+    - node.type.spotlight
+  module:
+    - text
+id: node.spotlight.field_spotlight_description
+field_name: field_spotlight_description
+entity_type: node
+bundle: spotlight
+label: 'Spotlight Description'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - editor_html
+field_type: text_long
