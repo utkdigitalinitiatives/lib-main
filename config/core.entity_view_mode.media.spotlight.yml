@@ -1,0 +1,11 @@
+uuid: 2a8d82ff-6495-473e-874a-4d4ebeb15a3f
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.spotlight
+label: Spotlight
+description: null
+targetEntityType: media
+cache: true
