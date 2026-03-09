@@ -1,0 +1,73 @@
+uuid: 0faa9e4b-a8dd-48fb-b4ba-b29f37801881
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.spotlight.field_spotlight_description
+    - field.field.node.spotlight.field_spotlight_end_date
+    - field.field.node.spotlight.field_spotlight_image
+    - field.field.node.spotlight.field_spotlight_link
+    - field.field.node.spotlight.field_spotlight_start_date
+    - node.type.spotlight
+  module:
+    - datetime
+    - link
+    - text
+    - user
+id: node.spotlight.default
+targetEntityType: node
+bundle: spotlight
+mode: default
+content:
+  field_spotlight_description:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_spotlight_end_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_spotlight_image:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: spotlight
+      link: false
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_spotlight_link:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_spotlight_start_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

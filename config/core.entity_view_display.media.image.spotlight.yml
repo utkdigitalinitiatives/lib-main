@@ -1,0 +1,34 @@
+uuid: cf205ba1-b029-4c2e-a049-76c00b59a3fc
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.spotlight
+    - field.field.media.image.field_media_image
+    - image.style.spotlight_image
+    - media.type.image
+  module:
+    - image
+_core:
+  default_config_hash: 73xaTNkI5J6sfFcBmNYeuk070X3mQS_iwwWaPYyfG2M
+id: media.image.spotlight
+targetEntityType: media
+bundle: image
+mode: spotlight
+content:
+  field_media_image:
+    type: image
+    label: visually_hidden
+    settings:
+      image_link: ''
+      image_style: spotlight_image
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  created: true
+  name: true
+  thumbnail: true
+  uid: true

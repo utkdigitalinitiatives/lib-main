@@ -1,0 +1,24 @@
+uuid: 6052c87d-4f80-4585-874e-267dc8c63d2c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_spotlight_start_date
+    - node.type.spotlight
+  module:
+    - datetime
+id: node.spotlight.field_spotlight_start_date
+field_name: field_spotlight_start_date
+entity_type: node
+bundle: spotlight
+label: 'Spotlight Start Date'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+default_value_callback: ''
+settings: {  }
+field_type: datetime
