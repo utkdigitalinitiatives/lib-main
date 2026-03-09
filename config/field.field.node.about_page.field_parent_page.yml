@@ -1,0 +1,28 @@
+uuid: 899d7f48-b6fb-447a-8988-a4fb85f58954
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_parent_page
+    - node.type.about_page
+id: node.about_page.field_parent_page
+field_name: field_parent_page
+entity_type: node
+bundle: about_page
+label: 'Parent page'
+description: 'Note: pages with a listed parent will not be shown on the /about overview page, and only be listed as a link on the parent page itself'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      about_page: about_page
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

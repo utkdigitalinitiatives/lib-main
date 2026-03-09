@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.about_page.field_about_page_category
     - field.field.node.about_page.field_page_summary
+    - field.field.node.about_page.field_parent_page
     - field.field.node.about_page.field_sections
     - node.type.about_page
   module:
@@ -54,6 +55,16 @@ content:
     region: content
     settings:
       rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_parent_page:
+    type: entity_reference_autocomplete
+    weight: 28
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
       placeholder: ''
     third_party_settings: {  }
   field_sections:
