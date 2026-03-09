@@ -1,0 +1,43 @@
+uuid: 85a0491f-3a3b-4e98-8dd1-4c1a9e28d2ff
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.tall_image.field_decorative
+    - field.field.paragraph.tall_image.field_image
+    - field.field.paragraph.tall_image.field_image_caption
+    - paragraphs.paragraphs_type.tall_image
+  module:
+    - text
+id: paragraph.tall_image.default
+targetEntityType: paragraph
+bundle: tall_image
+mode: default
+content:
+  field_decorative:
+    type: boolean
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: tall
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_image_caption:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

@@ -1,0 +1,11 @@
+uuid: 73a3117a-1545-4724-b638-62d26b4c3a42
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.tall
+label: Tall
+description: null
+targetEntityType: media
+cache: true

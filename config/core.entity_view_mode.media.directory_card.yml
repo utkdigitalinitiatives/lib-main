@@ -1,0 +1,11 @@
+uuid: ba206913-478b-47d0-b59f-07f3405e95a3
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.directory_card
+label: 'Directory Card'
+description: null
+targetEntityType: media
+cache: true

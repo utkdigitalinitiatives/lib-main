@@ -1,0 +1,11 @@
+uuid: c2ac0ad7-34ed-4ba7-9da6-0cce8d194634
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.featured_image
+label: 'Featured Image'
+description: null
+targetEntityType: media
+cache: true
