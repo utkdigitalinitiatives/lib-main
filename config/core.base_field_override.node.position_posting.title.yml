@@ -1,0 +1,18 @@
+uuid: 45e3af20-acfe-4932-a77a-74491e3cb647
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.position_posting
+id: node.position_posting.title
+field_name: title
+entity_type: node
+bundle: position_posting
+label: 'Position Title'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
