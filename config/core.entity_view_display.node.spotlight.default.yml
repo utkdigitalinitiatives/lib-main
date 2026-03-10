@@ -21,23 +21,23 @@ mode: default
 content:
   field_spotlight_description:
     type: text_default
-    label: above
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     weight: 104
     region: content
   field_spotlight_end_date:
     type: datetime_default
-    label: above
+    label: hidden
     settings:
       timezone_override: ''
-      format_type: medium
+      format_type: html_date
     third_party_settings: {  }
     weight: 102
     region: content
   field_spotlight_image:
     type: entity_reference_entity_view
-    label: above
+    label: hidden
     settings:
       view_mode: spotlight
       link: false
@@ -46,22 +46,22 @@ content:
     region: content
   field_spotlight_link:
     type: link
-    label: above
+    label: hidden
     settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
+      trim_length: null
+      url_only: true
+      url_plain: true
+      rel: '0'
+      target: '0'
     third_party_settings: {  }
     weight: 105
     region: content
   field_spotlight_start_date:
     type: datetime_default
-    label: above
+    label: hidden
     settings:
       timezone_override: ''
-      format_type: medium
+      format_type: html_date
     third_party_settings: {  }
     weight: 101
     region: content
