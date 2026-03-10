@@ -1,0 +1,15 @@
+uuid: b1729052-2892-47d2-8a4d-eeae250f8713
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.position_posting
+    - user.role.administrator
+id: position_posting-admin_in
+label: Administrator
+weight: 102
+admin: true
+scope: insider
+global_role: administrator
+group_type: position_posting
+permissions: {  }

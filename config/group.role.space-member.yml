@@ -1,0 +1,24 @@
+uuid: 9a7e6db8-487a-4dbf-8cb1-3a40e07038a6
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.space
+    - user.role.authenticated
+id: space-member
+label: Member
+weight: -100
+admin: false
+scope: insider
+global_role: authenticated
+group_type: space
+permissions:
+  - 'access group_node overview'
+  - 'create group_node:space entity'
+  - 'update any group_node:space entity'
+  - 'update own group_node:space entity'
+  - 'view group'
+  - 'view group_membership relationship'
+  - 'view group_node:space entity'
+  - 'view own unpublished group_node:space entity'
+  - 'view unpublished group_node:space entity'

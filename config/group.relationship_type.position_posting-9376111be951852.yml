@@ -1,0 +1,15 @@
+uuid: 09863823-dbe6-4614-8f3d-8e0ca1adb43d
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.position_posting
+  module:
+    - user
+id: position_posting-9376111be951852
+group_type: position_posting
+content_plugin: group_membership
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false

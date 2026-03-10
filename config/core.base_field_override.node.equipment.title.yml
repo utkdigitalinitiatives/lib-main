@@ -1,0 +1,18 @@
+uuid: 8221cd8e-9e83-4dde-92fa-741db6e58ba7
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.equipment
+id: node.equipment.title
+field_name: title
+entity_type: node
+bundle: equipment
+label: 'Equipment Name'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

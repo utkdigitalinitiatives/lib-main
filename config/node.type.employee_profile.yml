@@ -1,0 +1,17 @@
+uuid: 232335f1-bd8c-4d1e-b4d5-83da2577d628
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Employee Profile'
+type: employee_profile
+description: null
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

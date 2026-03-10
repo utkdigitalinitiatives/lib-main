@@ -1,0 +1,16 @@
+uuid: f132de2e-a008-429f-8f3c-cf8c73d944bd
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.space
+    - user.role.anonymous
+id: space-anonymous
+label: Anonymous
+weight: -102
+admin: false
+scope: outsider
+global_role: anonymous
+group_type: space
+permissions:
+  - 'view group_node:space entity'

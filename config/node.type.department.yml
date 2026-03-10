@@ -1,0 +1,17 @@
+uuid: 4f0f95d4-5b8b-4230-ac43-20c9ad4744c5
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Department
+type: department
+description: null
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

@@ -1,0 +1,24 @@
+uuid: c2af425b-4a24-4c64-b03f-0b78c0d5864b
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.notification
+    - user.role.authenticated
+id: notification-member
+label: Member
+weight: -100
+admin: false
+scope: insider
+global_role: authenticated
+group_type: notification
+permissions:
+  - 'access group_node overview'
+  - 'create group_node:notification entity'
+  - 'update any group_node:notification entity'
+  - 'update own group_node:notification entity'
+  - 'view group'
+  - 'view group_membership relationship'
+  - 'view group_node:notification entity'
+  - 'view own unpublished group_node:notification entity'
+  - 'view unpublished group_node:notification entity'

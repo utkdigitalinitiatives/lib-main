@@ -1,0 +1,19 @@
+uuid: ed2e0daf-5e41-4441-aff2-e87b5e810905
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.notification
+    - user.role.authenticated
+id: notification-outsider
+label: Outsider
+weight: -101
+admin: false
+scope: outsider
+global_role: authenticated
+group_type: notification
+permissions:
+  - 'access group_node overview'
+  - 'view group'
+  - 'view group_membership relationship'
+  - 'view group_node:notification entity'

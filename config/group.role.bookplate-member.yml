@@ -1,0 +1,24 @@
+uuid: 42f64a0b-e067-42ef-a7b7-871d608e5141
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.bookplate
+    - user.role.authenticated
+id: bookplate-member
+label: Member
+weight: -100
+admin: false
+scope: insider
+global_role: authenticated
+group_type: bookplate
+permissions:
+  - 'access group_node overview'
+  - 'create group_node:bookplate entity'
+  - 'update any group_node:bookplate entity'
+  - 'update own group_node:bookplate entity'
+  - 'view group'
+  - 'view group_membership relationship'
+  - 'view group_node:bookplate entity'
+  - 'view own unpublished group_node:bookplate entity'
+  - 'view unpublished group_node:bookplate entity'

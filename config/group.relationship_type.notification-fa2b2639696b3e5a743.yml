@@ -1,0 +1,17 @@
+uuid: 55bb20ef-daa7-4be2-a54a-44c96070239a
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.notification
+    - node.type.notification
+  module:
+    - gnode
+    - node
+id: notification-fa2b2639696b3e5a743
+group_type: notification
+content_plugin: 'group_node:notification'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false

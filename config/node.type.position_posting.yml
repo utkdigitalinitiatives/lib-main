@@ -1,0 +1,17 @@
+uuid: dbb8d6bb-9654-4d97-be99-5685cce597f7
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Position Posting'
+type: position_posting
+description: null
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

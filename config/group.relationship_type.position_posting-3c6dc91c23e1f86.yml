@@ -1,0 +1,17 @@
+uuid: 20459363-041f-4b8d-af71-1dc491ff2565
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.position_posting
+    - node.type.position_posting
+  module:
+    - gnode
+    - node
+id: position_posting-3c6dc91c23e1f86
+group_type: position_posting
+content_plugin: 'group_node:position_posting'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false

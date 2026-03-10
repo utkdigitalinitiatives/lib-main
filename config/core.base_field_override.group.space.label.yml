@@ -1,0 +1,18 @@
+uuid: 7f870c66-4e40-4041-ac52-d6aeb78c09ff
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.space
+id: group.space.label
+field_name: label
+entity_type: group
+bundle: space
+label: Title
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

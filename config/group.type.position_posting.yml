@@ -1,0 +1,12 @@
+uuid: d6a8f2bf-5ece-4f0d-b03c-f7713b6bbad5
+langcode: en
+status: true
+dependencies: {  }
+id: position_posting
+label: 'Position Posting'
+description: ''
+new_revision: true
+creator_membership: true
+creator_wizard: true
+creator_roles:
+  - position_posting-admin

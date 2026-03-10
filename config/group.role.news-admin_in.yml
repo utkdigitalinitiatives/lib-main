@@ -1,0 +1,15 @@
+uuid: 1c22c6ee-08d2-4452-ae56-d8c35c8fe5bb
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.news
+    - user.role.administrator
+id: news-admin_in
+label: Administrator
+weight: 102
+admin: true
+scope: insider
+global_role: administrator
+group_type: news
+permissions: {  }

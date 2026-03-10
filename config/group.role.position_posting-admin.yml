@@ -1,0 +1,14 @@
+uuid: 02919802-fcb7-4466-af42-1ee15d1dfe5d
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.position_posting
+id: position_posting-admin
+label: Admin
+weight: 100
+admin: true
+scope: individual
+global_role: null
+group_type: position_posting
+permissions: {  }

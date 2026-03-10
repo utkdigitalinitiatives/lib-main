@@ -1,0 +1,15 @@
+uuid: 794bf6db-da10-4b90-b733-255fe78127e5
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.equipment
+    - user.role.administrator
+id: equipment-admin_in
+label: Administrator
+weight: 102
+admin: true
+scope: insider
+global_role: administrator
+group_type: equipment
+permissions: {  }

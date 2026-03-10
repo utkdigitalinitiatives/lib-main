@@ -1,0 +1,15 @@
+uuid: 35696d21-ae96-4c3a-9f5e-095aa3ac69e5
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.equipment
+  module:
+    - user
+id: equipment-group_membership
+group_type: equipment
+content_plugin: group_membership
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false

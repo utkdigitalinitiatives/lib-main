@@ -1,0 +1,16 @@
+uuid: 91922e59-30e5-4934-a0a3-3b3aa73edab8
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.news
+    - user.role.anonymous
+id: news-anonymous
+label: Anonymous
+weight: -102
+admin: false
+scope: outsider
+global_role: anonymous
+group_type: news
+permissions:
+  - 'view group_node:news entity'
