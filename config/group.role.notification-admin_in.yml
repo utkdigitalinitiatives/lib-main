@@ -1,0 +1,15 @@
+uuid: 11dd2463-e56f-4c3b-afdf-29fbb04ba61b
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.notification
+    - user.role.administrator
+id: notification-admin_in
+label: Administrator
+weight: 102
+admin: true
+scope: insider
+global_role: administrator
+group_type: notification
+permissions: {  }

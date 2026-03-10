@@ -1,0 +1,12 @@
+uuid: 413a849d-c3ae-418b-a0dc-0e43d6ed25a9
+langcode: en
+status: true
+dependencies: {  }
+id: notification
+label: Notification
+description: ''
+new_revision: true
+creator_membership: true
+creator_wizard: true
+creator_roles:
+  - notification-admin
