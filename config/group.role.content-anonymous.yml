@@ -15,4 +15,5 @@ group_type: content
 permissions:
   - 'view group_node:about_page entity'
   - 'view group_node:department entity'
+  - 'view group_node:employee_profile entity'
   - 'view group_node:service_page entity'

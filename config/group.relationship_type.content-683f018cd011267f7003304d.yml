@@ -1,0 +1,17 @@
+uuid: 684ea9ea-907b-4b05-a422-f554423b3a3f
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.content
+    - node.type.employee_profile
+  module:
+    - gnode
+    - node
+id: content-683f018cd011267f7003304d
+group_type: content
+content_plugin: 'group_node:employee_profile'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false
