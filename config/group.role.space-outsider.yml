@@ -1,0 +1,19 @@
+uuid: 4c3ca0bf-32e3-4aa4-98ca-679bd13f6810
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.space
+    - user.role.authenticated
+id: space-outsider
+label: Outsider
+weight: -101
+admin: false
+scope: outsider
+global_role: authenticated
+group_type: space
+permissions:
+  - 'access group_node overview'
+  - 'view group'
+  - 'view group_membership relationship'
+  - 'view group_node:space entity'

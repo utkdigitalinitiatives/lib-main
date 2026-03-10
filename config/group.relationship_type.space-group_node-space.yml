@@ -1,0 +1,17 @@
+uuid: c85f6b1b-1397-4056-9205-4b986c1c3036
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.space
+    - node.type.space
+  module:
+    - gnode
+    - node
+id: space-group_node-space
+group_type: space
+content_plugin: 'group_node:space'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false

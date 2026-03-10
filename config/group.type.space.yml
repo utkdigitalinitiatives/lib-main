@@ -1,0 +1,12 @@
+uuid: 758ea164-2145-4471-9c55-1e9e8e39b553
+langcode: en
+status: true
+dependencies: {  }
+id: space
+label: Space
+description: ''
+new_revision: true
+creator_membership: true
+creator_wizard: true
+creator_roles:
+  - space-admin
