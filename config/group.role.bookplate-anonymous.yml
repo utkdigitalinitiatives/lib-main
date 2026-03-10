@@ -1,0 +1,16 @@
+uuid: a4e07c9a-727b-4c51-838d-2c648780c759
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.bookplate
+    - user.role.anonymous
+id: bookplate-anonymous
+label: Anonymous
+weight: -102
+admin: false
+scope: outsider
+global_role: anonymous
+group_type: bookplate
+permissions:
+  - 'view group_node:bookplate entity'

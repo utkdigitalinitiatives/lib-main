@@ -1,0 +1,19 @@
+uuid: 6f5142a0-679e-4bc3-9847-2f719429f619
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.bookplate
+    - user.role.authenticated
+id: bookplate-outsider
+label: Outsider
+weight: -101
+admin: false
+scope: outsider
+global_role: authenticated
+group_type: bookplate
+permissions:
+  - 'access group_node overview'
+  - 'view group'
+  - 'view group_membership relationship'
+  - 'view group_node:bookplate entity'

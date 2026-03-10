@@ -1,0 +1,15 @@
+uuid: 9bee2338-7b0e-419a-b8a1-aa94c82582fd
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.bookplate
+  module:
+    - user
+id: bookplate-group_membership
+group_type: bookplate
+content_plugin: group_membership
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false
