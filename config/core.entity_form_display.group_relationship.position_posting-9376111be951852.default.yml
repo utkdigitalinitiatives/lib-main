@@ -1,0 +1,38 @@
+uuid: 3b68de61-e552-4395-a274-ed594d160a49
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.group_relationship.position_posting-9376111be951852.group_roles
+    - group.relationship_type.position_posting-9376111be951852
+  module:
+    - path
+id: group_relationship.position_posting-9376111be951852.default
+targetEntityType: group_relationship
+bundle: position_posting-9376111be951852
+mode: default
+content:
+  entity_id:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  group_roles:
+    type: options_buttons
+    weight: 31
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  uid: true

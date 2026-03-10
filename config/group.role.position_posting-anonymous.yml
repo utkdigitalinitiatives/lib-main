@@ -1,0 +1,16 @@
+uuid: ee7f55eb-33a7-425c-8e3b-9d804cdc72f0
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.position_posting
+    - user.role.anonymous
+id: position_posting-anonymous
+label: Anonymous
+weight: -102
+admin: false
+scope: outsider
+global_role: anonymous
+group_type: position_posting
+permissions:
+  - 'view group_node:position_posting entity'

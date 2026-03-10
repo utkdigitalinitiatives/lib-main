@@ -1,0 +1,24 @@
+uuid: c8955f4e-1fd9-45b3-b5bb-e4bf1bdcc7b1
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.position_posting
+    - user.role.authenticated
+id: position_posting-member
+label: Member
+weight: -100
+admin: false
+scope: insider
+global_role: authenticated
+group_type: position_posting
+permissions:
+  - 'access group_node overview'
+  - 'create group_node:position_posting entity'
+  - 'update any group_node:position_posting entity'
+  - 'update own group_node:position_posting entity'
+  - 'view group'
+  - 'view group_membership relationship'
+  - 'view group_node:position_posting entity'
+  - 'view own unpublished group_node:position_posting entity'
+  - 'view unpublished group_node:position_posting entity'

@@ -1,0 +1,23 @@
+uuid: f5fcb2fd-555b-4485-8edb-0963125c5e72
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.group_relationship.position_posting-9376111be951852.group_roles
+    - group.relationship_type.position_posting-9376111be951852
+id: group_relationship.position_posting-9376111be951852.default
+targetEntityType: group_relationship
+bundle: position_posting-9376111be951852
+mode: default
+content:
+  group_roles:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: -4
+    region: content
+hidden:
+  entity_id: true
+  uid: true
