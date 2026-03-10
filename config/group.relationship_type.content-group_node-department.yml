@@ -1,16 +1,16 @@
-uuid: 7e462e45-199f-4d1f-a254-f54959dd4be1
+uuid: e25bda64-8bc8-42f2-a8b0-20c2e6e68b82
 langcode: en
 status: true
 dependencies:
   config:
     - group.type.content
-    - node.type.service_page
+    - node.type.department
   module:
     - gnode
     - node
-id: content-group_node-service_page
+id: content-group_node-department
 group_type: content
-content_plugin: 'group_node:service_page'
+content_plugin: 'group_node:department'
 plugin_config:
   group_cardinality: 0
   entity_cardinality: 1

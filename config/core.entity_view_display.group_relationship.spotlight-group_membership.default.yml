@@ -1,13 +1,13 @@
-uuid: 47f6c94a-4138-4687-b37a-e703efb20a9f
+uuid: a11f3696-b883-46c6-b8f8-229dab437781
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.group_relationship.content-group_membership.group_roles
-    - group.relationship_type.content-group_membership
-id: group_relationship.content-group_membership.default
+    - field.field.group_relationship.spotlight-group_membership.group_roles
+    - group.relationship_type.spotlight-group_membership
+id: group_relationship.spotlight-group_membership.default
 targetEntityType: group_relationship
-bundle: content-group_membership
+bundle: spotlight-group_membership
 mode: default
 content:
   group_roles:

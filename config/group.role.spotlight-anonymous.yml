@@ -1,0 +1,16 @@
+uuid: be126cd1-cdbd-4355-8bcf-9f9f68a3aabc
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.spotlight
+    - user.role.anonymous
+id: spotlight-anonymous
+label: Anonymous
+weight: -102
+admin: false
+scope: outsider
+global_role: anonymous
+group_type: spotlight
+permissions:
+  - 'view group_node:spotlight entity'

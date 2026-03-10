@@ -1,0 +1,17 @@
+uuid: d466aca0-d476-4528-8d85-bd9eca48d105
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.spotlight
+    - user.role.authenticated
+id: spotlight-outsider
+label: Outsider
+weight: -101
+admin: false
+scope: outsider
+global_role: authenticated
+group_type: spotlight
+permissions:
+  - 'access group_node overview'
+  - 'view group_node:spotlight entity'

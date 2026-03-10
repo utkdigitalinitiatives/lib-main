@@ -1,13 +1,13 @@
-uuid: e871eefd-5bbb-4c86-bd4a-ed8faa7d1f40
+uuid: 2f67c8c0-b0d3-4e71-9a90-0846498f1346
 langcode: en
 status: true
 dependencies:
   config:
-    - group.type.content
-id: group.content.label
+    - group.type.spotlight
+id: group.spotlight.label
 field_name: label
 entity_type: group
-bundle: content
+bundle: spotlight
 label: Title
 description: ''
 required: true

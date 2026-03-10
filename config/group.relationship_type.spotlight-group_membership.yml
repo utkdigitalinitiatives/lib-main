@@ -1,13 +1,13 @@
-uuid: c9158ae5-6ae4-45de-9046-f327afdc47e9
+uuid: e361024e-2afa-4342-8011-9fa6b66f352c
 langcode: en
 status: true
 dependencies:
   config:
-    - group.type.content
+    - group.type.spotlight
   module:
     - user
-id: content-group_membership
-group_type: content
+id: spotlight-group_membership
+group_type: spotlight
 content_plugin: group_membership
 plugin_config:
   group_cardinality: 0

@@ -1,15 +1,15 @@
-uuid: b7520f17-0dcd-4e0c-9f97-07fc59d95fa8
+uuid: 0300eecd-f23c-469b-b8de-ce840be71e86
 langcode: en
 status: true
 dependencies:
   config:
-    - group.type.content
+    - group.type.spotlight
     - user.role.administrator
-id: content-admin_in
+id: spotlight-admin_in
 label: Administrator
 weight: 102
 admin: true
 scope: insider
 global_role: administrator
-group_type: content
+group_type: spotlight
 permissions: {  }
