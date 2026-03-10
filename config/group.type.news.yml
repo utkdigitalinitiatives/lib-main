@@ -1,0 +1,12 @@
+uuid: 3aa6d0ad-180f-41cd-9e39-6cd3c82e3d89
+langcode: en
+status: true
+dependencies: {  }
+id: news
+label: News
+description: ''
+new_revision: true
+creator_membership: true
+creator_wizard: true
+creator_roles:
+  - news-admin

@@ -17,6 +17,8 @@ permissions:
   - 'create group_node:spotlight entity'
   - 'update any group_node:spotlight entity'
   - 'update own group_node:spotlight entity'
+  - 'view group'
+  - 'view group_membership relationship'
   - 'view group_node:spotlight entity'
   - 'view own unpublished group_node:spotlight entity'
   - 'view unpublished group_node:spotlight entity'

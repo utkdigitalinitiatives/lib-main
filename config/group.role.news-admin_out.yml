@@ -1,0 +1,15 @@
+uuid: b2ff0b9e-261e-40ff-bc86-8a45f866939b
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.news
+    - user.role.administrator
+id: news-admin_out
+label: Administrator
+weight: 101
+admin: true
+scope: outsider
+global_role: administrator
+group_type: news
+permissions: {  }

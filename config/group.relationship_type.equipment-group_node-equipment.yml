@@ -1,0 +1,17 @@
+uuid: cc9556cd-bc9e-4c8c-924c-c7fce7c021c4
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.equipment
+    - node.type.equipment
+  module:
+    - gnode
+    - node
+id: equipment-group_node-equipment
+group_type: equipment
+content_plugin: 'group_node:equipment'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false

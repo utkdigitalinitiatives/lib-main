@@ -1,0 +1,24 @@
+uuid: 9c6f9bf7-0933-4996-af5e-be960fc0f7f3
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.equipment
+    - user.role.authenticated
+id: equipment-member
+label: Member
+weight: -100
+admin: false
+scope: insider
+global_role: authenticated
+group_type: equipment
+permissions:
+  - 'access group_node overview'
+  - 'create group_node:equipment entity'
+  - 'update any group_node:equipment entity'
+  - 'update own group_node:equipment entity'
+  - 'view group'
+  - 'view group_membership relationship'
+  - 'view group_node:equipment entity'
+  - 'view own unpublished group_node:equipment entity'
+  - 'view unpublished group_node:equipment entity'

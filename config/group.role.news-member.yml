@@ -1,0 +1,24 @@
+uuid: 1206f960-cf76-4878-bdb6-a7141414a7c6
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.news
+    - user.role.authenticated
+id: news-member
+label: Member
+weight: -100
+admin: false
+scope: insider
+global_role: authenticated
+group_type: news
+permissions:
+  - 'access group_node overview'
+  - 'create group_node:news entity'
+  - 'update any group_node:news entity'
+  - 'update own group_node:news entity'
+  - 'view group'
+  - 'view group_membership relationship'
+  - 'view group_node:news entity'
+  - 'view own unpublished group_node:news entity'
+  - 'view unpublished group_node:news entity'

@@ -1,19 +1,19 @@
-uuid: d466aca0-d476-4528-8d85-bd9eca48d105
+uuid: d14196a6-900c-4651-af04-18983820509d
 langcode: en
 status: true
 dependencies:
   config:
-    - group.type.spotlight
+    - group.type.equipment
     - user.role.authenticated
-id: spotlight-outsider
+id: equipment-outsider
 label: Outsider
 weight: -101
 admin: false
 scope: outsider
 global_role: authenticated
-group_type: spotlight
+group_type: equipment
 permissions:
   - 'access group_node overview'
   - 'view group'
   - 'view group_membership relationship'
-  - 'view group_node:spotlight entity'
+  - 'view group_node:equipment entity'
