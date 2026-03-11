@@ -1,0 +1,12 @@
+uuid: 6a390734-9441-43dd-89e0-b0bd7272ccc1
+langcode: en
+status: true
+dependencies: {  }
+id: equipment
+label: Equipment
+description: ''
+new_revision: true
+creator_membership: true
+creator_wizard: true
+creator_roles:
+  - equipment-admin

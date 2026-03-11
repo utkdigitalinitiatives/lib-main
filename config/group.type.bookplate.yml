@@ -1,0 +1,12 @@
+uuid: 6890839a-c22b-4e4c-88cb-14090b635af1
+langcode: en
+status: true
+dependencies: {  }
+id: bookplate
+label: Bookplate
+description: ''
+new_revision: true
+creator_membership: true
+creator_wizard: true
+creator_roles:
+  - bookplate-admin

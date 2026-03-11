@@ -1,0 +1,24 @@
+uuid: faa6a987-cf4b-4a48-a24c-445cf4ce4619
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.spotlight
+    - user.role.authenticated
+id: spotlight-member
+label: Member
+weight: -100
+admin: false
+scope: insider
+global_role: authenticated
+group_type: spotlight
+permissions:
+  - 'access group_node overview'
+  - 'create group_node:spotlight entity'
+  - 'update any group_node:spotlight entity'
+  - 'update own group_node:spotlight entity'
+  - 'view group'
+  - 'view group_membership relationship'
+  - 'view group_node:spotlight entity'
+  - 'view own unpublished group_node:spotlight entity'
+  - 'view unpublished group_node:spotlight entity'

@@ -1,0 +1,18 @@
+uuid: 6b3b4584-ceec-4961-8e8b-a37cb9fb0bfd
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.equipment
+id: group.equipment.label
+field_name: label
+entity_type: group
+bundle: equipment
+label: Title
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

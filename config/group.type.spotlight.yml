@@ -1,0 +1,12 @@
+uuid: 24c655df-0ad4-4820-ad82-3b8490967620
+langcode: en
+status: true
+dependencies: {  }
+id: spotlight
+label: Spotlight
+description: ''
+new_revision: true
+creator_membership: true
+creator_wizard: true
+creator_roles:
+  - spotlight-admin

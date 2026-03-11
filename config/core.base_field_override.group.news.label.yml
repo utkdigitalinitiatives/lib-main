@@ -1,0 +1,18 @@
+uuid: aedbd2f9-70b1-4be8-abba-016a3d067eb7
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.news
+id: group.news.label
+field_name: label
+entity_type: group
+bundle: news
+label: Title
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

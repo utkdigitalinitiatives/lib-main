@@ -1,0 +1,16 @@
+uuid: 0ae7bf92-26c2-4cf3-beed-4a7ccef3b6b6
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.notification
+    - user.role.anonymous
+id: notification-anonymous
+label: Anonymous
+weight: -102
+admin: false
+scope: outsider
+global_role: anonymous
+group_type: notification
+permissions:
+  - 'view group_node:notification entity'

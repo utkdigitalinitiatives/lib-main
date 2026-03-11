@@ -1,0 +1,14 @@
+uuid: b7bdd03f-e500-41dd-9d58-19576b0d1d05
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.notification
+id: notification-admin
+label: Admin
+weight: 100
+admin: true
+scope: individual
+global_role: null
+group_type: notification
+permissions: {  }

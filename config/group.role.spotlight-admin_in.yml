@@ -1,0 +1,15 @@
+uuid: 0300eecd-f23c-469b-b8de-ce840be71e86
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.spotlight
+    - user.role.administrator
+id: spotlight-admin_in
+label: Administrator
+weight: 102
+admin: true
+scope: insider
+global_role: administrator
+group_type: spotlight
+permissions: {  }

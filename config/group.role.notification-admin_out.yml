@@ -1,0 +1,15 @@
+uuid: dad72254-7fac-4888-84a6-de18c09a7260
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.notification
+    - user.role.administrator
+id: notification-admin_out
+label: Administrator
+weight: 101
+admin: true
+scope: outsider
+global_role: administrator
+group_type: notification
+permissions: {  }

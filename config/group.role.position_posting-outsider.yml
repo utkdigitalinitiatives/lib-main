@@ -1,0 +1,19 @@
+uuid: d77e6283-f859-4943-8e2f-d072f870ca62
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.position_posting
+    - user.role.authenticated
+id: position_posting-outsider
+label: Outsider
+weight: -101
+admin: false
+scope: outsider
+global_role: authenticated
+group_type: position_posting
+permissions:
+  - 'access group_node overview'
+  - 'view group'
+  - 'view group_membership relationship'
+  - 'view group_node:position_posting entity'

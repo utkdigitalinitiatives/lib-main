@@ -1,4 +1,4 @@
-uuid: cf5f21ed-a23d-437e-9995-0c7a4279aff7
+uuid: 9998847b-f441-487a-b27e-0798103118f4
 langcode: en
 status: true
 dependencies:
@@ -14,6 +14,6 @@ global_role: anonymous
 group_type: content
 permissions:
   - 'view group_node:about_page entity'
-  - 'view group_node:news entity'
+  - 'view group_node:department entity'
+  - 'view group_node:employee_profile entity'
   - 'view group_node:service_page entity'
-  - 'view group_node:spotlight entity'

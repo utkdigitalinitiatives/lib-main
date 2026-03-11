@@ -1,0 +1,15 @@
+uuid: f5b9a7bd-595b-4f88-a765-5ba4fbdf155a
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.bookplate
+    - user.role.administrator
+id: bookplate-admin_out
+label: Administrator
+weight: 101
+admin: true
+scope: outsider
+global_role: administrator
+group_type: bookplate
+permissions: {  }

@@ -1,0 +1,15 @@
+uuid: d3f90d1c-1a2e-436a-ab18-1111ce832f2b
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.position_posting
+    - user.role.administrator
+id: position_posting-admin_out
+label: Administrator
+weight: 101
+admin: true
+scope: outsider
+global_role: administrator
+group_type: position_posting
+permissions: {  }

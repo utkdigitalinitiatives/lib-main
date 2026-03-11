@@ -1,0 +1,15 @@
+uuid: 5c6c0b33-8fb9-4003-99bb-fa117ff7af72
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.news
+  module:
+    - user
+id: news-group_membership
+group_type: news
+content_plugin: group_membership
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false

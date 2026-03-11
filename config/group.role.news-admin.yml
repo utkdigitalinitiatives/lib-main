@@ -1,0 +1,14 @@
+uuid: 52c167ee-dccd-452b-98ff-0c4b3d8d07f3
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.news
+id: news-admin
+label: Admin
+weight: 100
+admin: true
+scope: individual
+global_role: null
+group_type: news
+permissions: {  }

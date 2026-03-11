@@ -1,0 +1,14 @@
+uuid: 7ff6acc6-768e-4c9d-a53c-a9593b34f9ac
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.content
+id: content-admin
+label: Admin
+weight: 100
+admin: true
+scope: individual
+global_role: null
+group_type: content
+permissions: {  }

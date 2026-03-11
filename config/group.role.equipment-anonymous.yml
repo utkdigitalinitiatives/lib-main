@@ -1,0 +1,16 @@
+uuid: 714e4867-0c96-4ef8-83d0-317bc75c5f4e
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.equipment
+    - user.role.anonymous
+id: equipment-anonymous
+label: Anonymous
+weight: -102
+admin: false
+scope: outsider
+global_role: anonymous
+group_type: equipment
+permissions:
+  - 'view group_node:equipment entity'

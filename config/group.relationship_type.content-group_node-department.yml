@@ -1,16 +1,16 @@
-uuid: 39c44267-d879-414e-9be4-c64c33a200b8
+uuid: e25bda64-8bc8-42f2-a8b0-20c2e6e68b82
 langcode: en
 status: true
 dependencies:
   config:
     - group.type.content
-    - node.type.news
+    - node.type.department
   module:
     - gnode
     - node
-id: content-group_node-news
+id: content-group_node-department
 group_type: content
-content_plugin: 'group_node:news'
+content_plugin: 'group_node:department'
 plugin_config:
   group_cardinality: 0
   entity_cardinality: 1

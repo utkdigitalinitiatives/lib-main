@@ -1,0 +1,17 @@
+uuid: 7a529669-1e9c-4174-bb74-de925d58f5c9
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Bookplate
+type: bookplate
+description: null
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

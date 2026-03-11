@@ -1,0 +1,23 @@
+uuid: a11f3696-b883-46c6-b8f8-229dab437781
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.group_relationship.spotlight-group_membership.group_roles
+    - group.relationship_type.spotlight-group_membership
+id: group_relationship.spotlight-group_membership.default
+targetEntityType: group_relationship
+bundle: spotlight-group_membership
+mode: default
+content:
+  group_roles:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: -4
+    region: content
+hidden:
+  entity_id: true
+  uid: true
