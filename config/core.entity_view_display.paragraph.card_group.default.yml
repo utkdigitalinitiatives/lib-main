@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.card_group.field_card
+    - field.field.paragraph.card_group.field_cards
     - paragraphs.paragraphs_type.card_group
   module:
     - entity_reference_revisions
@@ -12,7 +12,7 @@ targetEntityType: paragraph
 bundle: card_group
 mode: default
 content:
-  field_card:
+  field_cards:
     type: entity_reference_revisions_entity_view
     label: hidden
     settings:

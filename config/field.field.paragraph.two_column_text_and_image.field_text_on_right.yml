@@ -1,0 +1,21 @@
+uuid: 4a43d2fb-15d4-478e-8275-f0f6525d8be5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text_on_right
+    - paragraphs.paragraphs_type.two_column_text_and_image
+id: paragraph.two_column_text_and_image.field_text_on_right
+field_name: field_text_on_right
+entity_type: paragraph
+bundle: two_column_text_and_image
+label: 'Text on Right'
+description: 'If "on," the content will render the image on the left side of the screen and the text on the right. On smaller screens, this means the image will be above the text.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

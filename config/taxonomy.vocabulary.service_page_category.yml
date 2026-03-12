@@ -1,0 +1,9 @@
+uuid: 62e7bf52-f377-417d-9639-701bac663290
+langcode: en
+status: true
+dependencies: {  }
+name: 'Service page category'
+vid: service_page_category
+description: null
+weight: 0
+new_revision: false

@@ -1,0 +1,24 @@
+uuid: 8dd9ac68-869c-49ef-9a09-8d34736c44fe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_page_summary
+    - filter.format.editor_html
+    - node.type.service_page
+  module:
+    - text
+id: node.service_page.field_page_summary
+field_name: field_page_summary
+entity_type: node
+bundle: service_page
+label: 'Page summary'
+description: "Describe the page in a short sentence.\r\nPage summaries may appear in search results or references to the page, but do not appear on the page itself."
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - editor_html
+field_type: text_long

@@ -1,20 +1,22 @@
-uuid: d253fd07-58aa-4ee1-9225-70065f2db6a5
+uuid: ccae8305-a05d-47ab-8501-4872abad86e8
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.card_group.field_cards
-    - paragraphs.paragraphs_type.card_group
+    - field.field.paragraph.two_column_text_and_card.field_card
+    - field.field.paragraph.two_column_text_and_card.field_text
+    - paragraphs.paragraphs_type.two_column_text_and_card
   module:
     - paragraphs
-id: paragraph.card_group.default
+    - text
+id: paragraph.two_column_text_and_card.default
 targetEntityType: paragraph
-bundle: card_group
+bundle: two_column_text_and_card
 mode: default
 content:
-  field_cards:
+  field_card:
     type: paragraphs
-    weight: 0
+    weight: 1
     region: content
     settings:
       title: Paragraph
@@ -29,6 +31,14 @@ content:
       features:
         collapse_edit_all: collapse_edit_all
         duplicate: duplicate
+    third_party_settings: {  }
+  field_text:
+    type: text_textarea
+    weight: 0
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
     third_party_settings: {  }
 hidden:
   created: true
