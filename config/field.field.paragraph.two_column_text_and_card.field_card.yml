@@ -1,0 +1,55 @@
+uuid: 1fa7e69a-bd58-462e-ab73-c7e50d797954
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_card
+    - paragraphs.paragraphs_type.card
+    - paragraphs.paragraphs_type.two_column_text_and_card
+  module:
+    - entity_reference_revisions
+id: paragraph.two_column_text_and_card.field_card
+field_name: field_card
+entity_type: paragraph
+bundle: two_column_text_and_card
+label: Card
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      card: card
+    negate: 0
+    target_bundles_drag_drop:
+      card:
+        weight: 10
+        enabled: true
+      card_group:
+        weight: 11
+        enabled: false
+      embedded_video:
+        weight: 12
+        enabled: false
+      file_attachment:
+        weight: 13
+        enabled: false
+      heading_h2:
+        weight: 14
+        enabled: false
+      image:
+        weight: 15
+        enabled: false
+      tall_image:
+        weight: 16
+        enabled: false
+      text:
+        weight: 17
+        enabled: false
+      two_column_text_and_card:
+        weight: 18
+        enabled: false
+field_type: entity_reference_revisions

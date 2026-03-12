@@ -1,0 +1,31 @@
+uuid: c6f8486a-a376-412f-997a-38345349f06b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_service_contacts
+    - node.type.department
+    - node.type.employee_profile
+    - node.type.service_page
+id: node.service_page.field_service_contacts
+field_name: field_service_contacts
+entity_type: node
+bundle: service_page
+label: 'Service Contacts'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      department: department
+      employee_profile: employee_profile
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: department
+field_type: entity_reference

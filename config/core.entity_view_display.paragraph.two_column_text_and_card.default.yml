@@ -1,0 +1,33 @@
+uuid: d194cf85-55ce-4a68-a929-df8d48757089
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.two_column_text_and_card.field_card
+    - field.field.paragraph.two_column_text_and_card.field_text
+    - paragraphs.paragraphs_type.two_column_text_and_card
+  module:
+    - entity_reference_revisions
+    - text
+id: paragraph.two_column_text_and_card.default
+targetEntityType: paragraph
+bundle: two_column_text_and_card
+mode: default
+content:
+  field_card:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }
