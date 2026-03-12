@@ -1,0 +1,24 @@
+uuid: b892a97e-fb62-4548-90b7-5cdec144048a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_quote
+    - filter.format.editor_html
+    - paragraphs.paragraphs_type.featured_quote
+  module:
+    - text
+id: paragraph.featured_quote.field_quote
+field_name: field_quote
+entity_type: paragraph
+bundle: featured_quote
+label: Quote
+description: 'Keep quotes short – they will be displayed with larger text, and quote that are too long will push other content too far down the page'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - editor_html
+field_type: text_long

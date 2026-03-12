@@ -1,0 +1,24 @@
+uuid: d3a37f17-f776-4222-9844-d243bab9c499
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_update_label
+    - filter.format.editor_html
+    - node.type.news
+  module:
+    - text
+id: node.news.field_update_label
+field_name: field_update_label
+entity_type: node
+bundle: news
+label: 'Update Label'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - editor_html
+field_type: text
