@@ -1,0 +1,25 @@
+uuid: 8c8b3e65-b145-4a0a-9f83-8b66c54f97e2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.featured_quote.field_quote
+    - paragraphs.paragraphs_type.featured_quote
+  module:
+    - text
+id: paragraph.featured_quote.default
+targetEntityType: paragraph
+bundle: featured_quote
+mode: default
+content:
+  field_quote:
+    type: text_textarea
+    weight: 0
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

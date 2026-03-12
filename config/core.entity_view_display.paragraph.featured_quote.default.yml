@@ -1,0 +1,22 @@
+uuid: d2243d20-c500-4acc-b644-6c31e50ea628
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.featured_quote.field_quote
+    - paragraphs.paragraphs_type.featured_quote
+  module:
+    - text
+id: paragraph.featured_quote.default
+targetEntityType: paragraph
+bundle: featured_quote
+mode: default
+content:
+  field_quote:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

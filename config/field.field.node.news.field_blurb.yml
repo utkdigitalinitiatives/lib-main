@@ -1,0 +1,24 @@
+uuid: ce28a5bd-ca24-4ed8-96d1-58a1e97377cf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_blurb
+    - filter.format.editor_html
+    - node.type.news
+  module:
+    - text
+id: node.news.field_blurb
+field_name: field_blurb
+entity_type: node
+bundle: news
+label: Blurb
+description: 'A short summary of the article, which will be displayed where references to the article also allow for previews of the article text'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - editor_html
+field_type: text_long
