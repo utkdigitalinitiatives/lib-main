@@ -1,0 +1,25 @@
+uuid: f41ac73d-42e5-4005-a324-de1a3da74148
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.correction.field_content
+    - paragraphs.paragraphs_type.correction
+  module:
+    - text
+id: paragraph.correction.default
+targetEntityType: paragraph
+bundle: correction
+mode: default
+content:
+  field_content:
+    type: text_textarea
+    weight: 0
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

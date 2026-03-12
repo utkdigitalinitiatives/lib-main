@@ -1,0 +1,22 @@
+uuid: cb578af6-b369-4800-8389-1a56ab0706a4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.correction.field_content
+    - paragraphs.paragraphs_type.correction
+  module:
+    - text
+id: paragraph.correction.default
+targetEntityType: paragraph
+bundle: correction
+mode: default
+content:
+  field_content:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

@@ -1,0 +1,90 @@
+uuid: 375a8276-2f92-4cc5-91a1-728f395756c6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.news.field_blurb
+    - field.field.node.news.field_featured_news_image
+    - field.field.node.news.field_publishing_date
+    - field.field.node.news.field_related_links
+    - field.field.node.news.field_sections
+    - field.field.node.news.field_update_label
+    - field.field.node.news.field_update_text
+    - node.type.news
+  module:
+    - datetime
+    - entity_reference_revisions
+    - link
+    - text
+    - user
+id: node.news.default
+targetEntityType: node
+bundle: news
+mode: default
+content:
+  field_blurb:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_featured_news_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: featured_image
+      link: false
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_publishing_date:
+    type: datetime_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_related_links:
+    type: link
+    label: hidden
+    settings:
+      trim_length: null
+      url_only: true
+      url_plain: true
+      rel: '0'
+      target: '0'
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  field_sections:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_update_label:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_update_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

@@ -1,0 +1,19 @@
+uuid: 95dbfe24-2ba9-46e2-8816-c7b3588d391f
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_blurb
+field_name: field_blurb
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

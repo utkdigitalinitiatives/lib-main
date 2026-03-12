@@ -1,0 +1,24 @@
+uuid: 5368498f-e20f-412a-8141-e6d963fb6c30
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_content
+    - filter.format.editor_html
+    - paragraphs.paragraphs_type.correction
+  module:
+    - text
+id: paragraph.correction.field_content
+field_name: field_content
+entity_type: paragraph
+bundle: correction
+label: Content
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - editor_html
+field_type: text_long
