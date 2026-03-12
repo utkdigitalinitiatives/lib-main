@@ -1,0 +1,34 @@
+uuid: 49464066-854a-45a0-a85d-6606e4c07627
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.two_column_text_and_image.field_image
+    - field.field.paragraph.two_column_text_and_image.field_text
+    - field.field.paragraph.two_column_text_and_image.field_text_on_right
+    - paragraphs.paragraphs_type.two_column_text_and_image
+  module:
+    - text
+id: paragraph.two_column_text_and_image.default
+targetEntityType: paragraph
+bundle: two_column_text_and_image
+mode: default
+content:
+  field_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: column
+      link: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_text_on_right: true

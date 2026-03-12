@@ -1,18 +1,18 @@
-uuid: d152cf9c-6eb8-4183-b699-73679a93f27c
+uuid: 23911278-3574-4bd3-83e6-870e38093a7c
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_card
+    - field.storage.paragraph.field_cards
     - paragraphs.paragraphs_type.card
     - paragraphs.paragraphs_type.card_group
   module:
     - entity_reference_revisions
-id: paragraph.card_group.field_card
-field_name: field_card
+id: paragraph.card_group.field_cards
+field_name: field_cards
 entity_type: paragraph
 bundle: card_group
-label: Card
+label: Cards
 description: ''
 required: false
 translatable: false
@@ -26,27 +26,30 @@ settings:
     negate: 0
     target_bundles_drag_drop:
       card:
-        weight: 9
+        weight: 10
         enabled: true
       card_group:
-        weight: 10
-        enabled: false
-      embedded_video:
         weight: 11
         enabled: false
-      file_attachment:
+      embedded_video:
         weight: 12
         enabled: false
-      heading_h2:
+      file_attachment:
         weight: 13
         enabled: false
-      image:
+      heading_h2:
         weight: 14
         enabled: false
-      tall_image:
+      image:
         weight: 15
         enabled: false
-      text:
+      tall_image:
         weight: 16
+        enabled: false
+      text:
+        weight: 17
+        enabled: false
+      two_column_text_and_card:
+        weight: 18
         enabled: false
 field_type: entity_reference_revisions

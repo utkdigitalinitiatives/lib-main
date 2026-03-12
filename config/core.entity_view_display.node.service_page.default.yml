@@ -1,0 +1,75 @@
+uuid: 5960c590-f034-480a-be82-9488d94562e2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.service_page.field_about_this_service
+    - field.field.node.service_page.field_page_summary
+    - field.field.node.service_page.field_related_services
+    - field.field.node.service_page.field_sections
+    - field.field.node.service_page.field_service_category
+    - field.field.node.service_page.field_service_contacts
+    - node.type.service_page
+  module:
+    - entity_reference_revisions
+    - text
+    - user
+id: node.service_page.default
+targetEntityType: node
+bundle: service_page
+mode: default
+content:
+  field_about_this_service:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  field_page_summary:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_related_services:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_sections:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_service_category:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_service_contacts:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

@@ -1,0 +1,24 @@
+uuid: f9cfac6c-0b1d-4fb9-a7e7-b1f85c3a7a28
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text
+    - filter.format.editor_html
+    - paragraphs.paragraphs_type.two_column_text_and_card
+  module:
+    - text
+id: paragraph.two_column_text_and_card.field_text
+field_name: field_text
+entity_type: paragraph
+bundle: two_column_text_and_card
+label: Text
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - editor_html
+field_type: text_long
