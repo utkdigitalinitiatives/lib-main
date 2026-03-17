@@ -1,0 +1,18 @@
+uuid: 5968f202-60aa-451b-8ce1-fc4597133190
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.space
+id: node.space.title
+field_name: title
+entity_type: node
+bundle: space
+label: 'Space Name'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

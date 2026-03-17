@@ -1,0 +1,36 @@
+uuid: 81dc848d-14a6-467d-ae30-2200e9f9a909
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.noise_level
+  module:
+    - path
+id: taxonomy_term.noise_level.default
+targetEntityType: taxonomy_term
+bundle: noise_level
+mode: default
+content:
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 2
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden:
+  description: true
