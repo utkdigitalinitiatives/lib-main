@@ -1,0 +1,24 @@
+uuid: 35a2d063-8072-48f8-9afa-771f6edf3f66
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_space_description
+    - filter.format.editor_html
+    - node.type.space
+  module:
+    - text
+id: node.space.field_space_description
+field_name: field_space_description
+entity_type: node
+bundle: space
+label: 'Space Description'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - editor_html
+field_type: text_long

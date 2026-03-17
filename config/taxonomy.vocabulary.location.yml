@@ -1,0 +1,9 @@
+uuid: 3ebf63cc-5a6b-4efe-b53d-e7baca501554
+langcode: en
+status: true
+dependencies: {  }
+name: Location
+vid: location
+description: 'Primary library locations'
+weight: 0
+new_revision: false

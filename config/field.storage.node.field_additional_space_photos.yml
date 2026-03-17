@@ -1,0 +1,20 @@
+uuid: 4fe7f481-8705-49c3-bf66-ecaa25cc2e0f
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+    - node
+id: node.field_additional_space_photos
+field_name: field_additional_space_photos
+entity_type: node
+type: entity_reference
+settings:
+  target_type: media
+module: core
+locked: false
+cardinality: 3
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
