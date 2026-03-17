@@ -1,0 +1,19 @@
+uuid: 49857c7e-d76f-4ee9-9ab7-e17006254d25
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_room_number
+    - node.type.space
+id: node.space.field_room_number
+field_name: field_room_number
+entity_type: node
+bundle: space
+label: 'Room Number'
+description: 'Example: 216, 303A, etc'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

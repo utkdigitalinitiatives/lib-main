@@ -1,0 +1,21 @@
+uuid: 35855768-a57b-4d36-b796-8b6844f166f5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_reservable_room
+    - node.type.space
+id: node.space.field_reservable_room
+field_name: field_reservable_room
+entity_type: node
+bundle: space
+label: 'Reservable Room'
+description: 'This switch must be set to "on" in order for room booking links to appear on the description for this space'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

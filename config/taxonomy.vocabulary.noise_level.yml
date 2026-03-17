@@ -1,0 +1,9 @@
+uuid: 92aa4601-7fb6-4eed-be7c-cd4266bb433a
+langcode: en
+status: true
+dependencies: {  }
+name: 'Noise level'
+vid: noise_level
+description: 'For Space content type'
+weight: 0
+new_revision: false
