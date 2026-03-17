@@ -1,0 +1,19 @@
+uuid: 49acf43a-75a4-4386-8376-e3e499029a27
+langcode: en
+status: true
+dependencies:
+  module:
+    - link
+    - node
+id: node.field_reservation_link_url
+field_name: field_reservation_link_url
+entity_type: node
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

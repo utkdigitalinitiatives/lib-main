@@ -1,0 +1,29 @@
+uuid: 12083e88-dff2-497b-af20-dbc55fdb52b4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_service_catalog
+    - node.type.service_page
+    - node.type.space
+id: node.space.field_service_catalog
+field_name: field_service_catalog
+entity_type: node
+bundle: space
+label: 'Service Catalog'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      service_page: service_page
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

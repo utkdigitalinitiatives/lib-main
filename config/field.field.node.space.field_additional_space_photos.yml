@@ -1,0 +1,29 @@
+uuid: 4916dabc-5d15-4305-9e7a-ab3fcab767a2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_additional_space_photos
+    - media.type.image
+    - node.type.space
+id: node.space.field_additional_space_photos
+field_name: field_additional_space_photos
+entity_type: node
+bundle: space
+label: 'Additional Space Photos'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
