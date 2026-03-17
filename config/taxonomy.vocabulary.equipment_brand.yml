@@ -1,0 +1,9 @@
+uuid: 17938d8f-6934-4886-bdde-3059d0fba2df
+langcode: en
+status: true
+dependencies: {  }
+name: 'Equipment Brand'
+vid: equipment_brand
+description: null
+weight: 0
+new_revision: false

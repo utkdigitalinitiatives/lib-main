@@ -1,0 +1,124 @@
+uuid: 8f121449-02ac-469b-a9cc-f5802fdf1cc9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.equipment.field_additional_equipment_image
+    - field.field.node.equipment.field_equipment_brand
+    - field.field.node.equipment.field_equipment_description
+    - field.field.node.equipment.field_equipment_featured_image
+    - field.field.node.equipment.field_equipment_location
+    - field.field.node.equipment.field_equipment_type
+    - field.field.node.equipment.field_loan_period
+    - field.field.node.equipment.field_primo_link
+    - node.type.equipment
+  module:
+    - link
+    - media_library
+    - path
+    - text
+id: node.equipment.default
+targetEntityType: node
+bundle: equipment
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_additional_equipment_image:
+    type: media_library_widget
+    weight: 128
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_equipment_brand:
+    type: entity_reference_autocomplete
+    weight: 123
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_equipment_description:
+    type: text_textarea
+    weight: 121
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_equipment_featured_image:
+    type: media_library_widget
+    weight: 127
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_equipment_location:
+    type: options_buttons
+    weight: 124
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_equipment_type:
+    type: options_select
+    weight: 122
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_loan_period:
+    type: string_textfield
+    weight: 125
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_primo_link:
+    type: link_default
+    weight: 126
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 120
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  promote: true
+  sticky: true

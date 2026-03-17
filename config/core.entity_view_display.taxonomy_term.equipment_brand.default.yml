@@ -1,0 +1,13 @@
+uuid: 48d88758-1da3-46a7-a1b9-a7d57af40f79
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.equipment_brand
+id: taxonomy_term.equipment_brand.default
+targetEntityType: taxonomy_term
+bundle: equipment_brand
+mode: default
+content: {  }
+hidden:
+  description: true
