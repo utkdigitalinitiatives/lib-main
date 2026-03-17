@@ -1,0 +1,98 @@
+uuid: 9ed09ef1-8858-41ef-8631-b00f3f533b03
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.equipment.field_additional_equipment_image
+    - field.field.node.equipment.field_equipment_brand
+    - field.field.node.equipment.field_equipment_description
+    - field.field.node.equipment.field_equipment_featured_image
+    - field.field.node.equipment.field_equipment_location
+    - field.field.node.equipment.field_equipment_type
+    - field.field.node.equipment.field_loan_period
+    - field.field.node.equipment.field_primo_link
+    - node.type.equipment
+  module:
+    - link
+    - text
+    - user
+id: node.equipment.default
+targetEntityType: node
+bundle: equipment
+mode: default
+content:
+  field_additional_equipment_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 108
+    region: content
+  field_equipment_brand:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_equipment_description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_equipment_featured_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 107
+    region: content
+  field_equipment_location:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_equipment_type:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_loan_period:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_primo_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: null
+      url_only: true
+      url_plain: true
+      rel: '0'
+      target: '0'
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

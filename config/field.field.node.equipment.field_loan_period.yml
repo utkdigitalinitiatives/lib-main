@@ -1,0 +1,19 @@
+uuid: 43608907-89d4-45a1-8008-9b4c4cc2dc72
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_loan_period
+    - node.type.equipment
+id: node.equipment.field_loan_period
+field_name: field_loan_period
+entity_type: node
+bundle: equipment
+label: 'Loan Period'
+description: 'The loan period in plain terms, e.g., 2 weeks, 6 hours, etc'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

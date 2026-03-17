@@ -1,0 +1,20 @@
+uuid: c40a7fcb-caef-47ef-8f78-03da4b078e3a
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+    - node
+id: node.field_additional_equipment_image
+field_name: field_additional_equipment_image
+entity_type: node
+type: entity_reference
+settings:
+  target_type: media
+module: core
+locked: false
+cardinality: 4
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

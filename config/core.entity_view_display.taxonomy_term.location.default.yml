@@ -1,0 +1,13 @@
+uuid: a361cf05-a735-4304-8f06-b811b13ef211
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.location
+id: taxonomy_term.location.default
+targetEntityType: taxonomy_term
+bundle: location
+mode: default
+content: {  }
+hidden:
+  description: true

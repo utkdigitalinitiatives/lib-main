@@ -1,0 +1,13 @@
+uuid: 53273fcb-3653-4fc3-97f7-0af952353fb3
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.noise_level
+id: taxonomy_term.noise_level.default
+targetEntityType: taxonomy_term
+bundle: noise_level
+mode: default
+content: {  }
+hidden:
+  description: true

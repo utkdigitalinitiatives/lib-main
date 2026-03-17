@@ -1,0 +1,36 @@
+uuid: 87f4ee24-2141-442c-86e8-59ca18bbf150
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.equipment_brand
+  module:
+    - path
+id: taxonomy_term.equipment_brand.default
+targetEntityType: taxonomy_term
+bundle: equipment_brand
+mode: default
+content:
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 2
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden:
+  description: true

@@ -1,0 +1,13 @@
+uuid: 1dfc41b3-3eeb-40e3-ba7c-b6c2f2818711
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.about_page_category
+id: taxonomy_term.about_page_category.default
+targetEntityType: taxonomy_term
+bundle: about_page_category
+mode: default
+content: {  }
+hidden:
+  description: true

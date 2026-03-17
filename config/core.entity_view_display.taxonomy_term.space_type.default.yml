@@ -1,0 +1,13 @@
+uuid: 167275ee-e685-4121-856c-4c58287bdf02
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.space_type
+id: taxonomy_term.space_type.default
+targetEntityType: taxonomy_term
+bundle: space_type
+mode: default
+content: {  }
+hidden:
+  description: true

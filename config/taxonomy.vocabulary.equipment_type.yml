@@ -1,0 +1,9 @@
+uuid: f86a310a-1d71-4922-9945-f5b8d094cf6a
+langcode: en
+status: true
+dependencies: {  }
+name: 'Equipment Type'
+vid: equipment_type
+description: null
+weight: 0
+new_revision: false
