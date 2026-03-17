@@ -1,0 +1,29 @@
+uuid: a497d5b6-b784-4dcd-8a21-05c08fff898b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_additional_equipment_image
+    - media.type.image
+    - node.type.equipment
+id: node.equipment.field_additional_equipment_image
+field_name: field_additional_equipment_image
+entity_type: node
+bundle: equipment
+label: 'Additional Equipment Images'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

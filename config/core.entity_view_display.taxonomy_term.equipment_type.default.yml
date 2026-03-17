@@ -1,0 +1,13 @@
+uuid: ca01e9d7-5a51-4093-a106-c949c98a0ece
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.equipment_type
+id: taxonomy_term.equipment_type.default
+targetEntityType: taxonomy_term
+bundle: equipment_type
+mode: default
+content: {  }
+hidden:
+  description: true
