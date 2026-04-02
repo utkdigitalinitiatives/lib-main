@@ -23,11 +23,12 @@
         "drupal/field_group": "^4.0",
         "drupal/gin_login": "^2.1",
         "drupal/gin_toolbar": "^3.0",
+        "drupal/az_blob_fs": "^3.0",
         "drupal/gin": "^5.0",
         "drupal/group": "^3.3",
+        "drupal/key": ">=1.15",
         "drupal/paragraphs": "^1.20",
         "drupal/pathauto": "^1.14",
-        "drupal/s3fs": "^3.10",
         "drush/drush": "^13.7"
     },
     "conflict": {
