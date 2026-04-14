@@ -98,7 +98,7 @@ settings:
       allowed_tags: {  }
 image_upload:
   status: true
-  scheme: public
+  scheme: azblob
   directory: inline-images
   max_size: null
   max_dimensions:
