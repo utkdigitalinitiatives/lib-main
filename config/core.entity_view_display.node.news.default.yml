@@ -14,7 +14,7 @@ dependencies:
   module:
     - datetime
     - entity_reference_revisions
-    - link
+    - link_plaintext
     - text
     - user
 id: node.news.default
@@ -48,14 +48,13 @@ content:
     weight: 101
     region: content
   field_related_links:
-    type: link
+    type: link_title_url_plaintext
     label: hidden
     settings:
-      trim_length: null
-      url_only: true
-      url_plain: true
-      rel: '0'
-      target: '0'
+      separator_mode: newline
+      separator: ' — '
+      absolute_url: '1'
+      wrap_parts: '1'
     third_party_settings: {  }
     weight: 106
     region: content
