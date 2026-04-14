@@ -59,7 +59,7 @@ settings:
         - '<h6 id>'
 image_upload:
   status: true
-  scheme: public
+  scheme: azblob
   directory: inline-images
   max_size: null
   max_dimensions:
