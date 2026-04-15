@@ -1,0 +1,6 @@
+name: Link Plaintext Formatter
+description: Provides a field formatter for Link fields that renders title and URL as plain text, without HTML anchors.
+type: module
+core_version_requirement: ^11
+dependencies:
+  - drupal:link

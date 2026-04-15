@@ -1,0 +1,61 @@
+{#
+/**
+ * @file
+ * Template for rendering link title and URL as plain text.
+ *
+ * Renders Link field items as plain-text components. Each part (title, separator, URL)
+ * can be styled independently when wrap_parts is enabled.
+ *
+ * Available variables:
+ * - title: Link title text (may be empty or NULL).
+ * - url: Full URL string (absolute or relative based on formatter settings).
+ * - separator: The computed separator string: ' ' (space), '\n' (newline), or custom text.
+ * - separator_mode: The mode selected: 'space', 'newline', or 'custom'.
+ * - wrap_parts: Boolean. If true, each part is wrapped in an element with a class.
+ *              If false, output is plain text inline with no extra markup.
+ *
+ * CSS Classes Used (when wrap_parts or in newline mode):
+ * - link-plaintext__title: Wraps the link title text (span in space/custom mode, div in newline mode).
+ * - link-plaintext__separator: Wraps the separator (span in space/custom mode, not used in newline).
+ * - link-plaintext__url: Wraps the URL text (span in space/custom mode, div in newline mode).
+ *
+ * Twig/CSS Targeting Examples:
+ * - Style only the URL:     .link-plaintext__url { font-weight: bold; }
+ * - Style only the title:   .link-plaintext__title { color: blue; }
+ * - Hide the title:         .link-plaintext__title { display: none; }
+ *
+ * Newline Mode Behavior:
+ * - Title and URL are rendered as block elements (divs) so they naturally appear on separate lines.
+ * - No separator element is rendered (the div block boundaries handle separation).
+ * - If title is empty, only the URL div is output.
+ *
+ * Space/Custom Modes:
+ * - With wrap_parts: title, separator, and URL are rendered as inline spans.
+ * - Without wrap_parts: plain text output with no markup (only title and URL, joined by separator).
+ *
+ * Notes:
+ * - All text is auto-escaped by Twig (plain text, safe from XSS).
+ * - If title is empty, separator is not rendered (logical grouping).
+ * - URL is always rendered.
+ */
+#}
+{%- if separator_mode == 'newline' -%}
+  {# Newline mode: render title and URL as block elements (divs) on separate lines #}
+  {%- if title -%}
+    <div class="link-plaintext__title">{{ title }}</div>
+  {%- endif -%}
+  <div class="link-plaintext__url">{{ url }}</div>
+{%- else -%}
+  {# Space or custom separator mode #}
+  {%- if wrap_parts -%}
+    {# Wrapped mode: each part in its own span for independent styling #}
+    {%- if title -%}
+      <span class="link-plaintext__title">{{ title }}</span><span class="link-plaintext__separator">{{ separator }}</span><span class="link-plaintext__url">{{ url }}</span>
+    {%- else -%}
+      <span class="link-plaintext__url">{{ url }}</span>
+    {%- endif -%}
+  {%- else -%}
+    {# Inline mode: plain text output with no extra whitespace #}
+    {%- if title -%}{{ title }}{{ separator }}{%- endif -%}{{- url -}}
+  {%- endif -%}
+{%- endif -%}

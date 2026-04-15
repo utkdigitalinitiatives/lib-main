@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * @file
+ * Link Plaintext module file.
+ */
+
+/**
+ * Implements hook_theme().
+ *
+ * Registers the 'link_plaintext_formatter' theme hook for rendering
+ * link title and URL as separate, plain-text components.
+ */
+function link_plaintext_theme($existing, $type, $theme, $path) {
+  return [
+    'link_plaintext_formatter' => [
+      'variables' => [
+        'title' => NULL,              // Link title (may be empty/NULL)
+        'url' => NULL,                // Full URL string
+        'separator' => ' ',           // Separator between title and URL
+        'separator_mode' => 'space',  // 'space', 'newline', or 'custom'
+        'wrap_parts' => TRUE,         // Whether to wrap each part in an element
+      ],
+      'template' => 'link-plaintext-formatter',
+      'path' => $path . '/templates',
+    ],
+  ];
+}
