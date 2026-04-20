@@ -1,0 +1,191 @@
+uuid: e54050f0-660d-4efa-a633-00c6f221545d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.base_field_override.node.space.title
+    - field.field.node.space.field_capacity
+    - field.field.node.space.field_floor
+    - field.field.node.space.field_location
+    - field.field.node.space.field_noise_level
+    - field.field.node.space.field_reservable_room
+    - field.field.node.space.field_reservation_link_url
+    - field.field.node.space.field_room_number
+    - field.field.node.space.field_space_description
+    - field.field.node.space.field_space_type
+    - node.type.space
+  module:
+    - feeds_tamper
+    - node
+third_party_settings:
+  feeds_tamper:
+    tampers:
+      c65f101e-9825-46c1-b1b3-8ed5970dbdb5:
+        separator: ','
+        limit: null
+        uuid: c65f101e-9825-46c1-b1b3-8ed5970dbdb5
+        plugin: explode
+        source: space_type
+        weight: 0
+        label: Explode
+label: spaces-import
+id: spaces_import
+description: 'for content migration'
+help: ''
+import_period: -1
+import_period_per_feed: false
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'public://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: space
+  langcode: en
+  insert_new: 1
+  update_existing: 0
+  update_non_existent: _keep
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: true
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 1
+custom_sources:
+  title:
+    value: title
+    label: title
+    machine_name: title
+    type: csv
+  description:
+    value: Description
+    label: Description
+    machine_name: description
+    type: csv
+  space_type:
+    value: 'Space Type'
+    label: 'Space Type'
+    machine_name: space_type
+    type: csv
+  noise_level:
+    value: 'Noise Level'
+    label: 'Noise Level'
+    machine_name: noise_level
+    type: csv
+  location:
+    value: Location
+    label: Location
+    machine_name: location
+    type: csv
+  room_number:
+    value: 'Room Number'
+    label: 'Room Number'
+    machine_name: room_number
+    type: csv
+  capacity:
+    value: Capacity
+    label: Capacity
+    machine_name: capacity
+    type: csv
+  floor:
+    value: Floor
+    label: Floor
+    machine_name: floor
+    type: csv
+  reservable_room:
+    value: 'Reservable Room'
+    label: 'Reservable Room'
+    machine_name: reservable_room
+    type: csv
+  reservation_link_url:
+    value: 'Reservation Link URL'
+    label: 'Reservation Link URL'
+    machine_name: reservation_link_url
+    type: csv
+mappings:
+  -
+    target: title
+    map:
+      value: title
+    settings:
+      language: null
+    unique:
+      value: 1
+  -
+    target: field_space_description
+    map:
+      value: description
+    settings:
+      language: ''
+      format: editor_html
+  -
+    target: field_space_type
+    map:
+      target_id: space_type
+    settings:
+      language: null
+      reference_by: name
+      autocreate: false
+      autocreate_bundle: space_type
+  -
+    target: field_noise_level
+    map:
+      target_id: noise_level
+    settings:
+      language: null
+      reference_by: name
+      autocreate: false
+      autocreate_bundle: noise_level
+  -
+    target: field_location
+    map:
+      target_id: location
+    settings:
+      language: null
+      reference_by: name
+      autocreate: false
+      autocreate_bundle: location
+  -
+    target: field_room_number
+    map:
+      value: room_number
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_capacity
+    map:
+      value: capacity
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_floor
+    map:
+      target_id: floor
+    settings:
+      language: null
+      reference_by: name
+      autocreate: false
+      autocreate_bundle: hodges_floor
+  -
+    target: field_reservable_room
+    map:
+      value: reservable_room
+    settings:
+      language: null
+  -
+    target: field_reservation_link_url
+    map:
+      uri: reservation_link_url
+      title: ''
+    settings:
+      language: null
