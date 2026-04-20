@@ -1,0 +1,23 @@
+uuid: 64c2da16-b2c6-45b2-bdc5-8b4d552ccd65
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.feeds_item
+    - node.type.space
+  module:
+    - feeds
+id: node.space.feeds_item
+field_name: feeds_item
+entity_type: node
+bundle: space
+label: 'Feeds item'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:feeds_feed'
+  handler_settings: {  }
+field_type: feeds_item

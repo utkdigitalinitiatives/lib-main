@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.space.feeds_item
     - field.field.node.space.field_additional_space_photos
     - field.field.node.space.field_capacity
     - field.field.node.space.field_floor
@@ -134,4 +135,5 @@ content:
     third_party_settings: {  }
     weight: 100
     region: content
-hidden: {  }
+hidden:
+  feeds_item: true

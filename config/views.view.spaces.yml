@@ -945,10 +945,11 @@ display:
         - 'config:field.storage.node.field_space_type'
   page_1:
     id: page_1
-    display_title: Page
+    display_title: 'Spaces page'
     display_plugin: page
     position: 1
     display_options:
+      display_description: ''
       display_extenders: {  }
       path: spaces
     cache_metadata:
