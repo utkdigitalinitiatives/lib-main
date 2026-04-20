@@ -119,9 +119,9 @@ mappings:
     map:
       target_id: equipment_type
     settings:
-      language: null
+      language: en
       reference_by: name
-      autocreate: false
+      autocreate: 1
       autocreate_bundle: equipment_type
   -
     target: field_loan_period
