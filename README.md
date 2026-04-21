@@ -48,7 +48,7 @@ The University of Tennessee Libraries main website ([lib.utk.edu](https://lib.ut
 4. **Import the database:**
 
    ```zsh
-   ddev drush sql:cli < path/to/backup.sql
+   ddev import-db --file={path/to/backup.sql}
    ```
 
    The backup includes existing user accounts — no need to create an admin user manually.
