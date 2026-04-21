@@ -1,63 +1,84 @@
 # Lib-Main
-The libraries main website built on drupal 11
 
-## Description
+The University of Tennessee Libraries main website ([lib.utk.edu](https://lib.utk.edu)), built on Drupal 11. Managed with Composer, developed locally with DDEV, and deployed to Azure.
 
-## Development
+- **Repository:** https://github.com/utkdigitalinitiatives/lib-main
+- **Infrastructure/Deployment:** https://github.com/utkdigitalinitiatives/lib-main-infra
+
+## Architecture
+
+| Environment | Database              | File Storage       |
+| ----------- | --------------------- | ------------------ |
+| Local       | PostgreSQL (via DDEV) | Local filesystem   |
+| Production  | PostgreSQL (Azure)    | Azure Blob Storage |
+
+## Local Development
 
 ### Prerequisites
 
 - [DDEV](https://ddev.com/get-started/)
+- Access to a recent database backup (see below)
 
-### Installation Steps
+### Setup
 
-1. **Clone the repository** (if not already done):
+1. **Clone the repository:**
+
    ```zsh
-   git clone <repository-url>
+   git clone https://github.com/utkdigitalinitiatives/lib-main
    cd lib-main
    ```
 
-2. **Start DDEV**:
+2. **Start DDEV and install dependencies:**
+
    ```zsh
    ddev start
-   ```
-
-3. **Install PHP dependencies**:
-   ```zsh
    ddev composer install
    ```
 
-4. **Set up the Drupal installation** (if this is a fresh installation):
+   > **Note:** `.ddev/config.yaml` is committed to the repository and pre-configures DDEV to use PostgreSQL 16, matching production. Do **not** run `ddev config` — it will reset the database type to MySQL and the import will fail.
+
+3. **Get a database backup** from the Azure Portal Cloud Shell:
+
    ```zsh
-   ddev drush site:install standard --account-name=admin --account-pass=admin
+   pg_dump <connection-options> > backup.sql
    ```
 
-5. **Import database** (if you have an existing database export):
+   Contact a team member for the exact connection string and credentials.
+
+4. **Import the database:**
+
    ```zsh
-   ddev drush sql:cli < path/to/database.sql
+   ddev drush sql:cli < path/to/backup.sql
    ```
 
-6. **Clear caches**:
+   The backup includes existing user accounts — no need to create an admin user manually.
+
+5. **Clear caches:**
+
    ```zsh
    ddev drush cache:rebuild
    ```
 
-7. **Access the site**:
-   - Open your browser and navigate to: `https://lib-main.ddev.site`
+6. **Access the site:**
+   - Site: `https://lib-main.ddev.site`
    - Admin login: `https://lib-main.ddev.site/user/login`
 
-### Useful DDEV Commands
+### Common DDEV Commands
 
-- `ddev start` - Start services
-- `ddev stop` - Stop services
-- `ddev restart` - Restart services
-- `ddev drush` - Run Drush commands
-- `ddev composer` - Run Composer commands
-- `ddev logs` - View service logs
-- `ddev describe` - View project information
+| Command               | Description           |
+| --------------------- | --------------------- |
+| `ddev start`          | Start services        |
+| `ddev stop`           | Stop services         |
+| `ddev restart`        | Restart services      |
+| `ddev drush <cmd>`    | Run Drush commands    |
+| `ddev composer <cmd>` | Run Composer commands |
+| `ddev logs`           | View service logs     |
 
-### Troubleshooting
+## Deployment
 
-- If you encounter permission issues, run: `ddev fix-permissions`
-- To reset the database: `ddev drush sql:drop` followed by `ddev drush site:install standard`
-- For more help, consult the [DDEV documentation](https://ddev.readthedocs.io/)
+Production deployments are managed via GitHub Actions in the [lib-main-infra](https://github.com/utkdigitalinitiatives/lib-main-infra) repository.
+
+## Troubleshooting
+
+- Permission issues: `ddev fix-permissions`
+- See the [DDEV documentation](https://ddev.readthedocs.io/) for general help
