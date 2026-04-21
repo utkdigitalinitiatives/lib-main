@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.equipment.feeds_item
     - field.field.node.equipment.field_additional_equipment_image
     - field.field.node.equipment.field_equipment_brand
     - field.field.node.equipment.field_equipment_description
@@ -120,5 +121,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
 hidden:
+  feeds_item: true
   promote: true
   sticky: true
