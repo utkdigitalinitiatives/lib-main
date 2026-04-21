@@ -1,0 +1,139 @@
+uuid: f237a4ca-7723-4050-af94-d4fe15c58739
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.base_field_override.node.equipment.title
+    - field.field.node.equipment.field_equipment_brand
+    - field.field.node.equipment.field_equipment_description
+    - field.field.node.equipment.field_equipment_location
+    - field.field.node.equipment.field_equipment_type
+    - field.field.node.equipment.field_loan_period
+    - field.field.node.equipment.field_primo_link
+    - node.type.equipment
+  module:
+    - node
+label: equipment-import
+id: equipment_import
+description: ''
+help: ''
+import_period: -1
+import_period_per_feed: false
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'public://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: equipment
+  langcode: en
+  insert_new: 1
+  update_existing: 2
+  update_non_existent: _keep
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: true
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 1
+custom_sources:
+  title:
+    value: title
+    label: title
+    machine_name: title
+    type: csv
+  description:
+    value: Description
+    label: Description
+    machine_name: description
+    type: csv
+  equipment_brand:
+    value: 'Equipment Brand'
+    label: 'Equipment Brand'
+    machine_name: equipment_brand
+    type: csv
+  equipment_location:
+    value: 'Equipment Location'
+    label: 'Equipment Location'
+    machine_name: equipment_location
+    type: csv
+  equipment_type:
+    value: 'Equipment Type'
+    label: 'Equipment Type'
+    machine_name: equipment_type
+    type: csv
+  loan_period:
+    value: 'Loan Period'
+    label: 'Loan Period'
+    machine_name: loan_period
+    type: csv
+  primo_link:
+    value: 'Primo Link'
+    label: 'Primo Link'
+    machine_name: primo_link
+    type: csv
+mappings:
+  -
+    target: title
+    map:
+      value: title
+    settings:
+      language: null
+    unique:
+      value: 1
+  -
+    target: field_equipment_description
+    map:
+      value: description
+    settings:
+      language: ''
+      format: editor_html
+  -
+    target: field_equipment_brand
+    map:
+      target_id: equipment_brand
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: 1
+      autocreate_bundle: equipment_brand
+  -
+    target: field_equipment_location
+    map:
+      target_id: equipment_location
+    settings:
+      language: en
+      reference_by: name
+      autocreate: 0
+      autocreate_bundle: location
+  -
+    target: field_equipment_type
+    map:
+      target_id: equipment_type
+    settings:
+      language: en
+      reference_by: name
+      autocreate: 1
+      autocreate_bundle: equipment_type
+  -
+    target: field_loan_period
+    map:
+      value: loan_period
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_primo_link
+    map:
+      uri: primo_link
+      title: ''
+    settings:
+      language: null
