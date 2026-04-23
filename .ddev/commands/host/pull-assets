@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+PROJECT_ROOT="${DDEV_APPROOT:-$(pwd)}"
+ENV_FILE="${PROJECT_ROOT}/.ddev/.env.assets"
+
+PUBLIC_DEST="${PROJECT_ROOT}/web/sites/default/files"
+# FUTURE: If private:// is moved to Azure Blob, uncomment:
+# PRIVATE_DEST="${PROJECT_ROOT}/.ddev/private"
+
+if [[ ! -f "${ENV_FILE}" ]]; then
+  echo "ERROR: Missing ${ENV_FILE}"
+  echo
+  echo "Create it from the example values in your team documentation, for example:"
+  echo "  cp .ddev/.env.assets.example .ddev/.env.assets"
+  echo
+  exit 1
+fi
+
+# shellcheck disable=SC1090
+source "${ENV_FILE}"
+
+: "${AZURE_PUBLIC_BLOB_URL:?AZURE_PUBLIC_BLOB_URL must be set in.ddev/.env.assets}"
+
+mkdir -p "${PUBLIC_DEST}"
+
+if ! command -v azcopy >/dev/null 2>&1; then
+  echo "ERROR: azcopy is not installed or not on PATH."
+  exit 1
+fi
+
+echo "Syncing public assets from Azure Blob with AzCopy..."
+echo "  Source:      [AZURE_PUBLIC_BLOB_URL]"
+echo "  Destination: ${PUBLIC_DEST}"
+
+azcopy sync "${AZURE_PUBLIC_BLOB_URL}" "${PUBLIC_DEST}" --recursive=true
+
+echo
+echo "Public asset sync complete."
+
+# FUTURE: If private:// is moved to Azure Blob, uncomment this block.
+#
+# : "${AZURE_PRIVATE_BLOB_URL:?AZURE_PRIVATE_BLOB_URL must be set in.ddev/.env.assets}"
+# mkdir -p "${PRIVATE_DEST}"
+#
+# echo "Syncing private assets from Azure Blob with AzCopy..."
+# echo "  Source:      [AZURE_PRIVATE_BLOB_URL]"
+# echo "  Destination: ${PRIVATE_DEST}"
+#
+# azcopy sync "${AZURE_PRIVATE_BLOB_URL}" "${PRIVATE_DEST}" --recursive=true
+#
+# echo
+# echo "Private asset sync complete."
+
+echo
+echo "Done."

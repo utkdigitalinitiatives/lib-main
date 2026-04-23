@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Usage:
+#   ddev refresh-local path/to/db_dump.sql
+#
+# If no argument is passed, defaults to:
+#./db_dump.sql
+
+PROJECT_ROOT="${DDEV_APPROOT:-$(pwd)}"
+DB_DUMP="${1:-${PROJECT_ROOT}/db_dump.sql}"
+
+if [[ ! -f "${DB_DUMP}" ]]; then
+  echo "ERROR: Database dump not found: ${DB_DUMP}"
+  exit 1
+fi
+
+echo "Importing database: ${DB_DUMP}"
+ddev import-db --src="${DB_DUMP}"
+
+echo
+echo "Pulling Azure Blob assets..."
+ddev pull-assets
+
+echo
+echo "Running Drupal cache rebuild..."
+ddev drush cr
+
+echo
+echo "Optional: flush image styles if needed:"
+echo "  ddev drush image:flush --all"
+echo
+echo "Local refresh complete."
