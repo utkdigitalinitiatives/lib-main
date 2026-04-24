@@ -1,0 +1,4 @@
+name: Department Address Visibility
+description: Provides conditional visibility for the Department address field group based on the "Add Address" checkbox.
+type: module
+core_version_requirement: ^11
