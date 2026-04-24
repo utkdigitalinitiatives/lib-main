@@ -5,13 +5,15 @@
  *
  * Variables:
  * - label: The label text (e.g., "Main", "Sales")
+ * - show_label: Boolean. FALSE when there is exactly one item and the label is
+ *   "Main" (the default single-contact case). TRUE in all other cases.
  * - phone_display: The phone number formatted for display (e.g., "555-555-1234")
  * - phone_tel: The phone number as digits-only for tel: link (e.g., "5555551234")
  */
 #}
 
 <div class="labeled-phone-item">
-  {% if label %}
+  {% if show_label %}
     <span class="labeled-phone-label">{{ label }}</span>
   {% endif %}
   <a href="tel:{{ phone_tel }}" class="labeled-phone-link">{{ phone_display }}</a>

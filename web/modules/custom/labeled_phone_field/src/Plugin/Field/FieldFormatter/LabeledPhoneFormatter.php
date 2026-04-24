@@ -46,15 +46,31 @@ class LabeledPhoneFormatter extends FormatterBase
     {
         $elements = [];
 
+        // Collect non-empty items first so we know the total count before
+        // deciding whether to suppress the 'Main' label.
+        $non_empty = [];
         foreach ($items as $delta => $item) {
             if (!$item->isEmpty()) {
-                $elements[$delta] = [
-                    '#theme' => 'labeled_phone_formatter',
-                    '#label' => $item->label,
-                    '#phone_display' => LabeledPhoneFieldType::formatPhoneDisplay($item->phone),
-                    '#phone_tel' => $item->phone,
-                ];
+                $non_empty[$delta] = $item;
             }
+        }
+
+        // Suppress the label when there is exactly one item and its label is
+        // 'Main' — the default single-contact case needs no visual label.
+        // For multiple items, always show all labels (including 'Main') so
+        // editors and visitors can distinguish the entries.
+        $single_main = count($non_empty) === 1
+            && strtolower(trim(reset($non_empty)->label)) === 'main';
+
+        foreach ($non_empty as $delta => $item) {
+            $show_label = !$single_main;
+            $elements[$delta] = [
+                '#theme' => 'labeled_phone_formatter',
+                '#label' => $item->label,
+                '#show_label' => $show_label,
+                '#phone_display' => LabeledPhoneFieldType::formatPhoneDisplay($item->phone),
+                '#phone_tel' => $item->phone,
+            ];
         }
 
         return $elements;

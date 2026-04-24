@@ -47,11 +47,18 @@ class LabeledPhoneWidget extends WidgetBase
     {
         $item = $items[$delta];
 
+        // Default the label to "Main" for new items so the single-contact case
+        // is natural for editors. Existing saved labels are never overwritten.
+        $label_default = $item->label ?? '';
+        if ($label_default === '' && $delta === 0) {
+            $label_default = 'Main';
+        }
+
         $element['label'] = [
             '#type' => 'textfield',
             '#title' => $this->t('Label'),
-            '#description' => $this->t('E.g., "Printing", "Requests", "Front Desk".'),
-            '#default_value' => $item->label ?? '',
+            '#description' => $this->t('E.g., "Main", "Front Desk", "Requests", "Printing".'),
+            '#default_value' => $label_default,
             '#size' => 30,
             '#maxlength' => 255,
             '#weight' => 0,
