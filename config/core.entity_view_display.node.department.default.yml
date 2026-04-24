@@ -4,6 +4,10 @@ status: true
 dependencies:
   config:
     - field.field.node.department.field_add_address
+    - field.field.node.department.field_address_city
+    - field.field.node.department.field_address_state
+    - field.field.node.department.field_address_street
+    - field.field.node.department.field_address_zip
     - field.field.node.department.field_building_and_room_number
     - field.field.node.department.field_department_short_name
     - field.field.node.department.field_homepage_description
@@ -24,6 +28,38 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     weight: 104
+    region: content
+  field_address_city:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  field_address_state:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 107
+    region: content
+  field_address_street:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_address_zip:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 108
     region: content
   field_building_and_room_number:
     type: string
