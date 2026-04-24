@@ -1,0 +1,8 @@
+name: "Labeled Phone Field"
+description: "Provides a reusable multi-value field for storing labeled phone numbers (label + phone pairs)."
+type: module
+package: Custom
+version: VERSION
+core_version_requirement: "^11"
+dependencies:
+  - drupal:field

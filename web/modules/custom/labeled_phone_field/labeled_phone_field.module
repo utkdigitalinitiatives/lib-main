@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Labeled Phone Field module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function labeled_phone_field_theme() {
+  return [
+    'labeled_phone_formatter' => [
+      'variables' => [
+        'label' => '',
+        'phone_display' => '',
+        'phone_tel' => '',
+      ],
+      'template' => 'labeled-phone-formatter',
+    ],
+  ];
+}
