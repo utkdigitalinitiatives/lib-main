@@ -1,0 +1,19 @@
+uuid: 7ffb9502-e850-4a85-9a71-3a873295f821
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_department_short_name
+    - node.type.department
+id: node.department.field_department_short_name
+field_name: field_department_short_name
+entity_type: node
+bundle: department
+label: 'Department Short Name'
+description: 'Short display name for references. E.g, "DeVine" rather than "George F. DeVine Music Library"'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,57 @@
+uuid: 0fd245c5-2b34-444b-84fd-6962419ac49c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.department.field_add_address
+    - field.field.node.department.field_building_and_room_number
+    - field.field.node.department.field_department_short_name
+    - field.field.node.department.field_homepage_description
+    - node.type.department
+  module:
+    - user
+id: node.department.default
+targetEntityType: node
+bundle: department
+mode: default
+content:
+  field_add_address:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_building_and_room_number:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_department_short_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_homepage_description:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

@@ -1,0 +1,23 @@
+uuid: 3c439ef8-677e-48ca-a88f-e31c67f83528
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_add_address
+    - node.type.department
+id: node.department.field_add_address
+field_name: field_add_address
+entity_type: node
+bundle: department
+label: 'Add Address'
+description: 'For departments that are either outside of Hodges or who need to share a mailing address as a contact method, set this to "Yes" and fill out the form appropriately'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean
