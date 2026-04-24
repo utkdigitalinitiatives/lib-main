@@ -1,0 +1,72 @@
+uuid: d637a736-9e5f-4eec-b08f-5c870b8eccae
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.hours.feeds_item
+    - field.field.node.hours.field_close
+    - field.field.node.hours.field_library_url
+    - field.field.node.hours.field_lid
+    - field.field.node.hours.field_open
+    - field.field.node.hours.field_status
+    - node.type.hours
+  module:
+    - link
+    - user
+id: node.hours.default
+targetEntityType: node
+bundle: hours
+mode: default
+content:
+  field_close:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_library_url:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_lid:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_open:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_status:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  feeds_item: true

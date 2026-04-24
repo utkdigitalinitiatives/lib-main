@@ -1,0 +1,127 @@
+uuid: 936f3bb9-8def-4b62-a21b-aff1433359e9
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.base_field_override.node.hours.title
+    - field.field.node.hours.field_close
+    - field.field.node.hours.field_library_url
+    - field.field.node.hours.field_lid
+    - field.field.node.hours.field_open
+    - field.field.node.hours.field_status
+    - node.type.hours
+  module:
+    - feeds_ex
+    - node
+label: 'LibCal Hours Feed'
+id: libcal_hours_feed
+description: ''
+help: ''
+import_period: 3600
+import_period_per_feed: false
+fetcher: http
+fetcher_configuration:
+  auto_detect_feeds: false
+  use_pubsubhubbub: false
+  always_download: false
+  fallback_hub: ''
+  request_timeout: 30
+parser: jsonpath
+parser_configuration:
+  context:
+    value: '$.locations.*'
+  source_encoding:
+    - auto
+  display_errors: false
+  line_limit: 100
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: hours
+  langcode: en
+  insert_new: 1
+  update_existing: 2
+  update_non_existent: 'entity:unpublish_action:node'
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: true
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 1
+custom_sources:
+  name:
+    value: name
+    label: name
+    machine_name: name
+    type: json
+  times_status:
+    value: times.status
+    label: times.status
+    machine_name: times_status
+    type: json
+  times_hours_from:
+    value: 'times.hours.*.from'
+    label: 'times.hours.*.from'
+    machine_name: times_hours_from
+    type: json
+  times_hours_to:
+    value: 'times.hours.*.to'
+    label: 'times.hours.*.to'
+    machine_name: times_hours_to
+    type: json
+  lid:
+    value: lid
+    label: lid
+    machine_name: lid
+    type: json
+  url:
+    value: url
+    label: url
+    machine_name: url
+    type: json
+mappings:
+  -
+    target: title
+    map:
+      value: name
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_status
+    map:
+      value: times_status
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_open
+    map:
+      value: times_hours_from
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_close
+    map:
+      value: times_hours_to
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_lid
+    map:
+      value: lid
+    settings:
+      language: null
+    unique:
+      value: 1
+  -
+    target: field_library_url
+    map:
+      uri: url
+      title: ''
+    settings:
+      language: null
