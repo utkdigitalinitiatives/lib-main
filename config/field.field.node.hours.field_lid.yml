@@ -1,0 +1,23 @@
+uuid: 92021f59-574a-4891-8618-1a1a23d7bf6c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_lid
+    - node.type.hours
+id: node.hours.field_lid
+field_name: field_lid
+entity_type: node
+bundle: hours
+label: LID
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer
