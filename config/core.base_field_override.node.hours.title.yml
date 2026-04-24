@@ -1,0 +1,18 @@
+uuid: 210695b7-fc77-427b-8bf1-5cef06fa2891
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.hours
+id: node.hours.title
+field_name: title
+entity_type: node
+bundle: hours
+label: Library
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
