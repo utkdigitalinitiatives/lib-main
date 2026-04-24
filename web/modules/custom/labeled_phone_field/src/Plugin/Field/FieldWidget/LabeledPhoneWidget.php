@@ -93,21 +93,32 @@ class LabeledPhoneWidget extends WidgetBase
      */
     public static function validatePhoneElement(&$element, FormStateInterface $form_state, &$form)
     {
-        // Get the parent fieldset's values (which contains both label and phone).
-        // The element #parents includes the phone element itself at the end, so we need the parent.
+        // The element #parents path ends with 'phone'; strip it to get the
+        // parent item's values, which contain both 'label' and 'phone'.
         $parent_path = array_slice($element['#parents'], 0, -1);
         $parent_values = $form_state->getValue($parent_path);
 
-        // Extract label and phone from the parent fieldset.
+        // If the parent context cannot be resolved, bail out silently.
+        if (!is_array($parent_values)) {
+            return;
+        }
+
         $phone = isset($parent_values['phone']) ? $parent_values['phone'] : '';
         $label = isset($parent_values['label']) ? $parent_values['label'] : '';
 
-        // Both label and phone must be provided together, or both must be empty.
         $phone_normalized = !empty($phone) ? LabeledPhoneFieldType::normalizePhone($phone) : '';
         $label_trimmed = !empty($label) ? trim($label) : '';
 
-        // If phone is provided but label is missing.
-        if (!empty($phone_normalized) && empty($label_trimmed)) {
+        // If phone is empty there is nothing to validate. isEmpty() already
+        // ensures an item with no phone is never persisted. Bailing here also
+        // prevents a false error on the field config / default-value form if a
+        // label default were ever added to this widget in the future.
+        if (empty($phone_normalized)) {
+            return;
+        }
+
+        // Phone is provided; a label is required.
+        if (empty($label_trimmed)) {
             $form_state->setError(
                 $element,
                 t('Label is required when a phone number is provided.')
@@ -115,23 +126,12 @@ class LabeledPhoneWidget extends WidgetBase
             return;
         }
 
-        // If label is provided but phone is missing.
-        if (!empty($label_trimmed) && empty($phone_normalized)) {
+        // Validate the phone is exactly 10 digits.
+        if (!preg_match('/^\d{10}$/', $phone_normalized)) {
             $form_state->setError(
                 $element,
-                t('Phone number is required when a label is provided.')
+                t('Phone number must be exactly 10 digits. You entered: @phone', ['@phone' => $phone])
             );
-            return;
-        }
-
-        // If phone is provided, validate it's exactly 10 digits.
-        if (!empty($phone_normalized)) {
-            if (!preg_match('/^\d{10}$/', $phone_normalized)) {
-                $form_state->setError(
-                    $element,
-                    t('Phone number must be exactly 10 digits. You entered: @phone', ['@phone' => $phone])
-                );
-            }
         }
     }
 

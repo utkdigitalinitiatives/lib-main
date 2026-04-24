@@ -1,0 +1,17 @@
+{#
+/**
+ * @file
+ * Default theme implementation for the labeled email formatter.
+ *
+ * Variables:
+ * - label: The label text (e.g., "Main", "Support", "Admissions")
+ * - email: The email address (e.g., "info@example.edu")
+ */
+#}
+
+<div class="labeled-email-item">
+  {% if label %}
+    <span class="labeled-email-label">{{ label }}</span>
+  {% endif %}
+  <a href="mailto:{{ email }}" class="labeled-email-link">{{ email }}</a>
+</div>
