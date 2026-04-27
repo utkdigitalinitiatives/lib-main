@@ -1,12 +1,12 @@
-uuid: 4a320ed8-24e6-418e-a52e-e42921f0d986
+uuid: 15e25a31-47df-42a9-a76b-08e07ddf3727
 langcode: en
 status: true
 dependencies:
   module:
-    - node
-id: node.field_address_state
-field_name: field_address_state
-entity_type: node
+    - paragraphs
+id: paragraph.field_email
+field_name: field_email
+entity_type: paragraph
 type: string
 settings:
   max_length: 255

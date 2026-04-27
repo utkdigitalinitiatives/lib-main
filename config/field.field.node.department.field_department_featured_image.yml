@@ -1,26 +1,26 @@
-uuid: 77814e2d-b86b-4767-ae9c-31d4a1b4a268
+uuid: 6cb379a2-6064-4b8a-a5b4-99ab2dc32f8c
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_hours
+    - field.storage.node.field_department_featured_image
+    - media.type.image
     - node.type.department
-    - node.type.hours
-id: node.department.field_hours
-field_name: field_hours
+id: node.department.field_department_featured_image
+field_name: field_department_featured_image
 entity_type: node
 bundle: department
-label: Hours
-description: 'For departments that are attached to a set of LibCal Hours, search for the LibCal name here'
+label: 'Department Featured Image'
+description: ''
 required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: 'default:node'
+  handler: 'default:media'
   handler_settings:
     target_bundles:
-      hours: hours
+      image: image
     sort:
       field: _none
       direction: ASC

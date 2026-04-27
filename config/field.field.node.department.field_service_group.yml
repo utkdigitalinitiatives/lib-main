@@ -10,7 +10,7 @@ field_name: field_service_group
 entity_type: node
 bundle: department
 label: 'Service Group'
-description: 'Set this toggle to "Yes" if the department listing should be under the Service Group category in the Directory, rather than the Departments category'
+description: 'Switch this toggle to "on" if the department is responsible for a specific service area rather than a department within the Libraries This will move the listing for the group from the "Staff Directory" portion of the directory to the "Service Group" portion of the directory'
 required: false
 translatable: false
 default_value:

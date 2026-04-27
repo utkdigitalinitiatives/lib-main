@@ -1,17 +1,14 @@
-uuid: 398f7e3d-569b-4c9c-aed8-9c9022bb78a3
+uuid: c9dee08b-7d66-48f4-bb0b-f64a40d08268
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: node.field_address_zip
-field_name: field_address_zip
+id: node.field_library_leadership
+field_name: field_library_leadership
 entity_type: node
-type: string
-settings:
-  max_length: 255
-  case_sensitive: false
-  is_ascii: false
+type: boolean
+settings: {  }
 module: core
 locked: false
 cardinality: 1

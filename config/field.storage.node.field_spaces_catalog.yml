@@ -1,20 +1,18 @@
-uuid: e4674d6f-87b7-48d6-aff1-b3827819276f
+uuid: 982d4349-af39-469c-9d03-1d60a70f02fa
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: node.field_address_city
-field_name: field_address_city
+id: node.field_spaces_catalog
+field_name: field_spaces_catalog
 entity_type: node
-type: string
+type: entity_reference
 settings:
-  max_length: 255
-  case_sensitive: false
-  is_ascii: false
+  target_type: node
 module: core
 locked: false
-cardinality: 1
+cardinality: -1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

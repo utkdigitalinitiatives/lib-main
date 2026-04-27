@@ -1,0 +1,33 @@
+uuid: ccb1b90d-80f4-436e-8303-6b4f0c67d246
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.department_phone.field_label
+    - field.field.paragraph.department_phone.field_phone
+    - paragraphs.paragraphs_type.department_phone
+  module:
+    - telephone
+id: paragraph.department_phone.default
+targetEntityType: paragraph
+bundle: department_phone
+mode: default
+content:
+  field_label:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_phone:
+    type: telephone_default
+    weight: 1
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

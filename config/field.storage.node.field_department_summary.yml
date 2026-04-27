@@ -1,15 +1,16 @@
-uuid: 56d1f43f-61b1-4769-9724-2f5460333710
+uuid: f9f970b6-6083-47ba-b151-54059e5fe1ce
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: node.field_add_address
-field_name: field_add_address
+    - text
+id: node.field_department_summary
+field_name: field_department_summary
 entity_type: node
-type: boolean
+type: text_long
 settings: {  }
-module: core
+module: text
 locked: false
 cardinality: 1
 translatable: true

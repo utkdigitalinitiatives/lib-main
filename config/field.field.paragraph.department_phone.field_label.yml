@@ -1,0 +1,19 @@
+uuid: 32c73e32-eafb-4ba5-bd67-a65b6e344073
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_label
+    - paragraphs.paragraphs_type.department_phone
+id: paragraph.department_phone.field_label
+field_name: field_label
+entity_type: paragraph
+bundle: department_phone
+label: Label
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

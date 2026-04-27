@@ -1,12 +1,12 @@
-uuid: 013d6668-d0e9-4b0c-8dea-e1009dbcc60a
+uuid: a08810e2-35ea-4863-a0d6-be01ee952e7f
 langcode: en
 status: true
 dependencies:
   module:
-    - node
-id: node.field_building_and_room_number
-field_name: field_building_and_room_number
-entity_type: node
+    - paragraphs
+id: paragraph.field_label
+field_name: field_label
+entity_type: paragraph
 type: string
 settings:
   max_length: 255

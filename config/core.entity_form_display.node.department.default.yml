@@ -3,41 +3,46 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.department.field_add_address
-    - field.field.node.department.field_address_city
-    - field.field.node.department.field_address_state
-    - field.field.node.department.field_address_street
-    - field.field.node.department.field_address_zip
     - field.field.node.department.field_building_and_room_number
+    - field.field.node.department.field_department_featured_image
     - field.field.node.department.field_department_short_name
+    - field.field.node.department.field_department_summary
+    - field.field.node.department.field_emails
     - field.field.node.department.field_hide_from_directory
     - field.field.node.department.field_homepage_description
     - field.field.node.department.field_hours
+    - field.field.node.department.field_library_leadership
+    - field.field.node.department.field_phone_numbers
+    - field.field.node.department.field_service_catalog
     - field.field.node.department.field_service_group
+    - field.field.node.department.field_spaces_catalog
     - node.type.department
   module:
     - field_group
+    - media_library
+    - paragraphs
     - path
+    - text
 third_party_settings:
   field_group:
-    group_address:
+    group_hide_from_directory:
       children:
-        - field_address_street
-        - field_address_city
-        - field_address_state
-        - field_address_zip
-      label: Address
+        - field_hide_from_directory
+        - field_library_leadership
+      label: 'Admin Toggles'
       region: content
       parent_name: ''
-      weight: 9
-      format_type: fieldset
+      weight: 16
+      format_type: details_sidebar
       format_settings:
         classes: ''
         show_empty_fields: false
         id: ''
         label_as_html: false
+        open: false
         description: ''
         required_fields: true
+        weight: 0
 id: node.department.default
 targetEntityType: node
 bundle: department
@@ -49,30 +54,7 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_add_address:
-    type: boolean_checkbox
-    weight: 8
-    region: content
-    settings:
-      display_label: true
-    third_party_settings: {  }
-  field_address_city:
-    type: string_textfield
-    weight: 11
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_address_state:
-    type: string_textfield
-    weight: 12
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_address_street:
+  field_building_and_room_number:
     type: string_textfield
     weight: 10
     region: content
@@ -80,38 +62,14 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  field_address_zip:
-    type: string_textfield
-    weight: 13
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_building_and_room_number:
-    type: string_textfield
-    weight: 7
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_department_short_name:
-    type: string_textfield
+  field_department_featured_image:
+    type: media_library_widget
     weight: 5
     region: content
     settings:
-      size: 60
-      placeholder: ''
+      media_types: {  }
     third_party_settings: {  }
-  field_hide_from_directory:
-    type: boolean_checkbox
-    weight: 27
-    region: content
-    settings:
-      display_label: true
-    third_party_settings: {  }
-  field_homepage_description:
+  field_department_short_name:
     type: string_textfield
     weight: 6
     region: content
@@ -119,9 +77,89 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_department_summary:
+    type: text_textarea
+    weight: 13
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_emails:
+    type: paragraphs
+    weight: 11
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        convert: '0'
+        duplicate: '0'
+    third_party_settings: {  }
+  field_hide_from_directory:
+    type: boolean_checkbox
+    weight: 4
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_homepage_description:
+    type: string_textfield
+    weight: 7
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_hours:
     type: entity_reference_autocomplete
-    weight: 30
+    weight: 9
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_library_leadership:
+    type: boolean_checkbox
+    weight: 5
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_phone_numbers:
+    type: paragraphs
+    weight: 12
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        convert: '0'
+        duplicate: '0'
+    third_party_settings: {  }
+  field_service_catalog:
+    type: entity_reference_autocomplete
+    weight: 14
     region: content
     settings:
       match_operator: CONTAINS
@@ -131,10 +169,20 @@ content:
     third_party_settings: {  }
   field_service_group:
     type: boolean_checkbox
-    weight: 26
+    weight: 8
     region: content
     settings:
       display_label: true
+    third_party_settings: {  }
+  field_spaces_catalog:
+    type: entity_reference_autocomplete
+    weight: 15
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   path:
     type: path

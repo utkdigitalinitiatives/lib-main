@@ -1,4 +1,4 @@
-uuid: bdc7002c-7a07-42d2-8804-a59fdad7914a
+uuid: b28afffc-d355-4f3f-a257-b259493174d1
 langcode: en
 status: true
 dependencies:
@@ -10,7 +10,7 @@ field_name: field_building_and_room_number
 entity_type: node
 bundle: department
 label: 'Building and Room Number'
-description: "If there is a public-facing component to the department, add where that service point is here. \r\nExamples: Hodges 221, Pendergrass A113D11"
+description: "For departments with a public access point, including the location of that point here\r\nExamples: Hodges 221, Pendergrass A113D11"
 required: false
 translatable: false
 default_value: {  }

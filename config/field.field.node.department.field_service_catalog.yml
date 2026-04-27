@@ -1,17 +1,17 @@
-uuid: 77814e2d-b86b-4767-ae9c-31d4a1b4a268
+uuid: 70f9e2e6-0016-4226-a08c-344d777c3179
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_hours
+    - field.storage.node.field_service_catalog
     - node.type.department
-    - node.type.hours
-id: node.department.field_hours
-field_name: field_hours
+    - node.type.service_page
+id: node.department.field_service_catalog
+field_name: field_service_catalog
 entity_type: node
 bundle: department
-label: Hours
-description: 'For departments that are attached to a set of LibCal Hours, search for the LibCal name here'
+label: 'Service Catalog'
+description: ''
 required: false
 translatable: false
 default_value: {  }
@@ -20,7 +20,7 @@ settings:
   handler: 'default:node'
   handler_settings:
     target_bundles:
-      hours: hours
+      service_page: service_page
     sort:
       field: _none
       direction: ASC
