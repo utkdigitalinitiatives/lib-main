@@ -1,7 +1,0 @@
-conditional_visibility:
-  version: 1.0
-  js:
-    js/conditional_visibility.js: {}
-  dependencies:
-    - core/drupal
-    - core/once

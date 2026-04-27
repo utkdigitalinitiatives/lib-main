@@ -1,0 +1,23 @@
+uuid: 68b9b4e8-c78d-4aa1-ad99-2401053cd225
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hide_from_directory
+    - node.type.department
+id: node.department.field_hide_from_directory
+field_name: field_hide_from_directory
+entity_type: node
+bundle: department
+label: 'Hide from Directory'
+description: 'This should usually remain in the "No" position'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

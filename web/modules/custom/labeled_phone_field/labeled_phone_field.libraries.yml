@@ -1,7 +1,0 @@
-labeled_phone_widget:
-  version: VERSION
-  js:
-    js/labeled_phone_widget.js: {}
-  dependencies:
-    - core/drupal
-    - core/once

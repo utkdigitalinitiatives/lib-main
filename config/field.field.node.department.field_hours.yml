@@ -1,0 +1,29 @@
+uuid: 77814e2d-b86b-4767-ae9c-31d4a1b4a268
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hours
+    - node.type.department
+    - node.type.hours
+id: node.department.field_hours
+field_name: field_hours
+entity_type: node
+bundle: department
+label: Hours
+description: "For departments that are attached to a set of LibCal Hours, search for the LibCal name here"
+required: false
+translatable: false
+default_value: {}
+default_value_callback: ""
+settings:
+  handler: "default:node"
+  handler_settings:
+    target_bundles:
+      hours: hours
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ""
+field_type: entity_reference
