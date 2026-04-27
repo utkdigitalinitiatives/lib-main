@@ -11,7 +11,7 @@ field_name: field_hours
 entity_type: node
 bundle: department
 label: Hours
-description: 'For departments that are attached to a set of LibCal Hours, search for the LibCal name here'
+description: 'For departments that are attached to a set of LIbCal Hours, search for the LibCal name here'
 required: false
 translatable: false
 default_value: {  }

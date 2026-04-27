@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.department.feeds_item
     - field.field.node.department.field_building_and_room_number
     - field.field.node.department.field_department_featured_image
     - field.field.node.department.field_department_short_name
@@ -143,4 +144,5 @@ content:
     third_party_settings: {  }
     weight: 0
     region: content
-hidden: {  }
+hidden:
+  feeds_item: true
