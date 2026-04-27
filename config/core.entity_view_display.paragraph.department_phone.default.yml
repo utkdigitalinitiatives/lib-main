@@ -1,0 +1,32 @@
+uuid: b8a13bb0-8a67-426f-bb0a-469ec2dd5ce7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.department_phone.field_label
+    - field.field.paragraph.department_phone.field_phone
+    - paragraphs.paragraphs_type.department_phone
+  module:
+    - telephone
+id: paragraph.department_phone.default
+targetEntityType: paragraph
+bundle: department_phone
+mode: default
+content:
+  field_label:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_phone:
+    type: telephone_link
+    label: hidden
+    settings:
+      title: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

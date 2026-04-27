@@ -1,0 +1,23 @@
+uuid: 4c8a0ef4-e94c-4863-b2c7-a053af4f0cc0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_library_leadership
+    - node.type.department
+id: node.department.field_library_leadership
+field_name: field_library_leadership
+entity_type: node
+bundle: department
+label: 'Library Leadership'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean
