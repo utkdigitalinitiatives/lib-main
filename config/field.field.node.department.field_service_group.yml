@@ -1,0 +1,23 @@
+uuid: 89955c06-aeb0-413c-92bd-05f8a3793e35
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_service_group
+    - node.type.department
+id: node.department.field_service_group
+field_name: field_service_group
+entity_type: node
+bundle: department
+label: 'Service Group'
+description: 'Switch this toggle to "on" if the department is responsible for a specific service area rather than a department within the Libraries This will move the listing for the group from the "Staff Directory" portion of the directory to the "Service Group" portion of the directory'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

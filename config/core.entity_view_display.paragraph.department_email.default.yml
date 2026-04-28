@@ -1,0 +1,30 @@
+uuid: 24ec01b3-d4f1-48f9-9710-4cfd42506904
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.department_email.field_email
+    - field.field.paragraph.department_email.field_label
+    - paragraphs.paragraphs_type.department_email
+id: paragraph.department_email.default
+targetEntityType: paragraph
+bundle: department_email
+mode: default
+content:
+  field_email:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_label:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

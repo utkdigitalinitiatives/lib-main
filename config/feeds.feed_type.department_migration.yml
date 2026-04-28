@@ -1,0 +1,177 @@
+uuid: f6c16426-180b-4556-ae1d-0adc0accf480
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.base_field_override.node.department.title
+    - field.field.node.department.field_building_and_room_number
+    - field.field.node.department.field_department_short_name
+    - field.field.node.department.field_department_summary
+    - field.field.node.department.field_hide_from_directory
+    - field.field.node.department.field_homepage_description
+    - field.field.node.department.field_library_leadership
+    - field.field.node.department.field_service_group
+    - node.type.department
+  module:
+    - feeds_tamper
+    - node
+third_party_settings:
+  feeds_tamper:
+    tampers:
+      ef860691-9e1f-45bc-90f2-2be3b31d5db3:
+        true_value: '1'
+        false_value: '0'
+        match_case: false
+        no_match_value: false
+        uuid: ef860691-9e1f-45bc-90f2-2be3b31d5db3
+        plugin: convert_boolean
+        source: service_group
+        weight: 0
+        label: 'Convert to Boolean'
+      c811eec1-31f2-4834-af60-7b1c3ae3b5ad:
+        true_value: '1'
+        false_value: '0'
+        match_case: false
+        no_match_value: false
+        uuid: c811eec1-31f2-4834-af60-7b1c3ae3b5ad
+        plugin: convert_boolean
+        source: hide_from_directory
+        weight: 0
+        label: 'Convert to Boolean'
+      128df6c6-fba6-4b78-9ea1-6f1ff8a24f9c:
+        true_value: '1'
+        false_value: '0'
+        match_case: false
+        no_match_value: false
+        uuid: 128df6c6-fba6-4b78-9ea1-6f1ff8a24f9c
+        plugin: convert_boolean
+        source: library_leadership
+        weight: 0
+        label: 'Convert to Boolean'
+label: 'Department Migration'
+id: department_migration
+description: ''
+help: ''
+import_period: 3600
+import_period_per_feed: false
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'public://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: department
+  langcode: en
+  insert_new: 1
+  update_existing: 2
+  update_non_existent: _keep
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: true
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 1
+custom_sources:
+  title:
+    value: title
+    label: title
+    machine_name: title
+    type: csv
+  short_name:
+    value: 'Short Name'
+    label: 'Short Name'
+    machine_name: short_name
+    type: csv
+  homepage_hours_description:
+    value: 'Homepage Hours Description'
+    label: 'Homepage Hours Description'
+    machine_name: homepage_hours_description
+    type: csv
+  building_and_room_number:
+    value: 'Building and room number'
+    label: 'Building and room number'
+    machine_name: building_and_room_number
+    type: csv
+  service_group:
+    value: 'Service Group'
+    label: 'Service Group'
+    machine_name: service_group
+    type: csv
+  hide_from_directory:
+    value: 'Hide from Directory'
+    label: 'Hide from Directory'
+    machine_name: hide_from_directory
+    type: csv
+  library_leadership:
+    value: 'Library Leadership'
+    label: 'Library Leadership'
+    machine_name: library_leadership
+    type: csv
+  department_summary:
+    value: 'Department Summary'
+    label: 'Department Summary'
+    machine_name: department_summary
+    type: csv
+mappings:
+  -
+    target: title
+    map:
+      value: title
+    settings:
+      language: null
+    unique:
+      value: 1
+  -
+    target: field_department_short_name
+    map:
+      value: short_name
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_homepage_description
+    map:
+      value: homepage_hours_description
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_building_and_room_number
+    map:
+      value: building_and_room_number
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_service_group
+    map:
+      value: service_group
+    settings:
+      language: null
+  -
+    target: field_hide_from_directory
+    map:
+      value: hide_from_directory
+    settings:
+      language: null
+  -
+    target: field_library_leadership
+    map:
+      value: library_leadership
+    settings:
+      language: null
+  -
+    target: field_department_summary
+    map:
+      value: department_summary
+    settings:
+      language: ''
+      format: editor_html

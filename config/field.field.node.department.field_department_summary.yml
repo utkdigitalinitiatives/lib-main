@@ -1,0 +1,24 @@
+uuid: 707e1172-d262-4e55-9092-5ba768e1e84f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_department_summary
+    - filter.format.editor_html
+    - node.type.department
+  module:
+    - text
+id: node.department.field_department_summary
+field_name: field_department_summary
+entity_type: node
+bundle: department
+label: 'Department Summary'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - editor_html
+field_type: text_long

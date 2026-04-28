@@ -1,18 +1,19 @@
-uuid: c282dc81-6169-4e32-8478-4c7e154f2598
+uuid: ba2a9564-5fd7-409c-a388-a6bfee1965dd
 langcode: en
 status: true
 dependencies:
   module:
+    - media
     - node
-id: node.field_service_catalog
-field_name: field_service_catalog
+id: node.field_department_featured_image
+field_name: field_department_featured_image
 entity_type: node
 type: entity_reference
 settings:
-  target_type: node
+  target_type: media
 module: core
 locked: false
-cardinality: -1
+cardinality: 1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

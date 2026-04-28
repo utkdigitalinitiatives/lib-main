@@ -1,0 +1,19 @@
+uuid: f9f970b6-6083-47ba-b151-54059e5fe1ce
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_department_summary
+field_name: field_department_summary
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

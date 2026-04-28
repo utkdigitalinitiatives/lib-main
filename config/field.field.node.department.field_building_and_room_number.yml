@@ -1,0 +1,19 @@
+uuid: b28afffc-d355-4f3f-a257-b259493174d1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_building_and_room_number
+    - node.type.department
+id: node.department.field_building_and_room_number
+field_name: field_building_and_room_number
+entity_type: node
+bundle: department
+label: 'Building and Room Number'
+description: "For departments with a public access point, including the location of that point here\r\nExamples: Hodges 221, Pendergrass A113D11"
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

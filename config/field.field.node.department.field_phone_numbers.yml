@@ -1,0 +1,70 @@
+uuid: 2b9798c6-f911-4ff5-89b2-22b323dcb98a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_phone_numbers
+    - node.type.department
+    - paragraphs.paragraphs_type.department_phone
+  module:
+    - entity_reference_revisions
+id: node.department.field_phone_numbers
+field_name: field_phone_numbers
+entity_type: node
+bundle: department
+label: 'Phone Numbers'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      department_phone: department_phone
+    negate: 0
+    target_bundles_drag_drop:
+      card:
+        weight: 15
+        enabled: false
+      card_group:
+        weight: 16
+        enabled: false
+      correction:
+        weight: 17
+        enabled: false
+      department_email:
+        weight: 18
+        enabled: false
+      department_phone:
+        weight: 19
+        enabled: true
+      embedded_video:
+        weight: 20
+        enabled: false
+      featured_quote:
+        weight: 21
+        enabled: false
+      file_attachment:
+        weight: 22
+        enabled: false
+      heading_h2:
+        weight: 23
+        enabled: false
+      image:
+        weight: 24
+        enabled: false
+      tall_image:
+        weight: 25
+        enabled: false
+      text:
+        weight: 26
+        enabled: false
+      two_column_text_and_card:
+        weight: 27
+        enabled: false
+      two_column_text_and_image:
+        weight: 28
+        enabled: false
+field_type: entity_reference_revisions
