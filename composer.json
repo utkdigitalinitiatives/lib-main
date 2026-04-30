@@ -33,7 +33,6 @@
         "drupal/key": ">=1.15",
         "drupal/paragraphs": "^1.20",
         "drupal/pathauto": "^1.14",
-        "drupal/rabbit_hole": "^1.2",
         "drupal/tamper": "^1.0@beta",
         "drush/drush": "^13.7"
     },
