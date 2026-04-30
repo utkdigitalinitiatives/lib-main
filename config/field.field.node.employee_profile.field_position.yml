@@ -1,0 +1,19 @@
+uuid: 0debb936-c551-46b6-a1df-3f2c0fabf55b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_position
+    - node.type.employee_profile
+id: node.employee_profile.field_position
+field_name: field_position
+entity_type: node
+bundle: employee_profile
+label: Position
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

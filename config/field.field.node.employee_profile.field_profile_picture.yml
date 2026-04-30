@@ -1,0 +1,29 @@
+uuid: 8c450d9f-2447-4b90-860a-f734f06e548d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_profile_picture
+    - media.type.image
+    - node.type.employee_profile
+id: node.employee_profile.field_profile_picture
+field_name: field_profile_picture
+entity_type: node
+bundle: employee_profile
+label: 'Profile Picture'
+description: 'Profile pictures will be shown on employee profile pages and service pages if the person is a service contact. Profile pictures should have square ratios. If the image is not square, it will be cropped to become square using its shorter axis, preserving the middle of the image.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

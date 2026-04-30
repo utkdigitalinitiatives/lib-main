@@ -47,7 +47,11 @@ module:
   path: 0
   path_alias: 0
   pgsql: 0
+  rabbit_hole: 0
   responsive_image: 0
+  rh_group: 0
+  rh_media: 0
+  rh_node: 0
   search: 0
   shortcut: 0
   system: 0
