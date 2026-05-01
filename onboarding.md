@@ -119,8 +119,9 @@ ddev refresh-local
 1. Imports the specified database dump
 2. Configures Drupal's default file scheme to `public://` (local filesystem)
 3. Rewrites all `azblob://` URIs in `file_managed` to `public://`
-4. Runs `ddev pull-assets` to sync Azure Blob assets to `web/sites/default/files/`
-5. Clears Drupal caches
+4. Runs `ddev drush config:import` to sync active configuration with committed config files in `/config/`
+5. Runs `ddev pull-assets` to sync Azure Blob assets to `web/sites/default/files/`
+6. Clears Drupal caches
 
 Run this before starting work on any feature-scope changes to ensure your local environment reflects the current production state.
 
@@ -150,15 +151,16 @@ ddev restart    # Restart services
 
 ### Common commands
 
-| Command                        | Description                       |
-| ------------------------------ | --------------------------------- |
-| `ddev refresh-local`           | Import DB dump and sync assets    |
-| `ddev pull-assets`             | Sync Azure Blob assets only       |
-| `ddev drush cr`                | Rebuild Drupal caches             |
-| `ddev drush <cmd>`             | Run any Drush command             |
-| `ddev composer <cmd>`          | Run any Composer command          |
-| `ddev drush image:flush --all` | Flush all image style derivatives |
-| `ddev logs`                    | View service logs                 |
+| Command                        | Description                                    |
+| ------------------------------ | ---------------------------------------------- |
+| `ddev refresh-local`           | Import DB dump, sync config, and sync assets   |
+| `ddev pull-assets`             | Sync Azure Blob assets only                    |
+| `ddev drush config:import`     | Sync active config with committed config files |
+| `ddev drush cr`                | Rebuild Drupal caches                          |
+| `ddev drush <cmd>`             | Run any Drush command                          |
+| `ddev composer <cmd>`          | Run any Composer command                       |
+| `ddev drush image:flush --all` | Flush all image style derivatives              |
+| `ddev logs`                    | View service logs                              |
 
 ### When to refresh your local environment
 
