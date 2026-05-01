@@ -17,8 +17,9 @@ Install the following tools before starting:
 You will also need:
 
 - Access to the Azure Portal (coordinate with a team member or system administrator)
+- Storage Blob Data Contributor role access to the dev storage account (coordinate with system administrator)
 - Access to the team's Microsoft Teams workspace
-- Access to the team's SharePoint site — **Central Docs** folder
+- Access to the team's SharePoint site **Central Docs** folder
 
 ---
 
@@ -61,7 +62,7 @@ The `ddev pull-assets` and `ddev refresh-local` commands require read access to 
 
 ### 5. Obtain a database dump
 
-Request a current database dump from a team member or system administrator. They can export it from the Azure Portal Cloud Shell. Save the file somewhere accessible on your local machine (e.g., `db_dump.sql` in the project root).
+Export and download a database backup from the Azure Portal Cloud Shell (the shell command and needed password can be obtained from the System Administrator). Save the file somewhere accessible on your local machine (e.g., `db_dump.sql` in the project root).
 
 ### 6. Run the local refresh
 
