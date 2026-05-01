@@ -53,7 +53,7 @@ The `ddev pull-assets` and `ddev refresh-local` commands require read access to 
 1. Copy the example environment file:
 
    ```zsh
-   cp .ddev/.env.assets.example .ddev/.env.assets
+   cp .ddev/.env.assets.dist .ddev/.env.assets
    ```
 
 2. Open `.ddev/.env.assets` and fill in `AZURE_PUBLIC_BLOB_URL` with the Azure Blob SAS URL. Obtain this value from a team member or system administrator.
@@ -185,6 +185,8 @@ Create a branch named for what is being worked on. Do not use prefixes such as `
 
 ### Branch strategy
 
+In almost all cases, new topic branches should be branched off the `dev` branch.
+
 All work happens in topic branches. Pull requests from topic branches must target **`dev`**. Only the **`dev`** branch may merge into **`main`**.
 
 ```
@@ -222,7 +224,7 @@ ddev restart
 If you see `ERROR: Missing .ddev/.env.assets`, copy and fill in the example file:
 
 ```zsh
-cp .ddev/.env.assets.example .ddev/.env.assets
+cp .ddev/.env.assets.dist .ddev/.env.assets
 ```
 
 Then fill in `AZURE_PUBLIC_BLOB_URL` with the SAS URL from a team member or system administrator.
