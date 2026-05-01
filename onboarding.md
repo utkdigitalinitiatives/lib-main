@@ -151,16 +151,17 @@ ddev restart    # Restart services
 
 ### Common commands
 
-| Command                        | Description                                    |
-| ------------------------------ | ---------------------------------------------- |
-| `ddev refresh-local`           | Import DB dump, sync config, and sync assets   |
-| `ddev pull-assets`             | Sync Azure Blob assets only                    |
-| `ddev drush config:import`     | Sync active config with committed config files |
-| `ddev drush cr`                | Rebuild Drupal caches                          |
-| `ddev drush <cmd>`             | Run any Drush command                          |
-| `ddev composer <cmd>`          | Run any Composer command                       |
-| `ddev drush image:flush --all` | Flush all image style derivatives              |
-| `ddev logs`                    | View service logs                              |
+| Command                        | Description                                     |
+| ------------------------------ | ----------------------------------------------- |
+| `ddev refresh-local`           | Import DB dump, sync config, and sync assets    |
+| `ddev pull-assets`             | Sync Azure Blob assets only                     |
+| `ddev drush config:import`     | Sync active config with committed config files  |
+| `ddev drush config:export`     | Export changes to configuration to config files |
+| `ddev drush cr`                | Rebuild Drupal caches                           |
+| `ddev drush <cmd>`             | Run any Drush command                           |
+| `ddev composer <cmd>`          | Run any Composer command                        |
+| `ddev drush image:flush --all` | Flush all image style derivatives               |
+| `ddev logs`                    | View service logs                               |
 
 ### When to refresh your local environment
 
