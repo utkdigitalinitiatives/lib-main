@@ -6,6 +6,8 @@ dependencies:
     - field.field.node.department.feeds_item
     - field.field.node.department.field_building_and_room_number
     - field.field.node.department.field_department_featured_image
+    - field.field.node.department.field_department_heads
+    - field.field.node.department.field_department_members
     - field.field.node.department.field_department_short_name
     - field.field.node.department.field_department_summary
     - field.field.node.department.field_emails
@@ -33,7 +35,7 @@ third_party_settings:
       label: 'Admin Toggles'
       region: content
       parent_name: ''
-      weight: 16
+      weight: 18
       format_type: details_sidebar
       format_settings:
         classes: ''
@@ -69,6 +71,26 @@ content:
     region: content
     settings:
       media_types: {  }
+    third_party_settings: {  }
+  field_department_heads:
+    type: entity_reference_autocomplete
+    weight: 14
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_department_members:
+    type: entity_reference_autocomplete
+    weight: 15
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_department_short_name:
     type: string_textfield
@@ -160,7 +182,7 @@ content:
     third_party_settings: {  }
   field_service_catalog:
     type: entity_reference_autocomplete
-    weight: 14
+    weight: 16
     region: content
     settings:
       match_operator: CONTAINS
@@ -177,7 +199,7 @@ content:
     third_party_settings: {  }
   field_spaces_catalog:
     type: entity_reference_autocomplete
-    weight: 15
+    weight: 17
     region: content
     settings:
       match_operator: CONTAINS

@@ -6,6 +6,8 @@ dependencies:
     - field.field.node.department.feeds_item
     - field.field.node.department.field_building_and_room_number
     - field.field.node.department.field_department_featured_image
+    - field.field.node.department.field_department_heads
+    - field.field.node.department.field_department_members
     - field.field.node.department.field_department_short_name
     - field.field.node.department.field_department_summary
     - field.field.node.department.field_emails
@@ -43,6 +45,22 @@ content:
       link: false
     third_party_settings: {  }
     weight: 1
+    region: content
+  field_department_heads:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  field_department_members:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 12
     region: content
   field_department_short_name:
     type: string
@@ -102,7 +120,7 @@ content:
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    weight: 114
+    weight: 15
     region: content
   field_phone_numbers:
     type: entity_reference_revisions_entity_view
@@ -119,7 +137,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 112
+    weight: 13
     region: content
   field_service_group:
     type: boolean
@@ -137,7 +155,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 113
+    weight: 14
     region: content
   links:
     settings: {  }
