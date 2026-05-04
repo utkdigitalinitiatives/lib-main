@@ -1,0 +1,29 @@
+uuid: 635258c7-c03c-4a58-8ee8-fed9b8923bb7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_librarian_specialties
+    - node.type.employee_profile
+    - taxonomy.vocabulary.librarian_specialties
+id: node.employee_profile.field_librarian_specialties
+field_name: field_librarian_specialties
+entity_type: node
+bundle: employee_profile
+label: 'Librarian Specialties'
+description: 'List here any academic or research subject areas for libraries, these will be used to populate the "Subject Librarians" page on the site.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      librarian_specialties: librarian_specialties
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

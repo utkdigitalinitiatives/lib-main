@@ -1,0 +1,23 @@
+uuid: 521ad81d-a047-43ec-be69-363bdd85b10f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_public_profile
+    - node.type.employee_profile
+id: node.employee_profile.field_public_profile
+field_name: field_public_profile
+entity_type: node
+bundle: employee_profile
+label: 'Public Profile'
+description: 'Toggle this switch to "on" in order to create a page for the employee profile. Usually, this should only be done if an employee has a forward-facing service roll, or needs to have a public page with details about them.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

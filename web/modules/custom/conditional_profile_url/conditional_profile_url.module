@@ -1,0 +1,271 @@
+<?php
+
+/**
+ * @file
+ * Conditional Profile URL module - conditionally generates URL aliases for Employee Profiles.
+ *
+ * This module controls Pathauto alias generation and node access for Employee Profile nodes
+ * based on the field_public_profile boolean field:
+ *
+ * - If field_public_profile is TRUE: Pathauto generates the alias normally
+ * - If field_public_profile is FALSE: No alias is generated, existing aliases are deleted,
+ *   and anonymous users are denied view access
+ *
+ * The implementation is resilient to field removal: if field_public_profile is deleted,
+ * the module safely falls back to normal Pathauto behavior without errors.
+ *
+ * DRUSH COMMANDS FOR BULK OPERATIONS:
+ * To regenerate all node aliases (including employee_profile nodes):
+ *   drush pathauto:aliases-generate create canonical_entities:node
+ * To delete all auto-generated node aliases:
+ *   drush pathauto:aliases-delete canonical_entities:node
+ * For more granular control (single bundle), use the web UI at /admin/config/search/path/update
+ */
+
+use Drupal\node\Entity\Node;
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Session\AccountInterface;
+
+/**
+ * Checks if the field_public_profile field exists on a given node.
+ *
+ * @param \Drupal\node\Entity\Node $node
+ *   The node entity to check.
+ *
+ * @return bool
+ *   TRUE if the field exists, FALSE otherwise.
+ */
+function _conditional_profile_url_has_public_field(Node $node) {
+  try {
+    return $node->hasField('field_public_profile');
+  } catch (\Exception $e) {
+    // If any error occurs, safely default to FALSE (field does not exist).
+    return FALSE;
+  }
+}
+
+/**
+ * Gets the public profile field value safely.
+ *
+ * @param \Drupal\node\Entity\Node $node
+ *   The node entity.
+ *
+ * @return bool
+ *   TRUE if the field exists and is TRUE, FALSE otherwise (including if field is missing).
+ */
+function _conditional_profile_url_is_public(Node $node) {
+  // Defensive check: if field doesn't exist, default to TRUE (allow normal behavior).
+  if (!_conditional_profile_url_has_public_field($node)) {
+    return TRUE;
+  }
+
+  try {
+    $value = $node->get('field_public_profile')->value;
+    return (bool) $value;
+  } catch (\Exception $e) {
+    // If any error reading the field, default to TRUE (fail open).
+    return TRUE;
+  }
+}
+
+/**
+ * Implements hook_node_access().
+ *
+ * Restricts view access to Employee Profile nodes when field_public_profile is FALSE.
+ *
+ * Access rules:
+ * - If field_public_profile is TRUE: Use standard Drupal access control
+ * - If field_public_profile is FALSE: Deny anonymous users, allow authenticated site staff
+ * - If field_public_profile field does not exist: Allow normal access (fail open)
+ *
+ * @param \Drupal\node\Entity\Node $node
+ *   The node entity being accessed.
+ * @param string $op
+ *   The operation being performed (view, update, delete, etc.).
+ * @param \Drupal\Core\Session\AccountInterface $account
+ *   The user account attempting to access the node.
+ *
+ * @return \Drupal\Core\Access\AccessResultInterface
+ *   An AccessResult object indicating whether access is allowed, denied, or neutral.
+ */
+function conditional_profile_url_node_access(Node $node, $op, AccountInterface $account) {
+  // Only process Employee Profile nodes.
+  if ($node->bundle() !== 'employee_profile') {
+    return AccessResult::neutral();
+  }
+
+  // Only restrict view access.
+  if ($op !== 'view') {
+    return AccessResult::neutral();
+  }
+
+  // Defensive check: if the field doesn't exist, allow normal access.
+  if (!_conditional_profile_url_has_public_field($node)) {
+    return AccessResult::neutral();
+  }
+
+  // Get the public profile field value (safe getter handles errors).
+  $is_public = _conditional_profile_url_is_public($node);
+
+  // If the profile IS public, use default access control (let Drupal decide).
+  if ($is_public) {
+    return AccessResult::neutral();
+  }
+
+  // Profile is NOT public. Deny anonymous users.
+  if ($account->isAnonymous()) {
+    return AccessResult::forbidden('Employee profile is private.');
+  }
+
+  // Allow authenticated users if they have permission to view or administer employee_profile nodes.
+  // This allows site admins and content editors to view private profiles while
+  // keeping them hidden from the public.
+  $view_perm = $account->hasPermission('view any employee_profile content') ||
+               $account->hasPermission('administer nodes');
+
+  return $view_perm ? AccessResult::allowed() : AccessResult::forbidden('Employee profile is private.');
+}
+
+/**
+ * Implements hook_node_presave().
+ *
+ * Controls Pathauto alias generation for Employee Profile nodes based on
+ * the field_public_profile boolean field:
+ *
+ * - If field_public_profile is TRUE: Enable Pathauto to generate the alias
+ * - If field_public_profile is FALSE: Disable Pathauto and delete any existing alias
+ * - If field_public_profile does not exist: Allow normal Pathauto behavior (fail open)
+ *
+ * This hook is called before the node is saved to the database, allowing us to
+ * manipulate the pathauto flag and alias deletion before persistence.
+ *
+ * @param \Drupal\node\Entity\Node $node
+ *   The node entity being saved.
+ */
+function conditional_profile_url_node_presave(Node $node) {
+  // Only process Employee Profile nodes.
+  if ($node->bundle() !== 'employee_profile') {
+    return;
+  }
+
+  // Defensive check: if the field doesn't exist, allow normal Pathauto behavior.
+  if (!_conditional_profile_url_has_public_field($node)) {
+    return;
+  }
+
+  // Get the current value of field_public_profile (safe getter).
+  $is_public = _conditional_profile_url_is_public($node);
+
+  // If the profile is NOT public, prevent Pathauto from generating an alias.
+  if (!$is_public) {
+    // Disable Pathauto for this node.
+    $node->path->pathauto = 0;
+
+    // If this is an update (node already has an ID), delete any existing alias.
+    if (!$node->isNew()) {
+      _conditional_profile_url_delete_node_alias($node->id());
+    }
+  } else {
+    // If the profile IS public, enable Pathauto to generate the alias.
+    $node->path->pathauto = 1;
+  }
+}
+
+/**
+ * Implements hook_node_insert().
+ *
+ * Ensures new Employee Profile nodes created with field_public_profile = FALSE
+ * do not receive an alias, even if Pathauto would normally apply one.
+ *
+ * This hook runs after the node is inserted, providing a safeguard to catch
+ * any aliases that might have been created despite our presave logic.
+ *
+ * @param \Drupal\node\Entity\Node $node
+ *   The newly inserted node entity.
+ */
+function conditional_profile_url_node_insert(Node $node) {
+  // Only process Employee Profile nodes.
+  if ($node->bundle() !== 'employee_profile') {
+    return;
+  }
+
+  // Defensive check: if the field doesn't exist, skip.
+  if (!_conditional_profile_url_has_public_field($node)) {
+    return;
+  }
+
+  $is_public = _conditional_profile_url_is_public($node);
+
+  // If not public, explicitly ensure no alias exists.
+  if (!$is_public) {
+    _conditional_profile_url_delete_node_alias($node->id());
+  }
+}
+
+/**
+ * Implements hook_node_update().
+ *
+ * Handles updates to Employee Profile nodes, particularly when the
+ * field_public_profile boolean toggles from ON to OFF (or remains OFF).
+ *
+ * When toggling from OFF to ON, Pathauto will regenerate the alias on the next save
+ * because presave() will set pathauto = 1.
+ *
+ * @param \Drupal\node\Entity\Node $node
+ *   The updated node entity.
+ */
+function conditional_profile_url_node_update(Node $node) {
+  // Only process Employee Profile nodes.
+  if ($node->bundle() !== 'employee_profile') {
+    return;
+  }
+
+  // Defensive check: if the field doesn't exist, skip.
+  if (!_conditional_profile_url_has_public_field($node)) {
+    return;
+  }
+
+  $is_public = _conditional_profile_url_is_public($node);
+
+  // If the profile is NOT public, ensure no alias exists.
+  if (!$is_public) {
+    _conditional_profile_url_delete_node_alias($node->id());
+  }
+}
+
+/**
+ * Helper function to delete a node's URL alias.
+ *
+ * Uses Pathauto's alias storage service to reliably remove any aliases
+ * associated with a given node ID.
+ *
+ * This function is called whenever a node transitions to "not public" status
+ * to ensure no public URL alias exists for private profiles.
+ *
+ * @param int $nid
+ *   The node ID whose aliases should be deleted.
+ */
+function _conditional_profile_url_delete_node_alias($nid) {
+  try {
+    // Get the alias storage service.
+    $alias_storage = \Drupal::service('pathauto.alias_storage');
+
+    // Find and delete any aliases for this node.
+    $aliases = $alias_storage->lookupBySourcePath('node/' . $nid);
+
+    if (!empty($aliases)) {
+      foreach ($aliases as $alias) {
+        $alias_storage->delete(['pid' => $alias['pid']]);
+      }
+    }
+  } catch (\Exception $e) {
+    // Log the error but don't fail hard. The alias deletion is best-effort.
+    \Drupal::logger('conditional_profile_url')->error(
+      'Failed to delete alias for node @nid: @error',
+      [
+        '@nid' => $nid,
+        '@error' => $e->getMessage(),
+      ]
+    );
+  }
+}

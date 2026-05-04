@@ -1,0 +1,8 @@
+name: 'Conditional Profile URL'
+description: 'Conditionally generates URL aliases for Employee Profile nodes based on the field_public_profile boolean field.'
+package: 'Custom'
+type: module
+core_version_requirement: ^11
+dependencies:
+  - drupal:node
+  - drupal:pathauto
