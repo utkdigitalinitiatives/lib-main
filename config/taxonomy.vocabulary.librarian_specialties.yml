@@ -1,0 +1,9 @@
+uuid: 7ab56ebc-2da5-4691-abf4-02357b63c911
+langcode: en
+status: true
+dependencies: {  }
+name: 'Librarian Specialties'
+vid: librarian_specialties
+description: null
+weight: 0
+new_revision: false

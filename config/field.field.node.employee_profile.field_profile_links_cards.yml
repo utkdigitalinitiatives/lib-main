@@ -1,0 +1,70 @@
+uuid: 02107b6a-7f87-4b6c-8a92-8d6e138b57f5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_profile_links_cards
+    - node.type.employee_profile
+    - paragraphs.paragraphs_type.card
+  module:
+    - entity_reference_revisions
+id: node.employee_profile.field_profile_links_cards
+field_name: field_profile_links_cards
+entity_type: node
+bundle: employee_profile
+label: 'Profile Links (cards)'
+description: 'Links can be to any resource with a valid URL. They will be rendered as a "card". Ensure link text and URL are both filled for the card to properly link to the resource'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      card: card
+    negate: 0
+    target_bundles_drag_drop:
+      card:
+        weight: 15
+        enabled: true
+      card_group:
+        weight: 16
+        enabled: false
+      correction:
+        weight: 17
+        enabled: false
+      department_email:
+        weight: 18
+        enabled: false
+      department_phone:
+        weight: 19
+        enabled: false
+      embedded_video:
+        weight: 20
+        enabled: false
+      featured_quote:
+        weight: 21
+        enabled: false
+      file_attachment:
+        weight: 22
+        enabled: false
+      heading_h2:
+        weight: 23
+        enabled: false
+      image:
+        weight: 24
+        enabled: false
+      tall_image:
+        weight: 25
+        enabled: false
+      text:
+        weight: 26
+        enabled: false
+      two_column_text_and_card:
+        weight: 27
+        enabled: false
+      two_column_text_and_image:
+        weight: 28
+        enabled: false
+field_type: entity_reference_revisions
