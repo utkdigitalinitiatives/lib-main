@@ -27,6 +27,10 @@ echo "Rewriting file_managed URIs from azblob:// to public://..."
 ddev drush sqlq "UPDATE file_managed SET uri = REPLACE(uri, 'azblob://', 'public://') WHERE uri LIKE 'azblob://%';"
 
 echo
+echo "Syncing active configuration with committed config files..."
+ddev drush config:import -y
+
+echo
 echo "Pulling Azure Blob assets into local public files directory..."
 ddev pull-assets
 

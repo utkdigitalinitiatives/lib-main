@@ -37,6 +37,9 @@
 # files to other locations where it scaffolds files that are not
 # already ignored. We must also ignore these generated files.
 /web/**/.gitignore
+# may need to refine this if it causes issues with other .gitignore files
+**/.gitignore
+
 
 # Ignore .env files as they are personal
 #/.env
