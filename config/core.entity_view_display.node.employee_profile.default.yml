@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.employee_profile.feeds_item
     - field.field.node.employee_profile.field_email
     - field.field.node.employee_profile.field_librarian_specialties
     - field.field.node.employee_profile.field_phone
@@ -85,4 +86,5 @@ content:
     weight: 0
     region: content
 hidden:
+  feeds_item: true
   field_profile_picture: true
