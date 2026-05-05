@@ -1,0 +1,23 @@
+uuid: d62e3862-ecd8-40df-b502-4777d6be3f78
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.feeds_item
+    - node.type.employee_profile
+  module:
+    - feeds
+id: node.employee_profile.feeds_item
+field_name: feeds_item
+entity_type: node
+bundle: employee_profile
+label: 'Feeds item'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:feeds_feed'
+  handler_settings: {  }
+field_type: feeds_item

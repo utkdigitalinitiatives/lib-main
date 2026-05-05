@@ -1,0 +1,107 @@
+uuid: 97815b98-853d-4c10-9bf7-0fd77b91151c
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.base_field_override.node.employee_profile.title
+    - field.field.node.employee_profile.field_email
+    - field.field.node.employee_profile.field_phone
+    - field.field.node.employee_profile.field_position
+    - field.field.node.employee_profile.field_profile_bio
+    - node.type.employee_profile
+  module:
+    - node
+label: profile-migration
+id: profile_migration
+description: ''
+help: ''
+import_period: -1
+import_period_per_feed: false
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'public://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: employee_profile
+  langcode: en
+  insert_new: 1
+  update_existing: 2
+  update_non_existent: _keep
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: true
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 1
+custom_sources:
+  title:
+    value: title
+    label: title
+    machine_name: title
+    type: csv
+  position_title:
+    value: 'Position Title'
+    label: 'Position Title'
+    machine_name: position_title
+    type: csv
+  contact_email:
+    value: 'Contact Email'
+    label: 'Contact Email'
+    machine_name: contact_email
+    type: csv
+  contact_phone_number:
+    value: 'Contact Phone Number'
+    label: 'Contact Phone Number'
+    machine_name: contact_phone_number
+    type: csv
+  profile_bio:
+    value: 'Profile Bio'
+    label: 'Profile Bio'
+    machine_name: profile_bio
+    type: csv
+mappings:
+  -
+    target: title
+    map:
+      value: title
+    settings:
+      language: null
+    unique:
+      value: 1
+  -
+    target: field_position
+    map:
+      value: position_title
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_email
+    map:
+      value: contact_email
+    settings:
+      language: ''
+      defuse: 0
+    unique: {  }
+  -
+    target: field_phone
+    map:
+      value: contact_phone_number
+    settings:
+      language: null
+  -
+    target: field_profile_bio
+    map:
+      value: profile_bio
+    settings:
+      language: ''
+      format: editor_html
