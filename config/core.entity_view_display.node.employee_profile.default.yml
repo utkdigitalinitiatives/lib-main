@@ -14,6 +14,7 @@ dependencies:
     - node.type.employee_profile
   module:
     - entity_reference_revisions
+    - telephone
     - text
     - user
 id: node.employee_profile.default
@@ -23,72 +24,65 @@ mode: default
 content:
   field_email:
     type: basic_string
-    label: above
+    label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 102
+    weight: 2
     region: content
   field_librarian_specialties:
     type: entity_reference_label
-    label: above
+    label: hidden
     settings:
       link: true
     third_party_settings: {  }
-    weight: 108
+    weight: 7
     region: content
   field_phone:
-    type: basic_string
-    label: above
-    settings: {  }
+    type: telephone_link
+    label: hidden
+    settings:
+      title: ''
     third_party_settings: {  }
-    weight: 103
+    weight: 3
     region: content
   field_position:
     type: string
-    label: above
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 101
+    weight: 1
     region: content
   field_profile_bio:
     type: text_default
-    label: above
+    label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 106
+    weight: 5
     region: content
   field_profile_links_cards:
     type: entity_reference_revisions_entity_view
-    label: above
+    label: hidden
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 107
-    region: content
-  field_profile_picture:
-    type: entity_reference_entity_view
-    label: above
-    settings:
-      view_mode: default
-      link: false
-    third_party_settings: {  }
-    weight: 105
+    weight: 6
     region: content
   field_public_profile:
     type: boolean
-    label: above
+    label: hidden
     settings:
       format: default
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    weight: 104
+    weight: 4
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 0
     region: content
-hidden: {  }
+hidden:
+  field_profile_picture: true

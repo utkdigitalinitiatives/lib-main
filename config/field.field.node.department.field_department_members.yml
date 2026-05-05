@@ -1,0 +1,29 @@
+uuid: 86d1d60a-15ae-4c9f-b67a-3a2050914ac1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_department_members
+    - node.type.department
+    - node.type.employee_profile
+id: node.department.field_department_members
+field_name: field_department_members
+entity_type: node
+bundle: department
+label: 'Department Members'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      employee_profile: employee_profile
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

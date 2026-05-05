@@ -17,8 +17,9 @@ Install the following tools before starting:
 You will also need:
 
 - Access to the Azure Portal (coordinate with a team member or system administrator)
+- Storage Blob Data Contributor role access to the dev storage account (coordinate with system administrator)
 - Access to the team's Microsoft Teams workspace
-- Access to the team's SharePoint site — **Central Docs** folder
+- Access to the team's SharePoint site **Central Docs** folder
 
 ---
 
@@ -52,7 +53,7 @@ The `ddev pull-assets` and `ddev refresh-local` commands require read access to 
 1. Copy the example environment file:
 
    ```zsh
-   cp .ddev/.env.assets.example .ddev/.env.assets
+   cp .ddev/.env.assets.dist .ddev/.env.assets
    ```
 
 2. Open `.ddev/.env.assets` and fill in `AZURE_PUBLIC_BLOB_URL` with the Azure Blob SAS URL. Obtain this value from a team member or system administrator.
@@ -61,7 +62,7 @@ The `ddev pull-assets` and `ddev refresh-local` commands require read access to 
 
 ### 5. Obtain a database dump
 
-Request a current database dump from a team member or system administrator. They can export it from the Azure Portal Cloud Shell. Save the file somewhere accessible on your local machine (e.g., `db_dump.sql` in the project root).
+Export and download a database backup from the Azure Portal Cloud Shell (the shell command and needed password can be obtained from the System Administrator). Save the file somewhere accessible on your local machine (e.g., `db_dump.sql` in the project root).
 
 ### 6. Run the local refresh
 
@@ -119,8 +120,9 @@ ddev refresh-local
 1. Imports the specified database dump
 2. Configures Drupal's default file scheme to `public://` (local filesystem)
 3. Rewrites all `azblob://` URIs in `file_managed` to `public://`
-4. Runs `ddev pull-assets` to sync Azure Blob assets to `web/sites/default/files/`
-5. Clears Drupal caches
+4. Runs `ddev drush config:import` to sync active configuration with committed config files in `/config/`
+5. Runs `ddev pull-assets` to sync Azure Blob assets to `web/sites/default/files/`
+6. Clears Drupal caches
 
 Run this before starting work on any feature-scope changes to ensure your local environment reflects the current production state.
 
@@ -150,15 +152,17 @@ ddev restart    # Restart services
 
 ### Common commands
 
-| Command                        | Description                       |
-| ------------------------------ | --------------------------------- |
-| `ddev refresh-local`           | Import DB dump and sync assets    |
-| `ddev pull-assets`             | Sync Azure Blob assets only       |
-| `ddev drush cr`                | Rebuild Drupal caches             |
-| `ddev drush <cmd>`             | Run any Drush command             |
-| `ddev composer <cmd>`          | Run any Composer command          |
-| `ddev drush image:flush --all` | Flush all image style derivatives |
-| `ddev logs`                    | View service logs                 |
+| Command                        | Description                                     |
+| ------------------------------ | ----------------------------------------------- |
+| `ddev refresh-local`           | Import DB dump, sync config, and sync assets    |
+| `ddev pull-assets`             | Sync Azure Blob assets only                     |
+| `ddev drush config:import`     | Sync active config with committed config files  |
+| `ddev drush config:export`     | Export changes to configuration to config files |
+| `ddev drush cr`                | Rebuild Drupal caches                           |
+| `ddev drush <cmd>`             | Run any Drush command                           |
+| `ddev composer <cmd>`          | Run any Composer command                        |
+| `ddev drush image:flush --all` | Flush all image style derivatives               |
+| `ddev logs`                    | View service logs                               |
 
 ### When to refresh your local environment
 
@@ -180,6 +184,8 @@ Create a branch named for what is being worked on. Do not use prefixes such as `
 - `accessibility-nav-updates`
 
 ### Branch strategy
+
+In almost all cases, new topic branches should be branched off the `dev` branch.
 
 All work happens in topic branches. Pull requests from topic branches must target **`dev`**. Only the **`dev`** branch may merge into **`main`**.
 
@@ -218,7 +224,7 @@ ddev restart
 If you see `ERROR: Missing .ddev/.env.assets`, copy and fill in the example file:
 
 ```zsh
-cp .ddev/.env.assets.example .ddev/.env.assets
+cp .ddev/.env.assets.dist .ddev/.env.assets
 ```
 
 Then fill in `AZURE_PUBLIC_BLOB_URL` with the SAS URL from a team member or system administrator.

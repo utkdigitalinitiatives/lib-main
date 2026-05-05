@@ -1,0 +1,29 @@
+uuid: 7dc3a478-dedd-4aee-bac0-235b488efd0e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_department_heads
+    - node.type.department
+    - node.type.employee_profile
+id: node.department.field_department_heads
+field_name: field_department_heads
+entity_type: node
+bundle: department
+label: 'Department Heads'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      employee_profile: employee_profile
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
