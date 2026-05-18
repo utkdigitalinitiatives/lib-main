@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.service_page.field_about_this_service
+    - field.field.node.service_page.field_include_table_of_contents
     - field.field.node.service_page.field_page_summary
     - field.field.node.service_page.field_related_services
     - field.field.node.service_page.field_sections
@@ -47,13 +48,20 @@ content:
     third_party_settings: {  }
   field_about_this_service:
     type: entity_reference_autocomplete
-    weight: 28
+    weight: 10
     region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_include_table_of_contents:
+    type: boolean_checkbox
+    weight: 6
+    region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   field_page_summary:
     type: text_textarea
@@ -65,7 +73,7 @@ content:
     third_party_settings: {  }
   field_related_services:
     type: entity_reference_autocomplete
-    weight: 27
+    weight: 9
     region: content
     settings:
       match_operator: CONTAINS
@@ -75,7 +83,7 @@ content:
     third_party_settings: {  }
   field_sections:
     type: paragraphs
-    weight: 6
+    weight: 7
     region: content
     settings:
       title: Paragraph
@@ -101,7 +109,7 @@ content:
     third_party_settings: {  }
   field_service_contacts:
     type: entity_reference_autocomplete
-    weight: 26
+    weight: 8
     region: content
     settings:
       match_operator: CONTAINS
