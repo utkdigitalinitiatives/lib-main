@@ -16,7 +16,7 @@ if [[ ! -f "${DB_DUMP}" ]]; then
 fi
 
 echo "Importing database: ${DB_DUMP}"
-ddev import-db --src="${DB_DUMP}"
+ddev import-db --file="${DB_DUMP}"
 
 echo
 echo "Setting local Drupal default file scheme to public..."

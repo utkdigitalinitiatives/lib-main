@@ -1,19 +1,17 @@
-uuid: 02ae2b20-63f3-43cd-ad48-383d83145600
+uuid: b80368c9-0951-4eed-8aa9-bdc04bc262d6
 langcode: en
 status: true
 dependencies:
   config:
     - field.field.paragraph.heading_h2.field_heading_text
     - paragraphs.paragraphs_type.heading_h2
-  module:
-    - text
 id: paragraph.heading_h2.default
 targetEntityType: paragraph
 bundle: heading_h2
 mode: default
 content:
   field_heading_text:
-    type: text_textfield
+    type: string_textfield
     weight: 0
     region: content
     settings:
