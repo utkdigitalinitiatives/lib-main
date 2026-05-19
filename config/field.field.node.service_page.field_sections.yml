@@ -9,7 +9,6 @@ dependencies:
     - paragraphs.paragraphs_type.card_group
     - paragraphs.paragraphs_type.embedded_video
     - paragraphs.paragraphs_type.file_attachment
-    - paragraphs.paragraphs_type.heading_h2
     - paragraphs.paragraphs_type.image
     - paragraphs.paragraphs_type.tall_image
     - paragraphs.paragraphs_type.text
@@ -31,7 +30,6 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     target_bundles:
-      heading_h2: heading_h2
       text: text
       image: image
       tall_image: tall_image

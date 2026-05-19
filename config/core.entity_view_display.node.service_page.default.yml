@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.service_page.field_about_this_service
+    - field.field.node.service_page.field_include_table_of_contents
     - field.field.node.service_page.field_page_summary
     - field.field.node.service_page.field_related_services
     - field.field.node.service_page.field_sections
@@ -25,14 +26,24 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 106
+    weight: 6
+    region: content
+  field_include_table_of_contents:
+    type: boolean
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 7
     region: content
   field_page_summary:
     type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 102
+    weight: 2
     region: content
   field_related_services:
     type: entity_reference_label
@@ -40,7 +51,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 105
+    weight: 5
     region: content
   field_sections:
     type: entity_reference_revisions_entity_view
@@ -49,7 +60,7 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 103
+    weight: 3
     region: content
   field_service_category:
     type: entity_reference_label
@@ -57,7 +68,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 101
+    weight: 1
     region: content
   field_service_contacts:
     type: entity_reference_label
@@ -65,11 +76,11 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 104
+    weight: 4
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 0
     region: content
 hidden: {  }
