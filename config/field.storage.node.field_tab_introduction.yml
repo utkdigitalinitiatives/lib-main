@@ -1,0 +1,19 @@
+uuid: c411f157-66b4-4f49-a6b8-c75b6d81d8d7
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_tab_introduction
+field_name: field_tab_introduction
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,25 @@
+uuid: 71afaad1-26ee-4ae4-8f42-e84582df9dfc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.embedded_tabbed_content.field_tabbed_content
+    - paragraphs.paragraphs_type.embedded_tabbed_content
+id: paragraph.embedded_tabbed_content.default
+targetEntityType: paragraph
+bundle: embedded_tabbed_content
+mode: default
+content:
+  field_tabbed_content:
+    type: entity_reference_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
