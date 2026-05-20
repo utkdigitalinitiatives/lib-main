@@ -1,0 +1,18 @@
+uuid: 49fcd0e5-473c-407e-94ec-443d1a8e9045
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.tabbed_content
+id: node.tabbed_content.title
+field_name: title
+entity_type: node
+bundle: tabbed_content
+label: Heading
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

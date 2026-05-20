@@ -7,8 +7,10 @@ dependencies:
     - node.type.about_page
     - paragraphs.paragraphs_type.card
     - paragraphs.paragraphs_type.card_group
+    - paragraphs.paragraphs_type.embedded_tabbed_content
     - paragraphs.paragraphs_type.embedded_video
     - paragraphs.paragraphs_type.file_attachment
+    - paragraphs.paragraphs_type.heading_h2
     - paragraphs.paragraphs_type.image
     - paragraphs.paragraphs_type.tall_image
     - paragraphs.paragraphs_type.text
@@ -28,6 +30,7 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     target_bundles:
+      heading_h2: heading_h2
       text: text
       image: image
       tall_image: tall_image
@@ -35,6 +38,7 @@ settings:
       card_group: card_group
       embedded_video: embedded_video
       file_attachment: file_attachment
+      embedded_tabbed_content: embedded_tabbed_content
     negate: 0
     target_bundles_drag_drop:
       card:
@@ -43,9 +47,24 @@ settings:
       card_group:
         weight: -12
         enabled: true
+      correction:
+        weight: 19
+        enabled: false
+      department_email:
+        weight: 20
+        enabled: false
+      department_phone:
+        weight: 21
+        enabled: false
+      embedded_tabbed_content:
+        weight: 22
+        enabled: true
       embedded_video:
         weight: -11
         enabled: true
+      featured_quote:
+        weight: 24
+        enabled: false
       file_attachment:
         weight: -10
         enabled: true
@@ -55,10 +74,19 @@ settings:
       image:
         weight: -15
         enabled: true
+      tab:
+        weight: 28
+        enabled: false
       tall_image:
         weight: -14
         enabled: true
       text:
         weight: -16
         enabled: true
+      two_column_text_and_card:
+        weight: 31
+        enabled: false
+      two_column_text_and_image:
+        weight: 32
+        enabled: false
 field_type: entity_reference_revisions

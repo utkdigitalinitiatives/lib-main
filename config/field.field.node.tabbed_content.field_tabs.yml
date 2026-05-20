@@ -1,0 +1,76 @@
+uuid: aa045807-40b2-4980-9b81-a334c5e13802
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tabs
+    - node.type.tabbed_content
+    - paragraphs.paragraphs_type.tab
+  module:
+    - entity_reference_revisions
+id: node.tabbed_content.field_tabs
+field_name: field_tabs
+entity_type: node
+bundle: tabbed_content
+label: Tabs
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      tab: tab
+    negate: 0
+    target_bundles_drag_drop:
+      card:
+        weight: 17
+        enabled: false
+      card_group:
+        weight: 18
+        enabled: false
+      correction:
+        weight: 19
+        enabled: false
+      department_email:
+        weight: 20
+        enabled: false
+      department_phone:
+        weight: 21
+        enabled: false
+      embedded_tabbed_content:
+        weight: 22
+        enabled: false
+      embedded_video:
+        weight: 23
+        enabled: false
+      featured_quote:
+        weight: 24
+        enabled: false
+      file_attachment:
+        weight: 25
+        enabled: false
+      heading_h2:
+        weight: 26
+        enabled: false
+      image:
+        weight: 27
+        enabled: false
+      tab:
+        weight: 28
+        enabled: true
+      tall_image:
+        weight: 29
+        enabled: false
+      text:
+        weight: 30
+        enabled: false
+      two_column_text_and_card:
+        weight: 31
+        enabled: false
+      two_column_text_and_image:
+        weight: 32
+        enabled: false
+field_type: entity_reference_revisions
