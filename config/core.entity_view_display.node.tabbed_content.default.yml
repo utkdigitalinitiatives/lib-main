@@ -1,0 +1,39 @@
+uuid: ffb80cf4-ba64-45b8-9df8-b80006826728
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.tabbed_content.field_tab_introduction
+    - field.field.node.tabbed_content.field_tabs
+    - node.type.tabbed_content
+  module:
+    - entity_reference_revisions
+    - text
+    - user
+id: node.tabbed_content.default
+targetEntityType: node
+bundle: tabbed_content
+mode: default
+content:
+  field_tab_introduction:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_tabs:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

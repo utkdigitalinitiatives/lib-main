@@ -1,0 +1,29 @@
+uuid: 3a96e80f-83b5-448f-93ca-e028634a3d5d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_tabbed_content
+    - node.type.tabbed_content
+    - paragraphs.paragraphs_type.embedded_tabbed_content
+id: paragraph.embedded_tabbed_content.field_tabbed_content
+field_name: field_tabbed_content
+entity_type: paragraph
+bundle: embedded_tabbed_content
+label: 'Tabbed Content'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      tabbed_content: tabbed_content
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

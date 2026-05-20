@@ -1,0 +1,19 @@
+uuid: 93abba95-1d07-4eed-aba0-a09774163195
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_tab_label
+    - paragraphs.paragraphs_type.tab
+id: paragraph.tab.field_tab_label
+field_name: field_tab_label
+entity_type: paragraph
+bundle: tab
+label: 'Tab Label'
+description: 'The text that will appear on the tab for the content'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
