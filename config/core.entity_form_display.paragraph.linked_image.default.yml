@@ -1,0 +1,34 @@
+uuid: 72a2e92a-fbbb-4ebc-a9ea-678ac37d3d48
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.linked_image.field_link_image
+    - field.field.paragraph.linked_image.field_link_target
+    - paragraphs.paragraphs_type.linked_image
+  module:
+    - link
+    - media_library
+id: paragraph.linked_image.default
+targetEntityType: paragraph
+bundle: linked_image
+mode: default
+content:
+  field_link_image:
+    type: media_library_widget
+    weight: 1
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_link_target:
+    type: link_default
+    weight: 2
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
