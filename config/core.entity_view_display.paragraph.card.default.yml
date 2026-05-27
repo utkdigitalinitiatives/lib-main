@@ -9,7 +9,7 @@ dependencies:
     - field.field.paragraph.card.field_card_title
     - paragraphs.paragraphs_type.card
   module:
-    - link
+    - link_plaintext
     - text
 id: paragraph.card.default
 targetEntityType: paragraph
@@ -26,14 +26,13 @@ content:
     weight: 3
     region: content
   field_card_link:
-    type: link
+    type: link_title_url_plaintext
     label: hidden
     settings:
-      trim_length: null
-      url_only: true
-      url_plain: true
-      rel: '0'
-      target: '0'
+      separator_mode: space
+      separator: ' — '
+      absolute_url: true
+      wrap_parts: true
     third_party_settings: {  }
     weight: 4
     region: content

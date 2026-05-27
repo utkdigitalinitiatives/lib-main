@@ -1,0 +1,24 @@
+uuid: 7d75b7d8-0921-4c4c-b0f7-777f4b922a42
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_image_caption
+    - filter.format.editor_html
+    - paragraphs.paragraphs_type.two_column_text_and_image
+  module:
+    - text
+id: paragraph.two_column_text_and_image.field_image_caption
+field_name: field_image_caption
+entity_type: paragraph
+bundle: two_column_text_and_image
+label: 'Image Caption'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - editor_html
+field_type: text

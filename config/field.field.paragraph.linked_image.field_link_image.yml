@@ -1,0 +1,29 @@
+uuid: acbf72d4-c10f-493f-9979-c49549f761e2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_link_image
+    - media.type.image
+    - paragraphs.paragraphs_type.linked_image
+id: paragraph.linked_image.field_link_image
+field_name: field_link_image
+entity_type: paragraph
+bundle: linked_image
+label: 'Link Image'
+description: 'For alt text on Linked Images, use the "action" that clicking the link will accomplish. Examples: "Get the guide", "open Illiad", "visit the Music Library"'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
