@@ -1,0 +1,32 @@
+uuid: 9a950c8a-b0a5-4761-a6a6-f4dc8324dd4f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.lx_delivery_locations.feeds_item
+    - field.field.taxonomy_term.lx_delivery_locations.field_delivery_location
+    - taxonomy.vocabulary.lx_delivery_locations
+  module:
+    - text
+id: taxonomy_term.lx_delivery_locations.default
+targetEntityType: taxonomy_term
+bundle: lx_delivery_locations
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_delivery_location:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  feeds_item: true
