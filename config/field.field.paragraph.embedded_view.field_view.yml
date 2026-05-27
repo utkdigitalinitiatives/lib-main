@@ -1,0 +1,31 @@
+uuid: d94e95d6-7bc3-4029-9f0d-b32299251891
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_view
+    - paragraphs.paragraphs_type.embedded_view
+  module:
+    - viewsreference
+id: paragraph.embedded_view.field_view
+field_name: field_view
+entity_type: paragraph
+bundle: embedded_view
+label: View
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:view'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+  plugin_types:
+    block: block
+  preselect_views:
+    lx_delivery_location_table: lx_delivery_location_table
+  enabled_settings:
+    title: title
+field_type: viewsreference

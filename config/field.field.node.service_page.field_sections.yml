@@ -9,6 +9,7 @@ dependencies:
     - paragraphs.paragraphs_type.card_group
     - paragraphs.paragraphs_type.embedded_tabbed_content
     - paragraphs.paragraphs_type.embedded_video
+    - paragraphs.paragraphs_type.embedded_view
     - paragraphs.paragraphs_type.file_attachment
     - paragraphs.paragraphs_type.heading_h2
     - paragraphs.paragraphs_type.image
@@ -45,6 +46,7 @@ settings:
       two_column_text_and_card: two_column_text_and_card
       two_column_text_and_image: two_column_text_and_image
       embedded_tabbed_content: embedded_tabbed_content
+      embedded_view: embedded_view
     negate: 0
     target_bundles_drag_drop:
       card:
@@ -67,6 +69,9 @@ settings:
         enabled: true
       embedded_video:
         weight: -28
+        enabled: true
+      embedded_view:
+        weight: 26
         enabled: true
       featured_quote:
         weight: -20
