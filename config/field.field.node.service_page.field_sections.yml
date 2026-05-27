@@ -12,6 +12,7 @@ dependencies:
     - paragraphs.paragraphs_type.file_attachment
     - paragraphs.paragraphs_type.heading_h2
     - paragraphs.paragraphs_type.image
+    - paragraphs.paragraphs_type.linked_image
     - paragraphs.paragraphs_type.tall_image
     - paragraphs.paragraphs_type.text
     - paragraphs.paragraphs_type.two_column_text_and_card
@@ -36,6 +37,7 @@ settings:
       text: text
       image: image
       tall_image: tall_image
+      linked_image: linked_image
       card: card
       card_group: card_group
       embedded_video: embedded_video
@@ -46,51 +48,54 @@ settings:
     negate: 0
     target_bundles_drag_drop:
       card:
-        weight: -13
+        weight: -30
         enabled: true
       card_group:
-        weight: -12
+        weight: -29
         enabled: true
       correction:
-        weight: 19
+        weight: -26
         enabled: false
       department_email:
-        weight: 20
+        weight: -24
         enabled: false
       department_phone:
-        weight: 21
+        weight: -22
         enabled: false
       embedded_tabbed_content:
-        weight: 22
+        weight: -21
         enabled: true
       embedded_video:
-        weight: -11
+        weight: -28
         enabled: true
       featured_quote:
-        weight: 24
+        weight: -20
         enabled: false
       file_attachment:
-        weight: -10
+        weight: -27
         enabled: true
       heading_h2:
-        weight: -17
+        weight: -35
         enabled: true
       image:
-        weight: -15
+        weight: -33
+        enabled: true
+      linked_image:
+        weight: -31
         enabled: true
       tab:
-        weight: 28
+        weight: -19
         enabled: false
       tall_image:
-        weight: -14
+        weight: -32
         enabled: true
       text:
-        weight: -16
+        weight: -34
         enabled: true
       two_column_text_and_card:
-        weight: 19
+        weight: -25
         enabled: true
       two_column_text_and_image:
-        weight: 20
+        weight: -23
         enabled: true
 field_type: entity_reference_revisions
