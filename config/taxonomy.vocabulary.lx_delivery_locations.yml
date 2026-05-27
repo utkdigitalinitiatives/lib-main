@@ -1,0 +1,9 @@
+uuid: dda1d3af-6c9c-4bc6-8d44-6e4c0176dfa9
+langcode: en
+status: true
+dependencies: {  }
+name: 'Lx Delivery Locations'
+vid: lx_delivery_locations
+description: "Delivery locations for campus departments –\_managed by feeds import"
+weight: 0
+new_revision: false

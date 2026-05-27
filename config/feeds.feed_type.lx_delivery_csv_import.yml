@@ -1,0 +1,70 @@
+uuid: 153a727c-045d-4375-a469-c3228052e804
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.lx_delivery_locations.field_delivery_location
+    - taxonomy.vocabulary.lx_delivery_locations
+  module:
+    - taxonomy
+label: 'Lx Delivery CSV import'
+id: lx_delivery_csv_import
+description: ''
+help: ''
+import_period: 43200
+import_period_per_feed: false
+fetcher: http
+fetcher_configuration:
+  auto_detect_feeds: false
+  use_pubsubhubbub: false
+  always_download: false
+  fallback_hub: ''
+  request_timeout: 30
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:taxonomy_term'
+processor_configuration:
+  values:
+    vid: lx_delivery_locations
+  langcode: en
+  insert_new: 1
+  update_existing: 0
+  update_non_existent: _keep
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: false
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 0
+custom_sources:
+  department:
+    value: Department
+    label: Department
+    machine_name: department
+    type: csv
+  locale:
+    value: Locale
+    label: Locale
+    machine_name: locale
+    type: csv
+mappings:
+  -
+    target: name
+    map:
+      value: department
+    settings:
+      language: null
+    unique:
+      value: 1
+  -
+    target: field_delivery_location
+    map:
+      value: locale
+    settings:
+      language: null
+    unique: {  }
