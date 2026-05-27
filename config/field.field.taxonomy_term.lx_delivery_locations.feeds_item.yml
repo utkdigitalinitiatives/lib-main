@@ -1,0 +1,23 @@
+uuid: 5b0980f9-85af-4d8f-b547-463388006605
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.feeds_item
+    - taxonomy.vocabulary.lx_delivery_locations
+  module:
+    - feeds
+id: taxonomy_term.lx_delivery_locations.feeds_item
+field_name: feeds_item
+entity_type: taxonomy_term
+bundle: lx_delivery_locations
+label: 'Feeds item'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:feeds_feed'
+  handler_settings: {  }
+field_type: feeds_item

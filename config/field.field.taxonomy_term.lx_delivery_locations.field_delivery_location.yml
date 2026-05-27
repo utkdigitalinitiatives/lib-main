@@ -1,0 +1,19 @@
+uuid: f8770cbc-cd29-4126-b13d-65252657596c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_delivery_location
+    - taxonomy.vocabulary.lx_delivery_locations
+id: taxonomy_term.lx_delivery_locations.field_delivery_location
+field_name: field_delivery_location
+entity_type: taxonomy_term
+bundle: lx_delivery_locations
+label: 'Delivery Location'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
