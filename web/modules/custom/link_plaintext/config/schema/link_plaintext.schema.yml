@@ -2,11 +2,11 @@
 
 field.formatter.settings.link_title_url_plaintext:
   type: mapping
-  label: 'Link title + URL (plain text) formatter settings'
+  label: "Link title + URL (plain text) formatter settings"
   mapping:
     separator_mode:
       type: string
-      label: 'Separator mode'
+      label: "Separator mode"
       constraints:
         Choice:
           choices:
@@ -15,10 +15,10 @@ field.formatter.settings.link_title_url_plaintext:
             - custom
     separator:
       type: string
-      label: 'Custom separator'
+      label: "Custom separator"
     absolute_url:
       type: boolean
-      label: 'Force absolute URLs'
+      label: "Force absolute URLs"
     wrap_parts:
       type: boolean
-      label: 'Wrap title and URL in separate elements'
+      label: "Wrap title and URL in separate elements"
