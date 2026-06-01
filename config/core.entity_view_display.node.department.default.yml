@@ -146,3 +146,5 @@ hidden:
   feeds_item: true
   field_hide_from_directory: true
   field_library_leadership: true
+  langcode: true
+  search_api_excerpt: true
