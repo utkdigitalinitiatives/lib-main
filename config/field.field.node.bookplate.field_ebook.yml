@@ -1,0 +1,21 @@
+uuid: c26d8aa7-e082-47c1-af64-3fd0bc7cb453
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ebook
+    - node.type.bookplate
+id: node.bookplate.field_ebook
+field_name: field_ebook
+entity_type: node
+bundle: bookplate
+label: Ebook
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

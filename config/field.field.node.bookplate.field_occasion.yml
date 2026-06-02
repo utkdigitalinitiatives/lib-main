@@ -1,0 +1,24 @@
+uuid: 7deb87d8-07bc-4123-be0b-89456f35f4b5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_occasion
+    - filter.format.editor_html
+    - node.type.bookplate
+  module:
+    - text
+id: node.bookplate.field_occasion
+field_name: field_occasion
+entity_type: node
+bundle: bookplate
+label: Occasion
+description: 'Reason for award, usually beginning with "On the occasion of..."'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - editor_html
+field_type: text_long

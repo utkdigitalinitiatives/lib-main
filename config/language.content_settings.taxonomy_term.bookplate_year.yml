@@ -1,0 +1,11 @@
+uuid: 502ada61-659c-4f5d-a735-31cbe494ec5d
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.bookplate_year
+id: taxonomy_term.bookplate_year
+target_entity_type_id: taxonomy_term
+target_bundle: bookplate_year
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,222 @@
+uuid: ee7f639c-97ac-4cee-9882-8bbc63e2c449
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.base_field_override.node.bookplate.title
+    - field.field.node.bookplate.field_award_year
+    - field.field.node.bookplate.field_book_author
+    - field.field.node.bookplate.field_book_title
+    - field.field.node.bookplate.field_bp_department
+    - field.field.node.bookplate.field_ebook
+    - field.field.node.bookplate.field_is_author
+    - field.field.node.bookplate.field_isbn
+    - field.field.node.bookplate.field_link_to_record
+    - field.field.node.bookplate.field_occasion
+    - field.field.node.bookplate.field_position_role
+    - field.field.node.bookplate.field_why_chosen
+    - node.type.bookplate
+  module:
+    - feeds_tamper
+    - node
+third_party_settings:
+  feeds_tamper:
+    tampers:
+      1528acff-03a1-4c6a-b34b-1c49810f9ceb:
+        true_value: '1'
+        false_value: '0'
+        match_case: false
+        no_match_value: pass
+        uuid: 1528acff-03a1-4c6a-b34b-1c49810f9ceb
+        plugin: convert_boolean
+        source: is_author
+        weight: 0
+        label: 'Convert to Boolean'
+      28b3cbef-9d43-4463-ba77-257f84ef9ce8:
+        true_value: '1'
+        false_value: '0'
+        match_case: false
+        no_match_value: pass
+        uuid: 28b3cbef-9d43-4463-ba77-257f84ef9ce8
+        plugin: convert_boolean
+        source: ebook
+        weight: 0
+        label: 'Convert to Boolean'
+label: 'Bookplate Import'
+id: bookplate_import
+description: ''
+help: ''
+import_period: -1
+import_period_per_feed: false
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'public://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: bookplate
+  langcode: en
+  insert_new: 1
+  update_existing: 0
+  update_non_existent: _keep
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: true
+  revision: false
+  expire: -1
+  owner_feed_author: true
+  owner_id: 0
+custom_sources:
+  title:
+    value: Title
+    label: Title
+    machine_name: title
+    type: csv
+  position_role:
+    value: Position/Role
+    label: Position/Role
+    machine_name: position_role
+    type: csv
+  department:
+    value: Department
+    label: Department
+    machine_name: department
+    type: csv
+  award_year:
+    value: 'Award Year'
+    label: 'Award Year'
+    machine_name: award_year
+    type: csv
+  occasion:
+    value: Occasion
+    label: Occasion
+    machine_name: occasion
+    type: csv
+  is_author:
+    value: 'Is Author'
+    label: 'Is Author'
+    machine_name: is_author
+    type: csv
+  book_title:
+    value: 'Book Title'
+    label: 'Book Title'
+    machine_name: book_title
+    type: csv
+  book_author:
+    value: 'Book Author'
+    label: 'Book Author'
+    machine_name: book_author
+    type: csv
+  isbn:
+    value: ISBN
+    label: ISBN
+    machine_name: isbn
+    type: csv
+  ebook:
+    value: Ebook
+    label: Ebook
+    machine_name: ebook
+    type: csv
+  why_was_this_book_chosen:
+    value: 'Why was this book chosen?'
+    label: 'Why was this book chosen?'
+    machine_name: why_was_this_book_chosen
+    type: csv
+  link_to_record:
+    value: 'Link to Record'
+    label: 'Link to Record'
+    machine_name: link_to_record
+    type: csv
+mappings:
+  -
+    target: title
+    map:
+      value: title
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_position_role
+    map:
+      value: position_role
+    settings:
+      language: ''
+      format: editor_html
+  -
+    target: field_bp_department
+    map:
+      value: department
+    settings:
+      language: ''
+      format: editor_html
+  -
+    target: field_award_year
+    map:
+      target_id: award_year
+    settings:
+      language: ''
+      reference_by: name
+      feeds_item: guid
+      autocreate: 1
+      autocreate_bundle: bookplate_year
+  -
+    target: field_occasion
+    map:
+      value: occasion
+    settings:
+      language: ''
+      format: editor_html
+  -
+    target: field_is_author
+    map:
+      value: is_author
+    settings:
+      language: null
+  -
+    target: field_book_title
+    map:
+      value: book_title
+    settings:
+      language: ''
+      format: editor_html
+  -
+    target: field_book_author
+    map:
+      value: book_author
+    settings:
+      language: ''
+      format: editor_html
+  -
+    target: field_isbn
+    map:
+      value: isbn
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_ebook
+    map:
+      value: ebook
+    settings:
+      language: null
+  -
+    target: field_why_chosen
+    map:
+      value: why_was_this_book_chosen
+    settings:
+      language: null
+      format: plain_text
+  -
+    target: field_link_to_record
+    map:
+      uri: link_to_record
+      title: ''
+    settings:
+      language: null

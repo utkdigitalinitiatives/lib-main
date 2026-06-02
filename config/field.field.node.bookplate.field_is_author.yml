@@ -1,0 +1,21 @@
+uuid: 6227b777-c133-4dca-8113-d1f60ab961f1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_is_author
+    - node.type.bookplate
+id: node.bookplate.field_is_author
+field_name: field_is_author
+entity_type: node
+bundle: bookplate
+label: 'Is Author'
+description: 'Select if the honoree is the author of the chosen book'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

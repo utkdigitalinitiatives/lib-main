@@ -7,7 +7,6 @@ dependencies:
   module:
     - filter
     - media
-    - search
     - system
 _core:
   default_config_hash: xLG41YbRo2NP-0SgRNTkMzLEuaeibanGXgUTbdIcIIg
@@ -17,6 +16,5 @@ weight: 0
 is_admin: false
 permissions:
   - 'access content'
-  - 'search content'
   - 'use text format restricted_html'
   - 'view media'

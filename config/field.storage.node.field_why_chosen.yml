@@ -1,0 +1,19 @@
+uuid: ceca2ed4-2cea-4c30-bd87-bfc343f2bebc
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_why_chosen
+field_name: field_why_chosen
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
