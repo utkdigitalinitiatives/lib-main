@@ -31,6 +31,45 @@ echo "Syncing active configuration with committed config files..."
 ddev drush config:import -y
 
 echo
+echo "Running local upload scheme diagnostic..."
+DIAGNOSTIC_OUTPUT="$(ddev drush php:eval '
+$checks = [
+  "system.file" => "default_scheme",
+  "field.storage.media.field_media_image" => "settings.uri_scheme",
+  "field.storage.media.field_media_document" => "settings.uri_scheme",
+  "field.storage.media.field_media_audio_file" => "settings.uri_scheme",
+  "field.storage.media.field_media_video_file" => "settings.uri_scheme",
+  "field.storage.user.user_picture" => "settings.uri_scheme",
+  "editor.editor.basic_html" => "image_upload.scheme",
+  "editor.editor.full_html" => "image_upload.scheme",
+];
+
+$violations = [];
+foreach ($checks as $config_name => $config_path) {
+  $value = \Drupal::config($config_name)->get($config_path);
+  if ($value !== "public") {
+    $formatted = is_scalar($value) || $value === NULL ? var_export($value, TRUE) : json_encode($value);
+    $violations[] = "$config_name:$config_path=$formatted";
+  }
+}
+
+if (empty($violations)) {
+  echo "OK";
+}
+else {
+  echo implode(PHP_EOL, $violations);
+}
+')"
+
+if [[ "${DIAGNOSTIC_OUTPUT}" == "OK" ]]; then
+  echo "Upload scheme diagnostic passed: local upload targets resolve to public://"
+else
+  echo "WARNING: One or more upload targets are not using public://"
+  echo "${DIAGNOSTIC_OUTPUT}"
+  echo "Uploads may fail in local unless settings.local.php overrides are active."
+fi
+
+echo
 echo "Pulling Azure Blob assets into local public files directory..."
 ddev pull-assets
 
