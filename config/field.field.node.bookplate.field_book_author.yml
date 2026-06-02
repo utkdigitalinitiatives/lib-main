@@ -1,0 +1,24 @@
+uuid: 003cd959-5c57-4964-897b-75d0dbcefd07
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_book_author
+    - filter.format.editor_html
+    - node.type.bookplate
+  module:
+    - text
+id: node.bookplate.field_book_author
+field_name: field_book_author
+entity_type: node
+bundle: bookplate
+label: 'Book Author'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - editor_html
+field_type: text

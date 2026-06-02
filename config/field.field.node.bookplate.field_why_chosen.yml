@@ -1,0 +1,24 @@
+uuid: 25e3d49d-b077-42aa-b8a3-5bb3a0748697
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_why_chosen
+    - filter.format.editor_html
+    - node.type.bookplate
+  module:
+    - text
+id: node.bookplate.field_why_chosen
+field_name: field_why_chosen
+entity_type: node
+bundle: bookplate
+label: 'Why was this book chosen'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - editor_html
+field_type: text_long

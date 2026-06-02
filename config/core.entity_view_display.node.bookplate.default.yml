@@ -1,0 +1,144 @@
+uuid: 653edbe0-2a77-4cc3-a9f2-9f33099f65dd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.bookplate.field_award_year
+    - field.field.node.bookplate.field_book_author
+    - field.field.node.bookplate.field_book_cover
+    - field.field.node.bookplate.field_book_title
+    - field.field.node.bookplate.field_bp_department
+    - field.field.node.bookplate.field_ebook
+    - field.field.node.bookplate.field_honoree_photo
+    - field.field.node.bookplate.field_is_author
+    - field.field.node.bookplate.field_isbn
+    - field.field.node.bookplate.field_link_to_record
+    - field.field.node.bookplate.field_occasion
+    - field.field.node.bookplate.field_position_role
+    - field.field.node.bookplate.field_why_chosen
+    - node.type.bookplate
+  module:
+    - link
+    - text
+    - user
+id: node.bookplate.default
+targetEntityType: node
+bundle: bookplate
+mode: default
+content:
+  field_award_year:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_book_author:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_book_cover:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_book_title:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_bp_department:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_ebook:
+    type: boolean
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  field_honoree_photo:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 107
+    region: content
+  field_is_author:
+    type: boolean
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 108
+    region: content
+  field_isbn:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 109
+    region: content
+  field_link_to_record:
+    type: link
+    label: hidden
+    settings:
+      trim_length: null
+      url_only: true
+      url_plain: true
+      rel: '0'
+      target: '0'
+    third_party_settings: {  }
+    weight: 110
+    region: content
+  field_occasion:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 111
+    region: content
+  field_position_role:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 112
+    region: content
+  field_why_chosen:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 113
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

@@ -1,0 +1,24 @@
+uuid: 8bb2bfec-3356-4f38-b8cb-e8970fa9b7e3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_book_title
+    - filter.format.editor_html
+    - node.type.bookplate
+  module:
+    - text
+id: node.bookplate.field_book_title
+field_name: field_book_title
+entity_type: node
+bundle: bookplate
+label: 'Book Title'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - editor_html
+field_type: text
