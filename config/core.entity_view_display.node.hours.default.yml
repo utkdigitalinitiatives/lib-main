@@ -62,3 +62,5 @@ content:
 hidden:
   feeds_item: true
   field_lid: true
+  langcode: true
+  search_api_excerpt: true

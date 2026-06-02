@@ -1,0 +1,24 @@
+# Schema for the configuration files of the Link Plaintext Formatter module.
+
+field.formatter.settings.link_title_url_plaintext:
+  type: mapping
+  label: "Link title + URL (plain text) formatter settings"
+  mapping:
+    separator_mode:
+      type: string
+      label: "Separator mode"
+      constraints:
+        Choice:
+          choices:
+            - space
+            - newline
+            - custom
+    separator:
+      type: string
+      label: "Custom separator"
+    absolute_url:
+      type: boolean
+      label: "Force absolute URLs"
+    wrap_parts:
+      type: boolean
+      label: "Wrap title and URL in separate elements"

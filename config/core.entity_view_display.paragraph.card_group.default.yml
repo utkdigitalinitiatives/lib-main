@@ -23,3 +23,4 @@ content:
     region: content
 hidden:
   field_card: true
+  search_api_excerpt: true
