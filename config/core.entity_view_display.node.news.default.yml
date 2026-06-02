@@ -53,8 +53,8 @@ content:
     settings:
       separator_mode: newline
       separator: ' — '
-      absolute_url: '1'
-      wrap_parts: '1'
+      absolute_url: true
+      wrap_parts: true
     third_party_settings: {  }
     weight: 106
     region: content

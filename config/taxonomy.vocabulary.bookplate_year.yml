@@ -1,0 +1,9 @@
+uuid: f9dde04b-2519-4226-8fde-c2a82f181472
+langcode: en
+status: true
+dependencies: {  }
+name: 'Bookplate Year'
+vid: bookplate_year
+description: null
+weight: 0
+new_revision: false

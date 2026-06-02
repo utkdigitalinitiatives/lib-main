@@ -1,0 +1,29 @@
+uuid: f2de2303-0bd0-4ff6-ac79-31970018f66d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_award_year
+    - node.type.bookplate
+    - taxonomy.vocabulary.bookplate_year
+id: node.bookplate.field_award_year
+field_name: field_award_year
+entity_type: node
+bundle: bookplate
+label: 'Award Year'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      bookplate_year: bookplate_year
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference
