@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.bookplate.feeds_item
     - field.field.node.bookplate.field_award_year
     - field.field.node.bookplate.field_book_author
     - field.field.node.bookplate.field_book_cover
@@ -220,5 +221,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
 hidden:
+  feeds_item: true
   promote: true
   sticky: true

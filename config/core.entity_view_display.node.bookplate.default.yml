@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.bookplate.feeds_item
     - field.field.node.bookplate.field_award_year
     - field.field.node.bookplate.field_book_author
     - field.field.node.bookplate.field_book_cover
@@ -140,5 +141,6 @@ content:
     weight: 100
     region: content
 hidden:
+  feeds_item: true
   langcode: true
   search_api_excerpt: true
