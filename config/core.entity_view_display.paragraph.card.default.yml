@@ -23,7 +23,7 @@ content:
       view_mode: card
       link: false
     third_party_settings: {  }
-    weight: 3
+    weight: 0
     region: content
   field_card_link:
     type: link_title_url_plaintext
@@ -34,7 +34,7 @@ content:
       absolute_url: true
       wrap_parts: true
     third_party_settings: {  }
-    weight: 4
+    weight: 3
     region: content
   field_card_text:
     type: text_default
