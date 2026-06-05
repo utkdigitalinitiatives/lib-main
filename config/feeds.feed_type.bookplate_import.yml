@@ -211,8 +211,8 @@ mappings:
     map:
       value: why_was_this_book_chosen
     settings:
-      language: null
-      format: plain_text
+      language: ''
+      format: editor_html
   -
     target: field_link_to_record
     map:
