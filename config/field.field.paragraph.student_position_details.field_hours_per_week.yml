@@ -1,0 +1,23 @@
+uuid: 1ac4e0fd-5b48-42b1-9c21-dd29dc657540
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_hours_per_week
+    - paragraphs.paragraphs_type.student_position_details
+id: paragraph.student_position_details.field_hours_per_week
+field_name: field_hours_per_week
+entity_type: paragraph
+bundle: student_position_details
+label: 'Hours per Week'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

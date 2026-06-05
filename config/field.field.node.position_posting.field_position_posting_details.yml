@@ -1,0 +1,95 @@
+uuid: 4faed3eb-84fc-423e-8b22-90b540c26ada
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_position_posting_details
+    - node.type.position_posting
+    - paragraphs.paragraphs_type.faculty_position_details
+    - paragraphs.paragraphs_type.staff_position_details
+    - paragraphs.paragraphs_type.student_position_details
+  module:
+    - entity_reference_revisions
+id: node.position_posting.field_position_posting_details
+field_name: field_position_posting_details
+entity_type: node
+bundle: position_posting
+label: 'Position Posting Details'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      faculty_position_details: faculty_position_details
+      staff_position_details: staff_position_details
+      student_position_details: student_position_details
+    negate: 0
+    target_bundles_drag_drop:
+      card:
+        weight: 22
+        enabled: false
+      card_group:
+        weight: 23
+        enabled: false
+      correction:
+        weight: 24
+        enabled: false
+      department_email:
+        weight: 25
+        enabled: false
+      department_phone:
+        weight: 26
+        enabled: false
+      embedded_tabbed_content:
+        weight: 27
+        enabled: false
+      embedded_video:
+        weight: 28
+        enabled: false
+      embedded_view:
+        weight: 29
+        enabled: false
+      faculty_position_details:
+        weight: 30
+        enabled: true
+      featured_quote:
+        weight: 31
+        enabled: false
+      file_attachment:
+        weight: 32
+        enabled: false
+      heading_h2:
+        weight: 33
+        enabled: false
+      image:
+        weight: 34
+        enabled: false
+      linked_image:
+        weight: 35
+        enabled: false
+      staff_position_details:
+        weight: 36
+        enabled: true
+      student_position_details:
+        weight: 37
+        enabled: true
+      tab:
+        weight: 38
+        enabled: false
+      tall_image:
+        weight: 39
+        enabled: false
+      text:
+        weight: 40
+        enabled: false
+      two_column_text_and_card:
+        weight: 41
+        enabled: false
+      two_column_text_and_image:
+        weight: 42
+        enabled: false
+field_type: entity_reference_revisions

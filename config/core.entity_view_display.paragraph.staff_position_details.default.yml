@@ -1,0 +1,31 @@
+uuid: 115d161c-e077-4fd8-8ba4-b229e8ed2af1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.staff_position_details.field_market_range
+    - field.field.paragraph.staff_position_details.field_staff_category
+    - paragraphs.paragraphs_type.staff_position_details
+id: paragraph.staff_position_details.default
+targetEntityType: paragraph
+bundle: staff_position_details
+mode: default
+content:
+  field_market_range:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_staff_category:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  search_api_excerpt: true

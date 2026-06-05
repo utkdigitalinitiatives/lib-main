@@ -1,0 +1,10 @@
+uuid: 6b8bdeac-ceee-4179-a8b1-c096befa115d
+langcode: en
+status: true
+dependencies: {  }
+id: student_position_details
+label: 'Student Position Details '
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

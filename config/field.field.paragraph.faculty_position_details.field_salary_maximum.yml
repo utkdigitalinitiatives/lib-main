@@ -1,0 +1,23 @@
+uuid: 7f77c540-ba56-4e42-99d9-d30bdf8c3071
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_salary_maximum
+    - paragraphs.paragraphs_type.faculty_position_details
+id: paragraph.faculty_position_details.field_salary_maximum
+field_name: field_salary_maximum
+entity_type: paragraph
+bundle: faculty_position_details
+label: 'Salary Maximum'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

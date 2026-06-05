@@ -1,0 +1,23 @@
+uuid: 796103fa-f8ed-443a-a05f-bbb7b2d20f82
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_hourly_wage
+    - paragraphs.paragraphs_type.student_position_details
+id: paragraph.student_position_details.field_hourly_wage
+field_name: field_hourly_wage
+entity_type: paragraph
+bundle: student_position_details
+label: 'Hourly Wage'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: $
+  suffix: ''
+field_type: decimal
