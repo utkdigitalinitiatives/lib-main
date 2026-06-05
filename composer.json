@@ -33,7 +33,7 @@
         "drupal/group_action": "^1.2",
         "drupal/key": ">=1.15",
         "drupal/paragraphs": "^1.20",
-        "drupal/pathauto": "^1.14",
+        "drupal/pathauto": "^1.15",
         "drupal/search_api_autocomplete": "^1.11",
         "drupal/search_api_solr": "^4.3",
         "drupal/tamper": "^1.0@beta",

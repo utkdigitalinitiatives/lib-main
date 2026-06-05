@@ -15,7 +15,7 @@ mode: default
 content:
   field_link_image:
     type: entity_reference_entity_view
-    label: above
+    label: hidden
     settings:
       view_mode: default
       link: false
@@ -24,7 +24,7 @@ content:
     region: content
   field_link_target:
     type: link
-    label: above
+    label: hidden
     settings:
       trim_length: null
       url_only: true

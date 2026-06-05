@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9d7717b0bd6d7c0942845a99ecbe3924",
+    "content-hash": "8b3f0c34dbbc13db733e85d66f97c887",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1293,7 +1293,7 @@
         },
         {
             "name": "drupal/core-recipe-unpack",
-            "version": "11.3.10",
+            "version": "11.3.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-recipe-unpack.git",
@@ -1331,7 +1331,7 @@
                 "drupal"
             ],
             "support": {
-                "source": "https://github.com/drupal/core-recipe-unpack/tree/11.3.10"
+                "source": "https://github.com/drupal/core-recipe-unpack/tree/11.3.11"
             },
             "time": "2025-10-28T11:20:22+00:00"
         },
