@@ -1,0 +1,32 @@
+id: news_section_tall_image
+label: "News tall image paragraphs"
+migration_group: news
+migration_tags: []
+
+source:
+  plugin: eligible_news_section_tall_image_paragraphs
+  cutoff_date: "2021-06-08 00:00:00"
+
+process:
+  type:
+    plugin: default_value
+    default_value: tall_image
+
+  field_decorative:
+    plugin: default_value
+    default_value: 0
+
+  field_image/target_id:
+    plugin: migration_lookup
+    migration: news_media_image
+    source: source_media_id
+
+  field_image_caption/value: caption_value
+  field_image_caption/format:
+    plugin: default_value
+    default_value: editor_html
+
+destination:
+  plugin: "entity_reference_revisions:paragraph"
+
+migration_dependencies: {}

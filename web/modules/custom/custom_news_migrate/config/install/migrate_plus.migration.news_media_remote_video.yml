@@ -1,0 +1,29 @@
+id: news_media_remote_video
+label: "News remote video media"
+migration_group: news
+migration_tags: []
+
+source:
+  plugin: eligible_news_remote_video_media
+  cutoff_date: "2021-06-08 00:00:00"
+
+process:
+  bundle:
+    plugin: default_value
+    default_value: remote_video
+
+  uid:
+    plugin: default_value
+    default_value: 1
+
+  name: name
+  status: status
+  created: created
+  changed: changed
+
+  field_media_oembed_video/value: video_url
+
+destination:
+  plugin: "entity:media"
+
+migration_dependencies: {}
