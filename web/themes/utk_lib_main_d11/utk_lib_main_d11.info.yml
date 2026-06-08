@@ -1,0 +1,26 @@
+name: utk_lib_main_d11
+type: theme
+'base theme': stable9
+version: 1.0.0
+libraries:
+  - utk_lib_main_d11/base
+  - utk_lib_main_d11/messages
+  - core/normalize
+libraries-extend:
+  user/drupal.user:
+    - utk_lib_main_d11/user
+  core/drupal.dropbutton:
+    - utk_lib_main_d11/dropbutton
+  core/drupal.dialog:
+    - utk_lib_main_d11/dialog
+  file/drupal.file:
+    - utk_lib_main_d11/file
+  core/drupal.item-list:
+    - utk_lib_main_d11/item-list
+  core/drupal.progress:
+    - utk_lib_main_d11/progress
+  core/drupal.tablesort:
+    - utk_lib_main_d11/drupal.tablesort
+description: ''
+core_version_requirement: ^11
+generator: 'starterkit_theme:11.3.11'
