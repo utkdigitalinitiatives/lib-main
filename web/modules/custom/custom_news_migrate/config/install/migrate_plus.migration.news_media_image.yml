@@ -1,0 +1,32 @@
+id: news_media_image
+label: "News image media"
+migration_group: news
+migration_tags: []
+
+source:
+  plugin: eligible_news_section_image_media
+  cutoff_date: "2021-06-08 00:00:00"
+
+process:
+  bundle:
+    plugin: default_value
+    default_value: image
+
+  uid:
+    plugin: default_value
+    default_value: 1
+
+  name: name
+  status: status
+  created: created
+  changed: changed
+
+  field_media_image/target_id:
+    plugin: migration_lookup
+    migration: news_file_image
+    source: file_target_id
+
+destination:
+  plugin: "entity:media"
+
+migration_dependencies: {}

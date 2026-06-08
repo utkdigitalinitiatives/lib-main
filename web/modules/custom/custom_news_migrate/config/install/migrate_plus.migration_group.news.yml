@@ -1,0 +1,8 @@
+id: news
+label: "News migrations"
+description: "Migrations for Drupal 10 news_article content into Drupal 11 news content."
+source_type: "Drupal 10"
+module: custom_news_migrate
+shared_configuration:
+  source:
+    key: migrate

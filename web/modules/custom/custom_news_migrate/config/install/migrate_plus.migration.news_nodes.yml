@@ -1,0 +1,41 @@
+id: news_nodes
+label: "News nodes"
+migration_group: news
+migration_tags: []
+
+source:
+  plugin: eligible_news_nodes
+  cutoff_date: "2021-06-08 00:00:00"
+
+process:
+  type:
+    plugin: default_value
+    default_value: news
+
+  title: title
+
+  uid:
+    plugin: default_value
+    default_value: 1
+
+  field_blurb/value: blurb
+  field_blurb/format:
+    plugin: default_value
+    default_value: editor_html
+
+  field_update_label/value: update_label
+  field_update_label/format:
+    plugin: default_value
+    default_value: editor_html
+
+  field_update_text/value: update_text
+  field_update_text/format:
+    plugin: default_value
+    default_value: editor_html
+
+  field_publishing_date/value: publishing_date
+
+destination:
+  plugin: "entity:node"
+
+migration_dependencies: {}
