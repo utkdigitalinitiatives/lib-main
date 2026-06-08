@@ -1,0 +1,108 @@
+
+{#
+/**
+ * UTK Bookplate Modal
+ * 
+ * This template is used to render a bookplate modal component with custom styling and layout.
+ *
+ *
+ * Variables:
+ *   - modalId, modalLabel : IDs for modal and aria-labelledby
+ *   - cover_src, cover_alt : Book cover image + alt
+ *   - headshot_src, headshot_alt
+ *   - honoree_name 
+ *   - book_title, book_author, award_year
+ *   - position_role, department
+ *   - occasion, why_chosen
+ *   - ebook
+ *   - record_url : Used for footer button; falls back to `url`
+ *   - url : Node canonical URL (fallback)
+ *
+ * Customizations:
+ *   - All optional fields are conditionally rendered.
+ *   - Two-column layout on large, stacked on small screens.
+ */
+#}
+
+<div class="modal fade bookplate-modal" id="{{ modalId }}" tabindex="-1" aria-hidden="true" aria-labelledby="{{ modalLabel }}">
+
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-body p-0">
+        <div class="row g-0 align-items-start">
+          <div class="col-lg-6 p-4 d-flex justify-content-center align-items-start bookplate-pane--cover">
+            <img src="{{ cover_src }}" alt="{{ cover_alt }}" class="img-fluid" loading="lazy" />
+
+            {% if is_author %}
+              <span class="bookplate-isauthor-badge">Written by the Honoree</span>
+            {% endif %}
+          </div>
+          
+          <div class="col-lg-6 p-4 bookplate-stack">
+           <section class="bookplate-pane--honoree p-3 p-lg-4">
+            <header class="d-flex justify-content-between align-items-start">
+            <div class="pe-3">
+                {% if honoree_name is not null and honoree_name|trim != '' %}
+                <h2 id="{{ modalLabel }}" class="m-0 fw-bold">{% autoescape false %}{{ honoree_name }}{% endautoescape %}</h2>
+                {% endif %}
+            </div>
+
+            {% if headshot_src %}
+                <img src="{{ headshot_src }}" alt="{{ headshot_alt }}"
+                    class="rounded-circle ms-3 flex-shrink-0">
+            {% endif %}
+            </header>
+
+            <span class="mt-2 d-block" aria-hidden="true"></span>
+
+             {% if award_year %}
+              <div class="bookplate-meta text-nowrap mt-3">
+                <strong>Award Year</strong> - {{ award_year }}
+              </div>
+            {% endif %}
+            {# {{ dd() }} #}
+            {% if department %}
+              <div class="bookplate-meta mt-3">
+                <strong>Department</strong> - {% autoescape false %}{{ department[0]["#text"] }}{% endautoescape %}
+              </div>
+            {% endif %}
+
+            {% if occasion %}
+              <div class="fst-italic text-muted mt-3 fw-semibold">{{ occasion }}</div>
+            {% endif %}
+
+            {% if why_chosen[0] is not null %}
+              <div class="mt-3 ps-3 border-start border-3" style="border-color:#ff8200 !important;">
+                <blockquote class="mb-0">{{ why_chosen }}</blockquote>
+              </div>
+            {% endif %}
+
+            </section>
+
+            <section class="bookplate-pane--details p-3 p-lg-4">
+
+            {% if book_title %}
+              <h3 class="mt-2 mb-2 text-uppercase fw-bold">{{ book_title }}</h3>
+              <span class="bookplate-accent d-block mb-3" aria-hidden="true"></span>
+            {% endif %}
+
+            <div class="bookplate-bookmeta">
+            {% if book_author %}<p class="mb-1"><strong>Author</strong> — {% autoescape false %}{{ book_author }}{% endautoescape %}</p>{% endif %}
+            {% if ebook.0["#markup"] == "Yes" %}<p class="mb-1">Ebook</p>{% endif %}
+            </div>
+
+             <div class="fst-italic text-muted my-2 small">
+                <a href="{{ record_url ?: url }}">Link to the book 
+                  <span class="svg-settings fluent-icon-external" style="width:12px; height:12px; display:inline-block; position:relative; top:1px; margin-left:2px;"></span>
+                </a>
+            </div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

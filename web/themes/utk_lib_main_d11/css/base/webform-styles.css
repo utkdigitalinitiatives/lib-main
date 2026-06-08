@@ -1,7 +1,7 @@
 .webform-title {
     font-size: 45px;
     font-weight: 500;
-    background: url('/themes/utk_lib_mainsite_theme/images/form-title-background.svg') center / cover no-repeat;
+    background: url('/themes/utk_lib_main_d11/images/form-title-background.svg') center / cover no-repeat;
     color: var(--utk-logo--white);
     margin-bottom: 20px;
 }
@@ -93,15 +93,15 @@
     font-weight: normal;
 }
 
-.utk--webform .form-item:not(.form-type-radio):not(.form-type-checkbox) > label {
-  display: block;
-  margin-bottom: 4px;  
-  line-height: 1.2;
+.utk--webform .form-item:not(.form-type-radio):not(.form-type-checkbox)>label {
+    display: block;
+    margin-bottom: 4px;
+    line-height: 1.2;
 }
 
-.utk--webform fieldset > legend,
-.utk--webform details.webform-details > summary, 
-.utk--webform .js-form-type-webform-markup h2{
+.utk--webform fieldset>legend,
+.utk--webform details.webform-details>summary,
+.utk--webform .js-form-type-webform-markup h2 {
     display: block;
     margin-top: 15px;
     padding-bottom: 10px;
@@ -233,7 +233,7 @@
 .utk--webform input[type=file] {
     overflow: hidden;
     max-width: 100%;
-    padding-right: 0; 
+    padding-right: 0;
 }
 
 .utk--webform input[type=file]:not(:disabled):not([readonly]) {
@@ -336,17 +336,19 @@
 }
 
 @media (min-width: 850px) {
-  .utk--webform.utk-article p,
-  .utk--webform .js-form-type-webform-markup p,
-  .utk--webform .form-item .description p {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    text-align: left; /* just in case */
-  }
+
+    .utk--webform.utk-article p,
+    .utk--webform .js-form-type-webform-markup p,
+    .utk--webform .form-item .description p {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        text-align: left;
+        /* just in case */
+    }
 }
 
 
-.utk--webform .form-item--radios .form-radios { 
+.utk--webform .form-item--radios .form-radios {
     display: block;
     margin: 0;
     padding: 0;
@@ -358,69 +360,57 @@
     padding: 0 !important;
 }
 
-.utk--webform { 
-    --wf-gap: 1.75rem; 
-}  
+.utk--webform {
+    --wf-gap: 1.75rem;
+}
 
-.utk--webform :where(
-   .js-form-item,
-   .form-item,
-   .form-item--radios,
-   .form-item--checkboxes,
-   .js-form-type-webform-markup,
-   fieldset,
-   details.webform-details,
-   .webform-section,
-   .form-actions,
-   .webform-actions
- ) {
-   margin-top: 0 !important;
-   margin-bottom: 0 !important;
- }
+.utk--webform :where(.js-form-item,
+    .form-item,
+    .form-item--radios,
+    .form-item--checkboxes,
+    .js-form-type-webform-markup,
+    fieldset,
+    details.webform-details,
+    .webform-section,
+    .form-actions,
+    .webform-actions) {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
 
 
-.utk--webform :where(
-   .js-form-item,
-   .form-item,
-   .form-item--radios,
-   .form-item--checkboxes,
-   .js-form-type-webform-markup,
-   fieldset,
-   details.webform-details,
-   .webform-section,
-   .form-actions,
-  .webform-actions
- ) + :where(
-   .js-form-item,
-   .form-item,
-   .form-item--radios,
-   .form-item--checkboxes,
-   .js-form-type-webform-markup,
-   fieldset,
-   details.webform-details,
-   .webform-section,
-   .form-actions,
-   .webform-actions
- ) {
-   margin-top: var(--wf-gap) !important;
+.utk--webform :where(.js-form-item,
+    .form-item,
+    .form-item--radios,
+    .form-item--checkboxes,
+    .js-form-type-webform-markup,
+    fieldset,
+    details.webform-details,
+    .webform-section,
+    .form-actions,
+    .webform-actions)+ :where(.js-form-item,
+    .form-item,
+    .form-item--radios,
+    .form-item--checkboxes,
+    .js-form-type-webform-markup,
+    fieldset,
+    details.webform-details,
+    .webform-section,
+    .form-actions,
+    .webform-actions) {
+    margin-top: var(--wf-gap) !important;
 }
 
 .utk--webform :is(.form-actions, .webform-actions) {
-  margin-top: 0 !important;              
-  padding-top: var(--wf-gap);       
-  padding-bottom: var(--wf-gap);     
+    margin-top: 0 !important;
+    padding-top: var(--wf-gap);
+    padding-bottom: var(--wf-gap);
 }
 
 .utk--webform :is(button[type=submit], input[type=submit]) {
-  margin-top: var(--wf-gap);
+    margin-top: var(--wf-gap);
 }
 
-.utk--webform :is(.form-actions, .webform-actions)
-  :is(button[type=submit], input[type=submit]) {
-  margin-top: 0 !important;
+.utk--webform :is(.form-actions, .webform-actions) :is(button[type=submit], input[type=submit]) {
+    margin-top: 0 !important;
 }
-
-
-
-
-

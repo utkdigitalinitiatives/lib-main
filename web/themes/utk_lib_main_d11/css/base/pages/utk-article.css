@@ -10,14 +10,14 @@
 }
 
 .svg-background-wrapper {
-    background: url('/themes/utk_lib_mainsite_theme/images/subtle-background-grey.svg');
+    background: url('/themes/utk_lib_main_d11/images/subtle-background-grey.svg');
     background-size: cover;
     position: relative;
     color: var(--utk-logo--white);
 }
 
 .utk-no-feature-image--gradient {
-    background: url('/themes/utk_lib_mainsite_theme/images/subtle-background-grey.svg');
+    background: url('/themes/utk_lib_main_d11/images/subtle-background-grey.svg');
     background-size: cover;
     position: relative;
     color: var(--utk-logo--white);

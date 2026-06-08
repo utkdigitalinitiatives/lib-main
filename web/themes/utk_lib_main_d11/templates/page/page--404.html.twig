@@ -43,24 +43,24 @@
 <hr class="top-line py-0">
 <div class="layout-container">
     <header class="header">
-        {% include "/themes/utk_lib_mainsite_theme/templates/layout/utk--header.html.twig" %}
+        {% include "/themes/utk_lib_main_d11/templates/layout/utk--header.html.twig" %}
     </header>
     <main {{ attributes.addClass(classes)}} >
         <div class='container-fluid d-lg-flex justify-content-center utk-article'>
             <div class='row pt-4 px-2 utk-section-body text-center'>
                 <h1><span class='fw-bolder'>404</span> Page not found</h1>
                 <p class='mx-auto'>The page you were looking for either does not exist anymore or moved.</p>
-                 {% include "@utk_lib_mainsite_theme/templates/layout/utk--search-header.html.twig" with {search_url:search_endpoint} %}
+                 {% include "@utk_lib_main_d11/templates/layout/utk--search-header.html.twig" with {search_url:search_endpoint} %}
                 <div>
-                    {% include "@utk_lib_mainsite_theme/templates/components/utk--large-button.html.twig" with {title:"Back to Homepage", url:"/"  } %}
+                    {% include "@utk_lib_main_d11/templates/components/utk--large-button.html.twig" with {title:"Back to Homepage", url:"/"  } %}
                 </div>
             </div> 
         </div>
     </main>
     <footer>
         <hr class="top-line py-0">
-        {% include "themes/utk_lib_mainsite_theme/templates/layout/utk--library-footer.html.twig" %}
-        {% include "themes/utk_lib_mainsite_theme/templates/layout/utk--campus-footer/utk--campus-footer.html.twig" %}
-        {% include "themes/utk_lib_mainsite_theme/templates/layout/utk--campus-footer/utk--campus-footer-subfooter.html.twig" %}
+        {% include "themes/utk_lib_main_d11/templates/layout/utk--library-footer.html.twig" %}
+        {% include "themes/utk_lib_main_d11/templates/layout/utk--campus-footer/utk--campus-footer.html.twig" %}
+        {% include "themes/utk_lib_main_d11/templates/layout/utk--campus-footer/utk--campus-footer-subfooter.html.twig" %}
     </footer>
 </div>

@@ -50,7 +50,7 @@
 <nav class="navbar navbar-expand-lg navbar-text py-0 text-smokey link-smokey underline-orange">
 	<div class="container-fluid utk-header-footer-max mx-auto">
 		<a href="{{ path('<front>') }}" class='navbar-brand d-flex align-items-center utk-site-logo py-0' id="utk-header-title">
-			<img src="/themes/utk_lib_mainsite_theme/images/favicon_logo.png" alt="">
+			<img src="/themes/utk_lib_main_d11/images/favicon_logo.png" alt="">
 			<span class='px-2 text-smokey'>
 				LIBRARIES
 			</span>
@@ -61,7 +61,7 @@
 		<div class="utk-offcanvas offcanvas offcanvas-end" tabindex="-1" id="navbarToggler">
 			<div class="offcanvas-header">
 				<a href="" class='navbar-brand utk-site-logo'>
-					<img src="/themes/utk_lib_mainsite_theme/images/favicon_logo.png" alt="" class="d-inline-block align-text-top">
+					<img src="/themes/utk_lib_main_d11/images/favicon_logo.png" alt="" class="d-inline-block align-text-top">
 					<span class="offcanvas-title px-0 mx-0 fs-3" id="offcanvasNavbarLabel">LIBRARIES</span>
 				</a>
 				<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -69,7 +69,7 @@
 			<div class="offcanvas-body" id="utk-navbar-header--links">
 				<ul class="navbar-nav ms-auto d-flex align-items-lg-center utk-search-selector">
 					<li class="navbar-item px-2 d-lg-none py-1">
-						{% include "@utk_lib_mainsite_theme/templates/layout/utk--search-header.html.twig" with {search_url:search_endpoint} %}
+						{% include "@utk_lib_main_d11/templates/layout/utk--search-header.html.twig" with {search_url:search_endpoint} %}
 					</li>
 					<li class="navbar-item px-lg-2 px-md-1">
 						<a class="navbar-link d-flex flex-row align-items-center" href="https://libanswers.utk.edu/">
@@ -115,7 +115,7 @@
 						</a>
 						<ul class="dropdown-menu dropdown-menu-end">
 							<li class="dropdown-item">
-								{% include "@utk_lib_mainsite_theme/templates/layout/utk--search-header.html.twig" with {search_url:search_endpoint, placeholder: placeholder} %}
+								{% include "@utk_lib_main_d11/templates/layout/utk--search-header.html.twig" with {search_url:search_endpoint, placeholder: placeholder} %}
 							</li>
 							{% for link in find_dropdown_links %}
                                 <li class="dropdown-item {{ link.li_extra_class | default('') }}">
@@ -144,5 +144,5 @@
 		</div>
 	</div>
 </nav>
-
-{{ drupal_block('views_block:notifications-notifications_block', wrapper=false ) }}
+{# TODO: need to add notifications and uncomment this #}
+{# {{ drupal_block('views_block:notifications-notifications_block', wrapper=false ) }} #}

@@ -1,0 +1,32 @@
+{#
+/**
+ * @file
+ * UTK Custom - Large Button template.
+ *
+ * This template is used to render a large button component with custom styling and layout.
+ *
+ * Available variables:
+ * - url: The URL the button links to.
+ * - title: The text displayed on the button.
+ *
+ * Customizations:
+ * - Displays a wide button with text and an SVG icon.
+ * - Ensures proper alignment and spacing for both desktop and mobile layouts.
+ * - Applies custom classes for consistent styling across the site.
+ *
+ * @see template_preprocess()
+ */
+#}
+
+<a href="{{ url }}" class='row utk-service--buttons utk-service--buttons--wide mx-auto my-3 py-2'>
+    <div class='col d-flex text-left align-items-center justify-content-center text-smokey text-break'>
+        {{ title }}
+    </div>
+    <div class='col-3 d-flex align-items-center'>
+        <svg  fill="none" width="35" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class='utk-button-icon'>
+            <path
+                d="M12 2.001c5.524 0 10 4.477 10 10s-4.476 10-10 10c-5.522 0-10-4.477-10-10s4.478-10 10-10Zm0 1.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17Zm-.352 4.053.072-.084a.75.75 0 0 1 .977-.073l.084.073 4 4a.75.75 0 0 1 .073.977l-.072.085-4.002 4a.75.75 0 0 1-1.133-.977l.073-.084 2.722-2.721H7.75a.75.75 0 0 1-.743-.648L7 12a.75.75 0 0 1 .648-.743l.102-.007h6.69l-2.72-2.72a.75.75 0 0 1-.072-.976l.072-.084-.072.084Z"
+                fill="#4b4b4b" />
+        </svg>
+    </div>
+</a>

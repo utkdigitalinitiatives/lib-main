@@ -18,7 +18,7 @@
  */
 #}
 
-{{ attach_library('utk_lib_mainsite_theme/css/components/homepage-search-tabs') }}
+{{ attach_library('utk_lib_main_d11/css/components/homepage-search-tabs') }}
 
 {% set onesearch_quick_links = [
         {
@@ -56,7 +56,7 @@
                         aria-selected="true" 
                         onclick="setOneSearch()"
                     >
-                        <img src="/themes/utk_lib_mainsite_theme/images/onesearch.png" alt="">
+                        <img src="/themes/utk_lib_main_d11/images/onesearch.png" alt="">
                         <span class="visually-hidden">Search with OneSearch</span>
                     </button>
                 </li>
@@ -97,7 +97,8 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="site-search" role="tabpanel" aria-labelledby="site-search-tab">
-                {{ drupal_block('views_block:search_results-block_1', wrapper=false) }}
+            {# TODO: uncomment once the view has been added #}
+                {# {{ drupal_block('views_block:search_results-block_1', wrapper=false) }} #}
             </div>
         </div>
         <div class="d-sm-flex justify-content-center mt-2">
