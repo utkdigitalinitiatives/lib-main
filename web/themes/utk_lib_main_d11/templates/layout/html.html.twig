@@ -38,13 +38,16 @@
     <title>{{ head_title|safe_join(' | ') }}</title>
     <css-placeholder token="{{ placeholder_token }}">
     <js-placeholder token="{{ placeholder_token }}">
+    <script src="https://libanswers.utk.edu/load_chat.php?hash=78a3332e7565fa21d9d06086c12850d10c4549bff2a87ff577e0671a0e7b86ad"></script>
+    <script async data-id="101475241" src="/9330b2e8628.php"></script>
   </head>
   <body{{ attributes.addClass(body_classes) }}>
+    <div id="libchat_78a3332e7565fa21d9d06086c12850d10c4549bff2a87ff577e0671a0e7b86ad" class='utk-libchat'></div>
     {#
       Keyboard navigation/accessibility link to main content section in
       page.html.twig.
     #}
-    <a href="#main-content" class="visually-hidden focusable skip-link">
+    <a href="#main-content" class="visually-hidden focusable skip-link link-link text-link">
       {{ 'Skip to main content'|t }}
     </a>
     {{ page_top }}
