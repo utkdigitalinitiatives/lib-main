@@ -12,6 +12,7 @@ module:
   conditional_profile_url: 0
   config: 0
   contextual: 0
+  custom_news_migrate: 0
   datetime: 0
   dblog: 0
   dependent_fields: 0
