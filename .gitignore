@@ -53,3 +53,6 @@
 
 # Local Azure asset env file
 /.ddev/.env.assets
+
+# temporary migration directories
+/source_public_files
