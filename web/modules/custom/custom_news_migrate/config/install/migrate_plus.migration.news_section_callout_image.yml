@@ -1,0 +1,30 @@
+id: news_section_callout_image
+label: "News callout image paragraphs"
+migration_group: news
+migration_tags: []
+
+source:
+  plugin: eligible_news_callout_image_paragraphs
+  cutoff_date: "2021-06-08 00:00:00"
+
+process:
+  type:
+    plugin: default_value
+    default_value: callout_image
+
+  field_image/target_id:
+    plugin: migration_lookup
+    migration: news_media_image
+    source: source_media_id
+
+  field_callout_text/value: callout_text_value
+  field_callout_text/format:
+    plugin: default_value
+    default_value: editor_html
+
+  field_text_on_right: text_right
+
+destination:
+  plugin: "entity_reference_revisions:paragraph"
+
+migration_dependencies: {}
