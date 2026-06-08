@@ -1,6 +1,28 @@
 base:
   version: VERSION
+  js:
+    js/bootstrap.bundle.js: {}
+    js/primo-search.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
   css:
+    base:
+        css/base/global.css: {}
+        css/base/pages/utk-article.css: {}
+        css/base/bootstrap.css: {}
+        css/base/fluent-icons.css: {}
+        css/base/webform-styles.css: {}
+        css/base/utilities.css: {}
+        css/base/pages/utk-front-page.css: {}
+        css/base/pages/utk-employee-profile.css: {}
+        css/base/pages/utk-hours.css: {}
+        css/base/pages/utk-service-page.css: {}
+        css/base/pages/utk-directory.css: {}
+        css/base/utk-components/components.css: {}
+        css/base/utk-components/utk-chat.css: {}
+        css/base/utk-components/utk-header-footer.css: {}
+        css/base/pages/utk-bookplate.css: {}
     component:
       css/components/action-links.css:
         weight: -10
@@ -111,3 +133,24 @@ user:
     component:
       css/components/user.css:
         weight: -10
+google-font:
+  version: "UTK Lib v1.0"
+  css:
+    theme:
+      'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet':
+        { type: external }
+libcal_hours:
+  js:
+    https://libcal.utk.edu/js/hours_grid.js: { type: external }
+    js/libcal-hours.js: {}
+  dependencies:
+    - core/jquery
+    - core/once
+library-hours:
+  version: 1.x
+  js:
+    js/hours-block.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/once

@@ -5,6 +5,9 @@ version: 1.0.0
 libraries:
   - utk_lib_main_d11/base
   - utk_lib_main_d11/messages
+  - utk_lib_main_d11/utk-campus-footer
+  - utk_lib_main_d11/utk-article
+  - utk_lib_main_d11/google-font
   - core/normalize
 libraries-extend:
   user/drupal.user:
@@ -21,6 +24,7 @@ libraries-extend:
     - utk_lib_main_d11/progress
   core/drupal.tablesort:
     - utk_lib_main_d11/drupal.tablesort
-description: ''
+description: 'Custom theme for UTK Libraries.  Updated in 2026 to Drupal 11'
 core_version_requirement: ^11
 generator: 'starterkit_theme:11.3.11'
+
