@@ -1,0 +1,133 @@
+{#
+/**
+ * @file
+ * UTK Custom - Quicklink Section template.
+ *
+ * This template is used to render a section of quicklink boxes with custom styling and layout.
+ *
+ * Available variables:
+ * - quicklink_boxes: An array of quicklink boxes, each containing:
+ *   - title: The title of the quicklink box.
+ *   - links: An array of links, each containing:
+ *     - link_title: The text of the link.
+ *     - url: The URL the link points to.
+ *   - vertical_line_color: The color of the vertical line in the box.
+ *   - horizontal_line_color: The color of the horizontal line in the box.
+ *
+ * Customizations:
+ * - Displays a grid of quicklink boxes with titles and links.
+ * - Includes vertical and horizontal colored lines for visual separation.
+ * - Ensures responsive design for proper alignment and spacing across devices.
+ * - Applies consistent styling for links and text.
+ *
+ * @see template_preprocess()
+ */
+#}
+
+{% set quicklink_boxes = [
+        {
+            title:"Explore",
+            links: [
+                {
+                    link_title: "Tutorials",
+                    url: "https://libguides.utk.edu/tutorials",
+                    outgoing: 'fluent-icon-external'
+                },
+                {
+                    link_title: "Policies",
+                    url: '/about/policies'
+                },
+                {
+                    link_title: "Off-Campus and Distance Access",
+                    url: '/services/campus-and-distance-access',
+                },
+                {
+                    link_title: 'Equipment',
+                    url: '/equipment',
+                },
+                {
+                    link_title: 'Adaptive Technology & Disability Services',
+                    url: '/services/adaptive-technology-and-services'
+                }
+            ],
+            vertical_line_color: "var(--utk-logo--orange)",
+            horizontal_line_color: "var(--utk-logo--orange)",
+        },
+        {
+            title: 'Research',
+            links: [
+                {
+                    link_title: 'Subject Librarians',
+                    url: '/specialist-list'
+                },
+                {
+                    link_title: 'E-Journals by Subject',
+                    url: 'https://browzine.com/libraries/203/subjects',   
+                    outgoing: 'fluent-icon-external'
+                }, 
+                {
+                    link_title: 'Citation Services',
+                    url: '/services/citation-services',
+                },
+                {
+                    link_title: 'LibKey FullText Access',
+                    url: '/services/libkey-nomad-extension'
+                },
+                {
+                    link_title: 'Data Services',
+                    url: '/services/data-services'
+                }
+            ],
+            vertical_line_color: "var(--utk-teal)",
+            horizontal_line_color: "var(--utk-teal)",
+        },
+        {
+            title: 'Request',
+            links: [
+                {
+                    link_title: 'Poster Printing',
+                    url: '/services/large-format-printing'
+                },
+                {
+                    link_title: 'Faculty Resources',
+                    url: '/services/faculty-resources'
+                },
+                {
+                    link_title: 'Request Items',
+                    url: '/services/request-items'
+                },
+                {
+                    link_title: 'Suggest a Purchase',
+                    url: '/services/suggest-purchase'
+                }
+            ],
+            vertical_line_color: "var(--utk-logo--smokey)",
+            horizontal_line_color: "var(--utk-logo--smokey)",
+        }
+    ] 
+%}
+
+
+
+<div class='row mx-auto gx-3 max-row-width'>
+    {% for box in quicklink_boxes %}
+    <div class='col-lg-4'>
+        <div class='container utk-quicklinks shadow-sm border bg-white quicklink-box'>
+            <div class="quicklink-vertical-line" style="background-color: {{ box.vertical_line_color }};"></div>
+            <div class="quicklink-horizontal-line" style="background-color: {{ box.horizontal_line_color }};"></div>
+            <h2 class='fs-4 fw-medium mt-2 pt-2 text-smokey'>{{ box.title }}</h2>
+            <div class='row mb-2 pb-2 text-smokey link-link utk-search-selector'>
+                {% for link in box.links %}
+                    <div class='py-4 py-md-1 py-lg-0'>
+                        <a href="{{ link.url }}" class=''>{{ link.link_title }}
+                        {% if link.outgoing|length > 0 %}
+                            <span class='svg-settings {{link.outgoing}}' style="width:12px; height:12px; display:inline-block; position:relative; top:1px; margin-left:2px;"></span>
+                        {% endif %}
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>

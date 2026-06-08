@@ -1,0 +1,114 @@
+{#
+/**
+ * @file
+ * UTK Custom - Search Section template.
+ *
+ * This template is used to render the search section with custom styling and layout.
+ *
+ * Customizations:
+ * - Displays a search bar with options for One Search and site search.
+ * - Includes links to advanced search, e-journals, request items, course reserves, and newspapers.
+ * - Provides a responsive design for proper alignment and spacing across devices.
+ * - Uses custom classes for consistent styling across the site.
+ *
+ * Included functionality:
+ * - JavaScript functions `setOneSearch()` and `setSiteSearch()` for toggling search modes.
+ *
+ * @see template_preprocess()
+ */
+#}
+
+{{ attach_library('utk_lib_mainsite_theme/css/components/homepage-search-tabs') }}
+
+{% set onesearch_quick_links = [
+        {
+            'url': 'https://utk.primo.exlibrisgroup.com/discovery/search?tab=CentralIndex&search_scope=CentralIndex&vid=01UTN_KNOXVILLE:01UTK&offset=0',
+            'text': 'Articles'
+        },
+        {
+            'url': 'https://utk.primo.exlibrisgroup.com/discovery/search?vid=01UTN_KNOXVILLE:01UTK&search_scope=CourseReserves&tab=CourseReserves&onCampus=false&group=GUEST',
+            'text': 'Course Reserves'
+        },
+        {
+            'url': 'https://utk.primo.exlibrisgroup.com/discovery/search?tab=MusicSearch&search_scope=MUS_and_CDI&vid=01UTN_KNOXVILLE:01UTK&offset=0',
+            'text': 'Music Resources'
+        },
+        {
+            'url': 'https://libguides.utk.edu/databases/490',
+            'text': 'Google Scholar'
+        }
+    ] 
+%}
+
+<form id="utk--search-bar" name="utk--search-bar" class="utk--search max-row-width pt-3 my-lg-3 mx-auto">
+    <div class="utk-search-background p-3">
+        <div class="d-flex justify-content-between align-items-center">
+            <ul class="nav nav-tabs utk-search-tabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button 
+                        class="nav-link active fw-semibold utk--one-search px-md-3" 
+                        id="onesearch-tab" 
+                        data-bs-toggle="tab" 
+                        data-bs-target="#onesearch" 
+                        type="button" 
+                        role="tab" 
+                        aria-controls="onesearch" 
+                        aria-selected="true" 
+                        onclick="setOneSearch()"
+                    >
+                        <img src="/themes/utk_lib_mainsite_theme/images/onesearch.png" alt="">
+                        <span class="visually-hidden">Search with OneSearch</span>
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button 
+                        class="nav-link fw-semibold px-2 px-md-3" 
+                        id="site-search-tab" 
+                        data-bs-toggle="tab" 
+                        data-bs-target="#site-search" 
+                        type="button" role="tab" 
+                        aria-controls="site-search" 
+                        aria-selected="false" 
+                        onclick="setSiteSearch()"
+                    >
+                        <span class="visually-hidden">
+                            Search </span>Search Our Site 
+                            {# Same as before in that I don't want to delete this until we decide if we want to match with our regular icons #}
+                                {# <span style="width:16px; display:inline-block; position:relative; margin-left:10px;">🔍 #}
+                                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10 2.5a7.5 7.5 0 0 1 5.964 12.048l4.743 4.745a1 1 0 0 1-1.32 1.497l-.094-.083-4.745-4.743A7.5 7.5 0 1 1 10 2.5Zm0 2a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11Z" fill="#ff8200"/>
+                                </svg>
+                        </span>
+                    </button>
+                </li>
+            </ul>
+            <div class="d-none d-sm-none d-md-block link-white font-small fw-medium ms-auto ps-3 utk-search-selector" >
+                <a href="https://utk.primo.exlibrisgroup.com/discovery/search?vid=01UTN_KNOXVILLE:01UTK&mode=advanced" class="font-small" id="advanced-search-link-container">
+                    Advanced
+                    <span class='svg-settings fluent-icon-external-white' style="width:12px; height:12px; display:inline-block; position:relative; top:1px; margin-left:2px;"></span>
+                </a>
+            </div>
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="onesearch" role="tabpanel" aria-labelledby="onesearch-tab">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="search-bar-input" placeholder="Search for books, articles, and more..." aria-label="Search with One Search" aria-describedby="button-search">
+                    <button class="btn utk-blue-button px-md-3" type="submit" id="button-search">Submit</button>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="site-search" role="tabpanel" aria-labelledby="site-search-tab">
+                {{ drupal_block('views_block:search_results-block_1', wrapper=false) }}
+            </div>
+        </div>
+        <div class="d-sm-flex justify-content-center mt-2">
+            <div class="d-flex flex-column flex-sm-row link-white font-small fw-medium utk-search-selector">
+                {% for link in onesearch_quick_links %}
+                    <a class="mx-2 mt-1 px-0" href="{{ link.url }}">
+                        {{ link.text }}
+                        <span class='svg-settings fluent-icon-external-white' style="width:12px; height:12px; display:inline-block; position:relative; top:1px; margin-left:2px;"></span>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</form>
