@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.news.field_blurb
     - field.field.node.news.field_featured_news_image
+    - field.field.node.news.field_featured_news_img_caption
     - field.field.node.news.field_publishing_date
     - field.field.node.news.field_related_links
     - field.field.node.news.field_sections
@@ -63,6 +64,14 @@ content:
     region: content
     settings:
       media_types: {  }
+    third_party_settings: {  }
+  field_featured_news_img_caption:
+    type: text_textfield
+    weight: 27
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_publishing_date:
     type: datetime_default
