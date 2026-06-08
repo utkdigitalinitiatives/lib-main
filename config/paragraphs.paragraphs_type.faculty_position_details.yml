@@ -1,0 +1,10 @@
+uuid: d0f0652b-2726-45cc-bb75-e378015fbed2
+langcode: en
+status: true
+dependencies: {  }
+id: faculty_position_details
+label: 'Faculty Position Details'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

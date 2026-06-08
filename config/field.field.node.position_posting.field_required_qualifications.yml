@@ -1,0 +1,24 @@
+uuid: 4faafc7e-8364-479e-8cc1-6c8575e6fc36
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_required_qualifications
+    - filter.format.restricted_html
+    - node.type.position_posting
+  module:
+    - text
+id: node.position_posting.field_required_qualifications
+field_name: field_required_qualifications
+entity_type: node
+bundle: position_posting
+label: 'Required Qualifications'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - restricted_html
+field_type: text_long

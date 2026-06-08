@@ -1,0 +1,59 @@
+uuid: 0853be40-5c8a-445e-a3d8-af8e661a9fff
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.faculty_position_details.field_appointment_rank
+    - field.field.paragraph.faculty_position_details.field_available
+    - field.field.paragraph.faculty_position_details.field_faculty_category
+    - field.field.paragraph.faculty_position_details.field_salary_maximum
+    - field.field.paragraph.faculty_position_details.field_salary_minimum
+    - paragraphs.paragraphs_type.faculty_position_details
+  module:
+    - datetime
+id: paragraph.faculty_position_details.default
+targetEntityType: paragraph
+bundle: faculty_position_details
+mode: default
+content:
+  field_appointment_rank:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_available:
+    type: datetime_default
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_faculty_category:
+    type: entity_reference_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_salary_maximum:
+    type: number
+    weight: 4
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_salary_minimum:
+    type: number
+    weight: 3
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

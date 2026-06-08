@@ -1,0 +1,9 @@
+uuid: 218e7f0e-7c70-4780-920c-7b77da6abf43
+langcode: en
+status: true
+dependencies: {  }
+name: 'Staff Category'
+vid: staff_category
+description: null
+weight: 0
+new_revision: false

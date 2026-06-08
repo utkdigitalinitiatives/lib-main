@@ -1,0 +1,10 @@
+uuid: 392e0cca-ddf7-4a91-93fc-617fca518ead
+langcode: en
+status: true
+dependencies: {  }
+id: staff_position_details
+label: 'Staff Position Details'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

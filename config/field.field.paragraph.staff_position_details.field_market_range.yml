@@ -1,0 +1,19 @@
+uuid: e59a7228-12f0-444f-8716-a7e2996d4a67
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_market_range
+    - paragraphs.paragraphs_type.staff_position_details
+id: paragraph.staff_position_details.field_market_range
+field_name: field_market_range
+entity_type: paragraph
+bundle: staff_position_details
+label: 'Market Range'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
