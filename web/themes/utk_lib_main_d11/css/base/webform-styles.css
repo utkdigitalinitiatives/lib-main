@@ -1,0 +1,426 @@
+.webform-title {
+    font-size: 45px;
+    font-weight: 500;
+    background: url('/themes/utk_lib_mainsite_theme/images/form-title-background.svg') center / cover no-repeat;
+    color: var(--utk-logo--white);
+    margin-bottom: 20px;
+}
+
+.webform-paragraph .webform-title {
+    font-size: 36px;
+    color: var(--utk-logo--smokey);
+    background-color: var(--utk-logo--white);
+}
+
+.utk--webform input,
+.utk--webform textarea,
+.utk--webform select {
+    box-sizing: border-box;
+}
+
+.utk--webform .form-item {
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.utk--webform .js-form-type-webform-markup:first-of-type {
+    --bs-gutter-x: 0;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.utk--webform .js-form-type-webform-markup:first-of-type p {
+    text-indent: 0 !important;
+    margin: .5rem 0 1rem;
+    line-height: 1.6;
+}
+
+.utk--webform .js-form-type-webform-markup:first-of-type :is(ul, ol) {
+    margin-left: 1.25rem;
+    padding-left: 0;
+}
+
+.utk--webform input[type=text],
+.utk--webform input[type=url],
+.utk--webform input[type=number],
+.utk--webform input[type=email],
+.utk--webform input[type=file],
+.utk--webform input[type="date"] {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--bs-body-color);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: var(--bs-body-bg);
+    background-clip: padding-box;
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    border-radius: var(--bs-border-radius);
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.utk--webform input[type=radio] {
+    border-radius: 50%;
+    --bs-form-check-bg: var(--bs-body-bg);
+    flex-shrink: 0;
+    width: 1em;
+    height: 1em;
+    margin-top: 0.25em;
+    vertical-align: top;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: var(--bs-form-check-bg);
+    background-image: var(--bs-form-check-bg-image);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+.utk--webform label {
+    font-weight: bold;
+}
+
+.utk--webform label.option {
+    display: inline;
+    font-weight: normal;
+}
+
+.utk--webform .form-item:not(.form-type-radio):not(.form-type-checkbox) > label {
+  display: block;
+  margin-bottom: 4px;  
+  line-height: 1.2;
+}
+
+.utk--webform fieldset > legend,
+.utk--webform details.webform-details > summary, 
+.utk--webform .js-form-type-webform-markup h2{
+    display: block;
+    margin-top: 15px;
+    padding-bottom: 10px;
+    line-height: 1.2;
+}
+
+.utk--webform input[type=radio]:checked {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.utk--webform input:checked[type=radio] {
+    --bs-form-check-bg-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23fff'/%3e%3c/svg%3e");
+}
+
+.utk--webform input[type=submit] {
+    margin-right: 0;
+    margin-left: 0;
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #6c757d;
+    --bs-btn-border-color: #6c757d;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #5c636a;
+    --bs-btn-hover-border-color: #565e64;
+    --bs-btn-focus-shadow-rgb: 130, 138, 145;
+    --bs-btn-active-color: #fff;
+
+    --bs-btn-active-shadow: inset 0 3px 5px rgb(from var(--utk-black) r g b / 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #6c757d;
+    --bs-btn-disabled-border-color: #6c757d;
+    --bs-btn-padding-x: 0.75rem;
+    --bs-btn-padding-y: 0.375rem;
+    --bs-btn-font-family: ;
+    --bs-btn-font-size: 1rem;
+    --bs-btn-font-weight: 400;
+    --bs-btn-line-height: 1.5;
+    --bs-btn-border-width: var(--bs-border-width);
+    --bs-btn-border-color: transparent;
+    --bs-btn-border-radius: var(--bs-border-radius);
+
+    --bs-btn-box-shadow: inset 0 1px 0 rgb(from var(--utk-logo--white) r g b / 0.15), 0 1px 1px rgb(from var(--utk-black) r g b / 0.075);
+    --bs-btn-disabled-opacity: 0.65;
+    --bs-btn-focus-box-shadow: 0 0 0 0.25rem rgb(var(--bs-btn-focus-shadow-rgb) / 0.5);
+    display: inline-block;
+    padding: var(--bs-btn-padding-y) var(--bs-btn-padding-x);
+    font-family: var(--bs-btn-font-family);
+    font-size: var(--bs-btn-font-size);
+    font-weight: var(--bs-btn-font-weight);
+    line-height: var(--bs-btn-line-height);
+    color: var(--bs-btn-color);
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    border: var(--bs-btn-border-width) solid var(--bs-btn-border-color);
+    border-radius: var(--bs-btn-border-radius);
+    background-color: var(--bs-btn-bg);
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.utk--webform input[type=submit]:hover {
+    --bs-btn-hover-border-color: transparent;
+    --bs-btn-active-bg: #565e64;
+    --bs-btn-active-border-color: #51585e;
+    background-color: var(--bs-btn-active-bg);
+    border: var(--bs-btn-border-width) solid var(--bs-btn-active-border-color);
+}
+
+.utk--webform input[type=submit]:not(:disabled) {
+    cursor: pointer;
+}
+
+.utk--webform textarea {
+    min-height: calc(3.5rem + calc(var(--bs-border-width) * 2));
+    line-height: 1.25;
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--bs-body-color);
+    appearance: none;
+    background-color: var(--bs-body-bg);
+    background-clip: padding-box;
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    border-radius: var(--bs-border-radius);
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.webform-element-description {
+    font-style: italic;
+}
+
+.utk--webform input[type=checkbox] {
+    border-radius: .25em;
+    --bs-form-check-bg: var(--bs-body-bg);
+    flex-shrink: 0;
+    width: 1em;
+    height: 1em;
+    margin-top: .25em;
+    vertical-align: top;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: var(--bs-form-check-bg);
+    background-image: var(--bs-form-check-bg-image);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+
+.utk--webform input[type=checkbox]:checked {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.utk--webform input:checked[type=checkbox] {
+    --bs-form-check-bg-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
+}
+
+.utk--webform input[type=file] {
+    overflow: hidden;
+    max-width: 100%;
+    padding-right: 0; 
+}
+
+.utk--webform input[type=file]:not(:disabled):not([readonly]) {
+    cursor: pointer;
+}
+
+.utk--webform input[type=file]:focus {
+    color: var(--bs-body-color);
+    background-color: var(--bs-body-bg);
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 0.25);
+}
+
+.utk--webform input[type=file]::-webkit-date-and-time-value {
+    min-width: 85px;
+    height: 1.5em;
+    margin: 0;
+}
+
+.utk--webform input[type=file]::-webkit-datetime-edit {
+    display: block;
+    padding: 0;
+}
+
+.utk--webform input[type=file]::-moz-placeholder {
+    color: var(--bs-secondary-color);
+    opacity: 1;
+}
+
+.utk--webform input[type=file]::placeholder {
+    color: var(--bs-secondary-color);
+    opacity: 1;
+}
+
+.utk--webform input[type=file]:disabled {
+    background-color: var(--bs-secondary-bg);
+    opacity: 1;
+}
+
+.utk--webform input[type=file]::-webkit-file-upload-button {
+    padding: 0.375rem 0.75rem;
+    margin: -0.375rem -0.75rem;
+    -webkit-margin-end: 0.75rem;
+    margin-inline-end: 0.75rem;
+    color: var(--bs-body-color);
+    background-color: var(--bs-tertiary-bg);
+    pointer-events: none;
+    border-color: inherit;
+    border-style: solid;
+    border-width: 0;
+    border-inline-end-width: var(--bs-border-width);
+    border-radius: 0;
+    -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.utk--webform input[type=file]::file-selector-button {
+    padding: 0.375rem 0.75rem;
+    margin: -0.375rem -0.75rem;
+    -webkit-margin-end: 0.75rem;
+    margin-inline-end: 0.75rem;
+    color: var(--bs-body-color);
+    background-color: var(--bs-tertiary-bg);
+    pointer-events: none;
+    border-color: inherit;
+    border-style: solid;
+    border-width: 0;
+    border-inline-end-width: var(--bs-border-width);
+    border-radius: 0;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.utk--webform input[type="date"] {
+    background: #fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png) 95% no-repeat;
+}
+
+.utk--webform input[type="date"]::-webkit-inner-spin-button {
+    display: none;
+}
+
+.utk--webform input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+}
+
+.utk--webform :is(.form-item, .form-item--radios, .form-item--checkboxes, .form-actions, .form-check) {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+}
+
+.utk--webform :is(ul, ol) {
+    margin-left: 1.25rem;
+    padding-left: 0;
+}
+
+.utk--webform :is(.container, .container-fluid) {
+    --bs-gutter-x: 0;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+@media (min-width: 850px) {
+  .utk--webform.utk-article p,
+  .utk--webform .js-form-type-webform-markup p,
+  .utk--webform .form-item .description p {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    text-align: left; /* just in case */
+  }
+}
+
+
+.utk--webform .form-item--radios .form-radios { 
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+.utk--webform .form-item--radios .form-radios :is(.form-check, .form-type-radio, .form-item) {
+    display: block;
+    margin: 0 0 0.5rem 0;
+    padding: 0 !important;
+}
+
+.utk--webform { 
+    --wf-gap: 1.75rem; 
+}  
+
+.utk--webform :where(
+   .js-form-item,
+   .form-item,
+   .form-item--radios,
+   .form-item--checkboxes,
+   .js-form-type-webform-markup,
+   fieldset,
+   details.webform-details,
+   .webform-section,
+   .form-actions,
+   .webform-actions
+ ) {
+   margin-top: 0 !important;
+   margin-bottom: 0 !important;
+ }
+
+
+.utk--webform :where(
+   .js-form-item,
+   .form-item,
+   .form-item--radios,
+   .form-item--checkboxes,
+   .js-form-type-webform-markup,
+   fieldset,
+   details.webform-details,
+   .webform-section,
+   .form-actions,
+  .webform-actions
+ ) + :where(
+   .js-form-item,
+   .form-item,
+   .form-item--radios,
+   .form-item--checkboxes,
+   .js-form-type-webform-markup,
+   fieldset,
+   details.webform-details,
+   .webform-section,
+   .form-actions,
+   .webform-actions
+ ) {
+   margin-top: var(--wf-gap) !important;
+}
+
+.utk--webform :is(.form-actions, .webform-actions) {
+  margin-top: 0 !important;              
+  padding-top: var(--wf-gap);       
+  padding-bottom: var(--wf-gap);     
+}
+
+.utk--webform :is(button[type=submit], input[type=submit]) {
+  margin-top: var(--wf-gap);
+}
+
+.utk--webform :is(.form-actions, .webform-actions)
+  :is(button[type=submit], input[type=submit]) {
+  margin-top: 0 !important;
+}
+
+
+
+
+

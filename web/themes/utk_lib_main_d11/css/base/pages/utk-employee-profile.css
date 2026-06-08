@@ -1,0 +1,17 @@
+.utk--employee-img img {
+    max-width: 320px;
+    max-height: 320px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    object-position: top;
+    height: auto;
+    width: auto;
+}
+
+@media screen and (min-width: 850px) {
+    .utk--employee-img img {
+        max-width: 400px;
+        max-height: 400px;
+        height: auto;
+    }
+}
