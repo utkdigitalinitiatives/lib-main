@@ -55,7 +55,6 @@ class EligibleNewsSectionImageMedia extends SqlBase
       "status",
     ]);
     $query->addField("mmi", "field_media_image_target_id", "file_target_id");
-    $query->addField("pd", "field_publishing_date_value", "publishing_date");
 
     $query->condition("m.bundle", "image");
     $query->condition(
@@ -84,7 +83,6 @@ class EligibleNewsSectionImageMedia extends SqlBase
       "changed" => $this->t("Changed timestamp"),
       "status" => $this->t("Published status"),
       "file_target_id" => $this->t("Referenced image file ID"),
-      "publishing_date" => $this->t("Owning news node publishing date"),
     ];
   }
 
