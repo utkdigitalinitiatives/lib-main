@@ -42,7 +42,45 @@ process:
 
   field_featured_news_img_caption: featured_image_caption
 
+  field_sections:
+    plugin: sub_process
+    source: section_paragraph_ids
+    process:
+      section_lookup:
+        plugin: migration_lookup
+        migration:
+          - news_section_text
+          - news_section_featured_quote
+          - news_section_embedded_video
+          - news_section_file_attachment
+          - news_section_image
+          - news_section_tall_image
+          - news_section_callout_image
+        source: source_paragraph_id
+        no_stub: true
+
+      target_id:
+        plugin: extract
+        source: "@section_lookup"
+        index:
+          - 0
+
+      target_revision_id:
+        plugin: extract
+        source: "@section_lookup"
+        index:
+          - 1
+
 destination:
   plugin: "entity:node"
 
-migration_dependencies: {}
+migration_dependencies:
+  required:
+    - news_media_featured_image
+    - news_section_text
+    - news_section_featured_quote
+    - news_section_embedded_video
+    - news_section_file_attachment
+    - news_section_image
+    - news_section_tall_image
+    - news_section_callout_image

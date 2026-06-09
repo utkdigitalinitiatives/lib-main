@@ -29,4 +29,6 @@ process:
 destination:
   plugin: "entity:media"
 
-migration_dependencies: {}
+migration_dependencies:
+  required:
+    - news_file_image

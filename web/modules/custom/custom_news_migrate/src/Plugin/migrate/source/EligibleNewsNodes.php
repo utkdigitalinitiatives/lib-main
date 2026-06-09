@@ -3,6 +3,7 @@
 namespace Drupal\custom_news_migrate\Plugin\migrate\source;
 
 use Drupal\migrate\Plugin\migrate\source\SqlBase;
+use Drupal\migrate\Row;
 
 /**
  * Source plugin for eligible Drupal 10 news nodes.
@@ -101,7 +102,32 @@ class EligibleNewsNodes extends SqlBase
         "Source featured image paragraph ID",
       ),
       "featured_image_caption" => $this->t("Featured image caption"),
+      "section_paragraph_ids" => $this->t(
+        "Ordered source section paragraph IDs",
+      ),
     ];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function prepareRow(Row $row)
+  {
+    $section_paragraph_ids = $this->select("node__field_sections", "fs")
+      ->fields("fs", ["field_sections_target_id"])
+      ->condition("fs.entity_id", $row->getSourceProperty("nid"))
+      ->orderBy("fs.delta")
+      ->execute()
+      ->fetchCol();
+
+    $section_paragraph_items = array_map(
+      static fn($id) => ["source_paragraph_id" => (int) $id],
+      $section_paragraph_ids,
+    );
+
+    $row->setSourceProperty("section_paragraph_ids", $section_paragraph_items);
+
+    return parent::prepareRow($row);
   }
 
   /**
