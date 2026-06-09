@@ -1,0 +1,50 @@
+id: news_media_featured_image
+label: "News featured image media"
+migration_group: news
+migration_tags: []
+
+source:
+  plugin: eligible_news_featured_image_media
+  cutoff_date: "2021-06-08 00:00:00"
+
+process:
+  bundle:
+    plugin: default_value
+    default_value: image
+
+  uid:
+    plugin: default_value
+    default_value: 1
+
+  status:
+    plugin: default_value
+    default_value: 1
+
+  name:
+    plugin: null_coalesce
+    source:
+      - caption
+      - image_alt
+      - source_file_id
+
+  field_media_image/target_id:
+    plugin: migration_lookup
+    migration: news_file_featured_image
+    source: source_file_id
+
+  field_media_image/alt: image_alt
+  field_media_image/title: image_title
+
+  created: created
+
+  changed:
+    plugin: null_coalesce
+    source:
+      - changed
+      - created
+
+destination:
+  plugin: "entity:media"
+  default_bundle: image
+
+migration_dependencies: {}

@@ -35,6 +35,13 @@ process:
 
   field_publishing_date/value: publishing_date
 
+  field_featured_news_image/target_id:
+    plugin: migration_lookup
+    migration: news_media_featured_image
+    source: source_featured_image_paragraph_id
+
+  field_featured_news_img_caption: featured_image_caption
+
 destination:
   plugin: "entity:node"
 

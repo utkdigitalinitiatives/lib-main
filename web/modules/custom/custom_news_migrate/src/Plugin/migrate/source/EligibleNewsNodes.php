@@ -45,6 +45,26 @@ class EligibleNewsNodes extends SqlBase
       "aut",
       "aut.entity_id = au.field_article_update_target_id",
     );
+    $query->leftJoin(
+      "node__field_featured_image",
+      "nfi",
+      "nfi.entity_id = n.nid",
+    );
+    $query->addField(
+      "nfi",
+      "field_featured_image_target_id",
+      "source_featured_image_paragraph_id",
+    );
+    $query->leftJoin(
+      "paragraph__field_featured_image_caption",
+      "fic",
+      "fic.entity_id = nfi.field_featured_image_target_id",
+    );
+    $query->addField(
+      "fic",
+      "field_featured_image_caption_value",
+      "featured_image_caption",
+    );
 
     // fields
     $query->fields("n", ["nid", "title", "status", "created", "changed"]);
@@ -77,6 +97,10 @@ class EligibleNewsNodes extends SqlBase
       "blurb" => $this->t("Source blurb text"),
       "update_label" => $this->t("Article update label"),
       "update_text" => $this->t("Article update text"),
+      "source_featured_image_paragraph_id" => $this->t(
+        "Source featured image paragraph ID",
+      ),
+      "featured_image_caption" => $this->t("Featured image caption"),
     ];
   }
 
