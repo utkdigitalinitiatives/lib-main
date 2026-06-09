@@ -29,4 +29,6 @@ process:
 destination:
   plugin: "entity_reference_revisions:paragraph"
 
-migration_dependencies: {}
+migration_dependencies: 
+  required:
+    - news_media_image
