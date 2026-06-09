@@ -1,0 +1,24 @@
+uuid: f936aa34-7d61-45d3-89bc-13d844c1eac5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_notification_text
+    - filter.format.editor_html
+    - node.type.notification
+  module:
+    - text
+id: node.notification.field_notification_text
+field_name: field_notification_text
+entity_type: node
+bundle: notification
+label: 'Notification Text'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - editor_html
+field_type: text_long

@@ -1,0 +1,29 @@
+uuid: 0af3165e-3e8c-4c7a-818d-ff7bc72ff1cf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_notification_severity
+    - node.type.notification
+    - taxonomy.vocabulary.notification_category
+id: node.notification.field_notification_severity
+field_name: field_notification_severity
+entity_type: node
+bundle: notification
+label: 'Notification Severity'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      notification_category: notification_category
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
