@@ -1,0 +1,9 @@
+uuid: 90c5fc38-475d-4e68-b4fe-9fc872368fe5
+langcode: en
+status: true
+dependencies: {  }
+name: 'Notification Category'
+vid: notification_category
+description: 'The degree of the notification message, following a Red, Yellow, Green pattern (in decreasing severity)'
+weight: 0
+new_revision: false

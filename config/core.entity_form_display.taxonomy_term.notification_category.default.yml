@@ -1,0 +1,43 @@
+uuid: e769b5e8-67c1-4422-a9eb-8c331258c5bb
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.notification_category
+  module:
+    - path
+id: taxonomy_term.notification_category.default
+targetEntityType: taxonomy_term
+bundle: notification_category
+mode: default
+content:
+  langcode:
+    type: language_select
+    weight: 1
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden:
+  description: true

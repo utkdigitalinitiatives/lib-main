@@ -1,0 +1,24 @@
+uuid: f25edfd0-e552-4c11-a8ed-268f70facd3f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_notification_page_addition
+    - filter.format.editor_html
+    - node.type.notification
+  module:
+    - text
+id: node.notification.field_notification_page_addition
+field_name: field_notification_page_addition
+entity_type: node
+bundle: notification
+label: 'Notification Page – Additional Details'
+description: "Optional –\_if there is more information that should be shared with users that provides more context or information, it can be display on its own page. Note that the main notification text will already be displayed on the page and does not need to be repeated here"
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - editor_html
+field_type: text_long

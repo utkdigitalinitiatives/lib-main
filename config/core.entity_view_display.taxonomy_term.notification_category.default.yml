@@ -1,0 +1,15 @@
+uuid: 6aebc347-76c8-4d89-9224-84c173fd19a1
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.notification_category
+id: taxonomy_term.notification_category.default
+targetEntityType: taxonomy_term
+bundle: notification_category
+mode: default
+content: {  }
+hidden:
+  description: true
+  langcode: true
+  search_api_excerpt: true
