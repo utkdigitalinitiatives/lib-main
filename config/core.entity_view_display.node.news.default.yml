@@ -27,7 +27,7 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 103
+    weight: 5
     region: content
   field_featured_news_image:
     type: entity_reference_entity_view
@@ -36,7 +36,7 @@ content:
       view_mode: featured_image
       link: false
     third_party_settings: {  }
-    weight: 102
+    weight: 2
     region: content
   field_publishing_date:
     type: datetime_default
@@ -45,7 +45,7 @@ content:
       timezone_override: ''
       format_type: medium
     third_party_settings: {  }
-    weight: 101
+    weight: 1
     region: content
   field_related_links:
     type: link_title_url_plaintext
@@ -56,7 +56,7 @@ content:
       absolute_url: true
       wrap_parts: true
     third_party_settings: {  }
-    weight: 106
+    weight: 7
     region: content
   field_sections:
     type: entity_reference_revisions_entity_view
@@ -65,26 +65,26 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 103
+    weight: 6
     region: content
   field_update_label:
     type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 104
+    weight: 3
     region: content
   field_update_text:
     type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 105
+    weight: 4
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 0
     region: content
 hidden:
   langcode: true

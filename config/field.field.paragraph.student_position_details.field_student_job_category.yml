@@ -1,0 +1,29 @@
+uuid: d318e9b2-ca0d-4b26-8bf4-0f9455404ad8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_student_job_category
+    - paragraphs.paragraphs_type.student_position_details
+    - taxonomy.vocabulary.student_job_category
+id: paragraph.student_position_details.field_student_job_category
+field_name: field_student_job_category
+entity_type: paragraph
+bundle: student_position_details
+label: 'Student Job Category'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      student_job_category: student_job_category
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

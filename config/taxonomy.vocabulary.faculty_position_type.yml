@@ -1,0 +1,9 @@
+uuid: 38441d6d-54b3-4efa-b7a9-15eaf3c140b4
+langcode: en
+status: true
+dependencies: {  }
+name: 'Faculty Position Type'
+vid: faculty_position_type
+description: null
+weight: 0
+new_revision: false

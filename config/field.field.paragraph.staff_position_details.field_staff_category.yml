@@ -1,0 +1,29 @@
+uuid: 3c67ea1e-56ff-4d4d-833c-f0352c850849
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_staff_category
+    - paragraphs.paragraphs_type.staff_position_details
+    - taxonomy.vocabulary.staff_category
+id: paragraph.staff_position_details.field_staff_category
+field_name: field_staff_category
+entity_type: paragraph
+bundle: staff_position_details
+label: 'Staff Category'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      staff_category: staff_category
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

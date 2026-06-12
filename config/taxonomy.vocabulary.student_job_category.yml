@@ -1,0 +1,9 @@
+uuid: edc7278a-feb2-4d54-8b99-ee7c4538a1ff
+langcode: en
+status: true
+dependencies: {  }
+name: 'Student Job Category'
+vid: student_job_category
+description: null
+weight: 0
+new_revision: false

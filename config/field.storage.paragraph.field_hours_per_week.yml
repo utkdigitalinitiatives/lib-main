@@ -1,0 +1,20 @@
+uuid: b86b803c-6a84-4cb0-a068-5b8f4b61d0ef
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_hours_per_week
+field_name: field_hours_per_week
+entity_type: paragraph
+type: decimal
+settings:
+  precision: 10
+  scale: 2
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

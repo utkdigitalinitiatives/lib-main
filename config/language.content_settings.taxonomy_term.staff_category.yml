@@ -1,0 +1,11 @@
+uuid: 4cc31a79-fa9c-44a6-9795-a2fb66d7784a
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.staff_category
+id: taxonomy_term.staff_category
+target_entity_type_id: taxonomy_term
+target_bundle: staff_category
+default_langcode: site_default
+language_alterable: false

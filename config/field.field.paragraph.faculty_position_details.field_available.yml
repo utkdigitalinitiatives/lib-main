@@ -1,0 +1,21 @@
+uuid: 4954d445-918b-49f8-aaac-d75060f8edd2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_available
+    - paragraphs.paragraphs_type.faculty_position_details
+  module:
+    - datetime
+id: paragraph.faculty_position_details.field_available
+field_name: field_available
+entity_type: paragraph
+bundle: faculty_position_details
+label: Available
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

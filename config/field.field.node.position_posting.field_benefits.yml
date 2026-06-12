@@ -1,0 +1,24 @@
+uuid: d7391104-56d6-458c-b562-6608c57d716e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_benefits
+    - filter.format.editor_html
+    - node.type.position_posting
+  module:
+    - text
+id: node.position_posting.field_benefits
+field_name: field_benefits
+entity_type: node
+bundle: position_posting
+label: Benefits
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - editor_html
+field_type: text_long

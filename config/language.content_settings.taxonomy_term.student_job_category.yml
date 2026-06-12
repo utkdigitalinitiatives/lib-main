@@ -1,0 +1,11 @@
+uuid: f9326ab0-8491-4757-abaf-019216fff0d3
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.student_job_category
+id: taxonomy_term.student_job_category
+target_entity_type_id: taxonomy_term
+target_bundle: student_job_category
+default_langcode: site_default
+language_alterable: false

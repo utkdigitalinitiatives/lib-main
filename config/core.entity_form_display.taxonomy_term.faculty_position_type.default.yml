@@ -1,0 +1,43 @@
+uuid: 8a753742-c912-4326-a3ff-a5f11df36cbc
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.faculty_position_type
+  module:
+    - path
+id: taxonomy_term.faculty_position_type.default
+targetEntityType: taxonomy_term
+bundle: faculty_position_type
+mode: default
+content:
+  langcode:
+    type: language_select
+    weight: 1
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden:
+  description: true
