@@ -24,8 +24,6 @@
 
 .utk--icon-section a:hover {
     transform: scale(1.05);
-    /* commenting out to save for later */
-    /* box-shadow: 5px 5px 1px var(--utk-logo--orange); */
 }
 
 .utk-hours--transform:hover,

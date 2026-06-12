@@ -65,7 +65,7 @@
 .s-lc-whw-pr:hover,
 .s-lc-whw-ne:hover {
     background-color: var(--utk-link);
-    color: var(--utk-logo--white)
+    color: var(--utk-logo--white);
 }
 
 .s-lc-whw-pr,
@@ -118,7 +118,7 @@
 
 .s-lc-whw>tbody>tr>td {
     padding: 15px;
-    max-width: 100px
+    max-width: 100px;
 }
 
 .s-lc-whw>thead>tr>th {
