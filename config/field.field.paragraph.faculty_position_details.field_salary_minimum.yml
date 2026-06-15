@@ -1,0 +1,23 @@
+uuid: f3913984-bf0b-42a2-a815-dede4169a7e5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_salary_minimum
+    - paragraphs.paragraphs_type.faculty_position_details
+id: paragraph.faculty_position_details.field_salary_minimum
+field_name: field_salary_minimum
+entity_type: paragraph
+bundle: faculty_position_details
+label: 'Salary Minimum'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

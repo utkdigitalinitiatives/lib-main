@@ -1,0 +1,11 @@
+uuid: 13b79d56-65bf-4b35-af01-e81589229b99
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.notification_category
+id: taxonomy_term.notification_category
+target_entity_type_id: taxonomy_term
+target_bundle: notification_category
+default_langcode: site_default
+language_alterable: false

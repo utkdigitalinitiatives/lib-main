@@ -1,0 +1,19 @@
+uuid: 7f40428d-0612-4d37-baf4-c964fdff6dfa
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_notification_page_addition
+field_name: field_notification_page_addition
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

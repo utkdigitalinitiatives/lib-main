@@ -1,0 +1,19 @@
+uuid: 3acfebfc-4a65-4376-b31b-d70cc28db0a0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_appointment_rank
+    - paragraphs.paragraphs_type.faculty_position_details
+id: paragraph.faculty_position_details.field_appointment_rank
+field_name: field_appointment_rank
+entity_type: paragraph
+bundle: faculty_position_details
+label: 'Appointment Rank'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

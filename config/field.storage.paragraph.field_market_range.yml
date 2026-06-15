@@ -1,0 +1,21 @@
+uuid: b1c3930c-6263-4f07-8c88-3a42ec57683b
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_market_range
+field_name: field_market_range
+entity_type: paragraph
+type: string
+settings:
+  max_length: 31
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

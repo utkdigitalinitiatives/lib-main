@@ -1,0 +1,29 @@
+uuid: e8cf3739-8a87-47bc-adf4-4dfa1c5645fe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_faculty_category
+    - paragraphs.paragraphs_type.faculty_position_details
+    - taxonomy.vocabulary.faculty_position_type
+id: paragraph.faculty_position_details.field_faculty_category
+field_name: field_faculty_category
+entity_type: paragraph
+bundle: faculty_position_details
+label: 'Faculty Category'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      faculty_position_type: faculty_position_type
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

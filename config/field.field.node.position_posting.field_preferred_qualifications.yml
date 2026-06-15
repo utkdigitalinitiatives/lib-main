@@ -1,0 +1,24 @@
+uuid: 16893c3b-d2a6-47fe-9d51-d1896804ede1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_preferred_qualifications
+    - filter.format.editor_html
+    - node.type.position_posting
+  module:
+    - text
+id: node.position_posting.field_preferred_qualifications
+field_name: field_preferred_qualifications
+entity_type: node
+bundle: position_posting
+label: 'Preferred Qualifications'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - editor_html
+field_type: text_long

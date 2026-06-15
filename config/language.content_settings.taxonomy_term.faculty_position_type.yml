@@ -1,0 +1,11 @@
+uuid: d4d5eb86-19c7-4e6f-8971-f11e0ea469d2
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.faculty_position_type
+id: taxonomy_term.faculty_position_type
+target_entity_type_id: taxonomy_term
+target_bundle: faculty_position_type
+default_langcode: site_default
+language_alterable: false
