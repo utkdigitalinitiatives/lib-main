@@ -1,0 +1,36 @@
+{#
+/**
+ * @file
+ * UTK Custom - Search Form template.
+ *
+ * This template is used to render a search form with custom styling and layout.
+ *
+ * Available variables:
+ * - search_url: The URL where the search form submits its query.
+ * - placeholder: The placeholder text displayed in the search input field.
+ *
+ * Customizations:
+ * - Displays a search input field with a submit button.
+ * - Ensures responsive design for proper alignment and spacing across devices.
+ * - Uses custom classes for consistent styling across the site.
+ *
+ * @see template_preprocess()
+ */
+#}
+
+<form class="views-exposed-form" action="{{ url('<front>') }}search-results" method="get" id="views-exposed-form-search-results-page-2" accept-charset="UTF-8">
+    <div class="form--inline clearfix py-auto mx-auto my-auto ">
+        <div class="input-group d-flex justify-content-center align-items-center" id="utk-search-text">
+            <div class="js-form-item form-item js-form-type-textfield form-type-textfield js-form-item-search-api-fulltext form-item-search-api-fulltext form-no-label utk--search mx-0 px-0">
+                <input data-drupal-selector="edit-search-api-fulltext" type="text" id="edit-search-api-fulltext"
+                    name="search_api_fulltext" aria-label="Search the libraries website" value="" size="30" maxlength="128"
+                    class="form-text form-control mx-0 my-0" placeholder="{{ placeholder }}" />
+            </div>
+            <div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper" id="edit-actions">
+                <button class="btn utk--button-gray js-form-submit form-submit"
+                    data-drupal-selector="edit-submit-search-results" type="submit"
+                    id="edit-submit-search-results" style="border-color:rgb(75, 75, 75, 0.2)">Search</button>
+            </div>
+        </div>
+    </div>
+</form>

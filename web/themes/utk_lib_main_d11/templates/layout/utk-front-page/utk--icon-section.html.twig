@@ -1,0 +1,71 @@
+{#
+/**
+ * @file
+ * UTK Custom - Icon Section template.
+ *
+ * This template is used to render a section of icons with custom styling and layout.
+ *
+ * Available variables:
+ * - icon_items: An array of icon items, each containing:
+ *   - title: The title displayed below the icon.
+ *   - button_url: The URL the icon links to.
+ *   - icon_path: The path to the icon image.
+ *
+ * Customizations:
+ * - Displays a grid of icons with titles and links.
+ * - Ensures responsive design for proper alignment and spacing across devices.
+ * - Applies consistent styling for icons and text.
+ *
+ * @see template_preprocess()
+ */
+#}
+
+{% set icon_items = [
+        {
+            title: "Services",
+            button_url: "/services",
+            icon_path:"/themes/utk_lib_main_d11/images/icons/icon-services.png"
+        },
+        {
+            title: "Databases",
+            button_url: "https://libguides.utk.edu/databases",
+            icon_path:"/themes/utk_lib_main_d11/images/icons/icon-databases.png",
+            outgoing: 'fluent-icon-external'
+        },
+        {
+            title: "Research Guides",
+            button_url: "https://libguides.utk.edu/",
+            icon_path:"/themes/utk_lib_main_d11/images/icons/icon-guides.png",
+            outgoing: "fluent-icon-external"
+        },
+        {
+            title: "Unique Resources",
+            button_url: "/unique-resources",
+            icon_path:"/themes/utk_lib_main_d11/images/icons/icon-digital-collections.png"
+        },
+        {
+            title: "Rooms and Spaces",
+            button_url: "/spaces",
+            icon_path:"/themes/utk_lib_main_d11/images/icons/icon-spaces.png"
+        },
+    ]
+%}
+<div class='row d-flex justify-content-center utk--icon-section max-row-width mx-auto'>
+    {% for item in icon_items %}
+        <div class='col-6 col-md-2 col-lg-2 d-flex justify-content-center align-items-center py-3 mx-md-2 mx-lg-0'>
+            <a href="{{ item.button_url }}" class='row d-flex justify-content-center utk-front-icon-button'>
+                <div class='col-12 d-flex align-items-center justify-content-center'>
+                    <img src="{{ item.icon_path }}" alt="" class='img-fluid'>
+                </div>
+                <div class='col-12 d-flex justify-content-center '>
+                    <p class='font-small fw-medium text-center mb-0 text-link'>
+                        {{ item.title }}
+                        {% if item.outgoing|length > 0 %}
+                            <span class='svg-settings {{ item.outgoing }}' style="width:11px; height:11px; display:inline-block;"></span>
+                        {% endif %}
+                    </p>
+                </div>
+            </a>
+        </div>
+    {% endfor %}
+</div>

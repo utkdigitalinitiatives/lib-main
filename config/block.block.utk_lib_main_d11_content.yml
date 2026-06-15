@@ -1,0 +1,22 @@
+uuid: 6ff65429-3f99-4222-a067-5e44c125723b
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - utk_lib_main_d11
+_core:
+  default_config_hash: erQSEZF2XUjNmgTl0uNRBzmg18ZGXwUcw2FhApoeuHk
+id: utk_lib_main_d11_content
+theme: utk_lib_main_d11
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

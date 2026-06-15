@@ -1,0 +1,38 @@
+{#
+/**
+ * @file
+ * UTK Custom - Section Card template.
+ *
+ * This template is used to render an section card component with custom styling and layout.
+ * Generally based off of the default bootstrap card styling
+ *
+ * Available variables:
+ * - description: The description text displayed in the card.
+ * - url: The URL for the action link.
+ * - link_title: The text for the action link.
+ *
+ * Customizations:
+ * - Displays a card with a title, description, and a call-to-action link.
+ * - Includes responsive design for proper alignment and spacing.
+ * - Applies custom classes for consistent styling across the site.
+ *
+ * @see template_preprocess()
+ */
+#}
+
+<article class="utk-card-surface utk-section-card">
+    {% if img_src %}
+    <div class="utk-section-card__media">
+        <img src="{{ img_src }}" alt="{{ img_alt }}" loading="lazy">
+    </div>
+    {% endif %}
+    <div class="utk-section-card__body">
+        <h4 class="utk-section-card__title text-link">{{ card_title }}</h4>
+        <div class="utk-section-card__text text-smokey">
+            {% autoescape false %}{{ text_body }}{% endautoescape %}
+        </div>
+        <div class="utk-section-card__actions">
+            <a href="{{ button_url }}" class="btn utk-blue-button">{{ button_title }}</a>
+        </div>
+    </div>
+</article>
