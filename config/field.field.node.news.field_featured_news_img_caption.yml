@@ -1,0 +1,24 @@
+uuid: 0e761b36-b696-4729-a7b2-ffcbe3122275
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_featured_news_img_caption
+    - filter.format.editor_html
+    - node.type.news
+  module:
+    - text
+id: node.news.field_featured_news_img_caption
+field_name: field_featured_news_img_caption
+entity_type: node
+bundle: news
+label: 'Featured News Image Caption'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - editor_html
+field_type: text
