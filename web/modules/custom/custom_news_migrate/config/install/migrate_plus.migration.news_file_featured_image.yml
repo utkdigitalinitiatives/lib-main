@@ -1,0 +1,41 @@
+id: news_file_featured_image
+label: "News featured image files"
+migration_group: news
+migration_tags: []
+
+source:
+  plugin: eligible_news_featured_image_files
+  scheme: public
+  constants:
+    source_base_path: "/var/www/html/source_public_files"
+  cutoff_date: "2021-06-08 00:00:00"
+
+process:
+  uid:
+    plugin: default_value
+    default_value: 1
+
+  filename: filename
+
+  source_full_path:
+    plugin: str_replace
+    source: uri
+    search: "public://"
+    replace: "/var/www/html/source_public_files/"
+
+  uri:
+    plugin: file_copy
+    source:
+      - "@source_full_path"
+      - uri
+
+  filemime: filemime
+  filesize: filesize
+  status: status
+  created: created
+  changed: changed
+
+destination:
+  plugin: "entity:file"
+
+migration_dependencies: {}

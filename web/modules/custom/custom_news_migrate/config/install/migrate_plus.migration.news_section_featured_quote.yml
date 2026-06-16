@@ -1,0 +1,23 @@
+id: news_section_featured_quote
+label: "News featured quote paragraphs"
+migration_group: news
+migration_tags: []
+
+source:
+  plugin: eligible_news_featured_quote_paragraphs
+  cutoff_date: "2021-06-08 00:00:00"
+
+process:
+  type:
+    plugin: default_value
+    default_value: featured_quote
+
+  field_quote/value: quote_value
+  field_quote/format:
+    plugin: default_value
+    default_value: editor_html
+
+destination:
+  plugin: "entity_reference_revisions:paragraph"
+
+migration_dependencies: {}

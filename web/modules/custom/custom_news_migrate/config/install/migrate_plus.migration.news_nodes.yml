@@ -1,0 +1,86 @@
+id: news_nodes
+label: "News nodes"
+migration_group: news
+migration_tags: []
+
+source:
+  plugin: eligible_news_nodes
+  cutoff_date: "2021-06-08 00:00:00"
+
+process:
+  type:
+    plugin: default_value
+    default_value: news
+
+  title: title
+
+  uid:
+    plugin: default_value
+    default_value: 1
+
+  field_blurb/value: blurb
+  field_blurb/format:
+    plugin: default_value
+    default_value: editor_html
+
+  field_update_label/value: update_label
+  field_update_label/format:
+    plugin: default_value
+    default_value: editor_html
+
+  field_update_text/value: update_text
+  field_update_text/format:
+    plugin: default_value
+    default_value: editor_html
+
+  field_publishing_date/value: publishing_date
+
+  field_featured_news_image/target_id:
+    plugin: migration_lookup
+    migration: news_media_featured_image
+    source: source_featured_image_paragraph_id
+
+  field_featured_news_img_caption: featured_image_caption
+
+  field_sections:
+    plugin: sub_process
+    source: section_paragraph_ids
+    process:
+      section_lookup:
+        plugin: migration_lookup
+        migration:
+          - news_section_text
+          - news_section_featured_quote
+          - news_section_embedded_video
+          - news_section_file_attachment
+          - news_section_image
+          - news_section_tall_image
+          - news_section_callout_image
+        source: source_paragraph_id
+        no_stub: true
+
+      target_id:
+        plugin: extract
+        source: "@section_lookup"
+        index:
+          - 0
+
+      target_revision_id:
+        plugin: extract
+        source: "@section_lookup"
+        index:
+          - 1
+
+destination:
+  plugin: "entity:node"
+
+migration_dependencies:
+  required:
+    - news_media_featured_image
+    - news_section_text
+    - news_section_featured_quote
+    - news_section_embedded_video
+    - news_section_file_attachment
+    - news_section_image
+    - news_section_tall_image
+    - news_section_callout_image

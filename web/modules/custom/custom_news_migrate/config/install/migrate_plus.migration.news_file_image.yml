@@ -1,0 +1,43 @@
+id: news_file_image
+label: "News image files"
+migration_group: news
+migration_tags: []
+
+source:
+  plugin: eligible_news_section_image_files
+  cutoff_date: "2021-06-08 00:00:00"
+  constants:
+    public_scheme: "public://"
+    source_public_prefix: "/var/www/html/source_public_files/"
+
+process:
+  uid:
+    plugin: default_value
+    default_value: 1
+
+  filename: filename
+  filemime: filemime
+  filesize: filesize
+  status: status
+  created: created
+  changed: changed
+
+  source_full_path:
+    plugin: callback
+    callable: str_replace
+    unpack_source: true
+    source:
+      - constants/public_scheme
+      - constants/source_public_prefix
+      - uri
+
+  uri:
+    plugin: file_copy
+    source:
+      - "@source_full_path"
+      - uri
+
+destination:
+  plugin: "entity:file"
+
+migration_dependencies: {}

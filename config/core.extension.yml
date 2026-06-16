@@ -12,6 +12,7 @@ module:
   conditional_profile_url: 0
   config: 0
   contextual: 0
+  custom_news_migrate: 0
   datetime: 0
   dblog: 0
   dependent_fields: 0
@@ -43,6 +44,9 @@ module:
   media_library: 0
   menu_link_content: 0
   menu_ui: 0
+  migrate: 0
+  migrate_plus: 0
+  migrate_tools: 0
   node: 0
   options: 0
   page_cache: 0
