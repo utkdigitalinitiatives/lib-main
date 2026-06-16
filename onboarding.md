@@ -197,10 +197,11 @@ topic-branch → dev → main
 
 | Merge                | Method       | Notes                                              |
 | -------------------- | ------------ | -------------------------------------------------- |
-| Topic branch → `dev` | Squash merge | Preferred; keeps `dev` history clean and linear    |
-| `dev` → `main`       | Merge commit | Preferred; preserves the promotion history clearly |
+| Topic branch → `dev` | Merge commit | Preferred; preserves the promotion history clearly |
+| `dev` → `main`       | Squash merge | Preferred; keeps `main` history clean and linear   |
 
-Alternate merge methods may be used when there is a strong reason, but squash-to-`dev` and merge-commit-to-`main` are the defaults.
+Alternate merge methods may be used when there is a strong reason, but merge-commit-to-`dev` and squash-to-`main` are the defaults.
+** note that merging via other methods may require disabling branch protection rules in GitHub **
 
 ### Pull requests
 
