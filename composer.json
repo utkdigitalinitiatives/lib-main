@@ -60,7 +60,14 @@
             "php-http/discovery": true,
             "php-tuf/composer-integration": true
         },
-        "sort-packages": true
+        "sort-packages": true,
+        "audit": {
+            "ignore": [
+                "PKSA-93qv-9n9h-6k6p",
+                "PKSA-k22t-f949-t9g6",
+                "PKSA-7qs6-zvnz-h66r"
+            ]
+        }
     },
     "extra": {
         "drupal-scaffold": {
