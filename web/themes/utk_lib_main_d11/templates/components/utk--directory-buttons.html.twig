@@ -1,0 +1,46 @@
+{#
+/**
+ * @file
+ * UTK Custom - Directory Buttons template.
+ *
+ * This template is used to render a set of directory buttons with custom styling and layout.
+ *
+ * Available variables:
+ * - directory_items: An array of directory items, each containing:
+ *   - button_title: The title of the button.
+ *   - url: The URL the button links to.
+ *
+ * Customizations:
+ * - Displays the shared hero-panel button treatment for directory navigation.
+ * - Includes links to key directories such as Department Directory, Subject Librarians, and Service Teams.
+ * - Ensures proper alignment and spacing for both desktop and mobile layouts.
+ *
+ * @see template_preprocess()
+ */
+#}
+
+{% set directory_items = directory_items|default([
+        {
+            button_title: 'Department Directory',
+            url: '/directory'
+        },
+        {
+            button_title: 'Department Contact',
+            url: '/department-directory'
+        },
+        {
+            button_title: 'Subject Librarians',
+            url: '/specialist-list'
+        },
+        {
+            button_title: 'Service Teams',
+            url: '/directory/service-teams'
+        }
+    ])
+%}
+
+<div class="utk-page-hero-panel__content utk-page-hero-panel__actions">
+    {% for item in directory_items %}
+        <a class='btn utk-smokey-button' href="{{ item.url }}">{{ item.button_title }}</a>
+    {% endfor %}
+</div>

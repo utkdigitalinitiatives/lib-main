@@ -1,0 +1,29 @@
+{#
+/**
+ * @file
+ * UTK Custom - Search Header template.
+ *
+ * This template is used to render the search form in the header with custom styling and layout.
+ *
+ * Available variables:
+ * - search_url: The URL where the search form submits its query.
+ *
+ * Customizations:
+ * - Displays a search input field with a submit button styled as part of the header.
+ * - Includes an SVG icon for the search button.
+ * - Ensures responsive design for proper alignment and spacing across devices.
+ * - Uses custom classes for consistent styling across the site.
+ *
+ * @see template_preprocess()
+ */
+#}
+
+<form class="views-exposed-form" action="{{ url('<front>') }}search-results" method="get" id="views-exposed-form-search-results-page-2" accept-charset="UTF-8">
+    <div class="input-group d-flex justify-content-center align-items-center" id="utk-search-text">
+        <input data-drupal-selector="edit-search-api-fulltext" type="text" id="edit-search-api-fulltext" name="search_api_fulltext" aria-label="Search the libraries website" value="" size="30" maxlength="128" class="form-text form-control mx-0 my-0" placeholder="Search our site...">
+        <button class="btn utk--button-gray js-form-submit form-submit" data-drupal-selector="edit-submit-search-results" type="submit" id="edit-submit-search-results">
+            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 2.5a7.5 7.5 0 0 1 5.964 12.048l4.743 4.745a1 1 0 0 1-1.32 1.497l-.094-.083-4.745-4.743A7.5 7.5 0 1 1 10 2.5Zm0 2a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11Z" fill="#4b4b4b"/></svg>
+            <span class="visually-hidden">Search</span>
+        </button>
+    </div>
+</form>

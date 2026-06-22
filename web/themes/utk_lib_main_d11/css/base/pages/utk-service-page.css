@@ -1,0 +1,262 @@
+#utk-service .utk-service-contact img {
+    object-fit: cover;
+    aspect-ratio: 1/1;
+    max-width: 100%;
+    border: 1px solid rgb(from var(--utk-black) r g b / 0.1);
+    border-radius: 50%;
+}
+
+#utk-service .service-content h2 {
+    border-bottom: 2px solid var(--utk-logo--orange);
+    padding-bottom: 0.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+#utk-service .service-content {
+    line-height: 1.6;
+}
+
+#utk-service .field--name-field-related-services {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+#utk-service .svg-settings {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    padding-left: 30px;
+    border-radius: 4px;
+    transition: none;
+    background-repeat: no-repeat;
+    background-position: 8px center;
+    background-size: 18px;
+}
+
+#utk-service .svg-settings:hover,
+#utk-service .svg-settings:focus-within {
+    background-color: transparent;
+}
+
+#utk-service .utk-search-selector {
+    display: inline-block;
+}
+
+#utk-service .field--name-field-related-services>div {
+    margin-bottom: 0.25rem;
+}
+
+#utk-service .department-details-panel {
+    border-color: rgb(from var(--utk-logo--smokey) r g b / 0.55);
+    background: linear-gradient(
+        180deg,
+        rgb(from var(--utk-logo--smokey) r g b / 0.98) 0%,
+        rgb(from var(--utk-logo--smokey) r g b / 0.96) 100%
+    );
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 26px 42px rgb(from var(--utk-black) r g b / 0.16),
+        0 8px 18px rgb(from var(--utk-black) r g b / 0.08),
+        0 10px 24px rgb(from var(--utk-logo--smokey) r g b / 0.09);
+}
+
+#utk-service .department-people-block {
+    --department-people-gap: 1.5rem;
+    --department-people-radius: 10px;
+    --department-people-border: rgb(from var(--utk-logo--orange) r g b / 0.5);
+}
+
+#utk-service .department-people-block__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--department-people-gap);
+    align-items: stretch;
+    padding-bottom: 1rem;
+}
+
+#utk-service .department-people-block__grid > * {
+    display: contents;
+}
+
+#utk-service .department-person-column {
+    display: flex;
+}
+
+#utk-service .department-person-card {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: var(--utk-logo--white);
+    border: 0.8px solid var(--department-people-border);
+    border-radius: var(--department-people-radius);
+    box-shadow: 0 14px 30px rgb(from var(--utk-black) r g b / 0.1),
+        0 4px 10px rgb(from var(--utk-black) r g b / 0.06);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+#utk-service .department-person-card:hover,
+#utk-service .department-person-card:focus-within {
+    transform: translateY(-7px) scale(1.01);
+    box-shadow: 0 24px 44px rgb(from var(--utk-black) r g b / 0.18),
+        0 10px 20px rgb(from var(--utk-black) r g b / 0.1),
+        0 0 22px rgb(from var(--utk-logo--orange) r g b / 0.24);
+}
+
+#utk-service .department-person-card__link,
+#utk-service .department-person-card__link:hover,
+#utk-service .department-person-card__link:focus,
+#utk-service .department-person-card__link:active {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    color: inherit;
+    text-decoration: none;
+    background-image: none;
+    background-size: 0 0;
+}
+
+#utk-service .department-person-card__link:focus-visible {
+    outline: 3px solid rgb(from var(--utk-logo--orange) r g b / 0.55);
+    outline-offset: 3px;
+}
+
+#utk-service .department-person-card__thumbnail {
+    display: block;
+    flex-shrink: 0;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    background: linear-gradient(
+        180deg,
+        rgb(from var(--utk-logo--white) r g b / 1) 0%,
+        rgb(from var(--utk-logo--orange) r g b / 0.05) 100%
+    );
+}
+
+#utk-service .department-person-card__thumbnail img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+#utk-service .department-person-card__body {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0.3rem;
+    min-height: 74px;
+    padding: 0.45rem 12px;
+    overflow: hidden;
+    color: var(--utk-logo--smokey);
+    background: linear-gradient(
+        180deg,
+        rgb(from var(--utk-logo--white) r g b / 1) 0%,
+        rgb(from var(--utk-logo--orange) r g b / 0.035) 100%
+    );
+    border-top: 1.7px solid var(--utk-logo--orange);
+    border-top-left-radius: var(--department-people-radius);
+    border-top-right-radius: var(--department-people-radius);
+    box-shadow: inset 0 1px 0 rgb(from var(--utk-logo--white) r g b / 0.9);
+}
+
+#utk-service .department-person-card__title {
+    margin: 0 0 0.15rem;
+    color: rgb(from var(--utk-black) r g b / 0.87);
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#utk-service .department-person-card__position {
+    margin-bottom: 0;
+    color: var(--utk-logo--smokey);
+    font-size: 15px;
+    line-height: 1.45;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#utk-service .department-person-card__pill {
+    display: inline-flex;
+    align-self: flex-start;
+    padding: 0.25rem 0.55rem;
+    border: 1px solid var(--utk-logo--orange);
+    border-radius: 999px;
+    color: rgb(from var(--utk-black) r g b / 0.87);
+    background: rgb(from var(--utk-logo--orange) r g b / 0.1);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+    box-shadow: 0 1px 2px rgb(from var(--utk-black) r g b / 0.05);
+}
+
+#utk-service .field--name-field-service-contacts {
+    margin-top: 0.5rem;
+}
+
+#utk-service .utk-service-contact {
+    border-bottom: 1px solid rgb(from var(--utk-black) r g b / 0.06);
+    padding: 0.25rem 0;
+}
+
+#utk-service .utk-service-contact:last-child {
+    border-bottom: none;
+}
+
+#utk-service .utk-contact-hover:hover,
+#utk-service .utk-contact-hover:focus-within {
+    background-color: transparent;
+    transform: none;
+    border-color: transparent;
+    box-shadow: none;
+}
+
+@media (max-width: 575px) {
+    #utk-service .department-person-card__body {
+        min-height: 82px;
+        padding: 0.6rem;
+        text-align: center;
+    }
+
+    #utk-service .department-person-card__title {
+        font-size: 1rem;
+        margin-bottom: 0.25rem;
+    }
+
+    #utk-service .department-person-card__position {
+        font-size: 0.85rem;
+    }
+
+    #utk-service .department-person-card__pill {
+        align-self: center;
+    }
+}
+
+@media (min-width: 576px) {
+    #utk-service .department-people-block__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 992px) {
+    #utk-service .department-people-block__grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}

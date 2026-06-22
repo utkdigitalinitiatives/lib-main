@@ -1,0 +1,22 @@
+uuid: ff6e2132-3f96-4cf5-a6bb-ee604404f655
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - utk_lib_main_d11
+_core:
+  default_config_hash: VfPFqqxfkomud5CO8DUijw85QIl9GIxh_nIxLOYESxg
+id: utk_lib_main_d11_help
+theme: utk_lib_main_d11
+region: sidebar_first
+weight: 0
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  label_display: '0'
+  provider: help
+visibility: {  }

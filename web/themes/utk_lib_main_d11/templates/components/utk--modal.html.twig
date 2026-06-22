@@ -1,0 +1,188 @@
+{#
+/**
+ * @file
+ * UTK Custom - Modal template.
+ *
+ * This template is used to render a modal component with custom styling and layout.
+ *
+ * Available variables:
+ * - modalId: The unique ID for the modal.
+ * - modalLabel: The label for the modal, used for accessibility.
+ * - title: The title displayed in the modal header.
+ * - imageUrls: An array of image URLs to display in the modal carousel or as a single image.
+ * - altTexts: An array of alt text corresponding to the images.
+ * - carouselId: The unique ID for the carousel (if multiple images are present).
+ * - details: An array of label-value pairs to display in the modal body.
+ * - button_details: An array containing:
+ *   - button_url: The URL for the action button.
+ *   - button_title: The text for the action button.
+ * - url: The URL for the "View All Details" link in the modal footer.
+ *
+ * Customizations:
+ * - Displays a carousel for multiple images or a single image if only one is provided.
+ * - Includes a structured layout for details with labels and values.
+ * - Provides an action button and a "View All Details" link in the footer.
+ * - Ensures responsive design for both desktop and mobile layouts.
+ *
+ * @see template_preprocess()
+ */
+#}
+
+<div class="modal fade text-smokey link-link utk-modal" id="{{ modalId }}" tabindex="-1" aria-labelledby="{{ modalLabel }}"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content border-0 shadow">
+            <div class="modal-header border-bottom-0 pb-0">
+                <h1 class="modal-title fs-4 fw-bold" id="{{ modalLabel }}">{{ title }}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" title="Close details"></button>
+            </div>
+            <div class="modal-body pt-2">
+                <div class='container-fluid px-0'>
+                    <div class='row g-4'>
+                        {% if imageUrls|length > 1 %}
+                        <div class="col-12 col-lg-6">
+                            <div id="{{ carouselId }}" class="carousel slide utk-carousel shadow-sm rounded-3 overflow-hidden" style="height: auto;">
+                                <div class="carousel-indicators">
+                                    {% for key, imgUrl in imageUrls %}
+                                        <button type="button" data-bs-target="#{{ carouselId }}" data-bs-slide-to="{{ key }}" {% if key == 0 %}class="active" aria-current="true"{% endif %} aria-label="Slide {{ key + 1 }}"></button>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="carousel-inner">
+                                {% for key, imgUrl in imageUrls %}
+                                <div class="carousel-item {% if key == 0 %}active{% endif %} h-100">
+                                    <div class="image-wrapper">
+                                        <img src="{{ imgUrl }}" alt="{{ altTexts[key] }}" loading="lazy">
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+
+                            <button class="carousel-control-prev" type="button" data-bs-target="#{{ carouselId }}" data-bs-slide="prev" aria-label="Previous image">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+
+                            <button class="carousel-control-next" type="button" data-bs-target="#{{ carouselId }}" data-bs-slide="next" aria-label="Next image">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                            
+                            <div class="carousel-counter d-none d-md-block">
+                                <span class="current-slide">1</span>/<span class="total-slides">{{ imageUrls|length }}</span>
+                            </div>
+                            </div>
+                        </div>
+                        {% else %}
+                            <div class='col-12 col-md-6'>
+                                <div class="image-wrapper rounded-3 shadow-sm">
+                                    <img src="{{ imageUrls[0] }}" alt="{{ altTexts[0] }}" loading='lazy'>
+                                </div>
+                            </div>
+                        {% endif %}
+                        <div class='col-12 col-lg-6 px-md-4'>
+                                {% for label, value in details %}
+                                    {% if label == 'Reservable' %}
+                                    <div class="mb-3">
+                                        {% if value == 'Yes' %}
+                                            <span class="utk-modal__status-badge utk-modal__status-badge--available">Reservable</span>
+                                        {% else %}
+                                            <span class="utk-modal__status-badge utk-modal__status-badge--unavailable">Not Reservable</span>
+                                        {% endif %}
+                                    </div>
+                                    {% endif %}
+                                {% endfor %}
+                                
+                                <div class="row">
+                                {% for label, value in details %}
+                                    {% if label != 'Description' and label != 'Description/Specifications' and label != 'Reservable' %}
+                                    <div class='col-6 mb-3'>
+                                        <h3 class='fs-5 fw-medium mb-1 text-smokey'>
+                                            {{ label }}
+                                        </h3>
+                                        <div class="ps-0">
+                                            {% if value %}
+                                                {{ value }}
+                                            {% else %}
+                                                <span class="text-muted fst-italic">Not available</span>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                {% endfor %}
+                                </div>
+                            {% if button_details.button_url|length > 0 %}
+                            <div class='mt-4'>
+                                <a class='btn utk--modal-btn d-inline-flex align-items-center gap-2 px-4 py-2' href="{{ button_details.button_url }}">
+                                    <span>{{ button_details.button_title }}</span>
+                                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M13.267 4.209a.75.75 0 0 0-1.034 1.086l6.251 5.955H3.75a.75.75 0 0 0 0 1.5h14.734l-6.251 5.954a.75.75 0 0 0 1.034 1.087l7.42-7.067a.996.996 0 0 0 .3-.58.758.758 0 0 0-.001-.29.995.995 0 0 0-.3-.578l-7.419-7.067Z"
+                                            fill="#ff8200" />
+                                    </svg>
+                                </a>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    {% set has_description = false %}
+                    {% for label, value in details %}
+                        {% if (label == 'Description' or label == 'Description/Specifications') and value|render|striptags|trim is not empty %}
+                            {% set has_description = true %}
+                        {% endif %}
+                    {% endfor %}
+                    
+                    {% if has_description %}
+                    <div class='row mt-4'>
+                        <div class='col-12'>
+                            {% for label, value in details %}
+                                {% if label == 'Description' or label == 'Description/Specifications' %}
+                                <div class='mb-3'>
+                                    <h3 class='fs-5 fw-medium mb-1 text-smokey'>
+                                        {{ label }}
+                                    </h3>
+                                    <div class="ps-0 description-scroll">
+                                        {% if value %}
+                                            {{ value }}
+                                        {% else %}
+                                            <span class="text-muted fst-italic">Not available</span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <a class='btn utk-blue-button d-inline-flex align-items-center gap-2' href="{{ url }}" aria-label="View full details for {{ title }}">
+                    <span>View All Details</span>
+                    <svg width="16" height="16" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 6v2H5v11h11v-5h2v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h6zm11-3v8h-2V6.413l-7.793 7.794-1.414-1.414L17.585 5H13V3h8z" fill="currentColor"/>
+                    </svg>
+                </a>
+                <button type="button" class="btn utk-smokey-button" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if imageUrls|length > 1 %}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var carousel = document.getElementById('{{ carouselId }}');
+    if (carousel) {
+      var currentSlideElement = carousel.querySelector('.current-slide');
+      
+      carousel.addEventListener('slid.bs.carousel', function(event) {
+        if (currentSlideElement) {
+          currentSlideElement.textContent = (event.to + 1).toString();
+        }
+      });
+    }
+  });
+</script>
+{% endif %}

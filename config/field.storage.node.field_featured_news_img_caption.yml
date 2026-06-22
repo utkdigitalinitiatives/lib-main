@@ -1,0 +1,20 @@
+uuid: 67d13c9d-4f61-4574-8e78-a25a1bbdc0f5
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_featured_news_img_caption
+field_name: field_featured_news_img_caption
+entity_type: node
+type: text
+settings:
+  max_length: 255
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

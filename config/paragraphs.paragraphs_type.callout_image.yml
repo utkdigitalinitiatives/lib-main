@@ -1,0 +1,10 @@
+uuid: 4408dc77-f45e-4dce-8057-dbd54d625c98
+langcode: en
+status: true
+dependencies: {  }
+id: callout_image
+label: 'Callout Image'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

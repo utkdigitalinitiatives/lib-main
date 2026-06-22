@@ -1,0 +1,27 @@
+id: news_section_file_attachment
+label: "News file attachment paragraphs"
+migration_group: news
+migration_tags: []
+
+source:
+  plugin: eligible_news_file_attachment_paragraphs
+  cutoff_date: "2021-06-08 00:00:00"
+
+process:
+  type:
+    plugin: default_value
+    default_value: file_attachment
+
+  field_file/target_id:
+    plugin: migration_lookup
+    migration: news_media_document
+    source: source_media_id
+
+  field_file_name: file_name
+
+destination:
+  plugin: "entity_reference_revisions:paragraph"
+
+migration_dependencies:
+  required:
+    - news_media_document

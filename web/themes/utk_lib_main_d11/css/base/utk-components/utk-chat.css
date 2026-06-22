@@ -1,0 +1,79 @@
+.utk-libchat {
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    z-index: 1000 !important;
+}
+
+.utk-libchat button {
+    height: 47px !important;
+    line-height: 47px !important;
+    border-radius: 47px !important;
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    box-shadow: 0 2px 5px rgb(51 51 51 / 0.29);
+    background-color: #ffffff !important;
+    color: #333333 !important;
+    padding: 0 calc(58px) 0 18px !important;
+    position: relative !important;
+    z-index: 0;
+}
+
+@media (max-width: 767px) {
+    .utk-libchat button {
+        height: 40px !important;
+        line-height: 40px !important;
+        padding: 0 calc(51px) 0 18px !important;
+    }
+}
+
+.utk-libchat button::after {
+    content: "";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff !important;
+    font-style: normal;
+    font-size: 1rem;
+    font-weight: 400;
+    position: absolute;
+    right: -1px;
+    top: -1px;
+    height: 47px !important;
+    width: 47px !important;
+    background-color: #a7a9ac;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 24px;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 6px 100%) !important;
+    border-top-right-radius: 47px !important;
+    border-bottom-right-radius: 47px !important;
+    -webkit-font-smoothing: antialiased;
+}
+
+@media (max-width: 767px) {
+    .utk-libchat button::after {
+        height: 40px !important;
+        width: 40px !important;
+        background-size: 20px;
+    }
+}
+
+.utk-libchat button.libchat_online::after {
+    background-color: #abc178 !important;
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' fill='none' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10a9.96 9.96 0 0 1-4.644-1.142l-4.29 1.117a.85.85 0 0 1-1.037-1.036l1.116-4.289A9.959 9.959 0 0 1 2 12C2 6.477 6.477 2 12 2Zm0 13.5a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm0-8.75A2.75 2.75 0 0 0 9.25 9.5a.75.75 0 0 0 1.493.102l.014-.23a1.25 1.25 0 0 1 2.493.128c0 .539-.135.805-.645 1.332l-.304.31c-.754.784-1.051 1.347-1.051 2.358a.75.75 0 0 0 1.5 0c0-.539.135-.805.645-1.332l.304-.31c.754-.784 1.051-1.347 1.051-2.358A2.75 2.75 0 0 0 12 6.75Z' fill='%23ffffff'/%3E%3C/svg%3E");
+}
+
+.utk-libchat button.libchat_offline::after {
+    background-color: #a7a9ac !important;
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' fill='none' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.28 2.22a.75.75 0 1 0-1.06 1.06l2.198 2.2A9.96 9.96 0 0 0 2 12a9.96 9.96 0 0 0 1.145 4.65L2.029 20.94a.85.85 0 0 0 1.036 1.036l4.29-1.117A9.96 9.96 0 0 0 12 22c2.491 0 4.77-.911 6.52-2.418l2.2 2.198a.75.75 0 0 0 1.06-1.06L3.28 2.22ZM13.42 14.48a.766.766 0 0 1-.066.012l-.102.007H8.75l-.102-.007a.75.75 0 0 1 0-1.486L8.75 13h3.19l1.48 1.481ZM9.94 11H8.75l-.102-.007a.75.75 0 0 1-.161-1.445L9.939 11ZM15.25 11h-1.068l6.3 6.3A9.953 9.953 0 0 0 22 12c0-5.523-4.477-10-10-10a9.953 9.953 0 0 0-5.3 1.518L12.682 9.5h2.568l.102.007a.75.75 0 0 1 0 1.486L15.25 11Z' fill='%23ffffff'/%3E%3C/svg%3E");
+}
+
+#libchat_78a3332e7565fa21d9d06086c12850d10c4549bff2a87ff577e0671a0e7b86ad_container {
+    position: fixed !important;
+    bottom: 80px !important;
+    right: 20px !important;
+    z-index: 1000 !important;
+    max-width: 350px !important;
+    box-shadow: 0 5px 15px rgb(from var(--utk-black) r g b / 0.2) !important;
+}

@@ -1,0 +1,36 @@
+uuid: 661a3945-ed3f-48a7-b8cc-18de057a57c3
+langcode: en
+status: true
+dependencies: {  }
+id: news_media_image
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: {  }
+migration_group: news
+label: 'News image media'
+source:
+  plugin: eligible_news_section_image_media
+  cutoff_date: '2021-06-08 00:00:00'
+process:
+  bundle:
+    plugin: default_value
+    default_value: image
+  uid:
+    plugin: default_value
+    default_value: 1
+  name: name
+  status: status
+  created: created
+  changed: changed
+  field_media_image/target_id:
+    plugin: migration_lookup
+    migration: news_file_image
+    source: file_target_id
+destination:
+  plugin: 'entity:media'
+idMap: {  }
+migration_dependencies:
+  required:
+    - news_file_image
+include: null
