@@ -42,6 +42,7 @@
         "drupal/twig_tweak": "^3.4",
         "drupal/views_bulk_operations": "^4.4",
         "drupal/viewsreference": "^2.0@beta",
+        "drupal/webform": "6.3.0-rc2",
         "drush/drush": "^13.7"
     },
     "conflict": {

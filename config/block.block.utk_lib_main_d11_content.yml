@@ -1,6 +1,6 @@
 uuid: 6ff65429-3f99-4222-a067-5e44c125723b
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - system
@@ -10,7 +10,7 @@ _core:
   default_config_hash: erQSEZF2XUjNmgTl0uNRBzmg18ZGXwUcw2FhApoeuHk
 id: utk_lib_main_d11_content
 theme: utk_lib_main_d11
-region: content
+region: sidebar_first
 weight: 0
 provider: null
 plugin: system_main_block
