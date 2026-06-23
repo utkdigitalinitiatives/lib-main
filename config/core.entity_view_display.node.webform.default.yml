@@ -1,0 +1,32 @@
+uuid: cea1a5ec-9226-4dcf-a097-40770b4e9405
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.webform.webform
+    - node.type.webform
+  module:
+    - user
+    - webform
+_core:
+  default_config_hash: MV3Ld22H-M37Il3nrpoZcRHkqDSOiUC6vJL0waeEWik
+id: node.webform.default
+targetEntityType: node
+bundle: webform
+mode: default
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  webform:
+    weight: 102
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: webform_entity_reference_entity_view
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

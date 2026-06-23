@@ -1,6 +1,6 @@
 uuid: bbb8b632-0d05-4ce1-ac27-a3cc1869920a
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - system
@@ -10,13 +10,13 @@ _core:
   default_config_hash: VhBzWb7lMRtIOg9G7VSw_0uopi-7zXeHq4vXqqV1HFE
 id: utk_lib_main_d11_breadcrumbs
 theme: utk_lib_main_d11
-region: breadcrumb
+region: sidebar_first
 weight: 0
 provider: null
 plugin: system_breadcrumb_block
 settings:
   id: system_breadcrumb_block
   label: Breadcrumbs
-  label_display: '0'
+  label_display: "0"
   provider: system
-visibility: {  }
+visibility: {}

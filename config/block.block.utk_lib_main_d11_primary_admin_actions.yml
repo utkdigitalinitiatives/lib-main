@@ -1,6 +1,6 @@
 uuid: d5769908-1e06-4194-b7f4-54d79f668c81
 langcode: en
-status: true
+status: false
 dependencies:
   theme:
     - utk_lib_main_d11
@@ -8,13 +8,13 @@ _core:
   default_config_hash: Q9_2whdOj1YIomfvsIfopROW4FT_X5pY0DjdOiOaQ5U
 id: utk_lib_main_d11_primary_admin_actions
 theme: utk_lib_main_d11
-region: highlighted
+region: sidebar_first
 weight: -5
 provider: null
 plugin: local_actions_block
 settings:
   id: local_actions_block
-  label: 'Primary admin actions'
-  label_display: '0'
+  label: "Primary admin actions"
+  label_display: "0"
   provider: core
-visibility: {  }
+visibility: {}

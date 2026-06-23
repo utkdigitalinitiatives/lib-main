@@ -1,6 +1,6 @@
 uuid: 4d7be33c-c6a5-43a2-a204-f0ef59dc26cb
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - system.menu.main
@@ -12,16 +12,16 @@ _core:
   default_config_hash: KWAiziL39uEzmOJEql_wbUP2RtqGceL3WM2CfxhMelE
 id: utk_lib_main_d11_main_menu
 theme: utk_lib_main_d11
-region: primary_menu
+region: sidebar_first
 weight: 0
 provider: null
-plugin: 'system_menu_block:main'
+plugin: "system_menu_block:main"
 settings:
-  id: 'system_menu_block:main'
-  label: 'Main navigation'
-  label_display: '0'
+  id: "system_menu_block:main"
+  label: "Main navigation"
+  label_display: "0"
   provider: system
   level: 1
   depth: 2
   expand_all_items: true
-visibility: {  }
+visibility: {}

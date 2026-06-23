@@ -1,6 +1,6 @@
 uuid: 7298109b-46cf-42a6-a5d9-f1fa5521b98d
 langcode: en
-status: true
+status: false
 dependencies:
   theme:
     - utk_lib_main_d11
@@ -14,7 +14,7 @@ provider: null
 plugin: page_title_block
 settings:
   id: page_title_block
-  label: 'Page title'
-  label_display: '0'
+  label: "Page title"
+  label_display: "0"
   provider: core
-visibility: {  }
+visibility: {}

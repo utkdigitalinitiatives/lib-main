@@ -1,6 +1,6 @@
 uuid: ff6e2132-3f96-4cf5-a6bb-ee604404f655
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - help
@@ -17,6 +17,6 @@ plugin: help_block
 settings:
   id: help_block
   label: Help
-  label_display: '0'
+  label_display: "0"
   provider: help
-visibility: {  }
+visibility: {}
