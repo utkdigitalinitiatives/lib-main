@@ -17,7 +17,7 @@ Install the following tools before starting:
 You will also need:
 
 - Access to the Azure Portal (coordinate with a team member or system administrator)
-- Storage Blob Data Contributor role access to the dev storage account (coordinate with system administrator)
+- Storage Blob Data Contributor role on the dev storage account (coordinate with system administrator)
 - Access to the team's Microsoft Teams workspace
 - Access to the team's SharePoint site **Central Docs** folder
 
@@ -62,7 +62,7 @@ The `ddev pull-assets` and `ddev refresh-local` commands require read access to 
 
 ### 5. Obtain a database dump
 
-Export and download a database backup from the Azure Portal Cloud Shell (the shell command and needed password can be obtained from the System Administrator). Save the file somewhere accessible on your local machine (e.g., `db_dump.sql` in the project root).
+Export and download a database backup from Azure Portal Cloud Shell (get the shell command and password from the System Administrator). Save the file somewhere accessible on your local machine (for example, `db_dump.sql` in the project root).
 
 ### 6. Run the local refresh
 
@@ -78,6 +78,8 @@ ddev refresh-local
 
 This command handles the full local setup sequence in one step. See [Custom DDEV Commands](#custom-ddev-commands) for details on what it does.
 
+> **Important local override policy:** Local-only `settings.local.php` overrides are required after `ddev refresh-local` (including for admin pages that touch storage wrappers). Do not include override values in this onboarding guide. Use the team's shared `settings.local.php` guidance maintained outside the repository so local setups stay consistent and uncommitted.
+
 ### 7. Verify the site
 
 - **Site:** `https://lib-main.ddev.site`
@@ -91,7 +93,7 @@ User accounts are included in the database dump — no need to create an admin a
 
 Understanding how file storage differs between environments is important for working safely on this project.
 
-**In production**, Drupal uses Azure Blob Storage as the file system backend. Uploaded and managed files are stored using `azblob://` URIs and served directly from Azure Blob.
+**In production**, Drupal uses Azure Blob Storage as the file system backend. Uploaded and managed files use `azblob://` URIs and are served from Azure Blob.
 
 **In local development**, this is intentionally changed to use the local public filesystem (`public://`). The `ddev refresh-local` command handles this automatically by:
 
@@ -195,7 +197,7 @@ topic-branch → dev → main
 
 ### Merge strategy
 
-All PRs should merge with the "merge commit" strategy to avoid conflicts
+All PRs should use the "merge commit" strategy.
 
 ### Pull requests
 
@@ -210,7 +212,7 @@ Open pull requests on GitHub. PR reviews and discussions happen on GitHub. Day-t
 Running `ddev config` interactively resets the database type to MySQL or MariaDB, which breaks this project's PostgreSQL setup. If this happens, restore the correct configuration from version control:
 
 ```zsh
-git checkout .ddev/config.yaml
+git restore .ddev/config.yaml
 ddev restart
 ```
 
