@@ -195,13 +195,7 @@ topic-branch → dev → main
 
 ### Merge strategy
 
-| Merge                | Method       | Notes                                              |
-| -------------------- | ------------ | -------------------------------------------------- |
-| Topic branch → `dev` | Merge commit | Preferred; preserves the promotion history clearly |
-| `dev` → `main`       | Squash merge | Preferred; keeps `main` history clean and linear   |
-
-Alternate merge methods may be used when there is a strong reason, but merge-commit-to-`dev` and squash-to-`main` are the defaults.
-** note that merging via other methods may require disabling branch protection rules in GitHub **
+All PRs should merge with the "merge commit" strategy to avoid conflicts
 
 ### Pull requests
 

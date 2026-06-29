@@ -1,0 +1,10 @@
+_core:
+  default_config_hash: 7gBp0jAQ8dofI6685XzhrPuPEqSldmqVqkp9dSp5ed8
+form_ids:
+  - 'comment_*'
+  - user_pass
+  - user_register_form
+  - 'contact_message_*'
+  - 'webform_submission_webform_*'
+  - webform_submission_appeal_form_add_form
+show_form_ids: false
