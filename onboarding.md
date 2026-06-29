@@ -105,6 +105,23 @@ Understanding how file storage differs between environments is important for wor
 
 ---
 
+## Local Solr Configuration
+
+Local development uses the committed `ddev-solr` add-on and points Drupal Search API Solr servers to the local DDEV Solr container automatically.
+
+- Solr starts with DDEV (`ddev start` / `ddev restart`).
+- Local connector settings are defined in `.ddev/config.solr.yaml`.
+- On each start, DDEV runs `ddev configure-local-solr-drupal` in the web container to update any active Solr-backed Search API servers to the local Solr endpoint.
+- This behavior is DDEV-only and does not affect cloud dev or production environments.
+
+If a new Search API Solr server is added while DDEV is already running, run:
+
+```zsh
+ddev configure-local-solr-drupal
+```
+
+---
+
 ## Custom DDEV Commands
 
 ### `ddev refresh-local [path/to/db_dump.sql]`
