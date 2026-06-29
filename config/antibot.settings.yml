@@ -7,4 +7,8 @@ form_ids:
   - 'contact_message_*'
   - 'webform_submission_webform_*'
   - webform_submission_appeal_form_add_form
+  - webform_submission_consultation_request_add_form
+  - webform_submission_data_archiving_and_sharing_fund_add_form
+  - webform_submission_faculty_study_application_add_form
+  - webform_submission_long_term_laptop_loan_request_add_form
 show_form_ids: false
