@@ -2,6 +2,7 @@ _core:
   default_config_hash: 4GIX5Esnc_umpXUBj4IIocRX7Mt5fPhm4AgXfE3E56E
 module:
   announcements_feed: 0
+  antibot: 0
   automated_cron: 0
   az_blob_fs: 0
   big_pipe: 0
@@ -30,11 +31,13 @@ module:
   filter: 0
   flexible_permissions: 0
   gin_login: 0
+  gin_toolbar: 0
   gnode: 0
   group: 0
   group_action: 0
   help: 0
   history: 0
+  honeypot: 0
   image: 0
   key: 0
   language: 0
