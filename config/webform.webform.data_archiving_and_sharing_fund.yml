@@ -1,47 +1,56 @@
-uuid: 8ce4b733-3caf-447d-96e0-35c6bc4a4051
+uuid: 9546e51a-1d40-40ab-8e6a-c5c15493c926
 langcode: en
 status: open
-dependencies:
-  enforced:
-    module:
-      - webform
-_core:
-  default_config_hash: _je-MWeeJB6gfm6iECiqjcyNetfMFbn-YIInYwZ1gIk
+dependencies: {  }
 weight: 0
 open: null
 close: null
-uid: null
+uid: 1
 template: false
 archive: false
-id: contact
-title: Contact
-description: 'Basic email contact webform.'
+id: data_archiving_and_sharing_fund
+title: 'Data Archiving and Sharing Fund Application'
+description: ''
 categories: {  }
-elements: |
-  name:
-    '#title': 'Your Name'
+elements: |-
+  full_name:
     '#type': textfield
+    '#title': 'Full Name'
     '#required': true
-    '#default_value': '[current-user:display-name]'
-  email:
-    '#title': 'Your Email'
+  utk_email:
     '#type': email
+    '#title': 'UTK email'
+    '#description': '<p>Email must end with @utk.edu, @tennessee.edu, or @vols.utk.edu</p>'
     '#required': true
-    '#default_value': '[current-user:mail]'
-  subject:
-    '#title': Subject
+    '#pattern': '(^.*)(\@utk\.edu|\@tennessee\.edu|\@vols\.utk\.edu)'
+  university_department:
     '#type': textfield
+    '#title': 'University Department'
     '#required': true
-    '#test': 'Testing contact webform from [site:name]'
-  message:
-    '#title': Message
-    '#type': textarea
+  business_office_contact_name:
+    '#type': textfield
+    '#title': 'Business office contact name'
+    '#description': '<p><span style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);caret-color:rgb(51, 51, 51);color:rgb(51, 51, 51);display:inline !important;float:none;font-family:Montserrat, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;font-size:12.194512px;font-style:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:auto;text-align:left;text-decoration:none;text-indent:0px;text-transform:none;white-space:normal;widows:auto;word-spacing:0px;">This is the person who handles reimbursements/pays invoices for your department/college</span></p>'
     '#required': true
-    '#test': 'Please ignore this email.'
-  actions:
-    '#type': webform_actions
-    '#title': 'Submit button(s)'
-    '#submit__label': 'Send message'
+  business_office_contact_email:
+    '#type': email
+    '#title': 'Business office contact email'
+    '#description': '<p>Email must end in @utk.edu, @tennessee.edu, or @vols.utk.edu</p>'
+    '#required': true
+    '#pattern': '(^.*)(\@utk\.edu|\@tennessee\.edu|\@vols\.utk\.edu)'
+  do_you_have_your_data_ready_to_be_archived:
+    '#type': radios
+    '#title': 'Do you have your data ready to be archived?*'
+    '#options':
+      'Yes': 'Yes'
+      'No': 'No'
+      'Unsure, need more information': 'Unsure, need more information'
+    '#required': true
+  i_have_read_the_limitations_and_eligibility_guidelines:
+    '#type': checkbox
+    '#title': 'I have read the limitations and eligibility guidelines '
+    '#description': '<p>Please confirm you have read our guidelines. You can find our limitations and eligibility guidelines on our <a href="/services/data-archiving-and-sharing-support-fund">Data Archiving and Sharing Support Fund</a> page.</p>'
+    '#required': true
 css: ''
 javascript: ''
 settings:
@@ -54,7 +63,7 @@ settings:
   page_submit_path: ''
   page_confirm_path: ''
   page_theme_name: ''
-  form_title: source_entity_webform
+  form_title: both
   form_submit_once: false
   form_open_message: ''
   form_close_message: ''
@@ -83,6 +92,7 @@ settings:
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_file_limit_message: ''
   form_attributes: {  }
   form_method: ''
   form_action: ''
@@ -146,10 +156,10 @@ settings:
   draft_loaded_message: ''
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
-  confirmation_type: url_message
-  confirmation_url: '<front>'
-  confirmation_title: ''
-  confirmation_message: 'Your message has been sent.'
+  confirmation_type: inline
+  confirmation_url: ''
+  confirmation_title: 'Form Complete'
+  confirmation_message: '<p>The form was successfully submitted. You can now return to the<a href="/"> Libraries Homepage</a></p>'
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -226,18 +236,18 @@ access:
     users: {  }
     permissions: {  }
 handlers:
-  email_confirmation:
+  email:
     id: email
-    handler_id: email_confirmation
-    label: 'Email confirmation'
+    handler_id: email
+    label: Email
     notes: ''
     status: true
     conditions: {  }
-    weight: 1
+    weight: 0
     settings:
       states:
         - completed
-      to_mail: '[current-user:mail]'
+      to_mail: 'bdosch@utk.edu, dataservices@utk.edu'
       to_options: {  }
       bcc_mail: ''
       bcc_options: {  }
@@ -246,50 +256,12 @@ handlers:
       from_mail: _default
       from_options: {  }
       from_name: _default
-      reply_to: ''
+      reply_to: '[webform_submission:values:utk_email:raw]'
       return_path: ''
       sender_mail: ''
       sender_name: ''
-      subject: '[webform_submission:values:subject:raw]'
-      body: '[webform_submission:values:message:value]'
-      excluded_elements: {  }
-      ignore_access: false
-      exclude_empty: true
-      exclude_empty_checkbox: false
-      exclude_attachments: false
-      html: true
-      attachments: false
-      twig: false
-      theme_name: ''
-      langcode: ''
-      parameters: {  }
-      debug: false
-  email_notification:
-    id: email
-    handler_id: email_notification
-    label: 'Email notification'
-    notes: ''
-    status: true
-    conditions: {  }
-    weight: 2
-    settings:
-      states:
-        - completed
-      to_mail: _default
-      to_options: {  }
-      bcc_mail: ''
-      bcc_options: {  }
-      cc_mail: ''
-      cc_options: {  }
-      from_mail: '[webform_submission:values:email:raw]'
-      from_options: {  }
-      from_name: '[webform_submission:values:name:raw]'
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
-      subject: '[webform_submission:values:subject:raw]'
-      body: '[webform_submission:values:message:value]'
+      subject: 'There has been a new submission to [webform:title]'
+      body: _default
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true

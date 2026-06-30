@@ -1,47 +1,69 @@
-uuid: 8ce4b733-3caf-447d-96e0-35c6bc4a4051
+uuid: 183a58f9-6551-4a65-ac94-1eb2504db327
 langcode: en
 status: open
-dependencies:
-  enforced:
-    module:
-      - webform
-_core:
-  default_config_hash: _je-MWeeJB6gfm6iECiqjcyNetfMFbn-YIInYwZ1gIk
+dependencies: {  }
 weight: 0
 open: null
 close: null
-uid: null
+uid: 1
 template: false
 archive: false
-id: contact
-title: Contact
-description: 'Basic email contact webform.'
+id: long_term_laptop_loan_request
+title: 'Long-Term Laptop Loan Request'
+description: ''
 categories: {  }
-elements: |
-  name:
-    '#title': 'Your Name'
+elements: |-
+  full_name:
+    '#type': webform_flexbox
+    first_name:
+      '#type': textfield
+      '#title': 'First Name'
+    last_name:
+      '#type': textfield
+      '#title': 'Last Name'
+      '#required': true
+  netid:
     '#type': textfield
+    '#title': NetID
     '#required': true
-    '#default_value': '[current-user:display-name]'
   email:
-    '#title': 'Your Email'
     '#type': email
+    '#title': Email
+    '#description': '<p>Email must end with @utk.edu, @tennessee.edu, or @vols.utk.edu</p>'
     '#required': true
-    '#default_value': '[current-user:mail]'
-  subject:
-    '#title': Subject
-    '#type': textfield
+    '#pattern': '(^.*)(\@utk\.edu|\@tennessee\.edu|\@vols\.utk\.edu)'
+  status:
+    '#type': select
+    '#title': Status
+    '#options': utk_affiliation
     '#required': true
-    '#test': 'Testing contact webform from [site:name]'
-  message:
-    '#title': Message
+  reason_for_request:
     '#type': textarea
+    '#title': 'Reason for Request'
     '#required': true
-    '#test': 'Please ignore this email.'
-  actions:
-    '#type': webform_actions
-    '#title': 'Submit button(s)'
-    '#submit__label': 'Send message'
+  days_needed_estimate:
+    '#type': number
+    '#title': 'Days needed (estimate)'
+    '#description': '<p>Note: long-term loan laptops can be checked out for a maximum of 28 days per semester for each user</p>'
+    '#required': true
+    '#min': 0
+    '#max': 28
+    '#step': 1
+  specific_software_needed:
+    '#type': radios
+    '#title': 'Specific Software Needed'
+    '#description': '<p>Is there specific software which you will need to use on this computer?</p>'
+    '#options': yes_no
+    '#required': true
+    '#default_value': 'No'
+  software_needed:
+    '#type': textarea
+    '#title': 'Software Needed'
+    '#description': '<p>Please list the specific software you need</p>'
+    '#states':
+      visible:
+        ':input[name="specific_software_needed"]':
+          value: 'Yes'
 css: ''
 javascript: ''
 settings:
@@ -54,7 +76,7 @@ settings:
   page_submit_path: ''
   page_confirm_path: ''
   page_theme_name: ''
-  form_title: source_entity_webform
+  form_title: both
   form_submit_once: false
   form_open_message: ''
   form_close_message: ''
@@ -83,6 +105,7 @@ settings:
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_file_limit_message: ''
   form_attributes: {  }
   form_method: ''
   form_action: ''
@@ -146,10 +169,10 @@ settings:
   draft_loaded_message: ''
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
-  confirmation_type: url_message
-  confirmation_url: '<front>'
-  confirmation_title: ''
-  confirmation_message: 'Your message has been sent.'
+  confirmation_type: inline
+  confirmation_url: ''
+  confirmation_title: 'Form Complete'
+  confirmation_message: '<p>The form was successfully submitted. You can now return to the<a href="/"> Libraries Homepage</a></p>'
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -226,18 +249,18 @@ access:
     users: {  }
     permissions: {  }
 handlers:
-  email_confirmation:
+  email:
     id: email
-    handler_id: email_confirmation
-    label: 'Email confirmation'
+    handler_id: email
+    label: Email
     notes: ''
     status: true
     conditions: {  }
-    weight: 1
+    weight: 0
     settings:
       states:
         - completed
-      to_mail: '[current-user:mail]'
+      to_mail: 'mdodson@utk.edu, sengle@utk.edu, kforgy@utk.edu, ekell1@vols.utk.edu'
       to_options: {  }
       bcc_mail: ''
       bcc_options: {  }
@@ -246,50 +269,12 @@ handlers:
       from_mail: _default
       from_options: {  }
       from_name: _default
-      reply_to: ''
+      reply_to: '[webform_submission:values:email:raw]'
       return_path: ''
       sender_mail: ''
       sender_name: ''
-      subject: '[webform_submission:values:subject:raw]'
-      body: '[webform_submission:values:message:value]'
-      excluded_elements: {  }
-      ignore_access: false
-      exclude_empty: true
-      exclude_empty_checkbox: false
-      exclude_attachments: false
-      html: true
-      attachments: false
-      twig: false
-      theme_name: ''
-      langcode: ''
-      parameters: {  }
-      debug: false
-  email_notification:
-    id: email
-    handler_id: email_notification
-    label: 'Email notification'
-    notes: ''
-    status: true
-    conditions: {  }
-    weight: 2
-    settings:
-      states:
-        - completed
-      to_mail: _default
-      to_options: {  }
-      bcc_mail: ''
-      bcc_options: {  }
-      cc_mail: ''
-      cc_options: {  }
-      from_mail: '[webform_submission:values:email:raw]'
-      from_options: {  }
-      from_name: '[webform_submission:values:name:raw]'
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
-      subject: '[webform_submission:values:subject:raw]'
-      body: '[webform_submission:values:message:value]'
+      subject: _default
+      body: _default
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true

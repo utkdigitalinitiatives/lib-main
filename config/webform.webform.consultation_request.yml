@@ -1,47 +1,88 @@
-uuid: 8ce4b733-3caf-447d-96e0-35c6bc4a4051
+uuid: 5bd1066b-f8c1-45ae-a91f-3d6a8ae0b741
 langcode: en
 status: open
-dependencies:
-  enforced:
-    module:
-      - webform
-_core:
-  default_config_hash: _je-MWeeJB6gfm6iECiqjcyNetfMFbn-YIInYwZ1gIk
+dependencies: {  }
 weight: 0
 open: null
 close: null
-uid: null
+uid: 1
 template: false
 archive: false
-id: contact
-title: Contact
-description: 'Basic email contact webform.'
+id: consultation_request
+title: 'Consultation Request'
+description: ''
 categories: {  }
-elements: |
+elements: |-
+  introduction:
+    '#type': webform_markup
+    '#markup': '<p style="-webkit-text-stroke-width:0px;caret-color:rgb(0, 0, 0);color:rgb(0, 0, 0);font-style:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:auto;text-align:start;text-decoration:none;text-indent:0px;text-transform:none;white-space:normal;widows:auto;word-spacing:0px;">Save time and minimize frustration by making an appointment with a librarian. We can help you...</p><ul style="-webkit-text-stroke-width:0px;caret-color:rgb(0, 0, 0);color:rgb(0, 0, 0);font-style:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:auto;text-align:start;text-decoration:none;text-indent:0px;text-transform:none;white-space:normal;widows:auto;word-spacing:0px;"><li>Find articles, books, data, primary sources, etc.</li><li>Design search strategies for literature reviews.</li><li>Use citation management tools.</li><li>Create media-enhanced projects.</li><li>Understand scholarly communication issues such as copyright and open access publishing.</li></ul><p style="-webkit-text-stroke-width:0px;caret-color:rgb(0, 0, 0);color:rgb(0, 0, 0);font-style:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:auto;text-align:start;text-decoration:none;text-indent:0px;text-transform:none;white-space:normal;widows:auto;word-spacing:0px;">Appointments are generally available Monday-Friday from 8:00 am to 6 pm. Please allow 2 business days advance notice.</p><p style="-webkit-text-stroke-width:0px;caret-color:rgb(0, 0, 0);color:rgb(0, 0, 0);font-style:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:auto;text-align:start;text-decoration:none;text-indent:0px;text-transform:none;white-space:normal;widows:auto;word-spacing:0px;">If you just need to look up a librarian to contact directly about your research needs, please visit <a href="/specialist-list">Subject Librarians</a> list on our directory page.</p>'
   name:
-    '#title': 'Your Name'
     '#type': textfield
+    '#title': Name
     '#required': true
-    '#default_value': '[current-user:display-name]'
   email:
-    '#title': 'Your Email'
     '#type': email
+    '#title': Email
+    '#description': '<p>Note: prefer UTK email address (e.g., @vols.utk.edu, @utk.edu, or @tennessee.edu)</p>'
     '#required': true
-    '#default_value': '[current-user:mail]'
-  subject:
-    '#title': Subject
+  phone:
     '#type': textfield
+    '#title': Phone
+    '#input_mask': '(999) 999-9999'
+  utk_status:
+    '#type': radios
+    '#title': 'UTK Status'
+    '#options':
+      Freshman/Sophomore: Freshman/Sophomore
+      Junior/Senior: Junior/Senior
+      'Graduate Studen': 'Graduate Studen'
+      Faculty/Staff: Faculty/Staff
+      Community/Public: 'Community/Public -- Or none of the above'
     '#required': true
-    '#test': 'Testing contact webform from [site:name]'
-  message:
-    '#title': Message
+  major_or_department:
+    '#type': textfield
+    '#title': 'Major or Department'
+    '#description': '<p>If not affiliated with UTK, please enter "N/A"</p>'
+    '#required': true
+  research_needs:
     '#type': textarea
+    '#title': 'Research Needs'
+    '#description': '<p>Please describe your research needs. The more information you share with us, the better we can prepare for the appointment.</p>'
     '#required': true
-    '#test': 'Please ignore this email.'
-  actions:
-    '#type': webform_actions
-    '#title': 'Submit button(s)'
-    '#submit__label': 'Send message'
+  availability:
+    '#type': textarea
+    '#title': 'When are you available? (Please list at least 3 possibilities)'
+    '#description': '<p><span style="-webkit-text-stroke-width:0px;caret-color:rgb(0, 0, 0);color:rgb(0, 0, 0);display:inline !important;float:none;font-size:medium;font-style:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:auto;text-align:start;text-decoration:none;text-indent:0px;text-transform:none;white-space:normal;widows:auto;word-spacing:0px;">Tell us what dates and times that you are available to meet with the librarian. Please allow 2 business days advance notice.</span></p>'
+    '#required': true
+  for_class:
+    '#type': radios
+    '#title': 'Is this for a class assignment?'
+    '#options': yes_no
+    '#options_display': side_by_side
+    '#required': true
+  class_name:
+    '#type': textfield
+    '#title': 'Class Name'
+    '#description': '<p>Please list which class, e.g., ENGL 221 or PSYC 300</p>'
+    '#states':
+      visible:
+        ':input[name="for_class"]':
+          value: 'Yes'
+  project_status:
+    '#type': webform_radios_other
+    '#title': 'Project Status'
+    '#options':
+      "I'm just getting started": "I'm just getting started"
+      'I found some information, but need to find more': 'I found some information, but need to find more'
+      'I need help with EndNote': 'I need help with EndNote'
+    '#required': true
+  due_date:
+    '#type': date
+    '#title': 'Project Due Date (if applicable)'
+  accessibility_accommodations:
+    '#type': textarea
+    '#title': 'Accessibility Accommodations Requests'
+    '#description': '<p>If you identify as a person with a disability and wish to disclose your specific accommodations requests in addition to this broader ask, please add those here.</p>'
 css: ''
 javascript: ''
 settings:
@@ -54,7 +95,7 @@ settings:
   page_submit_path: ''
   page_confirm_path: ''
   page_theme_name: ''
-  form_title: source_entity_webform
+  form_title: both
   form_submit_once: false
   form_open_message: ''
   form_close_message: ''
@@ -83,6 +124,7 @@ settings:
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_file_limit_message: ''
   form_attributes: {  }
   form_method: ''
   form_action: ''
@@ -146,10 +188,10 @@ settings:
   draft_loaded_message: ''
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
-  confirmation_type: url_message
-  confirmation_url: '<front>'
+  confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
-  confirmation_message: 'Your message has been sent.'
+  confirmation_message: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -226,56 +268,18 @@ access:
     users: {  }
     permissions: {  }
 handlers:
-  email_confirmation:
+  email:
     id: email
-    handler_id: email_confirmation
-    label: 'Email confirmation'
+    handler_id: email
+    label: 'To Main LibAnswers Queue'
     notes: ''
     status: true
     conditions: {  }
-    weight: 1
+    weight: 0
     settings:
       states:
         - completed
-      to_mail: '[current-user:mail]'
-      to_options: {  }
-      bcc_mail: ''
-      bcc_options: {  }
-      cc_mail: ''
-      cc_options: {  }
-      from_mail: _default
-      from_options: {  }
-      from_name: _default
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
-      subject: '[webform_submission:values:subject:raw]'
-      body: '[webform_submission:values:message:value]'
-      excluded_elements: {  }
-      ignore_access: false
-      exclude_empty: true
-      exclude_empty_checkbox: false
-      exclude_attachments: false
-      html: true
-      attachments: false
-      twig: false
-      theme_name: ''
-      langcode: ''
-      parameters: {  }
-      debug: false
-  email_notification:
-    id: email
-    handler_id: email_notification
-    label: 'Email notification'
-    notes: ''
-    status: true
-    conditions: {  }
-    weight: 2
-    settings:
-      states:
-        - completed
-      to_mail: _default
+      to_mail: utlibraries@utk.libanswers.com
       to_options: {  }
       bcc_mail: ''
       bcc_options: {  }
@@ -284,12 +288,12 @@ handlers:
       from_mail: '[webform_submission:values:email:raw]'
       from_options: {  }
       from_name: '[webform_submission:values:name:raw]'
-      reply_to: ''
+      reply_to: '[webform_submission:values:email:raw]'
       return_path: ''
       sender_mail: ''
       sender_name: ''
-      subject: '[webform_submission:values:subject:raw]'
-      body: '[webform_submission:values:message:value]'
+      subject: 'Consultation Request Form from Libraries Website'
+      body: _default
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
