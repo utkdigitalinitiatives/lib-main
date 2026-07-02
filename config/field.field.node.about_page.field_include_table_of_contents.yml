@@ -1,0 +1,21 @@
+uuid: 6efe3765-aa83-45f9-b6c2-289e3a9a1161
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_include_table_of_contents
+    - node.type.about_page
+id: node.about_page.field_include_table_of_contents
+field_name: field_include_table_of_contents
+entity_type: node
+bundle: about_page
+label: 'Include Table of Contents'
+description: 'Switch the toggle to "on" to include a "Jump to..." dropdown at the top of the page - only useful on pages with multiple headings in the Sections field below'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

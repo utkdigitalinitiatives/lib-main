@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.about_page.field_about_page_category
+    - field.field.node.about_page.field_include_table_of_contents
     - field.field.node.about_page.field_page_summary
     - field.field.node.about_page.field_parent_page
     - field.field.node.about_page.field_sections
@@ -48,6 +49,13 @@ content:
     weight: 26
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_include_table_of_contents:
+    type: boolean_checkbox
+    weight: 6
+    region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   field_page_summary:
     type: text_textarea
