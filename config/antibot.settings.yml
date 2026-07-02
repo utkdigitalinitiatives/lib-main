@@ -11,4 +11,16 @@ form_ids:
   - webform_submission_data_archiving_and_sharing_fund_add_form
   - webform_submission_faculty_study_application_add_form
   - webform_submission_long_term_laptop_loan_request_add_form
+  - webform_submission_makerspace_consultation_request_add_form
+  - webform_submission_makerspace_instruction_request_add_form
+  - webform_submission_marketing_project_request_add_form
+  - webform_submission_proxy_card_application_add_form
+  - webform_submission_slac_nomination_form_add_form
+  - webform_submission_spotlight_request_form_add_form
+  - webform_submission_studio_consultation_form_add_form
+  - webform_submission_studio_instruction_request_add_form
+  - webform_submission_trace_accessible_content_request_add_form
+  - webform_submission_trace_contact_form_add_form
+  - webform_submission_thesis_or_dissertation_reproduct_add_form
+  - webform_submission_v_o_l_journal_interest_form_add_form
 show_form_ids: false

@@ -1,0 +1,411 @@
+uuid: 1e82a7fb-98df-416b-9cec-6718d8f58aa4
+langcode: en
+status: open
+dependencies: {  }
+weight: 0
+open: null
+close: null
+uid: 1
+template: false
+archive: false
+id: thesis_or_dissertation_reproduct
+title: 'Thesis or Dissertation Reproduction Request'
+description: ''
+categories: {  }
+elements: |-
+  name:
+    '#type': fieldset
+    '#title': Name
+    name_flex:
+      '#type': webform_flexbox
+      first:
+        '#type': textfield
+        '#title': First
+        '#required': true
+      last:
+        '#type': textfield
+        '#title': Last
+        '#required': true
+  email:
+    '#type': email
+    '#title': Email
+    '#required': true
+  phone:
+    '#type': textfield
+    '#title': Phone
+    '#input_mask': '(999) 999-9999'
+    '#required': true
+  ut_affiliate:
+    '#type': select
+    '#title': 'Are you a UT student, faculty, or staff member'
+    '#options': yes_no
+    '#required': true
+  number_of_items_requested:
+    '#type': select
+    '#title': 'Number of items requested'
+    '#options':
+      1: '1'
+      2: '2'
+      3: '3'
+      4: '4'
+      5: '5'
+    '#required': true
+  item_requested:
+    '#type': fieldset
+    '#title': 'Item Requested'
+    author:
+      '#type': textfield
+      '#title': Author
+      '#required': true
+    title:
+      '#type': textfield
+      '#title': Title
+      '#required': true
+    publication_year:
+      '#type': textfield
+      '#title': 'Publication Year'
+      '#input_mask': '9999'
+      '#required': true
+    call_number:
+      '#type': textfield
+      '#title': 'Call Number'
+      '#description': '<p><span style="-webkit-text-stroke-width:0px;caret-color:rgb(0, 0, 0);color:rgb(0, 0, 0);font-style:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:auto;text-align:start;text-decoration:none;text-indent:0px;text-transform:none;white-space:normal;widows:auto;word-spacing:0px;" data-teams="true">Example: Thesis76.B234</span></p>'
+      '#required': true
+  item_requested_2:
+    '#type': fieldset
+    '#title': 'Item Requested - 2'
+    '#states':
+      visible:
+        ':input[name="number_of_items_requested"]':
+          value:
+            greater: '1'
+    author_2:
+      '#type': textfield
+      '#title': Author
+      '#required': true
+    title_2:
+      '#type': textfield
+      '#title': Title
+      '#required': true
+    publication_year_2:
+      '#type': textfield
+      '#title': 'Publication Year'
+      '#input_mask': '9999'
+      '#required': true
+    call_number_2:
+      '#type': textfield
+      '#title': 'Call Number'
+      '#description': '<p><span style="-webkit-text-stroke-width:0px;caret-color:rgb(0, 0, 0);color:rgb(0, 0, 0);font-style:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:auto;text-align:start;text-decoration:none;text-indent:0px;text-transform:none;white-space:normal;widows:auto;word-spacing:0px;" data-teams="true">Example: Thesis76.B234</span></p>'
+      '#required': true
+  item_requested_3:
+    '#type': fieldset
+    '#title': 'Item Requested - 3'
+    '#states':
+      visible:
+        ':input[name="number_of_items_requested"]':
+          value:
+            greater: '2'
+    author_3:
+      '#type': textfield
+      '#title': Author
+      '#required': true
+    title_3:
+      '#type': textfield
+      '#title': Title
+      '#required': true
+    publication_year_3:
+      '#type': textfield
+      '#title': 'Publication Year'
+      '#input_mask': '9999'
+      '#required': true
+    call_number_3:
+      '#type': textfield
+      '#title': 'Call Number'
+      '#description': '<p><span style="-webkit-text-stroke-width:0px;caret-color:rgb(0, 0, 0);color:rgb(0, 0, 0);font-style:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:auto;text-align:start;text-decoration:none;text-indent:0px;text-transform:none;white-space:normal;widows:auto;word-spacing:0px;" data-teams="true">Example: Thesis76.B234</span></p>'
+      '#required': true
+  item_requested_4:
+    '#type': fieldset
+    '#title': 'Item Requested - 4'
+    '#states':
+      visible:
+        ':input[name="number_of_items_requested"]':
+          value:
+            greater: '3'
+    author_4:
+      '#type': textfield
+      '#title': Author
+      '#required': true
+    title_4:
+      '#type': textfield
+      '#title': Title
+      '#required': true
+    publication_year_4:
+      '#type': textfield
+      '#title': 'Publication Year'
+      '#input_mask': '9999'
+      '#required': true
+    call_number_4:
+      '#type': textfield
+      '#title': 'Call Number'
+      '#description': '<p><span style="-webkit-text-stroke-width:0px;caret-color:rgb(0, 0, 0);color:rgb(0, 0, 0);font-style:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:auto;text-align:start;text-decoration:none;text-indent:0px;text-transform:none;white-space:normal;widows:auto;word-spacing:0px;" data-teams="true">Example: Thesis76.B234</span></p>'
+      '#required': true
+  item_requested_5:
+    '#type': fieldset
+    '#title': 'Item Requested - 5'
+    '#states':
+      visible:
+        ':input[name="number_of_items_requested"]':
+          value:
+            greater: '4'
+    author_5:
+      '#type': textfield
+      '#title': Author
+      '#required': true
+    title_5:
+      '#type': textfield
+      '#title': Title
+      '#required': true
+    publication_year_5:
+      '#type': textfield
+      '#title': 'Publication Year'
+      '#input_mask': '9999'
+      '#required': true
+    call_number_5:
+      '#type': textfield
+      '#title': 'Call Number'
+      '#description': '<p><span style="-webkit-text-stroke-width:0px;caret-color:rgb(0, 0, 0);color:rgb(0, 0, 0);font-style:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:auto;text-align:start;text-decoration:none;text-indent:0px;text-transform:none;white-space:normal;widows:auto;word-spacing:0px;" data-teams="true">Example: Thesis76.B234</span></p>'
+      '#required': true
+  additional_information:
+    '#type': textarea
+    '#title': 'Additional Information'
+    '#description': '<p>Please add any additional information that is relevant to completing your request</p>'
+  terms_of_service:
+    '#type': webform_terms_of_service
+    '#title': 'I have read, understand, and agree to the {Conditions for Materials Use Statement}.'
+    '#required': true
+    '#terms_title': 'Conditions for Materials Use Statement'
+    '#terms_content': '<ul><li>The University of Tennessee, Knoxville - Libraries (UT Libraries) claims only physical ownership of most material in the collections. Persons wishing to broadcast or publish this material must assume all responsibility for identifying and satisfying any claimants of copyright.</li><li>UT Libraries in no way waives its right to future publication of the image(s) supplied to you or the right to grant others permission to use them.</li><li>The recipient agrees to indemnify and hold harmless the University of Tennessee, its officers, employees and agents from and against all suits, claims, actions and expenses arising out of the use of reproductions provided by the UT Libraries.</li><li>Images must be properly credited: "[Identification of Item], [Collection Name] [Collection Number, if applicable]. University of Tennessee, Knoxville - Libraries"</li><li>UT Libraries reserves the right to restrict the use and reproduction of rare, valuable, or fragile materials. In general, duplication of entire books or collections is not permissible.</li><li>Images for Web use may not be published at more than 72 DPI.</li><li>UT Libraries encourages the researcher to provide this repository with one complimentary copy of the finished work.</li></ul>'
+css: ''
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
+  page: true
+  page_submit_path: /form/etd-request
+  page_confirm_path: ''
+  page_theme_name: ''
+  form_title: both
+  form_submit_once: false
+  form_open_message: ''
+  form_close_message: ''
+  form_exception_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_disable_remote_addr: false
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_reset: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  form_file_limit_message: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
+  submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
+  wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: false
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_title: ''
+  confirmation_message: ''
+  confirmation_attributes: {  }
+  confirmation_back: true
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  confirmation_update: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  results_customize: false
+  token_view: false
+  token_update: false
+  token_delete: false
+  serial_disabled: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  askdi:
+    id: email
+    handler_id: askdi
+    label: AskDI
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: askdi@utk.edu
+      to_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      reply_to: '[webform_submission:values:email:raw]'
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: 'New Thesis or Dissertation Reproduction Request'
+      body: _default
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: false
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      theme_name: ''
+      langcode: ''
+      parameters: {  }
+      debug: false
+variants: {  }

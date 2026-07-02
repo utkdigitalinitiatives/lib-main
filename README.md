@@ -12,15 +12,16 @@ The University of Tennessee Libraries main website ([lib.utk.edu](https://lib.ut
 | CMS          | Drupal 11                       |
 | PHP          | 8.3                             |
 | Database     | PostgreSQL 16                   |
+| Search       | Apache Solr                     |
 | Local Dev    | DDEV                            |
 | File Storage | Azure Blob Storage (production) |
 
 ## Architecture
 
-| Environment | Database              | File Storage       |
-| ----------- | --------------------- | ------------------ |
-| Local       | PostgreSQL (via DDEV) | Local filesystem   |
-| Production  | PostgreSQL (Azure)    | Azure Blob Storage |
+| Environment | Database              | File Storage       | Search                   |
+| ----------- | --------------------- | ------------------ | ------------------------ |
+| Local       | PostgreSQL (via DDEV) | Local filesystem   | Local Solr via ddev-solr |
+| Production  | PostgreSQL (Azure)    | Azure Blob Storage | Azure-hosted Solr        |
 
 ## Getting Started
 

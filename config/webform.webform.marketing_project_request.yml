@@ -1,0 +1,495 @@
+uuid: ab2f862e-5ac2-4277-84d0-4b52e4468dfd
+langcode: en
+status: open
+dependencies: {  }
+weight: 0
+open: null
+close: null
+uid: 1
+template: false
+archive: false
+id: marketing_project_request
+title: 'Marketing Project Request'
+description: ''
+categories: {  }
+elements: |-
+  markup:
+    '#type': webform_markup
+    '#markup': '<p>Need help from the Libraries’ Marketing and Communications team? Please submit your requests at least three weeks in advance — or at least four weeks earlier for larger, more involved requests.</p>'
+  general_information:
+    '#type': webform_wizard_page
+    '#title': 'General Information'
+    requestor_information:
+      '#type': fieldset
+      '#title': 'Requestor Information'
+      requestor_name:
+        '#type': textfield
+        '#title': 'Requestor name'
+        '#required': true
+      requestor_email:
+        '#type': textfield
+        '#title': 'Requestor email'
+        '#description': '<p>Email must end in @utk.edu, @tennessee.edu, or @vols.utk.edu</p>'
+        '#input_mask': "'alias': 'email'"
+        '#required': true
+        '#pattern': '(^.*)(\@utk\.edu|\@tennessee\.edu|\@vols\.utk\.edu)'
+      requestor_s_supervisor:
+        '#type': textfield
+        '#title': "Requestor's supervisor"
+        '#required': true
+      supervisor_s_email:
+        '#type': textfield
+        '#title': "Supervisor's email"
+        '#description': '<p>Email must end in @utk.edu, @tennessee.edu, or @vols.utik.edu</p>'
+        '#input_mask': "'alias': 'email'"
+        '#required': true
+        '#pattern': '(^.*)(\@utk\.edu|\@tennessee\.edu|\@vols\.utk\.edu)'
+    project_basics:
+      '#type': fieldset
+      '#title': 'Project/Event Basics'
+      project_title:
+        '#type': textfield
+        '#title': 'Project/event title'
+        '#required': true
+      requested_completion_date:
+        '#type': date
+        '#title': 'Proposed completion date'
+        '#required': true
+        '#date_date_min': '-0 days'
+      project_launch_date:
+        '#type': date
+        '#title': 'Project launch/event date'
+        '#required': true
+        '#date_date_min': '-0 days'
+      utk_event_calendar_url:
+        '#type': url
+        '#title': 'UTK event calendar URL'
+        '#description': '<p>If this is for an event, do you have the calendar.utk.edu URL? If yes, provide the URL here.</p>'
+  project_scope:
+    '#type': webform_wizard_page
+    '#title': 'Project/Event Scope'
+    requested_services_and_promotion:
+      '#type': webform_checkboxes_other
+      '#title': 'Requested services and promotion'
+      '#options':
+        'Social media posts': 'Social media posts'
+        'Digital signage': 'Digital signage'
+        'Graphic design': 'Graphic design'
+        'Printed materials': 'Printed materials -- Describe below'
+        'Swag materials': 'Swag materials -- Small quantities of Libraries-branded pens, highlighters, and chip clips are available in the Public Services supply closet in Hodges Library. Request larger quantities here.'
+        'Campus newsletter and/or news story': 'Campus newsletter and/or news story -- e.g., Vol Update, Tennessee Today, ORIED weekly, Libraries website'
+        'Review my design and/or review my writing': 'Review my design and/or review my writing'
+      '#other__type': textarea
+      '#other__placeholder': ''
+      '#other__description': 'The Marketing & Communications office will review additional requests. Requests that fall outside our scope may be declined.'
+      '#required': true
+    printed_materials_description:
+      '#type': textarea
+      '#title': 'Printed materials description'
+      '#description': '<p><span style="-webkit-text-stroke-width:0px;caret-color:rgb(255, 255, 255);color:rgb(255, 255, 255);font-family:Aptos, sans-serif;font-size:12pt;font-style:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;line-height:18.4px;orphans:2;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">Provide a description of all requested printed materials</span></p>'
+      '#required': true
+      '#states':
+        visible:
+          ':input[name="requested_services_and_promotion[checkboxes][Printed materials]"]':
+            checked: true
+    content_creation:
+      '#type': radios
+      '#title': 'Content creation'
+      '#description': '<p><span style="-webkit-text-stroke-width:0px;caret-color:rgb(255, 255, 255);color:rgb(255, 255, 255);font-family:Aptos, sans-serif;font-size:12pt;font-style:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;line-height:18.4px;orphans:2;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">Who will create the content for this project?</span></p>'
+      '#description_display': before
+      '#options':
+        'I will create content for approval': 'I will create content for approval'
+        'I will provide content; Marketing will create design': 'I will provide content; Marketing will create design'
+        'Marketing creates the content and design': 'Marketing creates the content and design'
+      '#required': true
+  project_details:
+    '#type': webform_wizard_page
+    '#title': 'Project/Event Details'
+    description:
+      '#type': textfield
+      '#title': Description
+      '#description': '<p>Provide a one-paragraph description about your event/project and 3-4 key messages you would like featured.&nbsp;</p>'
+      '#description_display': before
+      '#required': true
+    what_is_the_primary_goal_of_this_project:
+      '#type': checkboxes
+      '#title': 'What is the primary goal of this project? '
+      '#options':
+        'Student engagement': 'Student engagement'
+        'Faculty/staff engagement': 'Faculty/staff engagement'
+        'Donor outreach': 'Donor outreach'
+        'Community outreach': 'Community outreach'
+      '#required': true
+    who_is_the_target_audience:
+      '#type': webform_checkboxes_other
+      '#title': 'Who is the target audience? '
+      '#options':
+        'On-campus undergraduate and/or on-campus graduate students': 'On-campus undergraduate and/or on-campus graduate students'
+        'Online undergraduate and/or online graduate students': 'Online undergraduate and/or online graduate students'
+        Faculty/Staff: Faculty/Staff
+        Alumni: Alumni
+        Donors: Donors
+        Community: Community
+      '#other__type': textarea
+      '#other__description': 'Please provide more detail about your target audience'
+      '#required': true
+    where_will_your_content_be_used:
+      '#type': checkboxes
+      '#title': 'Where will your content be used?'
+      '#options':
+        'On campus': 'On campus'
+        'Off campus': 'Off campus'
+        Online: Online
+      '#required': true
+    does_your_event_have_any_sponsors_or_partners:
+      '#type': radios
+      '#title': 'Does your event have any sponsors or partners'
+      '#options': yes_no
+      '#required': true
+    please_list_the_sponsors_and_partners:
+      '#type': textarea
+      '#title': 'Please list the sponsors and partners'
+      '#required': true
+      '#states':
+        visible:
+          ':input[name="does_your_event_have_any_sponsors_or_partners"]':
+            value: 'Yes'
+    please_upload_sponsor_logos_if_available:
+      '#type': managed_file
+      '#title': 'Please upload sponsor logos (if available)'
+      '#multiple': true
+      '#states':
+        visible:
+          ':input[name="does_your_event_have_any_sponsors_or_partners"]':
+            value: 'Yes'
+    additional_details:
+      '#type': textarea
+      '#title': 'Additional details'
+      '#description': '<p><span style="-webkit-text-stroke-width:0px;caret-color:rgb(255, 255, 255);color:rgb(255, 255, 255);font-family:Aptos, sans-serif;font-size:12pt;font-style:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;line-height:18.4px;orphans:2;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">Any additional details about the event/project you would like us to know about? This could include Canva design links, event format, quantity, co-sponsors, mailing needs, etc</span></p>'
+      '#description_display': before
+    additional_files:
+      '#type': managed_file
+      '#title': 'Additional files'
+      '#description_display': before
+      '#file_placeholder': '<p><span style="-webkit-text-stroke-width:0px;caret-color:rgb(255, 255, 255);color:rgb(255, 255, 255);font-family:Aptos, sans-serif;font-size:12pt;font-style:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;line-height:18.4px;orphans:2;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">Any supporting documents/files you would like us to have? This could include historical examples, images that you want incorporated into a design, reference files, inspirational items, signage, etc</span></p>'
+  approval_and_account:
+    '#type': webform_wizard_page
+    '#title': 'Approval and Account'
+    did_your_event_project_require_you_to_submit_a_library_proposal:
+      '#type': radios
+      '#title': 'Did your event/project require you to submit a library proposal form?'
+      '#options': yes_no
+      '#required': true
+    attach_a_copy_of_the_approved_library_proposal_confirmation:
+      '#type': webform_document_file
+      '#title': 'Attach a copy of the approved library proposal confirmation'
+      '#required': true
+      '#states':
+        visible:
+          ':input[name="did_your_event_project_require_you_to_submit_a_library_proposal"]':
+            value: 'Yes'
+    the_dash_chart_string_is_needed_if_we_will_be_providing_you_with:
+      '#type': textfield
+      '#title': 'The DASH chart string is needed if we will be providing you with printed materials or swag from one of our promotional vendors.'
+      '#description': '<p>The chart strings will look as follows (34 characters, not including dashes): 11-1234567-123456-000000-123-1234-00-0000</p><p>*** NOTE: Projects may be placed on hold until we receive this information.</p>'
+      '#input_mask': 99-9999999-999999-999999-999-9999-99-9999
+css: ''
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  page_theme_name: ''
+  form_title: both
+  form_submit_once: false
+  form_open_message: ''
+  form_close_message: ''
+  form_exception_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_disable_remote_addr: false
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_reset: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  form_file_limit_message: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
+  submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
+  wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: false
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_title: ''
+  confirmation_message: ''
+  confirmation_attributes: {  }
+  confirmation_back: true
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  confirmation_update: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  results_customize: false
+  token_view: false
+  token_update: false
+  token_delete: false
+  serial_disabled: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  email:
+    id: email
+    handler_id: email
+    label: 'Trello notice'
+    notes: "Sends notice to Marketing department's Trello board"
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: lolaalapo1+pfk7vvm0xa3bdk5f7bbo@boards.trello.com
+      to_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      reply_to: '[webform_submission:values:requestor_email:raw]'
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: 'Submitted Library Marketing Request from [your_name]'
+      body: '<p>Submitted on [webform_submission:created]</p><p>Submitted values are:</p><p>[webform_submission:values]</p>'
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      theme_name: ''
+      langcode: ''
+      parameters: {  }
+      debug: false
+  email_1:
+    id: email
+    handler_id: email_1
+    label: 'Requestor and Supervisor'
+    notes: 'Confirmation of submission to requestor and listed supervisor'
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: '[webform_submission:values:requestor_email:raw]'
+      to_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: '[webform_submission:values:supervisor_s_email:raw]'
+      cc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      reply_to: socialib@utk.edu
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: 'Submitted Library Marketing Request from [webform_submission:values:your_name]'
+      body: '<p>For your records, below is a copy of the message that was sent to the Library Marketing team:</p><p>Submitted on [webform_submission:created]</p><p>Submitted by: [webform_submission:values:your_name]</p><p>Submitted values are:</p><p>[webform_submission:values]</p>'
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      theme_name: ''
+      langcode: ''
+      parameters: {  }
+      debug: false
+  email_2:
+    id: email
+    handler_id: email_2
+    label: Socialib
+    notes: 'Confirmation to Marketing Team'
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: socialib@utk.edu
+      to_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      reply_to: '[webform_submission:values:requestor_email:raw]'
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: 'Submitted Library Marketing Request from [webform_submission:values:your_name]'
+      body: '<p>Submitted on [webform_submission:created]</p><p>Submitted values are:</p><p>[webform_submission:values]</p>'
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      theme_name: ''
+      langcode: ''
+      parameters: {  }
+      debug: false
+variants: {  }

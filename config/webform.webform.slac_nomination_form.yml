@@ -1,0 +1,302 @@
+uuid: 343cdfd8-1436-4a88-bd7e-61a821194374
+langcode: en
+status: closed
+dependencies: {  }
+weight: 0
+open: null
+close: null
+uid: 1
+template: false
+archive: false
+id: slac_nomination_form
+title: 'SLAC Nomination Form'
+description: '<p>Form for SLAC Nominations</p>'
+categories: {  }
+elements: |-
+  page_1:
+    '#type': webform_wizard_page
+    '#title': 'Page 1'
+    form_message:
+      '#type': webform_markup
+      '#markup': '<p><em>The Libraries’ Student Advisory Committee (SLAC) is seeking engaged, thoughtful students to participate in this year’s activities. If you’re ready to represent student voices and contribute to your campus community, we encourage you to nominate yourself or a fellow student. Please complete the brief form below to be considered!</em></p>'
+    email:
+      '#type': email
+      '#title': 'Email (must be @utk.edu, @tennessee.edu, or @vols.utk.edu)'
+      '#required': true
+      '#pattern': '(^.*)(\@utk\.edu|\@tennessee\.edu|\@vols\.utk\.edu)'
+      '#pattern_error': 'Must be @utk.edu, @tennessee.edu, @vols.utk.edu'
+    first_name:
+      '#type': textfield
+      '#title': 'First Name'
+      '#required': true
+    last_name:
+      '#type': textfield
+      '#title': 'Last Name'
+      '#required': true
+    what_is_your_year_in_school:
+      '#type': radios
+      '#title': 'What is your year in school'
+      '#options':
+        Freshman: Freshman
+        Sophomore: Sophomore
+        Junior: Junior
+        Senior: Senior
+        'Graduate/Professional Student': 'Graduate/Professional Student'
+      '#required': true
+  page_2:
+    '#type': webform_wizard_page
+    '#title': 'Page 2'
+    why_are_you_interested_in_being_part_of_this_committee_what_pers:
+      '#type': textarea
+      '#title': 'Why are you interested in being part of this committee? What perspectives, interests, and skills would you bring to it?'
+    do_you_have_any_goals_that_this_committee_would_could_help_you_a:
+      '#type': textarea
+      '#title': 'Do you have any goals that this committee would/could help you achieve?'
+    is_there_anything_you_d_like_us_to_know_about_your_schedule_and:
+      '#type': textarea
+      '#title': "\tIs there anything you’d like us to know about your schedule and availability, such as available or preferred meeting days and times?"
+  page_3:
+    '#type': webform_wizard_page
+    '#title': 'Page 3'
+    slac_message_page_3:
+      '#type': webform_markup
+      '#markup': '<p><em>Which of the following engagement opportunities interests you? Please indicate below. For special events, we will reach out in advance to check on your continued interest and availability.</em></p>'
+    provide_feedback_via_virtual_communication_emails_zoom_etc:
+      '#type': radios
+      '#title': 'Provide feedback via virtual communication (Emails, Zoom, etc)'
+      '#options': yes_no
+    attend_in_person_meetings_two_times_a_semester:
+      '#type': radios
+      '#title': 'Attend in-person meetings, two times a semester?'
+      '#options': yes_no
+    be_involved_with_special_events:
+      '#type': radios
+      '#title': 'Be involved with special events?'
+      '#options': yes_no
+    is_there_anything_else_you_d_like_us_to_know_please_use_this_spa:
+      '#type': textarea
+      '#title': 'Is there anything else you’d like us to know? Please use this space to share any questions.'
+css: ''
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  page_theme_name: ''
+  form_title: both
+  form_submit_once: false
+  form_open_message: ''
+  form_close_message: ''
+  form_exception_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_disable_remote_addr: false
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_reset: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  form_file_limit_message: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
+  submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
+  wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: false
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
+  confirmation_type: message
+  confirmation_url: '<front>'
+  confirmation_title: 'Nomination Submitted'
+  confirmation_message: '<p>SLAC Nomination Submitted!</p><p>Return to the <a href="https://lib.utk.edu">Library Homepage</a></p>'
+  confirmation_attributes: {  }
+  confirmation_back: true
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  confirmation_update: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  results_customize: false
+  token_view: false
+  token_update: false
+  token_delete: false
+  serial_disabled: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  email:
+    id: email
+    handler_id: email
+    label: Email
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: 'civers1@utk.edu, asandell@utk.edu'
+      to_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      reply_to: '[webform_submission:values:email:raw]'
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: 'New SLAC Nomination Form Submission'
+      body: _default
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      theme_name: ''
+      langcode: ''
+      parameters: {  }
+      debug: false
+variants: {  }
