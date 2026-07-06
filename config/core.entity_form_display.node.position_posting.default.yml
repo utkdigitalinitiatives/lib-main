@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.position_posting.field_application_link
     - field.field.node.position_posting.field_application_procedures
     - field.field.node.position_posting.field_benefits
+    - field.field.node.position_posting.field_department
     - field.field.node.position_posting.field_environment
     - field.field.node.position_posting.field_position_description
     - field.field.node.position_posting.field_position_posting_details
@@ -51,6 +52,16 @@ content:
     region: content
     settings:
       rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_department:
+    type: entity_reference_autocomplete
+    weight: 130
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
       placeholder: ''
     third_party_settings: {  }
   field_environment:

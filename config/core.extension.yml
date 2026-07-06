@@ -21,6 +21,7 @@ module:
   editor: 0
   entity: 0
   entity_reference_revisions: 0
+  entityqueue: 0
   feeds: 0
   feeds_ex: 0
   feeds_tamper: 0

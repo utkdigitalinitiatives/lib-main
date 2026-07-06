@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.position_posting.field_application_link
     - field.field.node.position_posting.field_application_procedures
     - field.field.node.position_posting.field_benefits
+    - field.field.node.position_posting.field_department
     - field.field.node.position_posting.field_environment
     - field.field.node.position_posting.field_position_description
     - field.field.node.position_posting.field_position_posting_details
@@ -48,6 +49,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 107
+    region: content
+  field_department:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 110
     region: content
   field_environment:
     type: text_default
