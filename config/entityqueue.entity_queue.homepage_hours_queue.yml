@@ -1,0 +1,26 @@
+uuid: 9fdd9120-c4f7-4db5-bacd-9029c05327f2
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: homepage_hours_queue
+label: 'Homepage Hours Queue'
+handler: simple
+handler_configuration: {  }
+entity_settings:
+  target_type: node
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      hours: hours
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+queue_settings:
+  min_size: 0
+  max_size: 0
+  act_as_queue: false
+  reverse: false

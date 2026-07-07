@@ -881,20 +881,18 @@ if (file_exists($app_root . "/" . $site_path . "/settings.local.php")) {
 }
 
 /**
- * Grabs environmental variables for news migration from D10 site
+ * Sets variables for news migration from D10 site
  * One-time use, can be deleted after news migration is compelted
- * Values for vars from Pantheon Test env
+ * Values for vars from Pantheon Live env
  */
 
-if (getenv("MIGRATE_DB_NAME")) {
-  $databases["migrate"]["default"] = [
-    "database" => getenv("MIGRATE_DB_NAME"),
-    "username" => getenv("MIGRATE_DB_USER"),
-    "password" => getenv("MIGRATE_DB_PASS"),
-    "prefix" => "",
-    "host" => getenv("MIGRATE_DB_HOST"),
-    "port" => getenv("MIGRATE_DB_PORT") ?: "3306",
-    "namespace" => "Drupal\\Core\\Database\\Driver\\mysql",
-    "driver" => "mysql",
-  ];
-}
+$databases["migrate"]["default"] = [
+  "database" => "dbname",
+  "username" => "dbun",
+  "password" => "dbpass",
+  "prefix" => "",
+  "host" => "dbhost",
+  "port" => "dbport",
+  "namespace" => "Drupal\\Core\\Database\\Driver\\mysql",
+  "driver" => "mysql",
+];
