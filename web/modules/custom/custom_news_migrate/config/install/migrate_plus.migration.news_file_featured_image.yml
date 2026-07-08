@@ -6,8 +6,6 @@ migration_tags: []
 source:
   plugin: eligible_news_featured_image_files
   scheme: public
-  constants:
-    source_base_path: "/var/www/html/source_public_files"
   cutoff_date: "2021-06-08 00:00:00"
 
 process:
@@ -18,10 +16,9 @@ process:
   filename: filename
 
   source_full_path:
-    plugin: str_replace
+    plugin: callback
+    callable: '\Drupal\custom_news_migrate\MigratePathHelper::publicUriToSourcePath'
     source: uri
-    search: "public://"
-    replace: "/var/www/html/source_public_files/"
 
   uri:
     plugin: file_copy
