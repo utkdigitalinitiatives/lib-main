@@ -8,7 +8,6 @@ source:
   cutoff_date: "2021-06-08 00:00:00"
   constants:
     public_scheme: "public://"
-    source_public_prefix: "/var/www/html/source_public_files/"
 
 process:
   uid:
