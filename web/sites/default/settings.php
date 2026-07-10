@@ -775,8 +775,8 @@ $settings["container_yamls"][] = $app_root . "/" . $site_path . "/services.yml";
  * @see \Drupal\Core\Extension\ExtensionDiscovery::scanDirectory()
  */
 $settings["file_scan_ignore_directories"] = [
-  "node_modules",
-  "bower_components",
+    "node_modules",
+    "bower_components",
 ];
 
 /**
@@ -856,10 +856,10 @@ $settings["migrate_node_migrate_type_classic"] = false;
 
 // Automatically generated include for settings managed by ddev.
 if (
-  getenv("IS_DDEV_PROJECT") == "true" &&
-  file_exists(__DIR__ . "/settings.ddev.php")
+    getenv("IS_DDEV_PROJECT") == "true" &&
+    file_exists(__DIR__ . "/settings.ddev.php")
 ) {
-  include __DIR__ . "/settings.ddev.php";
+    include __DIR__ . "/settings.ddev.php";
 }
 
 /**
@@ -877,22 +877,42 @@ if (
  */
 
 if (file_exists($app_root . "/" . $site_path . "/settings.local.php")) {
-  include $app_root . "/" . $site_path . "/settings.local.php";
+    include $app_root . "/" . $site_path . "/settings.local.php";
 }
 
 /**
  * Sets variables for news migration from D10 site
- * One-time use, can be deleted after news migration is compelted
+ * One-time use, can be deleted after news migration is completed
  * Values for vars from Pantheon Live env
  */
 
 $databases["migrate"]["default"] = [
-  "database" => "dbname",
-  "username" => "dbun",
-  "password" => "dbpass",
-  "prefix" => "",
-  "host" => "dbhost",
-  "port" => "dbport",
-  "namespace" => "Drupal\\Core\\Database\\Driver\\mysql",
-  "driver" => "mysql",
+    "database" => "db",
+    "username" => "dbun",
+    "password" => "dbpass",
+    "prefix" => "",
+    "host" => "dbhost",
+    "port" => "3306",
+    "namespace" => "Drupal\\Core\\Database\\Driver\\mysql",
+    "driver" => "mysql",
 ];
+
+/**
+ * Source public files base for migration file_copy.
+ *
+ * Prefer MIGRATE_FILE_PUBLIC_PATH as the full source files base directory/URL.
+ *
+ * If not set, MIGRATE_SOURCE_SITE_URL can be provided as the Pantheon source
+ * site base URL and this will append /sites/default/files automatically.
+ *
+ * delete after migration run
+ */
+$migrate_source_files_base = "public://";
+
+$migrate_source_site_url = "https://lib.utk.edu";
+if ($migrate_source_site_url) {
+    $migrate_source_files_base =
+        rtrim($migrate_source_site_url, "/") . "/sites/default/files";
+}
+
+$settings["migrate_file_public_path"] = $migrate_source_files_base ?: "";

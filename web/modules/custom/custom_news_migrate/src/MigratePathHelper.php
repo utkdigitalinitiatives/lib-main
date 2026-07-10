@@ -37,6 +37,14 @@ final class MigratePathHelper
         }
 
         $relativePath = ltrim(substr($uri, strlen('public://')), '/');
+
+        // Preserve query parameters (for example Azure SAS tokens) after appending
+        // the relative file path.
+        if (str_contains($sourcePublicPath, '?')) {
+            [$basePath, $query] = explode('?', $sourcePublicPath, 2);
+            return rtrim($basePath, '/') . '/' . $relativePath . '?' . $query;
+        }
+
         return rtrim($sourcePublicPath, '/') . '/' . $relativePath;
     }
 }
