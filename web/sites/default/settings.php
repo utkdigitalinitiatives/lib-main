@@ -887,12 +887,12 @@ if (file_exists($app_root . "/" . $site_path . "/settings.local.php")) {
  */
 
 $databases["migrate"]["default"] = [
-    "database" => "db",
+    "database" => "dbname",
     "username" => "dbun",
     "password" => "dbpass",
     "prefix" => "",
     "host" => "dbhost",
-    "port" => "3306",
+    "port" => "dbport",
     "namespace" => "Drupal\\Core\\Database\\Driver\\mysql",
     "driver" => "mysql",
 ];
