@@ -1,5 +1,5 @@
 # Enforces that only the dev branch can be merged into main.
-# Runs on all PRs but only fails PRs targeting main from non-dev branches.
+# Triggered for PR activity on main only.
 
 name: dev-to-main
 
@@ -10,6 +10,9 @@ on:
 
 jobs:
   enforce:
+    # Defensive guard: even if this workflow is re-evaluated from an edited PR,
+    # only run when the current target branch is main.
+    if: ${{ github.event.pull_request.base.ref == 'main' }}
     runs-on: ubuntu-latest
     steps:
       - name: dev-to-main
