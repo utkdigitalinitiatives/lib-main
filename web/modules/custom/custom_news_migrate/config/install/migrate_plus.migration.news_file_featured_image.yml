@@ -5,10 +5,9 @@ migration_tags: []
 
 source:
   plugin: eligible_news_featured_image_files
-  scheme: public
-  constants:
-    source_base_path: "/var/www/html/source_public_files"
   cutoff_date: "2021-06-08 00:00:00"
+  constants:
+    public_scheme: "public://"
 
 process:
   uid:
@@ -18,10 +17,13 @@ process:
   filename: filename
 
   source_full_path:
-    plugin: str_replace
-    source: uri
-    search: "public://"
-    replace: "/var/www/html/source_public_files/"
+    plugin: callback
+    callable: str_replace
+    unpack_source: true
+    source:
+      - constants/public_scheme
+      - constants/source_public_prefix
+      - uri
 
   uri:
     plugin: file_copy

@@ -6,3 +6,5 @@ module: custom_news_migrate
 shared_configuration:
   source:
     key: migrate
+    constants:
+      source_public_prefix: "https://lib.utk.edu/sites/default/files/"
