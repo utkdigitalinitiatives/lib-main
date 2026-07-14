@@ -10,6 +10,8 @@ on:
 
 jobs:
   enforce:
+    # Defensive guard: only enforce when PR currently targets main.
+    if: ${{ github.event.pull_request.base.ref == 'main' }}
     runs-on: ubuntu-latest
     steps:
       - name: dev-to-main

@@ -775,8 +775,8 @@ $settings["container_yamls"][] = $app_root . "/" . $site_path . "/services.yml";
  * @see \Drupal\Core\Extension\ExtensionDiscovery::scanDirectory()
  */
 $settings["file_scan_ignore_directories"] = [
-  "node_modules",
-  "bower_components",
+    "node_modules",
+    "bower_components",
 ];
 
 /**
@@ -856,10 +856,10 @@ $settings["migrate_node_migrate_type_classic"] = false;
 
 // Automatically generated include for settings managed by ddev.
 if (
-  getenv("IS_DDEV_PROJECT") == "true" &&
-  file_exists(__DIR__ . "/settings.ddev.php")
+    getenv("IS_DDEV_PROJECT") == "true" &&
+    file_exists(__DIR__ . "/settings.ddev.php")
 ) {
-  include __DIR__ . "/settings.ddev.php";
+    include __DIR__ . "/settings.ddev.php";
 }
 
 /**
@@ -877,7 +877,7 @@ if (
  */
 
 if (file_exists($app_root . "/" . $site_path . "/settings.local.php")) {
-  include $app_root . "/" . $site_path . "/settings.local.php";
+    include $app_root . "/" . $site_path . "/settings.local.php";
 }
 
 /**
@@ -887,12 +887,12 @@ if (file_exists($app_root . "/" . $site_path . "/settings.local.php")) {
  */
 
 $databases["migrate"]["default"] = [
-  "database" => "dbname",
-  "username" => "dbun",
-  "password" => "dbpass",
-  "prefix" => "",
-  "host" => "dbhost",
-  "port" => "dbport",
-  "namespace" => "Drupal\\Core\\Database\\Driver\\mysql",
-  "driver" => "mysql",
+    "database" => "dbname",
+    "username" => "dbun",
+    "password" => "dbpass",
+    "prefix" => "",
+    "host" => "dbhost",
+    "port" => "dbport",
+    "namespace" => "Drupal\\Core\\Database\\Driver\\mysql",
+    "driver" => "mysql",
 ];
