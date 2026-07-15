@@ -7,7 +7,8 @@ source:
   plugin: eligible_news_section_document_files
   cutoff_date: "2021-06-08 00:00:00"
   constants:
-    public_scheme: "public://"
+    source_public_scheme: "public://"
+    destination_scheme: "azblob://"
 
 process:
   uid:
@@ -26,15 +27,24 @@ process:
     callable: str_replace
     unpack_source: true
     source:
-      - constants/public_scheme
+      - constants/source_public_scheme
       - constants/source_public_prefix
+      - uri
+
+  destination_uri:
+    plugin: callback
+    callable: str_replace
+    unpack_source: true
+    source:
+      - constants/source_public_scheme
+      - constants/destination_scheme
       - uri
 
   uri:
     plugin: file_copy
     source:
       - "@source_full_path"
-      - uri
+      - "@destination_uri"
 
 destination:
   plugin: "entity:file"
