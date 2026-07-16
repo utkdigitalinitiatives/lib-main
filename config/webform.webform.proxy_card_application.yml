@@ -34,7 +34,7 @@ elements: |-
     '#title': 'UTK Email Address'
     '#description': '<p>Email must end with @utk.edu, @tennessee.edu, or @vols.utk.edu</p>'
     '#required': true
-    '#pattern': '(^.*)(\@utk\.edu|\@tennessee\.edu|\@vols\.utk\.edu)'
+    '#pattern': '[^@]+@(utk\.edu|tennessee\.edu|vols\.utk\.edu)'
   phone_number:
     '#type': tel
     '#title': 'Phone Number'
