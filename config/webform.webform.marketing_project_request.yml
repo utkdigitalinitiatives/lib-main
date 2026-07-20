@@ -32,7 +32,7 @@ elements: |-
         '#description': '<p>Email must end in @utk.edu, @tennessee.edu, or @vols.utk.edu</p>'
         '#input_mask': "'alias': 'email'"
         '#required': true
-        '#pattern': '(^.*)(\@utk\.edu|\@tennessee\.edu|\@vols\.utk\.edu)'
+        '#pattern': '[^@]+@(utk\.edu|tennessee\.edu|vols\.utk\.edu)'
       requestor_s_supervisor:
         '#type': textfield
         '#title': "Requestor's supervisor"
@@ -43,7 +43,7 @@ elements: |-
         '#description': '<p>Email must end in @utk.edu, @tennessee.edu, or @vols.utik.edu</p>'
         '#input_mask': "'alias': 'email'"
         '#required': true
-        '#pattern': '(^.*)(\@utk\.edu|\@tennessee\.edu|\@vols\.utk\.edu)'
+        '#pattern': '[^@]+@(utk\.edu|tennessee\.edu|vols\.utk\.edu)'
     project_basics:
       '#type': fieldset
       '#title': 'Project/Event Basics'

@@ -23,7 +23,7 @@ elements: |-
       '#type': email
       '#title': 'Email (must be @utk.edu, @tennessee.edu, or @vols.utk.edu)'
       '#required': true
-      '#pattern': '(^.*)(\@utk\.edu|\@tennessee\.edu|\@vols\.utk\.edu)'
+      '#pattern': '[^@]+@(utk\.edu|tennessee\.edu|vols\.utk\.edu)'
       '#pattern_error': 'Must be @utk.edu, @tennessee.edu, @vols.utk.edu'
     first_name:
       '#type': textfield

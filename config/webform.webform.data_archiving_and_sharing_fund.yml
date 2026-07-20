@@ -22,7 +22,7 @@ elements: |-
     '#title': 'UTK email'
     '#description': '<p>Email must end with @utk.edu, @tennessee.edu, or @vols.utk.edu</p>'
     '#required': true
-    '#pattern': '(^.*)(\@utk\.edu|\@tennessee\.edu|\@vols\.utk\.edu)'
+    '#pattern': '[^@]+@(utk\.edu|tennessee\.edu|vols\.utk\.edu)'
   university_department:
     '#type': textfield
     '#title': 'University Department'
@@ -37,7 +37,7 @@ elements: |-
     '#title': 'Business office contact email'
     '#description': '<p>Email must end in @utk.edu, @tennessee.edu, or @vols.utk.edu</p>'
     '#required': true
-    '#pattern': '(^.*)(\@utk\.edu|\@tennessee\.edu|\@vols\.utk\.edu)'
+    '#pattern': '[^@]+@(utk\.edu|tennessee\.edu|vols\.utk\.edu)'
   do_you_have_your_data_ready_to_be_archived:
     '#type': radios
     '#title': 'Do you have your data ready to be archived?*'
