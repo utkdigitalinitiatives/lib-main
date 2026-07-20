@@ -24,8 +24,8 @@ elements: |-
     '#type': email
     '#title': 'Requestor email'
     '#description': '<p>Email must end in "@utk.edu", "@tennessee.edu", or "@vols.utk.edu"</p>'
-    '#pattern': '(^.*)(\@utk\.edu|\@tennessee\.edu|\@vols\.utk\.edu)'
     '#required': true
+    '#pattern': '[^@]+@(utk\.edu|tennessee\.edu|vols\.utk\.edu)'
   spotlight_item_name:
     '#type': textfield
     '#title': 'Spotlight Item Name'

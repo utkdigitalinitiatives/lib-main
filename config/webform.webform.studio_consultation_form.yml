@@ -32,7 +32,7 @@ elements: |-
     '#title': 'UTK Email'
     '#description': '<p>Email must end in @utk.edu, @vols.utk.edu, or @tennessee.edu</p>'
     '#required': true
-    '#pattern': '(^.*)(\@utk\.edu|\@tennessee\.edu|\@vols\.utk\.edu)'
+    '#pattern': '[^@]+@(utk\.edu|tennessee\.edu|vols\.utk\.edu)'
   first_choice_date:
     '#type': fieldset
     '#title': 'First Choice Date'
