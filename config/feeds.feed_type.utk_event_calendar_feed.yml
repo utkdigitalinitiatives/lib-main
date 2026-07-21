@@ -1,0 +1,127 @@
+uuid: b71a1a3e-59b7-4f11-9da4-9d72e720eafd
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.base_field_override.node.event.title
+    - field.field.node.event.field_event_id
+    - field.field.node.event.field_event_location_name
+    - field.field.node.event.field_event_room_number
+    - field.field.node.event.field_event_start
+    - field.field.node.event.field_event_url
+    - node.type.event
+  module:
+    - feeds_ex
+    - node
+label: 'UTK Event Calendar Feed'
+id: utk_event_calendar_feed
+description: 'Import of data from https://calendar.utk.edu/, limited to Library '
+help: ''
+import_period: 10800
+import_period_per_feed: false
+fetcher: http
+fetcher_configuration:
+  auto_detect_feeds: false
+  use_pubsubhubbub: false
+  always_download: true
+  fallback_hub: ''
+  request_timeout: 60
+parser: jsonpath
+parser_configuration:
+  context:
+    value: '$.events.*.event'
+  source_encoding:
+    - auto
+  display_errors: false
+  line_limit: 100
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: event
+  langcode: en
+  insert_new: 1
+  update_existing: 1
+  update_non_existent: _delete
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: true
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 1
+custom_sources:
+  json_event_title:
+    value: title
+    label: title
+    machine_name: json_event_title
+    type: json
+  json_event_start:
+    value: 'event_instances.*.event_instance.start'
+    label: 'event_instances.*.event_instance.start'
+    machine_name: json_event_start
+    type: json
+  json_event_url:
+    value: localist_url
+    label: localist_url
+    machine_name: json_event_url
+    type: json
+  event_instances_event_instance_id:
+    value: 'event_instances.*.event_instance.id'
+    label: 'event_instances.*.event_instance.id'
+    machine_name: event_instances_event_instance_id
+    type: json
+  location_name:
+    value: location_name
+    label: location_name
+    machine_name: location_name
+    type: json
+  room_number:
+    value: room_number
+    label: room_number
+    machine_name: room_number
+    type: json
+mappings:
+  -
+    target: title
+    map:
+      value: json_event_title
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_event_start
+    map:
+      value: json_event_start
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_event_url
+    map:
+      value: json_event_url
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_event_id
+    map:
+      value: event_instances_event_instance_id
+    settings:
+      language: null
+    unique:
+      value: 1
+  -
+    target: field_event_location_name
+    map:
+      value: location_name
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_event_room_number
+    map:
+      value: room_number
+    settings:
+      language: null
+    unique: {  }

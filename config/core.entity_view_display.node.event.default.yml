@@ -1,0 +1,68 @@
+uuid: 138831d3-b547-4f5e-8b4a-cdcae337d9bb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.event.feeds_item
+    - field.field.node.event.field_event_id
+    - field.field.node.event.field_event_location_name
+    - field.field.node.event.field_event_room_number
+    - field.field.node.event.field_event_start
+    - field.field.node.event.field_event_url
+    - node.type.event
+  module:
+    - user
+id: node.event.default
+targetEntityType: node
+bundle: event
+mode: default
+content:
+  field_event_id:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_event_location_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_event_room_number:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_event_start:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_event_url:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  feeds_item: true
+  langcode: true
+  search_api_excerpt: true
