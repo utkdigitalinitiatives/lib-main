@@ -1,0 +1,19 @@
+uuid: 97c3db05-4a01-42e5-bbec-d85048cbafd5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_event_start
+    - node.type.event
+id: node.event.field_event_start
+field_name: field_event_start
+entity_type: node
+bundle: event
+label: 'Event Start'
+description: "Start date and time of event, stored as a string with the pattern \"YYYY-MM-DDTHH:MM:SS-U:00\" \r\nY, M, D, H, M, and S will all be numerical values for their representative fields \r\nT will be shown as a T, denoting the start of the time portion of the string \r\nU will be either 4 during EDT and 5 during EST - denoting the UTC offset"
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
