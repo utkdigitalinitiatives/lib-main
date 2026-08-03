@@ -35,11 +35,13 @@
         "drupal/group_action": "^1.2",
         "drupal/honeypot": "^2.2",
         "drupal/key": ">=1.15",
+        "drupal/linkchecker": "^2.1",
         "drupal/migrate_plus": "^6.0",
         "drupal/migrate_tools": "^6.1",
         "drupal/paragraphs": "^1.20",
         "drupal/pathauto": "^1.15",
         "drupal/postmark": "^1.5",
+        "drupal/redirect": "^1.13",
         "drupal/search_api_autocomplete": "^1.11",
         "drupal/search_api_solr": "^4.3",
         "drupal/tamper": "^1.0@beta",
@@ -58,13 +60,14 @@
     "config": {
         "allow-plugins": {
             "composer/installers": true,
-            "drupal/core-composer-scaffold": true,
-            "drupal/core-recipe-unpack": true,
-            "drupal/core-project-message": true,
-            "phpstan/extension-installer": true,
             "dealerdirect/phpcodesniffer-composer-installer": true,
+            "drupal/core-composer-scaffold": true,
+            "drupal/core-project-message": true,
+            "drupal/core-recipe-unpack": true,
             "php-http/discovery": true,
-            "php-tuf/composer-integration": true
+            "php-tuf/composer-integration": true,
+            "phpstan/extension-installer": true,
+            "symfony/runtime": true
         },
         "sort-packages": true,
         "policy": {
