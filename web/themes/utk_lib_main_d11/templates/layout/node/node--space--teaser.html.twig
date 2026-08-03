@@ -1,0 +1,140 @@
+{#
+/**
+ * @file
+ * UTK Custom - Space Teaser template.
+ *
+ * This template is used to render a teaser view of the Space content type.
+ * It displays a featured photo, space details (location, floor, room), and a link to the full space page.
+ *
+ * Available variables:
+ * - node: The node entity being rendered, including:
+ *   - node.label: The title of the space.
+ *   - node.field_space_featured_photo: The featured photo field for the space.
+ * - content: Rendered content of the node, including:
+ *   - content.field_location: The location of the space.
+ *   - content.field_floor: The floor where the space is located.
+ *   - content.field_room_number: The room number of the space.
+ *   - content.field_description: A description of the space.
+ *   - content.field_reservation_link: A link to check the space's availability.
+ *   - content.field_additional_space_photos: Additional photos of the space.
+ * - url: The URL of the node's full page.
+ *
+ * Customizations:
+ * - Displays a placeholder image if no featured photo is provided.
+ * - Dynamically generates a modal for desktop views with additional details and images.
+ * - Provides a direct link to the space's full page for mobile views.
+ * - Includes lazy loading for images to improve performance.
+ *
+ * Included templates:
+ * - utk--modal.html.twig: Renders a modal with space details and images.
+ *
+ * @see node.html.twig
+ * @see node_preprocess_node()
+ */
+#}
+
+{% set modalId = 'modal' ~ node.id %}
+{% set modalLabel = modalId ~ node.label|render|striptags|trim %}
+{% set carouselId = 'carousel' ~ node.id %}
+
+{% set image_src = node.field_space_featured_photo|file_url %}
+{% set image_alt = content.field_space_featured_photo[0]["#media"].field_media_image.alt %}
+{% set image_style = 'large' %}
+{% set imageUrls = [] %}
+{% set altTexts = [] %}
+
+
+{% if node.field_space_featured_photo.entity %}
+    {% set media_entity = node.field_space_featured_photo.entity %}
+    {% set file_entity = media_entity.field_media_image.entity %}
+    
+    {% if file_entity %}
+        {% set image_src = file_entity.uri.value|image_style(image_style) %}
+        {% set image_alt = media_entity.field_media_image.alt %}
+        {% set imageUrls = imageUrls|merge([image_src]) %}
+    {% else %}
+        {% set src = "/themes/utk_lib_mainsite_theme/images/placeholder-spaces.png" %}
+        {% set imageUrls = imageUrls|merge([src]) %}
+    {% endif %}
+{% else %}
+    {% set src = "/themes/utk_lib_mainsite_theme/images/placeholder-spaces.png" %}
+    {% set imageUrls = imageUrls|merge([src]) %}
+{% endif %}
+
+{% set altTexts = altTexts|merge([image_alt ?? '']) %}
+
+
+{# Get additional space photo information #}
+{% if content.field_additional_space_photos['#items'] %}
+    {% for item in content.field_additional_space_photos['#items'] %}
+        {% set media_entity = item.entity %}
+        {% if media_entity and media_entity.field_media_image.entity %}
+            {% set file_entity = media_entity.field_media_image.entity %}
+            {% set image_url = file_entity.uri.value|image_style(image_style) %}
+            {% set alt_text = media_entity.field_media_image.alt %}
+            {% set imageUrls = imageUrls|merge([image_url]) %}
+            {% set altTexts = altTexts|merge([alt_text ?? '']) %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+{# Check if room is reservable #}
+{% if content.field_reservation_link[0]["#paragraph"].field_reservable_room.value == "1" %}
+    {% set reservable = "Yes" %}
+{% else %}
+    {% set reservable = "No" %}
+{% endif %}
+
+{# Get floor value #} 
+{% set floor_value = content.field_floor_hodges[0]|render|striptags|trim %}
+{% if floor_value == '' %}
+  {% set floor_value = 'Not Available' %}
+{% endif %}
+
+{# Set Modal Variable Information #}
+{% set space_details = {
+    'Location': content.field_location|render|striptags|trim,
+    'Floor': floor_value, 
+    'Room': content.field_room_number|render|striptags|trim,
+    'Description': content.field_description, 
+    'Reservable': reservable,
+} %}
+
+{% if content.field_reservation_link[0]["#paragraph"].field_reservable_room.value == "1" %}
+    {% set button_details = {
+            button_title: 'Reserve Now',
+            button_url: content.field_reservation_link[0]["#paragraph"].field_reservation_link_url.value[0].uri
+        } 
+    %}
+{% endif %}
+
+<div class="utk-grid-card h-100 d-none d-md-block">
+  <a class="utk-grid-card__link" data-bs-toggle="modal" data-bs-target="#{{ modalId }}" role="button" tabindex="0" aria-label="View details of {{ node.label }}">
+    <div class="utk-grid-card__media">
+      <img src="{{ imageUrls[0] }}" alt="" loading="lazy">
+    </div>
+
+    <div class="utk-grid-card__body">
+      <h3 class="utk-grid-card__title">
+        <span class="utk-grid-card__title-text">{{ node.label }}</span>
+      </h3>
+    </div>
+  </a>
+</div>
+
+<div class="utk-grid-card h-100 d-md-none">
+  <a class="utk-grid-card__link" href="{{ url }}">
+    <div class="utk-grid-card__media">
+      <img src="{{ imageUrls[0] }}" alt="" loading="lazy">
+    </div>
+
+    <div class="utk-grid-card__body">
+      <h3 class="utk-grid-card__title">
+        <span class="utk-grid-card__title-text">{{ node.label }}</span>
+      </h3>
+    </div>
+  </a>
+</div>
+
+
+{% include "@utk_lib_mainsite_theme/templates/components/utk--modal.html.twig" with { title:node.label, modalId:modalId, modalLabel:modalLabel, carouselId:carouselId, imageUrls:imageUrls, altTexts:altTexts, details:space_details, button_details:button_details, url:url } %}
