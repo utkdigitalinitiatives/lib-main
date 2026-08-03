@@ -55,7 +55,7 @@
 {% set alt = content.field_space_photo.alt %}
    
 <article {{ attributes.addClass(classes) }}>
-    {% include "@utk_lib_mainsite_theme/templates/views/utk--page-hero.html.twig" with {
+    {% include "@utk_lib_main_d11/templates/views/utk--page-hero.html.twig" with {
         title: node.label,
         image_src: hero_image_src|default(''),
         responsive_image_base: hero_responsive_image_base|default(''),
