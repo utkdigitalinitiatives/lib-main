@@ -1,0 +1,69 @@
+uuid: 47763e2f-080c-448d-938c-5f83c668753e
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.department_preview
+    - field.field.node.space.feeds_item
+    - field.field.node.space.field_additional_space_photos
+    - field.field.node.space.field_capacity
+    - field.field.node.space.field_floor
+    - field.field.node.space.field_location
+    - field.field.node.space.field_noise_level
+    - field.field.node.space.field_reservable_room
+    - field.field.node.space.field_reservation_link_url
+    - field.field.node.space.field_room_number
+    - field.field.node.space.field_service_catalog
+    - field.field.node.space.field_space_description
+    - field.field.node.space.field_space_featured_photo
+    - field.field.node.space.field_space_type
+    - node.type.space
+  module:
+    - media
+    - user
+id: node.space.department_preview
+targetEntityType: node
+bundle: space
+mode: department_preview
+content:
+  field_location:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_room_number:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_space_featured_photo:
+    type: media_thumbnail
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  feeds_item: true
+  field_additional_space_photos: true
+  field_capacity: true
+  field_floor: true
+  field_noise_level: true
+  field_reservable_room: true
+  field_reservation_link_url: true
+  field_service_catalog: true
+  field_space_description: true
+  field_space_type: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

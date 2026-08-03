@@ -1,0 +1,65 @@
+{#
+/**
+ * @file
+ * Shared image-overlay hero for page-level layouts.
+ *
+ * Available variables:
+ * - title: The hero title.
+ * - hero_size_class: Shared hero height modifier class.
+ *   Title-only heroes use the short height automatically.
+ * - image_src: Background image source.
+ * - image_alt: Optional background image alt text. Leave empty when decorative.
+ * - responsive_image_base: Optional image basename for small/medium/default webp sources.
+ * - hero_image_markup: Optional custom responsive image markup.
+ * - body_content: Optional rendered markup shown below the title.
+ * - show_breadcrumb: Whether to render the shared breadcrumb include.
+ */
+#}
+
+{% set has_body_content = body_content|default('')|trim is not empty %}
+{% set hero_size_class = has_body_content ? hero_size_class|default('utk-page-hero--standard') : 'utk-page-hero--short' %}
+{% set image_src = image_src|default('/themes/utk_lib_mainsite_theme/images/hodges-2023.webp') %}
+{% set image_alt = image_alt|default('') %}
+{% set responsive_image_base = responsive_image_base|default('') %}
+{% set show_breadcrumb = show_breadcrumb is defined ? show_breadcrumb : true %}
+
+<section class="position-relative utk-page-hero {{ hero_size_class }} overflow-hidden">
+  <div class="black-overlay w-100 h-100 position-absolute top-0 start-0 object-fit-cover z-1"></div>
+  {% if hero_image_markup|default('')|trim is not empty %}
+    {{ hero_image_markup }}
+  {% elseif responsive_image_base is not empty %}
+    <picture>
+      <source media="(max-width: 640px)" srcset="/themes/utk_lib_mainsite_theme/images/{{ responsive_image_base }}-small.webp">
+      <source media="(max-width: 1200px)" srcset="/themes/utk_lib_mainsite_theme/images/{{ responsive_image_base }}-medium.webp">
+      <source media="(min-width: 1201px)" srcset="/themes/utk_lib_mainsite_theme/images/{{ responsive_image_base }}.webp">
+      <img src="/themes/utk_lib_mainsite_theme/images/{{ responsive_image_base }}.webp"
+           alt="{{ image_alt }}"
+           class="w-100 h-100 position-absolute top-0 start-0 object-fit-cover z-n2"
+           loading="eager"
+           fetchpriority="high">
+    </picture>
+  {% else %}
+    <img src="{{ image_src }}"
+         alt="{{ image_alt }}"
+         class="w-100 h-100 position-absolute top-0 start-0 object-fit-cover z-n2"
+         loading="eager"
+         fetchpriority="high">
+  {% endif %}
+
+  {% if show_breadcrumb %}
+    <div class="position-absolute top-0 start-0 w-100 z-2 pt-1 pb-lg-4 pb-sm-n2 px-3">
+      {% include "@utk_lib_mainsite_theme/templates/navigation/utk--breadcrumb.html.twig" %}
+    </div>
+  {% endif %}
+
+  <div class="container-fluid text-center position-relative z-2">
+    {{ title_prefix|default('') }}
+    <h1 class="utk-page-hero__title text-white m-0">{{ title }}</h1>
+    {{ title_suffix|default('') }}
+    {% if has_body_content %}
+      <div class="pt-3">
+        {{ body_content }}
+      </div>
+    {% endif %}
+  </div>
+</section>

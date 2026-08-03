@@ -1,0 +1,11 @@
+uuid: 7b430b57-63e7-40ac-95d2-863b4e316619
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.department_preview
+label: 'Department Preview'
+description: null
+targetEntityType: node
+cache: true
