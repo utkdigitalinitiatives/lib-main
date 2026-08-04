@@ -7,10 +7,6 @@
 
 /* Individual tab styles */
 .utk-search-tabs .nav-link {
-  /*Variables for colours being used in this file*/
-  --utk-teal: rgb(0 117 148);
-  --utk-teal-weak: rgb(0 117 148 / 0.55);
-
   transition:
     width 0.3s ease,
     font-size 0.2s ease,

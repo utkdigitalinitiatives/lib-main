@@ -9,6 +9,7 @@
     --utk-standard: rgb(171 193 120 / 0.7);
     --utk-warning: rgb(244 188 101 / 0.5);
     --utk-teal: rgb(0 117 148); 
+    --utk-teal-weak: rgb(0 117 148 / 0.55);
     --utk-black: #000;
 
     --font-family-base: "Montserrat", sans-serif;
