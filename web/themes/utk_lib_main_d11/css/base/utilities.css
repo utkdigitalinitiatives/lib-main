@@ -13,6 +13,9 @@
   --utk-black: #000;
 
   --font-family-base: "Montserrat", sans-serif;
+
+  --utk-overlay-dark-background: rgba(0, 0, 0, 0.55);
+  --utk-overlay-dark-blur: blur(2px);
 }
 
 body {
@@ -35,11 +38,6 @@ a {
 
 .text-white {
   color: var(--utk-logo--white);
-}
-
-:root {
-  --utk-overlay-dark-background: rgba(0, 0, 0, 0.55);
-  --utk-overlay-dark-blur: blur(2px);
 }
 
 .black-overlay,

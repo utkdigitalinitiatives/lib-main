@@ -311,6 +311,8 @@ blockquote::before {
   transition: transform 0.6s ease-in-out;
 }
 
+/* Commenting until confirmation that buttons still work */
+/*
 .utk-smokey-button {
   background-color: #58595b;
   color: var(--utk-logo--white);
@@ -319,9 +321,11 @@ blockquote::before {
   transition: all 0.2s ease;
 }
 
+
 .utk-smokey-button:hover {
   background-color: #333436;
 }
+*/
 
 .modal-footer {
   background: linear-gradient(to bottom, rgb(248 248 248 / 0), #f8f8f8);
