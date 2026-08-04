@@ -18,7 +18,9 @@
             </div>
             <div class="col-12 col-md-6 col-lg-auto text-center">
                 {{ form.actions.submit|add_class(['btn', 'utk-smokey-button']) }}
-                {{ form.actions.reset|add_class(['btn', 'utk-blue-button', 'ms-2', 'p-2']) }}
+                {% if form.actions.reset %}
+                    {{ form.actions.reset|add_class(['btn', 'utk-blue-button', 'ms-2', 'p-2']) }}
+                {% endif %}
             </div>
         </div>
     </form>
