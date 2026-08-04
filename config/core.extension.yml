@@ -44,6 +44,7 @@ module:
   language: 0
   link: 0
   link_plaintext: 0
+  linkchecker: 0
   mailsystem: 0
   media: 0
   media_library: 0
@@ -59,6 +60,7 @@ module:
   path_alias: 0
   pgsql: 0
   postmark: 0
+  redirect: 0
   responsive_image: 0
   search_api: 0
   search_api_autocomplete: 0
@@ -73,6 +75,7 @@ module:
   text: 0
   token: 0
   toolbar: 0
+  twig_tweak: 0
   update: 0
   user: 0
   views_bulk_operations: 0

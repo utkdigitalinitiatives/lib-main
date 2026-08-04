@@ -1,0 +1,11 @@
+uuid: e8be4dde-99ba-481e-9f0a-b18acb48a86e
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.space_department_preview
+label: 'Space Department Preview'
+description: null
+targetEntityType: node
+cache: true

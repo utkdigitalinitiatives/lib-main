@@ -1,0 +1,100 @@
+uuid: 192289e3-948e-41c1-99bf-13e57f5834ce
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.news.field_blurb
+    - field.field.node.news.field_featured_news_image
+    - field.field.node.news.field_featured_news_img_caption
+    - field.field.node.news.field_publishing_date
+    - field.field.node.news.field_related_links
+    - field.field.node.news.field_sections
+    - field.field.node.news.field_update_label
+    - field.field.node.news.field_update_text
+    - node.type.news
+  module:
+    - datetime
+    - entity_reference_revisions
+    - link_plaintext
+    - text
+    - user
+id: node.news.teaser
+targetEntityType: node
+bundle: news
+mode: teaser
+content:
+  field_blurb:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_featured_news_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: featured_image
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_featured_news_img_caption:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 107
+    region: content
+  field_publishing_date:
+    type: datetime_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_related_links:
+    type: link_title_url_plaintext
+    label: hidden
+    settings:
+      separator_mode: newline
+      separator: ' — '
+      absolute_url: true
+      wrap_parts: true
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_sections:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_update_label:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_update_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

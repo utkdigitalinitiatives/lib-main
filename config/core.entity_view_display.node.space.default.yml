@@ -48,7 +48,7 @@ content:
     type: entity_reference_label
     label: hidden
     settings:
-      link: false
+      link: true
     third_party_settings: {  }
     weight: 109
     region: content
@@ -56,7 +56,7 @@ content:
     type: entity_reference_label
     label: hidden
     settings:
-      link: false
+      link: true
     third_party_settings: {  }
     weight: 107
     region: content
@@ -99,9 +99,10 @@ content:
     weight: 108
     region: content
   field_service_catalog:
-    type: entity_reference_label
+    type: entity_reference_entity_view
     label: hidden
     settings:
+      view_mode: default
       link: true
     third_party_settings: {  }
     weight: 112

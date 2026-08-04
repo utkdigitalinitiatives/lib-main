@@ -1,0 +1,90 @@
+{#
+/**
+ * @file
+ * Theme override for the Resource Cards unique resources page display.
+ *
+ * @see views-view.html.twig
+ */
+#}
+{%
+  set classes = [
+    'view',
+    'view-' ~ id|clean_class,
+    'view-id-' ~ id,
+    'view-display-id-' ~ display_id,
+    dom_id ? 'js-view-dom-id-' ~ dom_id,
+  ]
+%}
+
+{% set page_title = view.title ?: title %}
+{% set hero_body %}
+  <p class="utk-page-hero__subtitle mb-0">
+    Distinctive digital collections, repositories, journals, and exhibits from UT Libraries
+  </p>
+{% endset %}
+
+<div class="utk-card-grid utk-card-grid--three-up">
+  {% include "@utk_lib_main_d11/templates/views/utk--page-hero.html.twig" with {
+    title: page_title,
+    body_content: hero_body,
+    show_breadcrumb: false
+  } %}
+
+  <section>
+    <div class="container-fluid my-4 py-3">
+      <div{{ attributes.addClass(classes, 'utk-card-grid__grid', 'max-row-width', 'mx-auto') }}>
+        {% if header %}
+          <div class="view-header">
+            {{ header }}
+          </div>
+        {% endif %}
+
+        {% if exposed %}
+          <div class="view-filters">
+            {{ exposed }}
+          </div>
+        {% endif %}
+
+        {% if attachment_before %}
+          <div class="attachment attachment-before">
+            {{ attachment_before }}
+          </div>
+        {% endif %}
+
+        {% if rows %}
+          {{ rows }}
+        {% elseif empty %}
+          <div class="view-empty">
+            {{ empty }}
+          </div>
+        {% endif %}
+
+        {% if pager %}
+          {{ pager }}
+        {% endif %}
+
+        {% if attachment_after %}
+          <div class="attachment attachment-after">
+            {{ attachment_after }}
+          </div>
+        {% endif %}
+
+        {% if more %}
+          {{ more }}
+        {% endif %}
+
+        {% if footer %}
+          <div class="view-footer">
+            {{ footer }}
+          </div>
+        {% endif %}
+
+        {% if feed_icons %}
+          <div class="feed-icons">
+            {{ feed_icons }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,144 @@
+uuid: b7eba2bc-1eed-4b34-9fc1-9312c9c3c01b
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.space.feeds_item
+    - field.field.node.space.field_additional_space_photos
+    - field.field.node.space.field_capacity
+    - field.field.node.space.field_floor
+    - field.field.node.space.field_location
+    - field.field.node.space.field_noise_level
+    - field.field.node.space.field_reservable_room
+    - field.field.node.space.field_reservation_link_url
+    - field.field.node.space.field_room_number
+    - field.field.node.space.field_service_catalog
+    - field.field.node.space.field_space_description
+    - field.field.node.space.field_space_featured_photo
+    - field.field.node.space.field_space_type
+    - image.style.large
+    - node.type.space
+  module:
+    - link
+    - media
+    - text
+    - user
+id: node.space.teaser
+targetEntityType: node
+bundle: space
+mode: teaser
+content:
+  field_additional_space_photos:
+    type: media_thumbnail
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: large
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_capacity:
+    type: number_integer
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_floor:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_location:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_noise_level:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_reservable_room:
+    type: boolean
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  field_reservation_link_url:
+    type: link_separate
+    label: hidden
+    settings:
+      trim_length: null
+      url_only: true
+      url_plain: true
+      rel: '0'
+      target: '0'
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  field_room_number:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_service_catalog:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  field_space_description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_space_featured_photo:
+    type: media_thumbnail
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: large
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_space_type:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+hidden:
+  feeds_item: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

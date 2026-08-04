@@ -1,0 +1,27 @@
+<div {{ attributes.addClass('w-100') }}>
+    <form {{ form.attributes }}>
+        <div class="row g-3 align-items-end justify-content-center">
+            <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+                {{ form.field_location_target_id }}
+            </div>
+            <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+                {{ form.field_space_type_target_id }}
+            </div>
+            <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+                {{ form.field_noise_level_target_id }}
+            </div>
+            <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+                {{ form.field_floor_target_id }}
+            </div>
+            <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+                {{ form.field_reservable_room_value }}
+            </div>
+            <div class="col-12 col-md-6 col-lg-auto text-center">
+                {{ form.actions.submit|add_class(['btn', 'utk-smokey-button']) }}
+                {% if form.actions.reset %}
+                    {{ form.actions.reset|add_class(['btn', 'utk-blue-button', 'ms-2', 'p-2']) }}
+                {% endif %}
+            </div>
+        </div>
+    </form>
+</div>

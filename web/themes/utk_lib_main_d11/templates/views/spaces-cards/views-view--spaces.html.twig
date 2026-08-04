@@ -1,0 +1,79 @@
+{#
+/**
+ * @file
+ * UTK Custom - Spaces Cards View template.
+ *
+ * This template is used to render the Spaces Cards view with custom styling and layout.
+ *
+ * Available variables:
+ * - view: The view object being rendered.
+ * - title: The title of the view.
+ * - rows: The rendered rows of the view.
+ * - exposed: The exposed filters for the view.
+ * - pager: The pager for navigating through multiple pages of results.
+ *
+ * Customizations:
+ * - Renders a shared image-overlay hero for the page title.
+ * - Renders a section with directory buttons for quick navigation.
+ * - Displays exposed filters in a shared hero companion panel.
+ * - Displays the view rows in a responsive grid layout.
+ * - Includes a pager for navigating through results if available.
+ *
+ * Included templates:
+ * - utk--page-hero.html.twig: Renders the shared hero layout.
+ *
+ * @see views-view.html.twig
+ * @see template_preprocess_views_view()
+ */
+#}
+
+{% set title = view.title %}
+{% set directory_items = [
+        {
+            button_title: 'Reserve Study Rooms',
+            url: 'https://libcal.utk.edu/reserve/studyrooms'
+        },
+        {
+            button_title: 'Hodges Maps',
+            url: '/about/hodges-floor-plans'
+        },
+        {
+            button_title: 'DeVine Map',
+            url: '/about/devine-music-floor-plan'
+        },
+    ]
+%}
+
+{% include "@utk_lib_main_d11/templates/views/utk--page-hero.html.twig" with {
+    title: title
+} only %}
+<div class="utk-page-hero-panel utk-page-hero-panel--curved">
+    <section class='container-fluid utk-page-hero-panel__section'>
+        <div class="utk-page-hero-panel__content utk-page-hero-panel__actions">
+            {% for item in directory_items %}
+                <a class='btn utk-smokey-button' href="{{ item.url }}">{{ item.button_title }}</a>
+            {% endfor %}
+        </div>
+    </section>
+    <section class='container-fluid utk-page-hero-panel__section'>
+        <div class='utk-page-hero-panel__content'>
+            {{ exposed }}
+        </div>
+    </section>
+</div>
+<section>
+    <div class="container-fluid my-4 py-3">
+        <div class="utk-card-grid utk-card-grid--three-up">
+            <div class="utk-card-grid__grid max-row-width mx-auto">
+                {% if rows %}
+                    {{ rows }}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+<div class='pb-2 mb-2'>
+    {% if pager %}
+        {{ pager }}
+    {% endif %}
+</div>

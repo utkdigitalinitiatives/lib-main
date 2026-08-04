@@ -1,0 +1,47 @@
+/* Styles for the search tabs on the hero section of the homepage */
+
+.utk-search-tabs {
+  display: flex;
+  gap: 1px;
+}
+
+/* Individual tab styles */
+.utk-search-tabs .nav-link {
+  transition:
+    width 0.3s ease,
+    font-size 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+
+  height: 43px;
+  min-width: 200px;        
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.1rem;
+  padding: 0.25rem 1rem;
+  background-color: var(--utk-teal-weak);
+  color: var(--utk-logo--white);
+
+  border-style: solid; 
+  border-width: 2px 2px 0 2px;
+  border-color: var(--utk-logo--white);
+  border-radius: 0.5rem 0.5rem 0 0;
+  box-sizing: border-box;
+  border-bottom-width: 2px; 
+}
+
+/*Active tab*/
+.utk-search-tabs .nav-link.active {
+  width: 290px;
+  font-size: 1.15rem;
+  background-color: var(--utk-teal);
+  border-color: var(--utk-logo--orange);
+  z-index: 2;
+}
+
+/*Hover effect for inactive tabs*/
+.utk-search-tabs .nav-link:not(.active):hover {
+  background-color: rgb(from var(--utk-teal) r g b / 0.65);
+}

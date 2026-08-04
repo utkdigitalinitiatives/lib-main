@@ -1,0 +1,25 @@
+<div {{ attributes }} >
+  <form {{ form.attributes }}>
+    <div class='container-fluid pb-2'>
+      <div class="row mx-auto d-flex justify-content-center align-items-center">
+        <div class="col-xl-3 col-sm-4 col form-group d-flex justify-content-center px-1">
+          {{ form.field_librarian_specialties_target_id_1|add_class(['form-control', 'utk--filter-form']) }}
+        </div>
+        <div class="col-xl-3 col-sm-4 col form-group d-flex justify-content-center px-1">
+          {{ form.title|add_class(['form-control', 'utk--filter-form']) }}
+        </div>
+        <div class="col-xl-3 col-sm-4 col form-group d-flex flex-column px-1">
+            <br>
+            <div class="d-flex justify-content-center gap-2">
+              <button type="submit" class="btn utk-smokey-button custom-apply-button">
+                  Apply Filters
+              </button>
+              <a href="{{ path('<current>', {}, {'query': {}}) }}" class="btn utk-blue-button">
+                  Reset
+              </a>
+            </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

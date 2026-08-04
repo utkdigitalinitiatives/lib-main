@@ -1,0 +1,160 @@
+.utk-page-hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  --utk-hero-overlay-dark-background: rgba(0, 0, 0, 0.6);
+}
+
+.utk-page-hero-frame {
+  min-height: 220px;
+}
+
+.utk-page-hero--standard {
+  min-height: 210px;
+}
+
+.utk-page-hero--short {
+  min-height: 190px;
+}
+
+.utk-page-hero__title {
+  margin: 0 0 0.5rem;
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.utk-page-hero__subtitle {
+  display: inline-block;
+  margin-top: 0;
+  padding: 0.25rem 0.625rem 0.35rem;
+  color: var(--utk-logo--white);
+  border-bottom: 2px solid var(--utk-logo--orange);
+  border-radius: 6px;
+}
+
+.utk-page-hero__subtitle.utk-overlay-dark-chip {
+  padding: 0.5rem 1rem;
+  border-bottom: 0;
+  border-radius: 999px;
+}
+
+.utk-page-hero .utk-search-filter-container {
+  width: 40%;
+  margin: 0 auto;
+}
+
+.utk-page-hero-panel {
+  border: 1px solid rgb(from var(--utk-logo--orange) r g b / 0.55);
+  background: linear-gradient(180deg,
+      rgba(250, 248, 245, 0.98) 0%,
+      rgba(244, 242, 238, 0.96) 100%);
+}
+
+.utk-page-hero-panel--image-backdrop {
+  border: none;
+  background-image:
+    linear-gradient(180deg,
+      rgba(0, 0, 0, 0.6) 0%,
+      rgba(0, 0, 0, 0.6) 100%),
+    url("/themes/utk_lib_main_d11/images/hodges-2023.webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.utk-page-hero .black-overlay {
+  background-color: var(--utk-hero-overlay-dark-background);
+}
+
+.utk-page-hero-panel--overlay-light {
+  position: relative;
+  isolation: isolate;
+}
+
+.utk-page-hero-panel--overlay-light::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg,
+      rgb(from var(--utk-logo--white) r g b / 0.36) 0%,
+      rgb(from var(--utk-logo--white) r g b / 0.5) 10%,
+      rgb(from var(--utk-logo--white) r g b / 0.58) 100%);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.utk-page-hero-panel--overlay-light>* {
+  position: relative;
+  z-index: 1;
+}
+
+.utk-page-hero-panel--curved {
+  border-bottom-left-radius: 39px;
+  border-bottom-right-radius: 39px;
+  box-shadow: 0 26px 42px rgb(from var(--utk-black) r g b / 0.16),
+    0 8px 18px rgb(from var(--utk-black) r g b / 0.08),
+    0 10px 24px rgb(from var(--utk-logo--orange) r g b / 0.09);
+  overflow: hidden;
+}
+
+.utk-page-hero-panel--curved> :last-child {
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
+}
+
+.utk-page-hero-panel__section {
+  padding: 1.25rem 0;
+}
+
+.utk-page-hero-panel__content {
+  width: min(100%, 1320px);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.utk-page-hero-panel__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+.utk-page-hero-panel .views-exposed-form {
+  width: 100%;
+}
+
+.utk-page-hero-panel .views-exposed-form .row {
+  --bs-gutter-x: 1.25rem;
+  --bs-gutter-y: 1.25rem;
+  justify-content: center;
+  align-items: end;
+}
+
+.utk-page-hero-panel .views-exposed-form .form-item {
+  margin: 0;
+}
+
+.utk-page-hero-panel .views-exposed-form .form-item label,
+.utk-page-hero-panel .exposed-filters .form-item label {
+  font-weight: 600;
+}
+
+@media (max-width: 767px) {
+
+  .utk-page-hero--standard,
+  .utk-page-hero-frame {
+    min-height: 170px;
+  }
+
+  .utk-page-hero--short {
+    min-height: 155px;
+  }
+
+  .utk-page-hero__title {
+    font-size: 2.1rem;
+  }
+}
