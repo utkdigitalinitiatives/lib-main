@@ -20,7 +20,7 @@
  *   - content.field_noise_level: The noise level of the space.
  *   - content.field_space_type: The type of the space.
  *   - content.field_reservation_link: A link to reserve the space.
- *   - content.field_description: A description of the space.
+ *   - content.field_space_description: A description of the space.
  *   - content.field_service_catalog: A list of services associated with the space.
  *
  * Customizations:
@@ -53,7 +53,7 @@
     ]
 %}
 {% set alt = content.field_space_photo.alt %}
-   
+{{ dump(content) }}   
 <article {{ attributes.addClass(classes) }}>
     {% include "@utk_lib_main_d11/templates/views/utk--page-hero.html.twig" with {
         title: node.label,
@@ -200,10 +200,10 @@
                         </div>
                     </div>
                     
-                    {% if content.field_description|length > 2 %}
+                    {% if content.field_space_description|length > 2 %}
                     <div class="mb-4 utk-search-selector link-link underline-active">
                         <h2 class="fs-3">About this Space</h2>
-                        {{ content.field_description }}
+                        {{ content.field_space_description }}
                     </div>
                     {% endif %}
                 </div>
