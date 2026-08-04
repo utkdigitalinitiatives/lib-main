@@ -73,7 +73,6 @@ a {
     color-mix(in srgb, var(--utk-logo--smokey) 77%, var(--utk-black)),
     color-mix(in srgb, var(--utk-logo--smokey) 75%, var(--utk-logo--white))
   );
-  background-repeat: no-repeat;
   color: var(--utk-logo--white);
   padding: 1rem;
   border-top: 3px solid var(--utk-logo--orange);
