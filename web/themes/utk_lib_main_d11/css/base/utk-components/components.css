@@ -153,7 +153,7 @@ blockquote::before {
 }
 
 .utk-carousel .carousel-indicators .active {
-  background-color: #ff8200;
+  background-color: var(--utk-logo--orange);
 }
 
 .utk-carousel .carousel-control-prev,
