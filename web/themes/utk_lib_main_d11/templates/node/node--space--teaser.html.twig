@@ -38,7 +38,7 @@
 {% set carouselId = 'carousel' ~ node.id %}
 {# {{ dump() }} #}
 {# TODO: Working on getting this to render, will likely need a bunch of work because the image path is probably different #}
-{% set image_src = file_url(node.field_space_featured_photo) %}
+{% set image_src = node.field_space_featured_photo|file_url %}
 {% set image_src = '/themes/utk_lib_main_d11/placeholder-spaces.png' %}
 {% set image_alt = content.field_space_featured_photo[0]["#media"].field_media_image.alt %}
 {% set image_style = 'large' %}
@@ -51,7 +51,6 @@
     {% set file_entity = media_entity.field_media_image.entity %}
     
     {% if file_entity %}
-    image_style
         {% set image_src = file_entity.uri.value|image_style(image_style) %}
         {% set image_alt = media_entity.field_media_image.alt %}
         {% set imageUrls = imageUrls|merge([image_src]) %}
