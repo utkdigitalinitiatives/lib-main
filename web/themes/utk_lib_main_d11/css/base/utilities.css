@@ -358,15 +358,19 @@ a {
 .underline-orange {
   color: var(--utk-logo--orange);
 }
+
 .underline-smokey {
   color: var(--utk-logo--smokey);
 }
+
 .underline-white {
   color: var(--utk-logo--white);
 }
+
 .underline-blue-link {
   color: var(--utk-link);
 }
+
 .utk-search-selector,
 .utk-search-selector a {
   color: var(--text-color, var(--utk-logo--white));
