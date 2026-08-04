@@ -53,7 +53,8 @@
     ]
 %}
 {% set alt = content.field_space_photo.alt %}
-{{ dump(content) }}   
+
+
 <article {{ attributes.addClass(classes) }}>
     {% include "@utk_lib_main_d11/templates/views/utk--page-hero.html.twig" with {
         title: node.label,
@@ -109,7 +110,7 @@
                     <div class="utk-card details-container mb-4">
                         <div class="utk-card-header utk-card-header--small-section p-3 d-flex justify-content-between align-items-center">
                             <h2 class="fs-3 mb-0">Details</h2>
-                            {% if content.field_reservation_link[0]["#paragraph"].field_reservable_room.value == "1" %}
+                            {% if content.field_reservable_room[0]["#markup"] == "On" %}
                             <span class="badge rounded-pill bg-success px-3 py-2 fw-medium">Reservable</span>
                             {% else %}
                             <span class="badge rounded-pill bg-danger px-3 py-2 fw-medium">Not Reservable</span>
@@ -192,9 +193,9 @@
 
                             </div>
                             
-                            {% if content.field_reservation_link[0]["#paragraph"].field_reservable_room.value == "1" %}
+                            {% if content.field_reservable_room[0]["#markup"] == "On" %}
                             <div class='d-flex justify-content-center my-3'>
-                                <a class='btn utk-blue-button' href="{{ content.field_reservation_link[0]["#paragraph"].field_reservation_link_url.value[0].uri }}">Reserve Now</a>
+                                <a class='btn utk-blue-button' href="{{ content.field_reservation_link_url[0]["#plain_text"] }}">Reserve Now</a>
                             </div>
                             {% endif %}
                         </div>
