@@ -29,7 +29,7 @@
   border-color: var(--utk-logo--white);
   border-radius: 0.5rem 0.5rem 0 0;
   box-sizing: border-box;
-border-bottom-width: 2px; 
+  border-bottom-width: 2px; 
 }
 
 /*Active tab*/
