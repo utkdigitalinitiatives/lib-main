@@ -1,0 +1,11 @@
+uuid: bea887c5-7b05-4705-a723-b983f4252331
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.sevices_preview
+label: 'Sevices Preview'
+description: null
+targetEntityType: node
+cache: true

@@ -1,0 +1,93 @@
+uuid: 2f53e4b2-6dc5-4908-84b4-c2ca37869d52
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.employee_profile.feeds_item
+    - field.field.node.employee_profile.field_email
+    - field.field.node.employee_profile.field_librarian_specialties
+    - field.field.node.employee_profile.field_phone
+    - field.field.node.employee_profile.field_position
+    - field.field.node.employee_profile.field_profile_bio
+    - field.field.node.employee_profile.field_profile_links_cards
+    - field.field.node.employee_profile.field_profile_picture
+    - field.field.node.employee_profile.field_public_profile
+    - node.type.employee_profile
+  module:
+    - entity_reference_revisions
+    - telephone
+    - text
+    - user
+id: node.employee_profile.teaser
+targetEntityType: node
+bundle: employee_profile
+mode: teaser
+content:
+  field_email:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_librarian_specialties:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_phone:
+    type: telephone_link
+    label: hidden
+    settings:
+      title: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_position:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_profile_bio:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_profile_links_cards:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_public_profile:
+    type: boolean
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  feeds_item: true
+  field_profile_picture: true
+  langcode: true
+  search_api_excerpt: true

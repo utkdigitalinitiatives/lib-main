@@ -1,0 +1,41 @@
+{#
+/**
+ * @file
+ * UTK Custom - Space Department Preview template.
+ *
+ * This template is used to render a preview of spaces associated with departments.
+ * It displays a featured photo, the space name, and location details with a link to the full space page.
+ *
+ * Available variables:
+ * - url: The URL of the node's full page.
+ * - node: The node entity being rendered, including:
+ *   - node.label: The title of the space.
+ *   - node.field_space_featured_photo: The featured photo field for the space.
+ * - content: Rendered content of the node, including:
+ *   - content.field_location: The location of the space.
+ *   - content.field_room_number: The room number of the space.
+ *
+ * Customizations:
+ * - Displays a placeholder image if no featured photo is provided.
+ * - Provides a structured layout with the image, title, and location details.
+ * - Includes lazy loading for images to improve performance.
+ *
+ * @see node.html.twig
+ * @see node_preprocess_node()
+ */
+#}
+
+<a class='utk--cards mx-2' href={{ url }}>
+    {% if node.field_space_featured_photo|length > 0 %}
+        <img src="{{ node.field_space_featured_photo|file_url}}" class='' alt="" loading="lazy"/>
+    {% else %}
+        <img src="/themes/utk_lib_main_d11/images/placeholder-spaces.png" alt="" {{attributes.addClass(image_class) }}>
+    {% endif %}
+    <div class='utk--cards-text-body'>
+        <p class='fs-6 fw-medium'>{{ node.label }} </p>
+        <p class='flex-row'>{{ content.field_location.0["#plain_text"] }} 
+        {% if content.field_room_number.0["#context"].value|length > 0 %}
+        - {{ content.field_room_number.0["#context"].value }} </p>
+        {% endif %}
+    </div>
+</a>

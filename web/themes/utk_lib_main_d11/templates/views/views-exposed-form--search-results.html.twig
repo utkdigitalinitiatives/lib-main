@@ -1,0 +1,73 @@
+{#
+/**
+ * @file
+ * UTK Custom - Search Results Exposed Form template.
+ *
+ * This template customizes the exposed filters form for the search results view.
+ *
+ * Available variables:
+ * - form: The complete form array.
+ * - attributes: Attributes for the outer form element.
+ */
+#}
+
+<div {{ attributes.addClass('utk-search-filter-container rounded  mx-auto') }}>
+  <form {{ form.attributes.addClass('row g-3').setAttribute('aria-label', 'Search library resources') }}>
+    {# Search field with button in an input group #}
+      <div class="col input-group">
+        {% if form.search_api_fulltext %}
+          {% if form.search_api_fulltext['#title'] %}
+            <label class="visually-hidden" for="{{ form.search_api_fulltext['#id'] }}">
+              {{ form.search_api_fulltext['#title'] }}
+            </label>
+          {% endif %}
+          
+          {% set attributes = form.search_api_fulltext['#attributes']|default({}) %}
+          {% set attributes = attributes|merge({
+            'class': attributes.class|default([])|merge(['form-control']),
+            'placeholder': 'Search our site for services, spaces, and more...'
+          }) %}
+          
+          {% set form = form|merge({
+            'search_api_fulltext': form.search_api_fulltext|merge({
+              '#attributes': attributes
+            })
+          }) %}
+          
+          {{ form.search_api_fulltext }}
+        {% endif %}
+        
+        {# Submit button #}
+        {% if form.actions.submit %}
+          {% set submit_attributes = form.actions.submit['#attributes']|default({}) %}
+          {% set submit_attributes = submit_attributes|merge({
+            'class': submit_attributes.class|default([])|merge(['btn', 'utk-blue-button'])
+          }) %}
+          
+          {% set form = form|merge({
+            'actions': form.actions|merge({
+              'submit': form.actions.submit|merge({
+                '#attributes': submit_attributes
+              })
+            })
+          }) %}
+          
+          {{ form.actions.submit }}
+        {% endif %}
+      </div>
+    
+    {# Required hidden fields #}
+    {{ form.form_build_id }}
+    {{ form.form_token }}
+    {{ form.form_id }}
+    
+    {# Any additional filters #}
+    {% for key, filter in form %}
+      {% if key|first != '#' and key != 'actions' and key != 'search_api_fulltext' and key != 'form_build_id' and key != 'form_token' and key != 'form_id' %}
+        <div class="col-md-4">
+          {{ filter }}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </form>
+</div>

@@ -1,8 +1,9 @@
-uuid: c3cca7d5-5977-4f28-b610-8f417746fc90
+uuid: b7eba2bc-1eed-4b34-9fc1-9312c9c3c01b
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.teaser
     - field.field.node.space.feeds_item
     - field.field.node.space.field_additional_space_photos
     - field.field.node.space.field_capacity
@@ -16,24 +17,28 @@ dependencies:
     - field.field.node.space.field_space_description
     - field.field.node.space.field_space_featured_photo
     - field.field.node.space.field_space_type
+    - image.style.large
     - node.type.space
   module:
     - link
+    - media
     - text
     - user
-id: node.space.default
+id: node.space.teaser
 targetEntityType: node
 bundle: space
-mode: default
+mode: teaser
 content:
   field_additional_space_photos:
-    type: entity_reference_entity_view
+    type: media_thumbnail
     label: hidden
     settings:
-      view_mode: default
-      link: false
+      image_link: ''
+      image_style: large
+      image_loading:
+        attribute: lazy
     third_party_settings: {  }
-    weight: 102
+    weight: 1
     region: content
   field_capacity:
     type: number_integer
@@ -42,7 +47,7 @@ content:
       thousand_separator: ''
       prefix_suffix: true
     third_party_settings: {  }
-    weight: 104
+    weight: 3
     region: content
   field_floor:
     type: entity_reference_label
@@ -50,7 +55,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 109
+    weight: 8
     region: content
   field_location:
     type: entity_reference_label
@@ -58,15 +63,15 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 107
+    weight: 6
     region: content
   field_noise_level:
     type: entity_reference_label
     label: hidden
     settings:
-      link: false
+      link: true
     third_party_settings: {  }
-    weight: 106
+    weight: 5
     region: content
   field_reservable_room:
     type: boolean
@@ -76,10 +81,10 @@ content:
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    weight: 110
+    weight: 9
     region: content
   field_reservation_link_url:
-    type: link
+    type: link_separate
     label: hidden
     settings:
       trim_length: null
@@ -88,7 +93,7 @@ content:
       rel: '0'
       target: '0'
     third_party_settings: {  }
-    weight: 111
+    weight: 10
     region: content
   field_room_number:
     type: string
@@ -96,47 +101,44 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 108
+    weight: 7
     region: content
   field_service_catalog:
-    type: entity_reference_entity_view
+    type: entity_reference_label
     label: hidden
     settings:
-      view_mode: default
       link: true
     third_party_settings: {  }
-    weight: 112
+    weight: 11
     region: content
   field_space_description:
     type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 103
+    weight: 2
     region: content
   field_space_featured_photo:
-    type: entity_reference_entity_view
+    type: media_thumbnail
     label: hidden
     settings:
-      view_mode: default
-      link: false
+      image_link: ''
+      image_style: large
+      image_loading:
+        attribute: lazy
     third_party_settings: {  }
-    weight: 101
+    weight: 0
     region: content
   field_space_type:
     type: entity_reference_label
     label: hidden
     settings:
-      link: false
+      link: true
     third_party_settings: {  }
-    weight: 105
-    region: content
-  links:
-    settings: {  }
-    third_party_settings: {  }
-    weight: 100
+    weight: 4
     region: content
 hidden:
   feeds_item: true
   langcode: true
+  links: true
   search_api_excerpt: true

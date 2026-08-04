@@ -22,6 +22,10 @@ base:
         css/base/utk-components/components.css: {}
         css/base/utk-components/utk-chat.css: {}
         css/base/utk-components/utk-header-footer.css: {}
+        css/base/utk-components/card.css: {}
+        css/base/utk-components/card-grid.css: {}
+        css/base/utk-componentss/homepage-search-tabs.css: {}
+        css/base/utk-components/page-hero.css: {}
         css/base/pages/utk-bookplate.css: {}
     component:
       css/components/action-links.css:
