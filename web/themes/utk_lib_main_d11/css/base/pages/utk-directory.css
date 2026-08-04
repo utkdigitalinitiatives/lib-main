@@ -86,8 +86,6 @@
   gap: var(--directory-section-gap);
   align-items: stretch;
   margin: 0;
-  --bs-gutter-x: 0;
-  --bs-gutter-y: 0;
 }
 
 .directory-container .directory-person-column {
