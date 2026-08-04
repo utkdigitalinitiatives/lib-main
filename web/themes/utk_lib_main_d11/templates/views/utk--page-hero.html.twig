@@ -18,7 +18,7 @@
 
 {% set has_body_content = body_content|default('')|trim is not empty %}
 {% set hero_size_class = has_body_content ? hero_size_class|default('utk-page-hero--standard') : 'utk-page-hero--short' %}
-{% set image_src = image_src|default('/themes/utk_lib_mainsite_theme/images/hodges-2023.webp') %}
+{% set image_src = image_src|default('/themes/utk_lib_main_d11/images/hodges-2023.webp') %}
 {% set image_alt = image_alt|default('') %}
 {% set responsive_image_base = responsive_image_base|default('') %}
 {% set show_breadcrumb = show_breadcrumb is defined ? show_breadcrumb : true %}
@@ -29,10 +29,10 @@
     {{ hero_image_markup }}
   {% elseif responsive_image_base is not empty %}
     <picture>
-      <source media="(max-width: 640px)" srcset="/themes/utk_lib_mainsite_theme/images/{{ responsive_image_base }}-small.webp">
-      <source media="(max-width: 1200px)" srcset="/themes/utk_lib_mainsite_theme/images/{{ responsive_image_base }}-medium.webp">
-      <source media="(min-width: 1201px)" srcset="/themes/utk_lib_mainsite_theme/images/{{ responsive_image_base }}.webp">
-      <img src="/themes/utk_lib_mainsite_theme/images/{{ responsive_image_base }}.webp"
+      <source media="(max-width: 640px)" srcset="/themes/utk_lib_main_d11/images/{{ responsive_image_base }}-small.webp">
+      <source media="(max-width: 1200px)" srcset="/themes/utk_lib_main_d11/images/{{ responsive_image_base }}-medium.webp">
+      <source media="(min-width: 1201px)" srcset="/themes/utk_lib_main_d11/images/{{ responsive_image_base }}.webp">
+      <img src="/themes/utk_lib_main_d11/images/{{ responsive_image_base }}.webp"
            alt="{{ image_alt }}"
            class="w-100 h-100 position-absolute top-0 start-0 object-fit-cover z-n2"
            loading="eager"
@@ -48,7 +48,7 @@
 
   {% if show_breadcrumb %}
     <div class="position-absolute top-0 start-0 w-100 z-2 pt-1 pb-lg-4 pb-sm-n2 px-3">
-      {% include "@utk_lib_mainsite_theme/templates/navigation/utk--breadcrumb.html.twig" %}
+      {% include "@utk_lib_main_d11/templates/navigation/utk--breadcrumb.html.twig" %}
     </div>
   {% endif %}
 
