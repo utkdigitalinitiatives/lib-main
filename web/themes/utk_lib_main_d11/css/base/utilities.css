@@ -297,13 +297,13 @@ a {
 
 .breadcrumb-search-selector,
 .breadcrumb-search-selector a {
-  color: var(--text-color, var(--utk-logo--white));
+  color: var(--utk-logo--white, var(--utk-logo--white));
 }
 
 .breadcrumb-search-selector a:hover,
 .breadcrumb-search-selector a:focus,
 .breadcrumb-search-selector a:active {
-  color: var(--text-color, var(--utk-logo--white));
+  color: var(--utk-logo--white, var(--utk-logo--white));
   text-decoration: none;
   background-size: 100% 2px;
 }
@@ -368,10 +368,11 @@ a {
   color: var(--utk-link);
 }
 
-.utk-search-selector,
+/* TODO: Verify this is actually unused/unnecessary */
+/* .utk-search-selector,
 .utk-search-selector a {
   color: var(--text-color, var(--utk-logo--white));
-}
+} */
 
 /* Underline effect */
 .utk-search-selector a:hover,
