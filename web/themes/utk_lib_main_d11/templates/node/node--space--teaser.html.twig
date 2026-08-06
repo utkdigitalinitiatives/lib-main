@@ -81,7 +81,7 @@
 {% endif %}
 
 {# Check if room is reservable #}
-{% if content.field_reservation_link[0]["#paragraph"].field_reservable_room.value == "1" %}
+{% if content.field_reservable_room[0]["#markup"] == "On" %}
     {% set reservable = "Yes" %}
 {% else %}
     {% set reservable = "No" %}
