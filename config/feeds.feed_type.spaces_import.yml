@@ -8,7 +8,6 @@ dependencies:
     - field.field.node.space.field_floor
     - field.field.node.space.field_location
     - field.field.node.space.field_noise_level
-    - field.field.node.space.field_reservable_room
     - field.field.node.space.field_reservation_link_url
     - field.field.node.space.field_room_number
     - field.field.node.space.field_space_description
@@ -100,11 +99,6 @@ custom_sources:
     label: Floor
     machine_name: floor
     type: csv
-  reservable_room:
-    value: 'Reservable Room'
-    label: 'Reservable Room'
-    machine_name: reservable_room
-    type: csv
   reservation_link_url:
     value: 'Reservation Link URL'
     label: 'Reservation Link URL'
@@ -135,6 +129,7 @@ mappings:
       reference_by: name
       autocreate: false
       autocreate_bundle: space_type
+      feeds_item: false
   -
     target: field_noise_level
     map:
@@ -144,6 +139,7 @@ mappings:
       reference_by: name
       autocreate: false
       autocreate_bundle: noise_level
+      feeds_item: false
   -
     target: field_location
     map:
@@ -153,6 +149,7 @@ mappings:
       reference_by: name
       autocreate: false
       autocreate_bundle: location
+      feeds_item: false
   -
     target: field_room_number
     map:
@@ -176,12 +173,7 @@ mappings:
       reference_by: name
       autocreate: false
       autocreate_bundle: hodges_floor
-  -
-    target: field_reservable_room
-    map:
-      value: reservable_room
-    settings:
-      language: null
+      feeds_item: false
   -
     target: field_reservation_link_url
     map:

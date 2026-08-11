@@ -9,7 +9,6 @@ dependencies:
     - field.field.node.space.field_floor
     - field.field.node.space.field_location
     - field.field.node.space.field_noise_level
-    - field.field.node.space.field_reservable_room
     - field.field.node.space.field_reservation_link_url
     - field.field.node.space.field_room_number
     - field.field.node.space.field_service_catalog
@@ -84,13 +83,6 @@ content:
     weight: 10
     region: content
     settings: {  }
-    third_party_settings: {  }
-  field_reservable_room:
-    type: boolean_checkbox
-    weight: 15
-    region: content
-    settings:
-      display_label: true
     third_party_settings: {  }
   field_reservation_link_url:
     type: link_default
@@ -176,6 +168,11 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 50
+    region: content
+    settings: {  }
     third_party_settings: {  }
 hidden:
   feeds_item: true
