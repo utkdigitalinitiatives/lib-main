@@ -23,4 +23,5 @@ form_ids:
   - webform_submission_trace_contact_form_add_form
   - webform_submission_thesis_or_dissertation_reproduct_add_form
   - webform_submission_v_o_l_journal_interest_form_add_form
+  - webform_submission_oa_mailing_list_add_form
 show_form_ids: false
