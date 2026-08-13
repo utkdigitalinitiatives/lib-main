@@ -49,7 +49,7 @@
 {% if node.field_space_featured_photo.entity %}
     {% set media_entity = node.field_space_featured_photo.entity %}
     {% set file_entity = media_entity.field_media_image.entity %}
-    
+
     {% if file_entity %}
         {% set image_src = file_entity.uri.value|image_style(image_style) %}
         {% set image_alt = media_entity.field_media_image.alt %}
@@ -81,13 +81,13 @@
 {% endif %}
 
 {# Check if room is reservable #}
-{% if content.field_reservable_room[0]["#markup"] == "On" %}
+{% if content.field_reservation_link_url|length > 2 %}
     {% set reservable = "Yes" %}
 {% else %}
     {% set reservable = "No" %}
 {% endif %}
 
-{# Get floor value #} 
+{# Get floor value #}
 {% set floor_value = content.field_floor_hodges[0]|render|striptags|trim %}
 {% if floor_value == '' %}
   {% set floor_value = 'Not Available' %}
@@ -96,18 +96,17 @@
 {# Set Modal Variable Information #}
 {% set space_details = {
     'Location': content.field_location|render|striptags|trim,
-    'Floor': floor_value, 
+    'Floor': floor_value,
     'Room': content.field_room_number|render|striptags|trim,
-    'Description': content.field_description, 
+    'Description': content.field_description,
     'Reservable': reservable,
 } %}
 
-{% if content.field_reservation_link[0]["#paragraph"].field_reservable_room.value == "1" %}
+{% if content.field_reservation_link_url|length > 2 %}
     {% set button_details = {
             button_title: 'Reserve Now',
-            button_url: content.field_reservation_link[0]["#paragraph"].field_reservation_link_url.value[0].uri
-        } 
-    %}
+           button_url: content.field_reservation_link_url[0]|render|striptags|trim
+} %}
 {% endif %}
 
 <div class="utk-grid-card h-100 d-none d-md-block">

@@ -10,7 +10,6 @@ dependencies:
     - field.field.node.space.field_floor
     - field.field.node.space.field_location
     - field.field.node.space.field_noise_level
-    - field.field.node.space.field_reservable_room
     - field.field.node.space.field_reservation_link_url
     - field.field.node.space.field_room_number
     - field.field.node.space.field_service_catalog
@@ -72,16 +71,6 @@ content:
       link: true
     third_party_settings: {  }
     weight: 5
-    region: content
-  field_reservable_room:
-    type: boolean
-    label: hidden
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    weight: 9
     region: content
   field_reservation_link_url:
     type: link_separate
