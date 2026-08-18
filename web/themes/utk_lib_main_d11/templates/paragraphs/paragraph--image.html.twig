@@ -1,0 +1,26 @@
+{#
+/**
+ * @file
+ * UTK Custom - News section image Paragraph template.
+ *
+ * This template centers a full-width News image and renders its caption.
+ * The decorative field controls alternative text and is not visual content.
+ *
+ * @see paragraph.html.twig
+ */
+#}
+
+{% set media = paragraph.field_image.entity %}
+{% set image = media.field_media_image %}
+{% set image_alt = paragraph.field_decorative.value ? '' : image.alt %}
+
+<div class='d-flex justify-content-center'>
+  <figure class='figure utk-article--image mx-auto'>
+      <img class='img-fluid rounded' src="{{ image.entity.uri.value|image_style('news_image_800') }}" alt="{{ image_alt }}" loading="lazy">
+      {% if paragraph.field_image_caption.value %}
+      <figcaption class='figure-caption'>
+          {{ paragraph.field_image_caption.value }}
+      </figcaption>
+      {% endif %}
+  </figure>
+</div>

@@ -1,0 +1,31 @@
+{#
+/**
+ * @file
+ * UTK Custom - News Block View Fields template.
+ *
+ * This template is used to render individual fields within the News Block view
+ * with custom styling and layout.
+ *
+ * Available variables:
+ * - fields: An array of fields available in the view, including:
+ *   - fields.title: The title of the news article.
+ * - row: The current row object being rendered.
+ *
+ * Customizations:
+ * - Provides a structured layout with an arrow icon and the news article title.
+ * - Ensures responsive design for both desktop and mobile layouts.
+ *
+ * @see views-view-fields.html.twig
+ */
+#}
+
+<div class='row py-1 link-link'>
+  <div class='col-1 text-end'>
+    <svg width="10" height="10" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M11.273 3.687a1 1 0 1 1 1.454-1.374l8.5 9a1 1 0 0 1 0 1.374l-8.5 9.001a1 1 0 1 1-1.454-1.373L19.125 12l-7.852-8.313Z" fill="#4b4b4b" />
+    </svg>
+  </div>
+  <div class='col text-start utk-search-selector'>
+    <a href="{{ fields.view_node.content|render|striptags|trim }}">{{ fields.title.content }}</a>
+  </div>
+</div>

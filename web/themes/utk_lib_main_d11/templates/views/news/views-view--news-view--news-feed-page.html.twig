@@ -1,0 +1,54 @@
+{#
+/**
+ * @file
+ * UTK Custom - News Feed Page View template.
+ *
+ * This template is used to render the News Feed Page view with custom styling and layout.
+ *
+ * Available variables:
+ * - view: The view object being rendered.
+ * - title: The title of the view.
+ * - rows: The rendered rows of the view.
+ * - pager: The pager for navigating through multiple pages of results.
+ *
+ * Customizations:
+ * - Displays a custom view header with the title of the news feed.
+ * - Includes a search form for searching site content.
+ * - Renders the view rows in a structured layout.
+ * - Displays a pager for navigating through results if available.
+ *
+ * Included templates:
+ * - utk--page-hero.html.twig: Renders the shared page hero.
+ *
+ * @see views-view.html.twig
+ * @see template_preprocess_views_view()
+ */
+#}
+{% set title = view.title %}
+
+{% set hero_body %}
+  <div class='row max-row-width mx-auto pb-3'>
+      {{ drupal_block('views_block:search_results-block_1', wrapper=false) }}
+  </div>
+{% endset %}
+
+{% include "@utk_lib_main_d11/templates/views/utk--page-hero.html.twig" with {
+  title: title,
+  body_content: hero_body,
+  show_breadcrumb: false
+} %}
+
+<div class="container-fluid d-flex justify-content-center py-2 my-2">
+  <div class='d-flex justify-content-center'>
+    <div class='row utk-section-body text-smokey link-link utk-search-selector px-2'>
+        {% if rows %}
+          {{ rows }}
+        {% endif %}
+    </div>
+  </div>
+</div>
+<div class='text-smokey link-link pb-2 mb-2'>
+{% if pager %}
+  {{ pager }}
+{% endif %}
+</div>

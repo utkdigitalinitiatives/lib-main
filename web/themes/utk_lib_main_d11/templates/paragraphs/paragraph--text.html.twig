@@ -1,0 +1,25 @@
+{#
+/**
+ * @file
+ * UTK Custom - News section text Paragraph template.
+ *
+ * This template renders the text sections used in News articles.
+ *
+ * @see paragraph.html.twig
+ */
+#}
+
+{%
+  set classes = [
+    'text-start',
+    'text-break',
+    'py-3',
+    'utk-search-selector',
+    'link-link',
+    'underline-active',
+  ]
+%}
+
+<div {{ attributes.addClass(classes) }}>
+    {{ content.field_content }}
+</div>

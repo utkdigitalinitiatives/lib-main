@@ -37,7 +37,7 @@ function utk_lib_main_d11_preprocess_node(&$variables)
     'bookplate' => ['field_honoree_photo', 'field_book_cover'],
     'department' => ['field_department_featured_image'],
     'equipment' => ['field_equipment_featured_image'],
-    'news_article' => ['field_featured_image'],
+    'news' => ['field_featured_news_image'],
     'space' => ['field_space_featured_photo'],
   ];
 

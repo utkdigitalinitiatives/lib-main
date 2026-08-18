@@ -1,0 +1,26 @@
+{#
+/**
+ * @file
+ * UTK Custom - News tall image Paragraph template.
+ *
+ * This template centers a tall News image and renders its caption.
+ * The decorative field controls alternative text and is not visual content.
+ *
+ * @see paragraph.html.twig
+ */
+#}
+
+{% set media = paragraph.field_image.entity %}
+{% set image = media.field_media_image %}
+{% set image_alt = paragraph.field_decorative.value ? '' : image.alt %}
+
+<div class='d-flex justify-content-center w-100'>
+    <figure class='figure utk--tall-image text-center'>
+        <img class='img-fluid rounded' src="{{ image.entity.uri.value|image_style('tall_450h') }}" alt="{{ image_alt }}" loading="lazy">
+        {% if paragraph.field_image_caption.value %}
+        <figcaption class='figure-caption'>
+            {{ paragraph.field_image_caption.value }}
+        </figcaption>
+        {% endif %}
+    </figure>
+</div>

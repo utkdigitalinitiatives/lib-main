@@ -1,0 +1,98 @@
+{#
+/**
+ * @file
+ * UTK Custom - News Page template.
+ *
+ * This template is used to render the News content type with custom
+ * styling and layout.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the main container.
+ * - node: The node entity being rendered, including:
+ *   - node.label: The title of the news article.
+ * - content: Rendered content of the node, including:
+ *   - content.field_blurb: A short summary or blurb for the article.
+ *   - content.field_publishing_date: The publishing date of the article.
+ *   - content.field_featured_news_image: The featured image for the article.
+ *   - content.field_sections: The main content sections of the article.
+ *   - content.field_related_links: Links to related news articles.
+ *   - content.field_update_label: The heading for an article update.
+ *   - content.field_update_text: The body of an article update.
+ *
+ * Customizations:
+ * - Includes a visually hidden blurb for accessibility and SEO purposes.
+ * - Displays a shared page hero at the top of the page.
+ * - Conditionally displays an article update and related links.
+ * - Provides a structured layout for the article title, publishing date,
+ *   content, and related links.
+ *
+ * Included templates:
+ * - utk--page-hero.html.twig: Renders the shared page hero.
+ *
+ * @see node.html.twig
+ * @see utk_lib_main_d11_preprocess_node()
+ */
+#}
+
+{%
+    set classes = [
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    'container-fluid',
+    'mb-4',
+    'pb-4',
+    'px-0',
+    'mx-0',
+    'text-smokey',
+    'link-link',
+    ]
+%}
+
+<div class='visually-hidden'>{{ content.field_blurb }}</div>
+
+<article {{ attributes.addClass(classes) }} id='utk-article'>
+    {% set hero_body %}
+        <p class="utk-page-hero__subtitle utk-overlay-dark-chip mb-0">
+            {{ node.field_publishing_date.value|date('F j, Y') }}
+        </p>
+    {% endset %}
+
+    {% include "@utk_lib_main_d11/templates/views/utk--page-hero.html.twig" with {
+        title: node.label,
+        image_src: hero_image_src|default(''),
+        image_alt: hero_image_alt|default(''),
+        body_content: hero_body
+    } %}
+
+    {% if node.field_update_label.value or node.field_update_text.value %}
+        <div class='container-fluid d-lg-flex justify-content-center utk-article utk-article--update'>
+            <div class='text-start text-break py-3 justify-content-center utk-search-selector link-link underline-active'>
+                <span class='exclamation'>!</span>
+                {% if node.field_update_label.value %}
+                    <h2>{{ content.field_update_label }}</h2>
+                {% endif %}
+                {{ content.field_update_text }}
+            </div>
+        </div>
+    {% endif %}
+
+    <div class='container-fluid d-lg-flex justify-content-center utk-article'>
+        <div class='col-lg-9'>
+            <div class='row pt-2'>
+                <div class='d-lg-flex justify-content-center'>
+                    {{ content.field_sections }}
+                </div>
+            </div>
+        </div>
+        {% if content.field_related_links|length > 2 %}
+        <div class='col-lg-3'>
+            <div class='row pt-2'>
+                <h2 class='text-center text-lg-start'>Related News:</h2>
+                <div class='row'>
+                    {{ content.field_related_links }}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</article>
