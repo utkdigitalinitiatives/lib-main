@@ -61,10 +61,7 @@
     {% endif %}
 {% endif %}
 
-{% if node.bundle == "news" %}
-    {% set content_url = "news" %}
-    {% set content_url_name = "news" %}
-{% elseif split_path[1] == "department" or split_path[1] == "employee" or split_path[1] == "contact" %}
+{% if split_path[1] == "department" or split_path[1] == "employee" or split_path[1] == "contact" %}
     {% set content_url = "directory" %}
     {% set content_url_name = "directory" %}
 {% else %}
