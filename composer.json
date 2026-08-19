@@ -136,5 +136,11 @@
                 "      composer remove drupal/core-project-message"
             ]
         }
+    },
+    "require-dev": {
+        "drupal/coder": "^9.0",
+        "friendsoftwig/twigcs": "^6.6",
+        "squizlabs/php_codesniffer": "^4.0",
+        "vincentlanglet/twig-cs-fixer": "^4.0"
     }
 }
