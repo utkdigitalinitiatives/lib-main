@@ -37,7 +37,7 @@
 {%
     set classes = [
     'node',
-    'node--type-' ~ node.bundle|clean_class,
+    'node--type-' ~ node.id|clean_class,
     'container-fluid',
     'mb-4',
     'pb-4',
@@ -53,7 +53,7 @@
 <article {{ attributes.addClass(classes) }} id='utk-article'>
     {% set hero_body %}
         <p class="utk-page-hero__subtitle utk-overlay-dark-chip mb-0">
-            {{ node.field_publishing_date.value|date('F j, Y') }}
+            {{ content.field_publishing_date.0["#markup"]|date('F j, Y') }}
         </p>
     {% endset %}
 

@@ -1,0 +1,61 @@
+{#
+/**
+ * @file
+ * UTK Custom - File Attachment Paragraph template.
+ *
+ * This template is used to render a file attachment paragraph with custom styling and layout.
+ *
+ * Available variables:
+ * - paragraph.field_file: The uploaded file entity.
+ * - paragraph.field_file_name: The display name of the file.
+ *
+ * Customizations:
+ * - Dynamically determines the file type (e.g., PDF, DOC, XLSX) and adjusts the layout accordingly.
+ * - Displays a download button for non-PDF files and a view button for PDFs.
+ * - Includes SVG icons for file types to enhance visual clarity.
+ * - Ensures responsive design for proper alignment and spacing across devices.
+ * - Uses Bootstrap classes for consistent styling and layout.
+ *
+ * @see template_preprocess()
+ */
+#}
+
+{% set media = paragraph.field_file.entity %}
+{% if media %}
+    {% set file = media.field_media_document.entity %}
+
+    {% set filename = file.filename.value %}
+    {% set filename_arr = filename|split('.') %}
+    {% set extension = filename_arr[1] %}
+
+{% endif %}
+{% if extension == 'pdf' %}
+<a href="{{ paragraph.field_file|file_url }}" class='row utk-service--buttons utk-service--buttons--wide mx-auto my-3 py-2'>
+{% else %}
+<a href="{{ paragraph.field_file|file_url }}" class='row utk-service--buttons utk-service--buttons--wide mx-auto my-3 py-2' download>
+{% endif %}
+    <div class='col d-flex text-left align-items-center justify-content-center text-smokey text-break'>
+        {{ paragraph.field_file_name.value|length > 50 ? paragraph.field_file_name.value|slice(0,50) ~ '...':  paragraph.field_file_name.value}}
+    </div>
+    {% if extension == 'pdf' %}
+    <div class='col-3 d-flex flex-row-reverse align-items-center'>
+        <svg fill="none" width="35" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.503 13.002a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 1 0v-.5H8.5a1.5 1.5 0 0 0 0-3h-.997Zm.997 2h-.497v-1H8.5a.5.5 0 1 1 0 1ZM14.998 13.501a.5.5 0 0 1 .5-.499h1.505a.5.5 0 1 1 0 1h-1.006l-.001 1.002h1.007a.5.5 0 0 1 0 1h-1.007l.002.497a.5.5 0 0 1-1 .002l-.003-.998v-.002l.003-2.002ZM11.5 13.002a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h.498a2 2 0 0 0 0-4H11.5Zm.5 3v-2a1 1 0 0 1 0 2Z" fill="#4b4b4b"/><path d="M20 20v-1.164c.591-.281 1-.884 1-1.582V12.75c0-.698-.409-1.3-1-1.582v-1.34a2 2 0 0 0-.586-1.414l-5.829-5.828a.491.491 0 0 0-.049-.04.63.63 0 0 1-.036-.03 2.072 2.072 0 0 0-.219-.18.652.652 0 0 0-.08-.044l-.048-.024-.05-.029c-.054-.031-.109-.063-.166-.087a1.977 1.977 0 0 0-.624-.138c-.02-.001-.04-.004-.059-.007A.605.605 0 0 0 12.172 2H6a2 2 0 0 0-2 2v7.168c-.591.281-1 .884-1 1.582v4.504c0 .698.409 1.3 1 1.582V20a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2Zm-2 .5H6a.5.5 0 0 1-.5-.5v-.996h13V20a.5.5 0 0 1-.5.5Zm.5-10.5v1h-13V4a.5.5 0 0 1 .5-.5h6V8a2 2 0 0 0 2 2h4.5Zm-1.122-1.5H14a.5.5 0 0 1-.5-.5V4.621L17.378 8.5Zm-12.628 4h14.5a.25.25 0 0 1 .25.25v4.504a.25.25 0 0 1-.25.25H4.75a.25.25 0 0 1-.25-.25V12.75a.25.25 0 0 1 .25-.25Z" fill="#4b4b4b"/>
+        </svg>
+    </div>
+    {% endif %}
+    {% if extension == 'doc' or extension == 'docx' %}
+    <div class='col-3 d-flex flex-row-reverse align-items-center'>
+        <svg width="35" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8.75 11.5a.75.75 0 0 0 0 1.5h6.5a.75.75 0 0 0 0-1.5h-6.5Zm0 2.75a.75.75 0 0 0 0 1.5h6.5a.75.75 0 0 0 0-1.5h-6.5Zm0 2.75a.75.75 0 0 0 0 1.5h6.5a.75.75 0 0 0 0-1.5h-6.5Zm4.835-14.414 5.829 5.828A2 2 0 0 1 20 9.828V20a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h6.172c.028 0 .055.004.082.007.02.003.04.006.059.007.215.015.427.056.624.138.057.024.112.056.166.087l.05.029.047.024a.652.652 0 0 1 .081.044c.078.053.148.116.219.18a.63.63 0 0 0 .036.03.491.491 0 0 1 .049.04ZM18 20.5a.5.5 0 0 0 .5-.5V10H14a2 2 0 0 1-2-2V3.5H6a.5.5 0 0 0-.5.5v16a.5.5 0 0 0 .5.5h12Zm-.622-12L13.5 4.621V8a.5.5 0 0 0 .5.5h3.378Z" fill="#4b4b4b"/>
+        </svg>
+    </div>
+    {% endif %}
+    {% if extension == 'xlsx' %}
+    <div class='col-3 d-flex flex-row-reverse align-items-center'>
+        <svg width="35" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8.75 11.5h6.5c.966 0 1.75.784 1.75 1.75v4A1.75 1.75 0 0 1 15.25 19h-6.5A1.75 1.75 0 0 1 7 17.25v-4c0-.966.784-1.75 1.75-1.75Zm-.25 1.75v1.25H10V13H8.75a.25.25 0 0 0-.25.25Zm0 2.75v1.25c0 .138.112.25.25.25H10V16H8.5Zm3 0v1.5h3.75a.25.25 0 0 0 .25-.25V16h-4Zm4-1.5v-1.25a.25.25 0 0 0-.25-.25H11.5v1.5h4ZM13.585 2.586a.491.491 0 0 0-.049-.04.63.63 0 0 1-.036-.03 2.072 2.072 0 0 0-.219-.18.652.652 0 0 0-.08-.044l-.048-.024-.05-.029c-.054-.031-.109-.063-.166-.087a1.977 1.977 0 0 0-.624-.138c-.02-.001-.04-.004-.059-.007A.605.605 0 0 0 12.172 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9.828a2 2 0 0 0-.586-1.414l-5.829-5.828ZM18 20.5H6a.5.5 0 0 1-.5-.5V4a.5.5 0 0 1 .5-.5h6V8a2 2 0 0 0 2 2h4.5v10a.5.5 0 0 1-.5.5Zm-.622-12H14a.5.5 0 0 1-.5-.5V4.621L17.378 8.5Z" fill="#4b4b4b"/>
+        </svg>
+    </div>
+    {% endif %}
+</a>

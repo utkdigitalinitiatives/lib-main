@@ -28,37 +28,40 @@
 {% set blurb = fields.field_blurb.content|render|striptags %}
 {% set section_text = fields.field_sections.content|render|striptags %}
 {% set publish_date = fields.field_publishing_date.content|render|striptags|trim %}
-{% set image_src = '' %}
-{% set image_alt = '' %}
-
-{% if row._entity.field_featured_news_image.entity %}
-  {% set media = row._entity.field_featured_news_image.entity %}
-  {% if media.field_media_image.entity %}
-    {% set image_src = media.field_media_image.entity.uri.value|image_style('large') %}
-    {% set image_alt = media.field_media_image.alt|default(row._entity.label) %}
-  {% endif %}
-{% endif %}
-
-{% set summary = blurb|trim ? blurb : section_text %}
+{% set image_src = row._entity.field_featured_news_image|file_url %}
+{% set image_class = 'img-fluid rounded shadow-sm' %}
 
 <div class="row utk-section-body py-3 mb-4 border-bottom">
   <div class="row mx-0 mb-2 px-0 link-link">
     <div class="px-0"><h2 class="fs-4 mb-1">{{ fields.title.content }}</h2></div>
   </div>
   <div class="row mx-0 px-0">
-    {% if image_src %}
+    {% if image_src|length > 0 %}
       <div class="col-md-3 px-0 pe-md-3 mb-3 mb-md-0">
-        <img class="img-fluid rounded shadow-sm" src="{{ image_src }}" alt="{{ image_alt }}" loading="lazy" />
+        <img {{ attributes.addClass(image_class).setAttribute('src', image_src) }} alt="article thumbnail" loading="lazy" />
+      </div>
+      <div class="col">
+        <p class="text-muted mb-2"><strong>{{ publish_date|date('F j, Y') }}</strong></p>
+        {% if blurb|length > 400 %}
+          {% autoescape false %}<p class="mb-0">{{ blurb|length > 400 ? blurb|slice(0, 400) ~ '...' : blurb }}</p>{% endautoescape %}
+        {% else %}
+          {% autoescape false %}<p class="mb-0">{{ section_text|length > 400 ? section_text|slice(0, 400) ~ '...' : section_text }}</p>{% endautoescape %}
+        {% endif %}
+      </div>
+    {% else %}
+      <div class="col px-0">
+        <p class="text-muted mb-2"><strong>{{ publish_date|date('F j, Y') }}</strong></p>
+        {% if blurb|length > 400 %}
+          {% autoescape false %}<p class="mb-0">{{ blurb|length > 400 ? blurb|slice(0, 400) ~ '...' : blurb }}</p>{% endautoescape %}
+        {% else %}
+          {% autoescape false %}<p class="mb-0">{{ section_text|length > 400 ? section_text|slice(0, 400) ~ '...' : section_text }}</p>{% endautoescape %}
+        {% endif %}
       </div>
     {% endif %}
-    <div class="col px-0">
-      <p class="text-muted mb-2"><strong>{{ publish_date|date('F j, Y') }}</strong></p>
-      <p class="mb-0">{{ summary|length > 400 ? summary|slice(0, 400) ~ '...' : summary }}</p>
-    </div>
   </div>
   <div class="row mx-0 mt-2 px-0">
     <div class="px-0">
-      <a href="{{ fields.view_node.content|render|striptags|trim }}" class="btn utk-blue-button p-2">Read More</a>
+      <a href="{{ fields.view_node.content|render|striptags }}" class="btn utk-blue-button p-2">Read More</a>
     </div>
   </div>
 </div>
