@@ -1,0 +1,22 @@
+{#
+/**
+ * @file
+ * UTK Custom - News featured quote Paragraph template.
+ *
+ * @see paragraph.html.twig
+ */
+#}
+
+{%
+  set classes = [
+    'my-3',
+    'pt-2',
+    'utk-paragraph-feature-quote',
+    'text-smokey'
+  ]
+%}
+<div class='d-flex justify-content-center'>
+  <blockquote {{ attributes.addClass(classes) }}>
+      <p>{{ content }}</p>
+  </blockquote>
+</div>

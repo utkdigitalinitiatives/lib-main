@@ -1,0 +1,29 @@
+{#
+/**
+ * @file
+ * UTK Custom - News callout image Paragraph template.
+ *
+ * This template places the callout text on the side selected by the
+ * field_text_on_right control field.
+ *
+ * @see paragraph.html.twig
+ */
+#}
+
+<div class='d-flex justify-content-center py-3'>
+    {% if paragraph.field_text_on_right.value == 0 %}
+    <div class='row d-flex align-items-center utk--callout'>
+        <img class='col-lg-6 col-12 px-lg-0 px-2 rounded me-1' src="{{ paragraph.field_image|file_url }}" alt="{{ paragraph.field_image.entity.field_media_image.alt }}" loading="lazy">
+        <div class='col-lg-6 col-12 text-wrap utk--callout'>
+            {{ content.field_callout_text }}
+        </div>
+    </div>
+    {% else %}
+    <div class='row d-flex align-items-center utk--callout'>
+        <div class='col-lg-6 col-12 text-wrap me-1'>
+            {{ content.field_callout_text }}
+        </div>
+        <img class='col-lg-6 col-12 px-lg-0 px-2 rounded' src="{{ paragraph.field_image|file_url }}" alt="{{ paragraph.field_image.entity.field_media_image.alt }}" loading="lazy">
+    </div>
+    {% endif %}
+</div>
