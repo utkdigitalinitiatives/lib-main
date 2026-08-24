@@ -1,0 +1,94 @@
+uuid: 84005d96-3b1a-4a20-bbcd-fbcaf67a500e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_department_links_cards
+    - node.type.department
+    - paragraphs.paragraphs_type.card
+  module:
+    - entity_reference_revisions
+id: node.department.field_department_links_cards
+field_name: field_department_links_cards
+entity_type: node
+bundle: department
+label: 'Department Links (cards)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      card: card
+    negate: 0
+    target_bundles_drag_drop:
+      callout_image:
+        weight: 23
+        enabled: false
+      card:
+        weight: 24
+        enabled: true
+      card_group:
+        weight: 25
+        enabled: false
+      correction:
+        weight: 26
+        enabled: false
+      department_email:
+        weight: 27
+        enabled: false
+      department_phone:
+        weight: 28
+        enabled: false
+      embedded_tabbed_content:
+        weight: 29
+        enabled: false
+      embedded_video:
+        weight: 30
+        enabled: false
+      embedded_view:
+        weight: 31
+        enabled: false
+      faculty_position_details:
+        weight: 32
+        enabled: false
+      featured_quote:
+        weight: 33
+        enabled: false
+      file_attachment:
+        weight: 34
+        enabled: false
+      heading_h2:
+        weight: 35
+        enabled: false
+      image:
+        weight: 36
+        enabled: false
+      linked_image:
+        weight: 37
+        enabled: false
+      staff_position_details:
+        weight: 38
+        enabled: false
+      student_position_details:
+        weight: 39
+        enabled: false
+      tab:
+        weight: 40
+        enabled: false
+      tall_image:
+        weight: 41
+        enabled: false
+      text:
+        weight: 42
+        enabled: false
+      two_column_text_and_card:
+        weight: 43
+        enabled: false
+      two_column_text_and_image:
+        weight: 44
+        enabled: false
+field_type: entity_reference_revisions
