@@ -1,0 +1,63 @@
+{#
+/**
+ * @file
+ * UTK Custom - Portal View template.
+ *
+ * This template is used to render the Portal view with custom styling and layout.
+ *
+ * Available variables:
+ * - view: The view object being rendered.
+ * - title: The title of the view.
+ * - rows: The rendered rows of the view.
+ * - pager: The pager for navigating through multiple pages of results.
+ *
+ * Customizations:
+ * - Dynamically selects the hero background image based on the view title.
+ * - Renders the shared universal hero with the existing responsive portal image.
+ * - Displays the view rows in a structured layout.
+ * - Includes a pager for navigating through results if available.
+ *
+ * Included templates:
+ * - utk--page-hero.html.twig: Renders the shared page hero.
+ *
+ * @see views-view.html.twig
+ * @see template_preprocess_views_view()
+ */
+#}
+
+{% set title = view.title %}
+{% set hero_size_class = 'utk-page-hero--standard' %}
+
+{% if title == 'Services' %}
+  {% set image_base = 'services' %}
+{% endif %}
+{% if title == 'About' %}
+  {% set image_base = 'about-image' %}
+{% endif %}
+{% set row_classes = 'row gx-0 mx-0 d-flex justify-content-start' %}
+{% set content_spacing_classes = 'container-fluid my-4 py-3 px-lg-5 utk--1400px-width' %}
+
+{% set hero_body %}
+  <div class="row max-row-width mx-auto pt-3">
+    {# {{ drupal_block('views_block:search_results-block_1', wrapper=false) }} #}
+  </div>
+{% endset %}
+
+{% include "@utk_lib_main_d11/templates/views/utk--page-hero.html.twig" with {
+  title: title,
+  hero_size_class: hero_size_class,
+  responsive_image_base: image_base|default(''),
+  body_content: hero_body
+} %}
+<div class="{{ content_spacing_classes }}">
+  <div class='{{ row_classes }}'>
+    {% if rows %}
+      {{ rows }}
+    {% endif %}
+  </div>
+</div>
+<div class='pb-2 mb-2'>
+  {% if pager %}
+    {{ pager }}
+  {% endif %}
+</div>

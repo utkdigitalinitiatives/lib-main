@@ -1,0 +1,42 @@
+{#
+/**
+ * @file
+ * UTK Custom - Portal Unformatted View template.
+ *
+ * This template is used to render the Portal view in an unformatted style with custom
+ * styling and layout.
+ *
+ * Available variables:
+ * - rows: The rendered rows of the view.
+ * - title: The title of the view.
+ * - view: The view object being rendered.
+ *
+ * Customizations:
+ * - Provides a structured layout with rows styled as cards.
+ * - Ensures responsive design for both desktop and mobile layouts.
+ *
+ * @see views-view-unformatted.html.twig
+ * @see template_preprocess_views_view()
+ */
+#}
+
+{% set card_column_classes = 'col-12 px-0 utk-portal-card-column--featured' %}
+{% set card_classes = 'utk-card utk-portal-card' %}
+{% set card_body_classes = 'utk-card-body utk-portal-card__body-grid' %}
+
+<div class='{{ card_column_classes }}'>
+    <div class='{{ card_classes }}'>
+    {% if title %}
+        <div class='utk-card-header utk-card-header--small-section text-center link-link utk-search-selector'>
+            <div class='utk-portal-card__header-row'>
+                <p class='fs-4 fw-medium'>{{ title }}</p>
+            </div>
+        </div>
+    {% endif %}
+        <div class='{{ card_body_classes }}'>
+            {% for row in rows %}
+                {{- row.content -}}
+            {% endfor %}
+        </div>
+    </div>
+</div>
