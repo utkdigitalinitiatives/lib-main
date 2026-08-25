@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - system.menu.admin
     - user.role.administrator
   module:
     - group
@@ -423,10 +422,10 @@ display:
       display_extenders: {  }
       path: assign-to-group
       menu:
-        type: normal
+        type: none
         title: 'Assign to Group'
         description: 'Assign to Group'
-        weight: 6
+        weight: -82
         expanded: false
         menu_name: admin
         parent: system.admin

@@ -47,7 +47,6 @@
         "drupal/search_api_solr": "^4.3",
         "drupal/tamper": "^1.0@beta",
         "drupal/twig_tweak": "^3.4",
-        "drupal/ui_icons": "^2.0",
         "drupal/views_bulk_operations": "^4.4",
         "drupal/viewsreference": "^2.0@beta",
         "drupal/webform": "6.3.0-rc2",
