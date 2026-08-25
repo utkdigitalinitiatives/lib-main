@@ -1,0 +1,23 @@
+uuid: 3e13bdf5-2373-4264-96ee-7b4b39775b0c
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.about_page
+  module:
+    - node
+id: about_pattern
+label: 'About Pattern'
+type: 'canonical_entities:node'
+pattern: '/about/[node:title]'
+selection_criteria:
+  20deeba3-241c-461c-a18c-0fefb5f05d96:
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: node
+    bundles:
+      about_page: about_page
+selection_logic: and
+weight: -10
+relationships: {  }

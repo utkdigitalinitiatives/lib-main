@@ -16,7 +16,8 @@
  *
  * Customizations:
  * - Dynamically generates breadcrumb links based on the current path.
- * - Includes category-specific links for service and about pages.
+ * - Uses the About portal as the parent link for About pages.
+ * - Includes category-specific links for service pages.
  * - Capitalizes breadcrumb labels for better readability.
  * - Ensures responsive design for both desktop and mobile layouts.
  *
@@ -30,12 +31,6 @@
 {% if content.field_service_page_details['#items'].0.entity %}
     {% set paragraph = content.field_service_page_details['#items'].0.entity %}
     {% set category_label = paragraph.field_service_category.entity.label %}
-    {% set category_url = category_label|lower|split(' ')|join('-') %}
-{% endif %}
-
-{% if content.field_about_page_details['#items'].0.entity %}
-    {% set paragraph = content.field_about_page_details["#items"].0.entity %}
-    {% set category_label = paragraph.field_about_category.entity.label %}
     {% set category_url = category_label|lower|split(' ')|join('-') %}
 {% endif %}
 
@@ -61,7 +56,10 @@
     {% endif %}
 {% endif %}
 
-{% if split_path[1] == "department" or split_path[1] == "employee" or split_path[1] == "contact" %}
+{% if node.bundle == "about_page" %}
+    {% set content_url = "about" %}
+    {% set content_url_name = "about" %}
+{% elseif split_path[1] == "department" or split_path[1] == "employee" or split_path[1] == "contact" %}
     {% set content_url = "directory" %}
     {% set content_url_name = "directory" %}
 {% else %}

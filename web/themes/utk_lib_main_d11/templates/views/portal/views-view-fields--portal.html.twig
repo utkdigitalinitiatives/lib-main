@@ -1,0 +1,26 @@
+{#
+/**
+ * @file
+ * UTK Custom - Portal View Fields template.
+ *
+ * This template is used to render individual fields within the Portal view
+ * with custom styling and layout.
+ *
+ * Available variables:
+ * - fields: An array of fields available in the view, including:
+ *   - fields.title: The title of the portal item.
+ * - view: The view object being rendered.
+ *
+ * Customizations:
+ * - Provides a structured layout with the portal item title.
+ * - Ensures responsive design for both desktop and mobile layouts.
+ *
+ * @see views-view-fields.html.twig
+ */
+#}
+
+<div class='text-smokey link-link utk-search-selector d-flex align-items-start py-lg-1 py-2 mx-2 utk-portal-card__item-row'>
+    <div class='ps-2'>
+        {{ fields.title.content }}
+    </div>
+</div>

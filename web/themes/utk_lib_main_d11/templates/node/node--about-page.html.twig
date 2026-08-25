@@ -1,0 +1,85 @@
+{#
+/**
+ * @file
+ * UTK Custom - About Page template.
+ *
+ * This template is used to render the About Page content type with custom
+ * styling and layout.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the main container.
+ * - node: The node entity being rendered, including:
+ *   - node.label: The title of the node.
+ *   - node.id: The unique identifier for the node.
+ *   - node.field_include_table_of_contents: Boolean field to determine if the
+ *     table of contents should be displayed.
+ * - content: Rendered content of the node, including:
+ *   - content.field_sections: The main sections of the page.
+ *   - content.field_parent_page: Links to parent pages, if any.
+ *
+ * Included templates:
+ * - utk--page-hero.html.twig: Renders the shared page hero.
+ *
+ * Dynamic content:
+ * - drupal_view('jump_to_section', 'jump_to_block', node.id, related_links):
+ *   Displays a "Jump to Section" block for navigation within the page.
+ *
+ * Customizations:
+ * - Adds specific classes for layout and styling.
+ * - Conditionally displays the table of contents and parent page link.
+ *
+ * @see node.html.twig
+ * @see node_preprocess_node()
+ */
+#}
+
+{%
+    set classes = [
+            'node',
+            'node--type-' ~ node.id|clean_class,
+            'container-fluid',
+            'mb-4',
+            'pb-4',
+            'px-0',
+            'mx-0',
+            'text-smokey',
+        ]
+%}
+
+<article {{ attributes.addClass(classes) }} id='utk-article'>
+    {% include "@utk_lib_main_d11/templates/views/utk--page-hero.html.twig" with {
+        title: node.label,
+        image_src: hero_image_src|default(''),
+        responsive_image_base: hero_responsive_image_base|default(''),
+        image_alt: hero_image_alt|default('')
+    } %}
+    <div class='container-fluid d-lg-flex justify-content-center max-row-width text-smokey link-link pe-4'>
+        <div class='col-lg-8'>
+            {% if node.field_include_table_of_contents.value %}
+                <div class='row pe-2 mx-0'>
+                    {{ drupal_view('jump_to_section', 'jump_to_block', node.id, related_links) }}
+                </div>
+            {% endif %}
+            <div class='row pt-2 px-3'>
+                <div class='mx-auto'>
+                {{ content.field_sections }}
+                </div>
+            </div>
+        </div>
+            {% if content.field_parent_page|length > 2 %}
+            <div class='col-lg-4 pt-3'>
+                <div class='utk-card utk-sidebar-card utk-about-sidebar-card'>
+                    <div class='utk-card-header utk-card-header--small-section'>
+                        <h2 class='fs-5 mb-0'>
+                            Also See
+                        </h2>
+                    </div>
+                    <div class='utk-card-body link-link utk-search-selector'>
+                        {{ content.field_parent_page }}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</article>
