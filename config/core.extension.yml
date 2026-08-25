@@ -83,6 +83,7 @@ module:
   views_ui: 0
   viewsreference: 0
   webform: 0
+  webform_group: 0
   webform_node: 0
   webform_submission_export_import: 0
   webform_submission_import: 0
