@@ -1,6 +1,6 @@
 uuid: 16036902-3854-42c9-9102-8e097a80c481
 langcode: en
-status: false
+status: true
 dependencies:
   theme:
     - utk_lib_main_d11
@@ -19,4 +19,8 @@ settings:
   provider: core
   primary: false
   secondary: true
-visibility: {  }
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '/group/*'
