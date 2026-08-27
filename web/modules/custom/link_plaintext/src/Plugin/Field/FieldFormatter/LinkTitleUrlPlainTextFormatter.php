@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Link Title + URL Plain Text Formatter plugin for Drupal Link fields.
- */
-
 namespace Drupal\link_plaintext\Plugin\Field\FieldFormatter;
 
 use Drupal\Core\Field\FieldItemListInterface;
@@ -134,9 +129,11 @@ class LinkTitleUrlPlainTextFormatter extends FormatterBase {
     $separator = '';
     if ($separator_mode === 'space') {
       $separator = ' ';
-    } elseif ($separator_mode === 'newline') {
+    }
+    elseif ($separator_mode === 'newline') {
       $separator = "\n";
-    } elseif ($separator_mode === 'custom') {
+    }
+    elseif ($separator_mode === 'custom') {
       $custom_sep = $this->getSetting('separator');
       // If custom separator is empty, treat as single space.
       $separator = ($custom_sep === '') ? ' ' : $custom_sep;
@@ -148,10 +145,12 @@ class LinkTitleUrlPlainTextFormatter extends FormatterBase {
       $url_obj = $item->getUrl();
 
       // Convert URL object to string.
-      // If force_absolute is TRUE, generate absolute URL; otherwise use relative/default.
+      // If force_absolute is TRUE, generate absolute URL; otherwise
+      // use relative/default.
       if ($force_absolute) {
         $url_string = $url_obj->setAbsolute(TRUE)->toString();
-      } else {
+      }
+      else {
         $url_string = $url_obj->toString();
       }
 
