@@ -1,12 +1,13 @@
 # Local-only Solr wiring for DDEV.
 
 web_environment:
-  - DRUPAL_SOLR_LOCAL_SCHEME=http
-  - DRUPAL_SOLR_LOCAL_HOST=solr
-  - DRUPAL_SOLR_LOCAL_PORT=8983
-  - DRUPAL_SOLR_LOCAL_PATH=/
-  - DRUPAL_SOLR_LOCAL_USERNAME=solr
-  - DRUPAL_SOLR_LOCAL_PASSWORD=SolrRocks
+  - SOLR_SCHEME=http
+  - SOLR_HOST=solr
+  - SOLR_PORT=8983
+  - SOLR_PATH=/
+  - SOLR_CORE=site_search
+  - SOLR_USERNAME=solr
+  - SOLR_PASSWORD=SolrRocks
 
 hooks:
   post-start:

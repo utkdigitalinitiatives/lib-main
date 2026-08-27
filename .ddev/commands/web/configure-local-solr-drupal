@@ -22,13 +22,13 @@ if ! drush status --fields=bootstrap --format=list 2>/dev/null | grep -q "Succes
 fi
 
 drush php:eval '
-$host = getenv("DRUPAL_SOLR_LOCAL_HOST") ?: "solr";
-$port = (int) (getenv("DRUPAL_SOLR_LOCAL_PORT") ?: 8983);
-$path = getenv("DRUPAL_SOLR_LOCAL_PATH") ?: "/solr";
-$scheme = getenv("DRUPAL_SOLR_LOCAL_SCHEME") ?: "http";
-$username = getenv("DRUPAL_SOLR_LOCAL_USERNAME") ?: "";
-$password = getenv("DRUPAL_SOLR_LOCAL_PASSWORD") ?: "";
-$coreOverride = getenv("DRUPAL_SOLR_LOCAL_CORE") ?: "";
+$host = getenv("SOLR_HOST") ?: "solr";
+$port = (int) (getenv("SOLR_PORT") ?: 8983);
+$path = getenv("SOLR_PATH") ?: "/";
+$scheme = getenv("SOLR_SCHEME") ?: "http";
+$username = getenv("SOLR_USERNAME") ?: "";
+$password = getenv("SOLR_PASSWORD") ?: "";
+$coreOverride = getenv("SOLR_CORE") ?: "";
 
 $storage = \Drupal::service("config.storage");
 $configFactory = \Drupal::service("config.factory");

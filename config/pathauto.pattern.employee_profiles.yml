@@ -12,11 +12,11 @@ selection_criteria:
   07fa9c21-64b9-482c-8015-36c5da511c9d:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 07fa9c21-64b9-482c-8015-36c5da511c9d
     context_mapping:
       node: node
     bundles:
       employee_profile: employee_profile
+    uuid: 07fa9c21-64b9-482c-8015-36c5da511c9d
 selection_logic: and
 weight: -5
 relationships: {  }

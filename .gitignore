@@ -56,3 +56,6 @@
 
 # temporary migration directories
 /source_public_files
+
+# hiding linter for now
+.phpactor.json
