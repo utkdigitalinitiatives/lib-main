@@ -1,4 +1,7 @@
 # Local-only Solr wiring for DDEV.
+# Consumed as a runtime config override in web/sites/default/settings.local.php
+# rather than written to config storage, so `drush config:import` never
+# breaks the local Solr connection.
 
 web_environment:
   - SOLR_SCHEME=http
@@ -8,7 +11,3 @@ web_environment:
   - SOLR_CORE=site_search
   - SOLR_USERNAME=solr
   - SOLR_PASSWORD=SolrRocks
-
-hooks:
-  post-start:
-    - exec: /mnt/ddev_config/commands/web/configure-local-solr-drupal

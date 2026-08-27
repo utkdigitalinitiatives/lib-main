@@ -31,10 +31,6 @@ echo "Syncing active configuration with committed config files..."
 ddev drush config:import -y
 
 echo
-echo "Re-applying local Solr connector settings for DDEV..."
-ddev configure-local-solr-drupal
-
-echo
 echo "Running local upload scheme diagnostic..."
 DIAGNOSTIC_OUTPUT="$(ddev drush php:eval '
 $checks = [
