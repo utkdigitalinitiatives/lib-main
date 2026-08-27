@@ -8,8 +8,6 @@
  * Available variables:
  * - content_path: The current path of the page.
  * - split_path: An array of the segments of the current path.
- * - category_label: The label of the category associated with the page (if applicable).
- * - category_url: The URL-friendly version of the category label.
  * - final_string: The final breadcrumb label for the current page.
  * - content_url: The base URL for the breadcrumb link.
  * - content_url_name: The name of the base URL for display in the breadcrumb.
@@ -17,7 +15,7 @@
  * Customizations:
  * - Dynamically generates breadcrumb links based on the current path.
  * - Uses the About portal as the parent link for About pages.
- * - Includes category-specific links for service pages.
+ * - Uses the Services portal as the parent link for Service pages.
  * - Capitalizes breadcrumb labels for better readability.
  * - Ensures responsive design for both desktop and mobile layouts.
  *
@@ -27,12 +25,6 @@
 
 {% set content_path = path('<current>') %}
 {% set split_path = content_path|split('/') %}
-
-{% if content.field_service_page_details['#items'].0.entity is defined %}
-    {% set paragraph = content.field_service_page_details['#items'].0.entity %}
-    {% set category_label = paragraph.field_service_category.entity.label %}
-    {% set category_url = category_label|lower|split(' ')|join('-') %}
-{% endif %}
 
 {% if split_path|length > 2 %}
     {% set endpoint_arr = split_path[2]|split('-') %}
@@ -59,6 +51,9 @@
 {% if node.bundle is defined and node.bundle == "about_page" %}
     {% set content_url = "about" %}
     {% set content_url_name = "about" %}
+{% elseif node.bundle is defined and node.bundle == "service_page" %}
+    {% set content_url = "services" %}
+    {% set content_url_name = "services" %}
 {% elseif split_path[1] == "department" or split_path[1] == "employee" or split_path[1] == "contact" %}
     {% set content_url = "directory" %}
     {% set content_url_name = "directory" %}
@@ -90,18 +85,7 @@
                     {% endif %}
                 </li>
             {% endif %}
-            {% set is_category = split_path|length == 3 and category_label %}
-        
-            {% if category_label %}
-                <li class="breadcrumb-item link-white font-small breadcrumb-search-selector {% if is_category %}active{% endif %}">
-                    {% if is_category %}
-                        <a href="/{{ content_url }}/{{ category_url }}" aria-current="page">{{ category_label }}</a>
-                    {% else %}
-                        <a href="/{{ content_url }}/{{ category_url }}">{{ category_label }}</a>
-                    {% endif %}
-                </li>
-            {% endif %}
-            {% if split_path|length > 2 and not is_category %}
+            {% if split_path|length > 2 %}
                 <li class="breadcrumb-item link-white font-small breadcrumb-search-selector active" aria-current="page">{{ final_string }}</li>
             {% endif %}
         </ol>

@@ -27,12 +27,18 @@
     </div>
     {% endif %}
     <div class="utk-section-card__body">
+        {% if card_title %}
         <h4 class="utk-section-card__title text-link">{{ card_title }}</h4>
+        {% endif %}
+        {% if text_body %}
         <div class="utk-section-card__text text-smokey">
             {% autoescape false %}{{ text_body }}{% endautoescape %}
         </div>
+        {% endif %}
+        {% if button_url %}
         <div class="utk-section-card__actions">
-            <a href="{{ button_url }}" class="btn utk-blue-button">{{ button_title }}</a>
+            <a href="{{ button_url }}" class="btn utk-blue-button">{{ button_title|default('Learn more', true) }}</a>
         </div>
+        {% endif %}
     </div>
 </article>

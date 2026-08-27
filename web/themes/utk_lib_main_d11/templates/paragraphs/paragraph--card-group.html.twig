@@ -1,0 +1,9 @@
+{% if content.field_cards['#items'] is defined %}
+    <div class="row g-4 my-2">
+        {% for key, item in content.field_cards['#items'] %}
+            <div class="col-12 col-md-6">
+                {{ content.field_cards[key] }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}

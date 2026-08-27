@@ -1,0 +1,23 @@
+uuid: cf769348-df49-466c-850f-9baa77a55709
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.service_page
+  module:
+    - node
+id: services_path
+label: 'Services Path'
+type: 'canonical_entities:node'
+pattern: '/services/[node:title]'
+selection_criteria:
+  23c58c02-06d1-4399-99f5-bc1e9e9be0f0:
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: node
+    bundles:
+      service_page: service_page
+selection_logic: and
+weight: -5
+relationships: {  }

@@ -1,0 +1,123 @@
+{#
+/**
+ * @file
+ * UTK Custom - Service Page template.
+ *
+ * This template is used to render the Service Page content type with custom
+ * styling and layout.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the main container.
+ * - node: The node entity being rendered, including:
+ *   - node.label: The title of the service page.
+ *   - node.field_include_table_of_contents: Boolean field to determine if the
+ *     table of contents should be displayed.
+ * - content: Rendered content of the node, including:
+ *   - content.field_sections: The main sections of the service page.
+ *   - content.field_service_contacts: Contact information for the service.
+ *   - content.field_related_services: Links to related services.
+ *   - content.field_about_this_service: Additional information about the service.
+ *
+ * Customizations:
+ * - Dynamically includes a "Jump to Section" block if the table of contents is enabled.
+ * - Conditionally displays service contacts, related services, and additional information.
+ * - Provides a structured layout for the service title, sections, and related content.
+ *
+ * Included templates:
+ * - utk--page-hero.html.twig: Renders the shared page hero.
+ *
+ * Dynamic content:
+ * - drupal_view('jump_to_section', 'jump_to_block', node.id, related_links):
+ *   Displays a "Jump to Section" block for navigation within the page.
+ *
+ * @see node.html.twig
+ * @see node_preprocess_node()
+ */
+#}
+
+{%
+set classes = [
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    'container-fluid',
+    'px-0',
+    'text-smokey',
+    ]
+%}
+{% if content.field_related_services is defined and content.field_related_services|length > 2 %}
+    {% set related_links = true %}
+{% else %}
+    {% set related_links = false %}
+{% endif %}
+
+
+<article {{ attributes.addClass(classes) }} id='utk-service'>
+    {% include "@utk_lib_main_d11/templates/views/utk--page-hero.html.twig" with {
+        title: node.label,
+        image_src: hero_image_src|default(''),
+        responsive_image_base: hero_responsive_image_base|default(''),
+        image_alt: hero_image_alt|default('')
+    } %}
+    <div class='container-fluid utk--inset-box-shadow py-4'>
+    <div class='row max-row-width mx-auto'>
+        {% if (content.field_service_contacts is defined and content.field_service_contacts|length > 2) or (content.field_related_services is defined and content.field_related_services|length > 2) or (content.field_about_this_service is defined and content.field_about_this_service|length > 2) %}
+        <div class='col-lg-8 px-4'>
+        {% else %}
+        <div class='col-lg-8 mx-auto px-3'>
+        {% endif %}
+        {% if node.field_include_table_of_contents.value is defined and node.field_include_table_of_contents.value %}
+            <div class='row pe-2 mx-0 mb-4 p-1 rounded shadow-sm bg-light'>
+                {{ drupal_view('jump_to_section', 'jump_to_block', node.id, related_links) }}
+            </div>
+        {% endif %}
+            {% if content.field_sections is defined %}
+            <div class="service-content mb-4">
+                {{ content.field_sections }}
+            </div>
+            {% endif %}
+        </div>
+        {% if (content.field_service_contacts is defined and content.field_service_contacts|length > 2) or (content.field_related_services is defined and content.field_related_services|length > 2) or (content.field_about_this_service is defined and content.field_about_this_service|length > 2) %}
+        <div class='col-lg-4 py-2'>
+            {% if content.field_service_contacts is defined and content.field_service_contacts|length > 2 %}
+                <div class='utk-card utk-sidebar-card utk-service-sidebar-card'>
+                    <div class='utk-card-header utk-card-header--small-section'>
+                        <h2 class='fs-5 mb-0'>
+                            Contacts for this Service
+                        </h2>
+                    </div>
+                    <div class='utk-card-body utk-search-selector link-link'>
+                        {{ content.field_service_contacts }}
+                    </div>
+                </div>
+            {% endif %}
+            {% if content.field_related_services is defined and content.field_related_services|length > 2 %}
+                <div class='utk-card utk-sidebar-card utk-service-sidebar-card'>
+                    <div class='utk-card-header utk-card-header--small-section'>
+                        <h2 class='fs-5 mb-0'>
+                            Related Services
+                        </h2>
+                    </div>
+                    <div class='utk-card-body link-link utk-search-selector'>
+                        {{ content.field_related_services }}
+                    </div>
+                </div>
+            {% endif %}
+            {% if content.field_about_this_service is defined and content.field_about_this_service|length > 2 %}
+                <div class='utk-card utk-sidebar-card utk-service-sidebar-card'>
+                    <div class='utk-card-header utk-card-header--small-section'>
+                        <h2 class='fs-5 mb-0'>
+                            About this Service
+                        </h2>
+                    </div>
+                    <div class='utk-card-body'>
+                        <div class='link-link utk-search-selector'>
+                            {{ content.field_about_this_service }}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+    </div>
+</article>
