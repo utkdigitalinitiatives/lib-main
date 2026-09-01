@@ -1,0 +1,61 @@
+{#
+/**
+ * @file
+ * UTK Custom - Tabbed Content node template.
+ *
+ * Renders referenced Tab paragraphs as Bootstrap tabs.
+ *
+ * @see node.html.twig
+ */
+#}
+
+<div class="container-fluid my-3">
+  {% if content.field_tab_introduction is defined %}
+    <div class="row pt-1">
+      <div class="px-0">{{ content.field_tab_introduction }}</div>
+    </div>
+  {% endif %}
+
+  <div class="row">
+    <ul class="nav nav-tabs" id="tabs-{{ node.id }}" role="tablist">
+      {% set visible_tab_index = 0 %}
+      {% for key, tab in content.field_tabs %}
+        {% if key|first != '#' %}
+          <li class="nav-item" role="presentation">
+            <button class="nav-link text-smokey link-link{% if visible_tab_index == 0 %} active{% endif %}"
+                    id="tab-{{ node.id }}-{{ key }}"
+                    data-bs-toggle="tab"
+                    data-bs-target="#content-{{ node.id }}-{{ key }}"
+                    type="button"
+                    role="tab"
+                    aria-controls="content-{{ node.id }}-{{ key }}"
+                    aria-selected="{% if visible_tab_index == 0 %}true{% else %}false{% endif %}">
+              {{ tab['#paragraph'].field_tab_label.0.value }}
+            </button>
+          </li>
+          {% set visible_tab_index = visible_tab_index + 1 %}
+        {% endif %}
+      {% endfor %}
+    </ul>
+
+    <div class="tab-content border border-top-0 pt-3" id="tab-content-{{ node.id }}">
+      {% set visible_tab_index = 0 %}
+      {% for key, tab in content.field_tabs %}
+        {% if key|first != '#' %}
+          <div class="tab-pane fade{% if visible_tab_index == 0 %} show active{% endif %}"
+               id="content-{{ node.id }}-{{ key }}"
+               role="tabpanel"
+               aria-labelledby="tab-{{ node.id }}-{{ key }}">
+            {% if not tab['#paragraph'].field_tab_heading.isEmpty %}
+              <div class="fs-3 fw-medium mx-auto">
+                {{ tab['#paragraph'].field_tab_heading.0.value }}
+              </div>
+            {% endif %}
+            {{ tab }}
+          </div>
+          {% set visible_tab_index = visible_tab_index + 1 %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>

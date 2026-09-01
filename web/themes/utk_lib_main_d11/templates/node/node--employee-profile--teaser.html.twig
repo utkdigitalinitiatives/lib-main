@@ -1,0 +1,29 @@
+{#
+/**
+ * @file
+ * UTK Custom - Employee Profile teaser template.
+ *
+ * Renders an employee as a compact Service Contact.
+ *
+ * @see node.html.twig
+ */
+#}
+
+<a href="{{ url }}" aria-label="View {{ node.label }}'s profile">
+  <div class="row g-0 d-flex align-items-center utk-service-contact utk-contact-hover">
+    {% if not node.field_profile_picture.isEmpty %}
+      <div class="col-4 d-flex justify-content-center pe-1">
+        <img class="img-fluid rounded-circle"
+             src="{{ node.field_profile_picture|file_url }}"
+             alt="{{ node.field_profile_picture.entity.field_media_image.alt|default('') }}"
+             loading="lazy">
+      </div>
+    {% endif %}
+    <div class="{% if not node.field_profile_picture.isEmpty %}col-8 ps-1{% else %}col-12{% endif %}">
+      <div class="fw-semibold">{{ node.label }}</div>
+      {% if not node.field_position.isEmpty %}
+        <div class="text-muted small">{{ node.field_position.value }}</div>
+      {% endif %}
+    </div>
+  </div>
+</a>

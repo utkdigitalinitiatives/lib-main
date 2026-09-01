@@ -1,0 +1,37 @@
+{#
+/**
+ * @file
+ * UTK Custom - LX Delivery Location Table Exposed Form template.
+ *
+ * This template customizes the exposed filters form for the LX delivery location table view.
+ */
+#}
+
+<div {{ attributes }}>
+  <form {{ form.attributes }}>
+    <div class="container-fluid pb-2">
+      <div class="row justify-content-center align-items-center">
+        {% if form.name is defined %}
+          <div class="col-12 col-md-8 col-lg-6 form-group px-2">
+            <div class="input-group">
+              {{ form.name|add_class(['form-control']) }}
+            </div>
+          </div>
+        {% endif %}
+        {% if form.actions.submit is defined %}
+          <div class="col-12 col-md-8 col-lg-6 form-group d-flex justify-content-center align-items-center px-2 mt-3">
+            <div class="d-flex flex-wrap justify-content-center gap-2">
+              {{ form.actions.submit|add_class(['btn', 'utk-smokey-button']) }}
+              {% if form.actions.reset is defined %}
+                {{ form.actions.reset|add_class(['btn', 'utk-smokey-button']) }}
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+    {{ form.form_build_id|default('') }}
+    {{ form.form_token|default('') }}
+    {{ form.form_id|default('') }}
+  </form>
+</div>

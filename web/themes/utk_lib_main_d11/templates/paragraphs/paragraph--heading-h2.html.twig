@@ -1,0 +1,18 @@
+{%
+    set classes = [
+        'container',
+        'text-smokey',
+        'utk-article--section-label',
+        'px-0',
+        'py-3'
+    ]
+%}
+
+{% set heading_text = paragraph.field_heading_text.value|default('') %}
+{% set anchor = heading_text|striptags|lower|trim|split(' ')|join('-') %}
+
+{% if heading_text %}
+    <h2 {{ attributes.addClass(classes) }} id="{{ anchor|length > 9 ? anchor|slice(0, 9) : anchor }}">
+        {{ heading_text }}
+    </h2>
+{% endif %}
