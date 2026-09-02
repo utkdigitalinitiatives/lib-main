@@ -105,20 +105,14 @@ Understanding how file storage differs between environments is important for wor
 
 ---
 
-## Local Solr Configuration
+## Solr Configuration
 
-Local development uses the committed `ddev-solr` add-on and points Drupal Search API Solr servers to the local DDEV Solr container automatically.
+Search API Solr servers are pointed at their endpoint via environment variables, both locally and in deployed environments.
 
-- Solr starts with DDEV (`ddev start` / `ddev restart`).
-- Local connector settings are defined in `.ddev/config.solr.yaml`.
-- On each start, DDEV runs `ddev configure-local-solr-drupal` in the web container to update any active Solr-backed Search API servers to the local Solr endpoint.
-- This behavior is DDEV-only and does not affect cloud dev or production environments.
-
-If a new Search API Solr server is added while DDEV is already running, run:
-
-```zsh
-ddev configure-local-solr-drupal
-```
+- Locally, DDEV starts Solr (`ddev start` / `ddev restart`) and supplies `SOLR_SCHEME`, `SOLR_HOST`, `SOLR_PORT`, `SOLR_PATH`, `SOLR_CORE`, `SOLR_USERNAME`, and `SOLR_PASSWORD` via `.ddev/config.solr.yaml`.
+- `web/sites/default/settings.php` reads `SOLR_*` env vars (when `SOLR_HOST` is set) and applies them as a runtime config override on `search_api.server.solr`, so the connection is never written to config storage or `/config`.
+- Because it's a read-time override, `drush config:import` can be run at any time without breaking or needing to reapply the Solr connection.
+- In deployed environments, Terraform provides the same `SOLR_*` variables as application runtime environment variables; no separate Drupal-side configuration is required.
 
 ---
 
