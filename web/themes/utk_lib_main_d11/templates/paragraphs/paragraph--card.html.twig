@@ -1,16 +1,23 @@
 {% set text_body = paragraph.field_card_text.value|default('') %}
 {% set card_title = paragraph.field_card_title.value|default('') %}
-{% set card_link = content.field_card_link.0|default(null) %}
-{% set button_url = card_link['#url'].uri is defined ? card_link['#url'].uri : '' %}
-{% set button_title = card_link['#title']|default('') %}
+{% set button_url = not paragraph.field_card_link.isEmpty ? paragraph.field_card_link.0.url : '' %}
+{% set button_title = not paragraph.field_card_link.isEmpty ? paragraph.field_card_link.0.title : '' %}
 {% set img_src = paragraph.field_card_image.entity is defined ? paragraph.field_card_image|file_url : '' %}
 {% set img_alt = paragraph.field_card_image.entity.field_media_image.alt|default('') %}
 
-{% include "@utk_lib_main_d11/templates/components/utk--section-card.html.twig" with {
-    img_src: img_src,
-    img_alt: img_alt,
-    card_title: card_title,
-    button_title: button_title,
-    button_url: button_url,
-    text_body: text_body
-} %}
+{% if not img_src and not text_body and button_url %}
+    {% include "@utk_lib_main_d11/templates/components/utk--action-card.html.twig" with {
+        description: card_title,
+        link_title: button_title|default('Learn more', true),
+        url: button_url
+    } %}
+{% else %}
+    {% include "@utk_lib_main_d11/templates/components/utk--section-card.html.twig" with {
+        img_src: img_src,
+        img_alt: img_alt,
+        card_title: card_title,
+        button_title: button_title,
+        button_url: button_url,
+        text_body: text_body
+    } %}
+{% endif %}

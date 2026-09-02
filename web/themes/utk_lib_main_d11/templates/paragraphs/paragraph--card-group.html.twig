@@ -1,9 +1,15 @@
 {% if content.field_cards['#items'] is defined %}
     <div class="row g-4 my-2">
         {% for key, item in content.field_cards['#items'] %}
-            <div class="col-12 col-md-6">
+            {% set card = item.entity %}
+            {% set is_action_card = card.field_card_image.isEmpty and card.field_card_text.isEmpty and not card.field_card_link.isEmpty %}
+            {% if is_action_card %}
                 {{ content.field_cards[key] }}
-            </div>
+            {% else %}
+                <div class="col-12 col-md-6">
+                    {{ content.field_cards[key] }}
+                </div>
+            {% endif %}
         {% endfor %}
     </div>
 {% endif %}
