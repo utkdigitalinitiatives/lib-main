@@ -863,6 +863,30 @@ if (
 }
 
 /**
+ * Point Search API Solr servers at the environment-provided endpoint.
+ *
+ * SOLR_* variables come from .ddev/config.solr.yaml locally and from
+ * Terraform-injected environment variables in deployed environments. A
+ * config override applies on read and is never written back to /config, so
+ * `drush config:import` never breaks the Solr connection.
+ */
+if (getenv("SOLR_HOST")) {
+    $config["search_api.server.solr"]["backend_config"]["connector_config"] =
+        array_merge(
+            $config["search_api.server.solr"]["backend_config"]["connector_config"] ?? [],
+            [
+                "scheme" => getenv("SOLR_SCHEME") ?: "http",
+                "host" => getenv("SOLR_HOST"),
+                "port" => (int) (getenv("SOLR_PORT") ?: 8983),
+                "path" => getenv("SOLR_PATH") ?: "/",
+                "core" => getenv("SOLR_CORE") ?: "site_search",
+                "username" => getenv("SOLR_USERNAME") ?: "",
+                "password" => getenv("SOLR_PASSWORD") ?: "",
+            ]
+        );
+}
+
+/**
  * Load local development override configuration, if available.
  *
  * Create a settings.local.php file to override variables on secondary (staging,
