@@ -9,9 +9,10 @@
  */
 #}
 
-{% if not node.field_profile_picture.isEmpty %}
+{% set profile_media = node.field_profile_picture.entity|default(null) %}
+{% if profile_media and profile_media.field_media_image is defined %}
   {% set image_src = node.field_profile_picture|file_url %}
-  {% set image_alt = node.field_profile_picture.entity.field_media_image.alt|default('') %}
+  {% set image_alt = profile_media.field_media_image.alt|default('') %}
 {% else %}
   {% set image_src = '/themes/utk_lib_main_d11/images/placeholder-avatar.png' %}
   {% set image_alt = '' %}

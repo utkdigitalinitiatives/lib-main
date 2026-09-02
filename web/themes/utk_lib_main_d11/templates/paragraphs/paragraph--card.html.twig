@@ -1,11 +1,12 @@
-{% set text_body = paragraph.field_card_text.value|default('') %}
+{% set text_body = content.field_card_text.0|default(null) %}
 {% set card_title = paragraph.field_card_title.value|default('') %}
 {% set button_url = not paragraph.field_card_link.isEmpty ? paragraph.field_card_link.0.url : '' %}
 {% set button_title = not paragraph.field_card_link.isEmpty ? paragraph.field_card_link.0.title : '' %}
-{% set img_src = paragraph.field_card_image.entity is defined ? paragraph.field_card_image|file_url : '' %}
-{% set img_alt = paragraph.field_card_image.entity.field_media_image.alt|default('') %}
+{% set image_media = paragraph.field_card_image.entity|default(null) %}
+{% set img_src = image_media ? paragraph.field_card_image|file_url : '' %}
+{% set img_alt = image_media and image_media.field_media_image is defined ? image_media.field_media_image.alt|default('') : '' %}
 
-{% if not img_src and not text_body and button_url %}
+{% if not img_src and paragraph.field_card_text.isEmpty and button_url %}
     {% include "@utk_lib_main_d11/templates/components/utk--action-card.html.twig" with {
         description: card_title,
         link_title: button_title|default('Learn more', true),

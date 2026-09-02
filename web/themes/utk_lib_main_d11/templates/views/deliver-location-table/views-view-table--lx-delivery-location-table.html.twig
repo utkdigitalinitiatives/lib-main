@@ -9,8 +9,8 @@
         <tbody>
         {% for row in rows %}
             <tr class='text-smokey'>
-                <td class='text-smokey'>{% autoescape false %}{{ row.columns.name.content[0].field_output["#markup"]|render|striptags|trim }}{% endautoescape %}</td>
-                <td class='text-link'>{% autoescape false %}{{ row.columns.field_delivery_location.content[0].field_output["#markup"]|render|striptags|trim }}{% endautoescape %}</td>
+                <td class='text-smokey'>{{ row.columns.name.content[0].field_output["#markup"]|render|striptags|trim|escape }}</td>
+                <td class='text-link'>{{ row.columns.field_delivery_location.content[0].field_output["#markup"]|render|striptags|trim|escape }}</td>
             </tr>
         {% endfor %}
         </tbody>

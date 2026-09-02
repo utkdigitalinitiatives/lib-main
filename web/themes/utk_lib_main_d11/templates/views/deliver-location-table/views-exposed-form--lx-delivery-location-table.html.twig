@@ -30,8 +30,6 @@
         {% endif %}
       </div>
     </div>
-    {{ form.form_build_id|default('') }}
-    {{ form.form_token|default('') }}
-    {{ form.form_id|default('') }}
+    {{ form|without('name', 'actions') }}
   </form>
 </div>

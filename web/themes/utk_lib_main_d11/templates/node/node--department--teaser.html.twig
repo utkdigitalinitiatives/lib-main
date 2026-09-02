@@ -9,9 +9,10 @@
  */
 #}
 
-{% if not node.field_department_featured_image.isEmpty %}
+{% set department_media = node.field_department_featured_image.entity|default(null) %}
+{% if department_media and department_media.field_media_image is defined %}
   {% set image_src = node.field_department_featured_image|file_url %}
-  {% set image_alt = node.field_department_featured_image.entity.field_media_image.alt|default('') %}
+  {% set image_alt = department_media.field_media_image.alt|default('') %}
 {% else %}
   {% set image_src = '/themes/utk_lib_main_d11/images/placeholder-spaces.png' %}
   {% set image_alt = '' %}
