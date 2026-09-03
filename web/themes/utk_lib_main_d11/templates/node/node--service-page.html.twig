@@ -79,7 +79,7 @@ set classes = [
         {% if (content.field_service_contacts is defined and content.field_service_contacts|length > 2) or (content.field_related_services is defined and content.field_related_services|length > 2) or (content.field_about_this_service is defined and content.field_about_this_service|length > 2) %}
         <div class='col-lg-4 py-2'>
             {% if content.field_service_contacts is defined and content.field_service_contacts|length > 2 %}
-                <div class='utk-card utk-sidebar-card utk-service-sidebar-card'>
+                <div class='utk-sidebar-card utk-service-sidebar-card'>
                     <div class='utk-card-header utk-card-header--small-section'>
                         <h2 class='fs-5 mb-0'>
                             Contacts for this Service
@@ -91,7 +91,7 @@ set classes = [
                 </div>
             {% endif %}
             {% if content.field_related_services is defined and content.field_related_services|length > 2 %}
-                <div class='utk-card utk-sidebar-card utk-service-sidebar-card'>
+                <div class='utk-sidebar-card utk-service-sidebar-card'>
                     <div class='utk-card-header utk-card-header--small-section'>
                         <h2 class='fs-5 mb-0'>
                             Related Services
@@ -103,7 +103,7 @@ set classes = [
                 </div>
             {% endif %}
             {% if content.field_about_this_service is defined and content.field_about_this_service|length > 2 %}
-                <div class='utk-card utk-sidebar-card utk-service-sidebar-card'>
+                <div class='utk-sidebar-card utk-service-sidebar-card'>
                     <div class='utk-card-header utk-card-header--small-section'>
                         <h2 class='fs-5 mb-0'>
                             About this Service

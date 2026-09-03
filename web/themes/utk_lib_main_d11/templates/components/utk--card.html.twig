@@ -1,9 +1,9 @@
 {#
 /**
  * @file
- * UTK Custom - Section Card template.
+ * UTK Custom - Card template.
  *
- * This template is used to render an section card component with custom styling and layout.
+ * This template is used to render a card component with custom styling and layout.
  * Generally based off of the default bootstrap card styling
  *
  * Available variables:
@@ -20,23 +20,23 @@
  */
 #}
 
-<article class="utk-card-surface utk-section-card">
+<article class="utk-card-surface utk-card">
     {% if img_src %}
-    <div class="utk-section-card__media">
+    <div class="utk-card__media">
         <img src="{{ img_src }}" alt="{{ img_alt }}" loading="lazy">
     </div>
     {% endif %}
-    <div class="utk-section-card__body">
+    <div class="utk-card__body">
         {% if card_title %}
-        <h4 class="utk-section-card__title text-link">{{ card_title }}</h4>
+        <h4 class="utk-card__title text-link">{{ card_title }}</h4>
         {% endif %}
         {% if text_body %}
-        <div class="utk-section-card__text text-smokey">
+        <div class="utk-card__text text-smokey">
             {{ text_body }}
         </div>
         {% endif %}
         {% if button_url %}
-        <div class="utk-section-card__actions">
+        <div class="utk-card__actions">
             <a href="{{ button_url }}" class="btn utk-blue-button">{{ button_title|default('Learn more', true) }}</a>
         </div>
         {% endif %}
