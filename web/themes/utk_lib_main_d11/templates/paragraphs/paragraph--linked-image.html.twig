@@ -1,0 +1,19 @@
+{#
+/**
+ * @file
+ * UTK Custom - Linked Image Paragraph template.
+ *
+ * Renders the selected image as a link to the configured destination.
+ * The image field supplies the accessible alternative text.
+ *
+ * @see paragraph.html.twig
+ */
+#}
+
+{% if not paragraph.field_link_image.isEmpty and not paragraph.field_link_target.isEmpty %}
+  <div class="d-flex justify-content-center">
+    <a href="{{ paragraph.field_link_target.0.url }}" class="d-inline-block">
+      {{ content.field_link_image }}
+    </a>
+  </div>
+{% endif %}

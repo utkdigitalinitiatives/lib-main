@@ -1,0 +1,33 @@
+{#
+/**
+ * @file
+ * UTK Custom - Department teaser template.
+ *
+ * Renders a department as a compact Service Contact.
+ *
+ * @see node.html.twig
+ */
+#}
+
+{% set department_media = node.field_department_featured_image.entity|default(null) %}
+{% if department_media and department_media.field_media_image is defined %}
+  {% set image_src = node.field_department_featured_image|file_url %}
+  {% set image_alt = department_media.field_media_image.alt|default('') %}
+{% else %}
+  {% set image_src = '/themes/utk_lib_main_d11/images/placeholder-spaces.png' %}
+  {% set image_alt = '' %}
+{% endif %}
+
+<a href="{{ url }}" aria-label="Learn more about {{ node.label }}">
+  <div class="row g-0 d-flex align-items-center utk-service-contact utk-contact-hover">
+    <div class="col-4 d-flex justify-content-center pe-1">
+      <img class="img-fluid rounded-circle"
+           src="{{ image_src }}"
+           alt="{{ image_alt }}"
+           loading="lazy">
+    </div>
+    <div class="col-8 ps-1">
+      <div class="fw-semibold">{{ node.label }}</div>
+    </div>
+  </div>
+</a>

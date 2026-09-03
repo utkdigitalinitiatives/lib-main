@@ -1,0 +1,6 @@
+{% set heading_text = fields.field_heading_text.content|render|striptags|trim %}
+{% set anchor = heading_text|lower|split(' ')|join('-') %}
+
+{% if heading_text %}
+    <a href="#{{ anchor|length > 9 ? anchor|slice(0, 9) : anchor }}">{{ heading_text }}</a>
+{% endif %}

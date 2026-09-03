@@ -1,0 +1,17 @@
+{#
+/**
+ * @file
+ * UTK Custom - Tab Paragraph template.
+ *
+ * The parent Tabbed Content node renders the tab label and heading. This
+ * template renders only the body assigned to the active tab panel.
+ *
+ * @see paragraph.html.twig
+ */
+#}
+
+{% if content.field_tab_content is defined %}
+  <div class="d-flex justify-content-start text-smokey link-link">
+    {{ content.field_tab_content }}
+  </div>
+{% endif %}

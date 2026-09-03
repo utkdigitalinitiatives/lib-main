@@ -1,0 +1,12 @@
+<div class='row py-1'>
+    {% if content.field_text is defined %}
+        <div class='col-lg-6'>
+            {{ content.field_text }}
+        </div>
+    {% endif %}
+    {% if content.field_card is defined %}
+        <div class='col-lg-6'>
+            {{ content.field_card }}
+        </div>
+    {% endif %}
+</div>
