@@ -321,44 +321,53 @@ display:
           hierarchy: false
           limit: true
           error_message: true
-        field_reservable_room_value:
-          id: field_reservable_room_value
-          table: node__field_reservable_room
-          field: field_reservable_room_value
+        field_reservation_link_url_uri:
+          id: field_reservation_link_url_uri
+          table: node__field_reservation_link_url
+          field: field_reservation_link_url_uri
           relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: boolean
+          plugin_id: string
           operator: '='
-          value: All
+          value: ''
           group: 1
           exposed: true
           expose:
-            operator_id: ''
-            label: 'Reservable Room'
-            description: ''
+            operator_id: field_reservation_link_url_uri_op
+            label: 'Reservation Link URL (field_reservation_link_url:uri)'
+            description: null
             use_operator: false
-            operator: field_reservable_room_value_op
+            operator: field_reservation_link_url_uri_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: field_reservable_room_value
+            identifier: field_reservation_link_url_uri
             required: false
             remember: false
             multiple: false
             remember_roles:
               authenticated: authenticated
-          is_grouped: false
+            placeholder: null
+          is_grouped: true
           group_info:
-            label: ''
+            label: 'Reservable Room'
             description: ''
-            identifier: ''
+            identifier: field_reservation_link_url_uri
             optional: true
             widget: select
             multiple: false
             remember: false
             default_group: All
             default_group_multiple: {  }
-            group_items: {  }
+            group_items:
+              1:
+                title: Reservable
+                operator: 'not empty'
+                value: ''
+              2:
+                title: 'Not Reservable'
+                operator: empty
+                value: ''
       style:
         type: default
         options:
