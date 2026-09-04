@@ -110,7 +110,7 @@
                     <div class="utk-card details-container mb-4">
                         <div class="utk-card-header utk-card-header--small-section p-3 d-flex justify-content-between align-items-center">
                             <h2 class="fs-3 mb-0">Details</h2>
-                            {% if content.field_reservation_link_url|length > 2 %}
+                            {% if not node.field_reservation_link_url.isEmpty %}
                             <span class="badge rounded-pill bg-success px-3 py-2 fw-medium">Reservable</span>
                             {% else %}
                             <span class="badge rounded-pill bg-danger px-3 py-2 fw-medium">Not Reservable</span>
@@ -118,7 +118,7 @@
                         </div>
                         <div class="card-body p-3 p-md-4">
                             <div class="row g-4">
-                                {% if content.field_location|length > 2 %}
+                                {% if not node.field_location.isEmpty %}
                                 <div class="col-12 col-md-6">
                                     <div class="detail-item d-flex flex-row align-items-start">
                                         <div class="detail-icon me-3 text-smokey">
@@ -127,7 +127,7 @@
                                         <div class="detail-content">
                                             <h3 class="fs-5 mb-1 fw-semibold">Location</h3>
                                             {{ content.field_location.0["#title"] }}
-                                            {% if content.field_room_number|length > 2 %}
+                                            {% if not node.field_room_number.isEmpty %}
                                             , Room {{ content.field_room_number }}
                                             {% endif %}
                                         </div>
@@ -135,7 +135,7 @@
                                 </div>
                                 {% endif %}
 
-                                {% if content.field_floor|length > 2 %}
+                                {% if not node.field_floor.isEmpty %}
                                 <div class="col-12 col-md-6">
                                     <div class='detail-item d-flex flex-row align-items-start'>
                                         <div class="detail-icon me-3 text-smokey">
@@ -149,7 +149,7 @@
                                 </div>
                                 {% endif %}
 
-                                {% if content.field_capacity|length > 2 %}
+                                {% if not node.field_capacity.isEmpty %}
                                 <div class="col-12 col-md-6">
                                     <div class='detail-item d-flex flex-row align-items-start'>
                                         <div class="detail-icon me-3 text-smokey">
@@ -163,7 +163,7 @@
                                 </div>
                                 {% endif %}
 
-                                {% if content.field_noise_level|length > 2 %}
+                                {% if not node.field_noise_level.isEmpty %}
                                 <div class="col-12 col-md-6">
                                     <div class='detail-item d-flex flex-row align-items-start'>
                                         <div class="detail-icon me-3 text-smokey">
@@ -177,7 +177,7 @@
                                 </div>
                                 {% endif %}
 
-                                {% if content.field_space_type|length > 2 %}
+                                {% if not node.field_space_type.isEmpty %}
                                 <div class="col-12 col-md-6">
                                     <div class='detail-item d-flex flex-row align-items-start'>
                                         <div class="detail-icon me-3 text-smokey">
@@ -193,7 +193,7 @@
 
                             </div>
 
-                            {% if content.field_reservation_link_url|length > 2 %}
+                            {% if not node.field_reservation_link_url.isEmpty %}
                             <div class='d-flex justify-content-center my-3'>
                                 <a class='btn utk-blue-button' href="{{ content.field_reservation_link_url[0]["#plain_text"] }}">Reserve Now</a>
                             </div>
@@ -201,7 +201,7 @@
                         </div>
                     </div>
 
-                    {% if content.field_space_description|length > 2 %}
+                    {% if not node.field_space_description.isEmpty %}
                     <div class="mb-4 utk-search-selector link-link underline-active">
                         <h2 class="fs-3">About this Space</h2>
                         {{ content.field_space_description }}
@@ -211,7 +211,7 @@
             </div>
         </div>
     </div>
-    {% if content.field_service_catalog|length > 2 %}
+    {% if not node.field_service_catalog.isEmpty %}
     <div class='container-fluid py-3 utk--striped-background text-smokey utk--inset-box-shadow'>
         <div class="utk--1400px-width mx-auto">
             <h2 class='fs-3 mb-3'>

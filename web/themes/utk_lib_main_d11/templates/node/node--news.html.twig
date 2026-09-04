@@ -84,7 +84,7 @@
                 </div>
             </div>
         </div>
-        {% if content.field_related_links|length > 2 %}
+            {% if not node.field_related_links.isEmpty %}
         <div class='col-lg-3'>
             <div class='row pt-2'>
                 <h2 class='text-center text-lg-start'>Related News:</h2>
