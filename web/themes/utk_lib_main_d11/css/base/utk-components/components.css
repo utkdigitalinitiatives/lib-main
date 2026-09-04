@@ -67,17 +67,12 @@
 }
 
 /* Ensure SVG changes color on hover */
-.utk-blue-button:hover,
-.utk-blue-button:focus-visible svg {
-  fill: var(--utk-logo--white);
-}
-
 .utk-blue-button svg path {
   fill: var(--utk-link);
   transition: fill 0.3s ease;
 }
 
-.utk-blue-button:hover,
+.utk-blue-button:hover svg path,
 .utk-blue-button:focus-visible svg path {
   fill: var(--utk-logo--white);
 }
