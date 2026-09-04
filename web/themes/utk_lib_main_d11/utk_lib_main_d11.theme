@@ -21,6 +21,49 @@ function utk_lib_main_d11_preprocess_image_widget(array &$variables): void
   }
 }
 
+/**
+ * Implements hook_preprocess_paragraph().
+ */
+function utk_lib_main_d11_preprocess_paragraph(array &$variables): void
+{
+  $paragraph = $variables['paragraph'] ?? NULL;
+  if (!$paragraph || $paragraph->bundle() !== 'heading_h2' || $paragraph->get('field_heading_text')->isEmpty()) {
+    return;
+  }
+
+  $variables['heading_anchor'] = utk_lib_main_d11_get_heading_anchor(
+    $paragraph->get('field_heading_text')->value,
+    $paragraph,
+  );
+}
+
+/**
+ * Implements hook_preprocess_views_view_fields().
+ */
+function utk_lib_main_d11_preprocess_views_view_fields(array &$variables): void
+{
+  $view = $variables['view'] ?? NULL;
+  $paragraph = $variables['row']->_entity ?? NULL;
+  if (!$view || $view->id() !== 'jump_to_section' || !$paragraph || !$paragraph->hasField('field_heading_text')) {
+    return;
+  }
+
+  $variables['heading_anchor'] = utk_lib_main_d11_get_heading_anchor(
+    $paragraph->get('field_heading_text')->value,
+    $paragraph,
+  );
+}
+
+/**
+ * Builds a stable, unique anchor for a heading paragraph.
+ */
+function utk_lib_main_d11_get_heading_anchor(string $heading_text, $paragraph): string
+{
+  $anchor = \Drupal\Component\Utility\Html::getId($heading_text);
+
+  return $anchor . '--' . $paragraph->id();
+}
+
 
 /**
  * Implements hook_preprocess_node().
