@@ -401,7 +401,8 @@ blockquote::before {
   background-color: #f9f9f9;
 }
 
-.utk--dropdown:hover .utk--dropdown-content {
+.utk--dropdown:hover .utk--dropdown-content,
+.utk--dropdown:focus-within .utk--dropdown-content {
   display: block;
 }
 

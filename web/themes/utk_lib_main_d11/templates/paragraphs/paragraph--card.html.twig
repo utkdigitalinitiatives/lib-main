@@ -1,0 +1,17 @@
+{% set text_body = content.field_card_text.0|default(null) %}
+{% set card_title = paragraph.field_card_title.value|default('') %}
+{% set button_url = not paragraph.field_card_link.isEmpty ? paragraph.field_card_link.0.url : '' %}
+{% set button_title = not paragraph.field_card_link.isEmpty ? paragraph.field_card_link.0.title : '' %}
+{% set image_media = paragraph.field_card_image.entity|default(null) %}
+{% set img_src = image_media ? paragraph.field_card_image|file_url : '' %}
+{# Card images are always treated as decorative; the rest of the card provides context. #}
+{% set img_alt = '' %}
+
+{% include "@utk_lib_main_d11/templates/components/utk--card.html.twig" with {
+    img_src: img_src,
+    img_alt: img_alt,
+    card_title: card_title,
+    button_title: button_title,
+    button_url: button_url,
+    text_body: text_body
+} %}

@@ -1,0 +1,17 @@
+{#
+/**
+ * @file
+ * UTK Custom - Embedded View Paragraph template.
+ *
+ * Wraps the configured View in the inset section styling used on service
+ * pages.
+ *
+ * @see paragraph.html.twig
+ */
+#}
+
+{% if content.field_view is defined %}
+  <section class="container-fluid utk--inset-box-shadow py-2">
+    {{ content }}
+  </section>
+{% endif %}
