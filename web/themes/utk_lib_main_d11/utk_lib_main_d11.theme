@@ -5,20 +5,24 @@
  * Functions to support theming.
  */
 
+use Drupal\image\ImageStyleInterface;
+use Drupal\media\Entity\Media;
+use Drupal\taxonomy\Entity\Term;
+
 /**
  * Implements hook_preprocess_image_widget().
  */
 function utk_lib_main_d11_preprocess_image_widget(array &$variables): void
 {
-  $data = &$variables['data'];
+    $data = &$variables['data'];
 
-  // This prevents image widget templates from rendering preview container HTML
-  // to users that do not have permission to access these previews.
-  // @todo revisit in https://drupal.org/node/953034
-  // @todo revisit in https://drupal.org/node/3114318
-  if (isset($data['preview']['#access']) && $data['preview']['#access'] === FALSE) {
-    unset($data['preview']);
-  }
+    // This prevents image widget templates from rendering preview container HTML
+    // to users that do not have permission to access these previews.
+    // @todo revisit in https://drupal.org/node/953034
+    // @todo revisit in https://drupal.org/node/3114318
+    if (isset($data['preview']['#access']) && $data['preview']['#access'] === FALSE) {
+        unset($data['preview']);
+    }
 }
 
 /**
@@ -26,15 +30,15 @@ function utk_lib_main_d11_preprocess_image_widget(array &$variables): void
  */
 function utk_lib_main_d11_preprocess_paragraph(array &$variables): void
 {
-  $paragraph = $variables['paragraph'] ?? NULL;
-  if (!$paragraph || $paragraph->bundle() !== 'heading_h2' || $paragraph->get('field_heading_text')->isEmpty()) {
-    return;
-  }
+    $paragraph = $variables['paragraph'] ?? NULL;
+    if (!$paragraph || $paragraph->bundle() !== 'heading_h2' || $paragraph->get('field_heading_text')->isEmpty()) {
+        return;
+    }
 
-  $variables['heading_anchor'] = utk_lib_main_d11_get_heading_anchor(
-    $paragraph->get('field_heading_text')->value,
-    $paragraph,
-  );
+    $variables['heading_anchor'] = utk_lib_main_d11_get_heading_anchor(
+        $paragraph->get('field_heading_text')->value,
+        $paragraph,
+    );
 }
 
 /**
@@ -42,16 +46,19 @@ function utk_lib_main_d11_preprocess_paragraph(array &$variables): void
  */
 function utk_lib_main_d11_preprocess_views_view_fields(array &$variables): void
 {
-  $view = $variables['view'] ?? NULL;
-  $paragraph = $variables['row']->_entity ?? NULL;
-  if (!$view || $view->id() !== 'jump_to_section' || !$paragraph || !$paragraph->hasField('field_heading_text')) {
-    return;
-  }
+    $view = $variables['view'] ?? NULL;
+    $paragraph = $variables['row']->_relationship_entities['field_sections'] ?? NULL;
+    if (
+        !$view || $view->id() !== 'jump_to_section' || !$paragraph || !$paragraph->hasField('field_heading_text') ||
+        $paragraph->get('field_heading_text')->isEmpty()
+    ) {
+        return;
+    }
 
-  $variables['heading_anchor'] = utk_lib_main_d11_get_heading_anchor(
-    $paragraph->get('field_heading_text')->value,
-    $paragraph,
-  );
+    $variables['heading_anchor'] = utk_lib_main_d11_get_heading_anchor(
+        $paragraph->get('field_heading_text')->value,
+        $paragraph,
+    );
 }
 
 /**
@@ -59,9 +66,9 @@ function utk_lib_main_d11_preprocess_views_view_fields(array &$variables): void
  */
 function utk_lib_main_d11_get_heading_anchor(string $heading_text, $paragraph): string
 {
-  $anchor = \Drupal\Component\Utility\Html::getId($heading_text);
+    $anchor = \Drupal\Component\Utility\Html::getId($heading_text);
 
-  return $anchor . '--' . $paragraph->id();
+    return $anchor . '--' . $paragraph->id();
 }
 
 
@@ -70,101 +77,101 @@ function utk_lib_main_d11_get_heading_anchor(string $heading_text, $paragraph): 
  */
 function utk_lib_main_d11_preprocess_node(&$variables)
 {
-  $node = $variables['node'];
-  $bundle = $node->bundle();
-  $variables['hero_image_src'] = '';
-  $variables['hero_responsive_image_base'] = '';
-  $variables['hero_image_alt'] = 'University of Tennessee Libraries ' . $node->label() . ' background';
+    $node = $variables['node'];
+    $bundle = $node->bundle();
+    $variables['hero_image_src'] = '';
+    $variables['hero_responsive_image_base'] = '';
+    $variables['hero_image_alt'] = 'University of Tennessee Libraries ' . $node->label() . ' background';
 
-  $hero_image_field_map = [
-    'bookplate' => ['field_honoree_photo', 'field_book_cover'],
-    'department' => ['field_department_featured_image'],
-    'equipment' => ['field_equipment_featured_image'],
-    'news' => ['field_featured_news_image'],
-    'space' => ['field_space_featured_photo'],
-  ];
+    $hero_image_field_map = [
+        'bookplate' => ['field_honoree_photo', 'field_book_cover'],
+        'department' => ['field_department_featured_image'],
+        'equipment' => ['field_equipment_featured_image'],
+        'news' => ['field_featured_news_image'],
+        'space' => ['field_space_featured_photo'],
+    ];
 
-  if (isset($hero_image_field_map[$bundle])) {
-    utk_lib_main_d11_set_hero_image_from_field($variables, $node, $hero_image_field_map[$bundle]);
-  }
+    if (isset($hero_image_field_map[$bundle])) {
+        utk_lib_main_d11_set_hero_image_from_field($variables, $node, $hero_image_field_map[$bundle]);
+    }
 
-  switch ($bundle) {
-    case 'about_page':
-      $variables['hero_responsive_image_base'] = 'about-image';
-      break;
+    switch ($bundle) {
+        case 'about_page':
+            $variables['hero_responsive_image_base'] = 'about-image';
+            break;
 
-    case 'service_page':
-      $variables['hero_responsive_image_base'] = 'services';
-      break;
-  }
+        case 'service_page':
+            $variables['hero_responsive_image_base'] = 'services';
+            break;
+    }
 
-  if ($bundle !== 'bookplate' || !$node->get('field_book_cover')->isEmpty()) {
-    return;
-  }
+    if ($bundle !== 'bookplate' || !$node->get('field_book_cover')->isEmpty()) {
+        return;
+    }
 
-  $variables['cover_src_from_preprocess'] = NULL;
-  $variables['cover_alt_from_preprocess'] = NULL;
+    $variables['cover_src_from_preprocess'] = NULL;
+    $variables['cover_alt_from_preprocess'] = NULL;
 
-  $honoree_name = $node->getTitle();
-  $book_title = $node->get('field_book_title')->value;
-  $award_year_id = $node->get('field_award_year')->target_id;
+    $honoree_name = $node->getTitle();
+    $book_title = $node->get('field_book_title')->value;
+    $award_year_id = $node->get('field_award_year')->target_id;
 
-  if (empty($honoree_name) || empty($award_year_id)) {
-    return;
-  }
+    if (empty($honoree_name) || empty($award_year_id)) {
+        return;
+    }
 
-  $award_year_term = Term::load($award_year_id);
-  if (!$award_year_term) {
-    return;
-  }
-  $award_year = $award_year_term->getName();
+    $award_year_term = Term::load($award_year_id);
+    if (!$award_year_term) {
+        return;
+    }
+    $award_year = $award_year_term->getName();
 
-  $safe_title = strtolower(preg_replace('/[^a-zA-Z0-9]+/', '-', $honoree_name));
-  $safe_title = trim($safe_title, '-');
+    $safe_title = strtolower(preg_replace('/[^a-zA-Z0-9]+/', '-', $honoree_name));
+    $safe_title = trim($safe_title, '-');
 
-  $extensions = ['.jpg', '.jpeg', '.png'];
-  $potential_filenames = [];
-  foreach ($extensions as $extension) {
-    $potential_filenames[] = 'bp-' . $award_year . '-' . $safe_title . $extension;
-  }
+    $extensions = ['.jpg', '.jpeg', '.png'];
+    $potential_filenames = [];
+    foreach ($extensions as $extension) {
+        $potential_filenames[] = 'bp-' . $award_year . '-' . $safe_title . $extension;
+    }
 
-  $file_ids = \Drupal::entityQuery('file')
-    ->condition('filename', $potential_filenames, 'IN')
-    ->accessCheck(FALSE)
-    ->range(0, 1)
-    ->execute();
+    $file_ids = \Drupal::entityQuery('file')
+        ->condition('filename', $potential_filenames, 'IN')
+        ->accessCheck(FALSE)
+        ->range(0, 1)
+        ->execute();
 
-  if (empty($file_ids)) {
-    return;
-  }
-  $file_id = reset($file_ids);
+    if (empty($file_ids)) {
+        return;
+    }
+    $file_id = reset($file_ids);
 
-  $media_ids = \Drupal::entityQuery('media')
-    ->condition('field_media_image', $file_id)
-    ->accessCheck(FALSE)
-    ->range(0, 1)
-    ->execute();
+    $media_ids = \Drupal::entityQuery('media')
+        ->condition('field_media_image', $file_id)
+        ->accessCheck(FALSE)
+        ->range(0, 1)
+        ->execute();
 
-  if (empty($media_ids)) {
-    return;
-  }
-  $media_id = reset($media_ids);
+    if (empty($media_ids)) {
+        return;
+    }
+    $media_id = reset($media_ids);
 
-  $media_entity = Media::load($media_id);
-  if (!$media_entity || !$media_entity->hasField('field_media_image') || $media_entity->get('field_media_image')->isEmpty()) {
-    return;
-  }
+    $media_entity = Media::load($media_id);
+    if (!$media_entity || !$media_entity->hasField('field_media_image') || $media_entity->get('field_media_image')->isEmpty()) {
+        return;
+    }
 
-  \Drupal::service('renderer')->addCacheableDependency($variables, $media_entity);
-  $image_field = $media_entity->get('field_media_image');
-  $image_uri = $image_field->entity->getFileUri();
-  $alt_text = $image_field->alt;
-  $variables['cover_alt_from_preprocess'] = $alt_text ?: 'Book cover for ' . $book_title;
+    \Drupal::service('renderer')->addCacheableDependency($variables, $media_entity);
+    $image_field = $media_entity->get('field_media_image');
+    $image_uri = $image_field->entity->getFileUri();
+    $alt_text = $image_field->alt;
+    $variables['cover_alt_from_preprocess'] = $alt_text ?: 'Book cover for ' . $book_title;
 
-  $style = \Drupal::entityTypeManager()->getStorage('image_style')->load('large');
-  if ($style) {
-    $variables['cover_src_from_preprocess'] = $style->buildUrl($image_uri);
-  }
+    $style = \Drupal::entityTypeManager()->getStorage('image_style')->load('large');
+    if ($style instanceof ImageStyleInterface) {
+        $variables['cover_src_from_preprocess'] = $style->buildUrl($image_uri);
+    }
 }
 
 /**
@@ -172,50 +179,50 @@ function utk_lib_main_d11_preprocess_node(&$variables)
  */
 function utk_lib_main_d11_set_hero_image_from_field(array &$variables, $entity, array $field_candidates)
 {
-  $renderer = \Drupal::service('renderer');
-  $file_url_generator = \Drupal::service('file_url_generator');
+    $renderer = \Drupal::service('renderer');
+    $file_url_generator = \Drupal::service('file_url_generator');
 
-  foreach ($field_candidates as $field_name) {
-    if (!$entity->hasField($field_name) || $entity->get($field_name)->isEmpty()) {
-      continue;
+    foreach ($field_candidates as $field_name) {
+        if (!$entity->hasField($field_name) || $entity->get($field_name)->isEmpty()) {
+            continue;
+        }
+
+        $field_item = $entity->get($field_name)->first();
+        if (!$field_item || empty($field_item->entity)) {
+            continue;
+        }
+
+        $field_entity = $field_item->entity;
+        $file_entity = NULL;
+        $alt_text = '';
+
+        if ($field_entity instanceof Media && $field_entity->hasField('field_media_image') && !$field_entity->get('field_media_image')->isEmpty()) {
+            $renderer->addCacheableDependency($variables, $field_entity);
+            $image_item = $field_entity->get('field_media_image')->first();
+            if ($image_item && $image_item->entity) {
+                $file_entity = $image_item->entity;
+                $alt_text = $image_item->alt ?: '';
+            }
+        } elseif (method_exists($field_entity, 'getFileUri')) {
+            $renderer->addCacheableDependency($variables, $field_entity);
+            $file_entity = $field_entity;
+            $field_value = $field_item->getValue();
+            $alt_text = $field_value['alt'] ?? '';
+        }
+
+        if (!$file_entity || !method_exists($file_entity, 'getFileUri')) {
+            continue;
+        }
+
+        $renderer->addCacheableDependency($variables, $file_entity);
+        $variables['hero_image_src'] = $file_url_generator->generateString($file_entity->getFileUri());
+
+        if (!empty($alt_text)) {
+            $variables['hero_image_alt'] = $alt_text;
+        }
+
+        return;
     }
-
-    $field_item = $entity->get($field_name)->first();
-    if (!$field_item || empty($field_item->entity)) {
-      continue;
-    }
-
-    $field_entity = $field_item->entity;
-    $file_entity = NULL;
-    $alt_text = '';
-
-    if ($field_entity instanceof Media && $field_entity->hasField('field_media_image') && !$field_entity->get('field_media_image')->isEmpty()) {
-      $renderer->addCacheableDependency($variables, $field_entity);
-      $image_item = $field_entity->get('field_media_image')->first();
-      if ($image_item && $image_item->entity) {
-        $file_entity = $image_item->entity;
-        $alt_text = $image_item->alt ?: '';
-      }
-    } elseif (method_exists($field_entity, 'getFileUri')) {
-      $renderer->addCacheableDependency($variables, $field_entity);
-      $file_entity = $field_entity;
-      $field_value = $field_item->getValue();
-      $alt_text = $field_value['alt'] ?? '';
-    }
-
-    if (!$file_entity || !method_exists($file_entity, 'getFileUri')) {
-      continue;
-    }
-
-    $renderer->addCacheableDependency($variables, $file_entity);
-    $variables['hero_image_src'] = $file_url_generator->generateString($file_entity->getFileUri());
-
-    if (!empty($alt_text)) {
-      $variables['hero_image_alt'] = $alt_text;
-    }
-
-    return;
-  }
 }
 
 /**
@@ -223,12 +230,12 @@ function utk_lib_main_d11_set_hero_image_from_field(array &$variables, $entity, 
  */
 function utk_lib_main_d11_theme_suggestions_views_view_fields_alter(array &$suggestions, array $variables)
 {
-  $view = $variables['view'] ?? NULL;
-  if (!$view || !utk_lib_main_d11_is_department_people_page_context($view)) {
-    return;
-  }
+    $view = $variables['view'] ?? NULL;
+    if (!$view || !utk_lib_main_d11_is_department_people_page_context($view)) {
+        return;
+    }
 
-  $suggestions[] = 'views_view_fields__department_people__' . $view->current_display . '__department_page';
+    $suggestions[] = 'views_view_fields__department_people__' . $view->current_display . '__department_page';
 }
 
 /**
@@ -236,12 +243,12 @@ function utk_lib_main_d11_theme_suggestions_views_view_fields_alter(array &$sugg
  */
 function utk_lib_main_d11_theme_suggestions_views_view_unformatted_alter(array &$suggestions, array $variables)
 {
-  $view = $variables['view'] ?? NULL;
-  if (!$view || !utk_lib_main_d11_is_department_people_page_context($view)) {
-    return;
-  }
+    $view = $variables['view'] ?? NULL;
+    if (!$view || !utk_lib_main_d11_is_department_people_page_context($view)) {
+        return;
+    }
 
-  $suggestions[] = 'views_view_unformatted__department_people__' . $view->current_display . '__department_page';
+    $suggestions[] = 'views_view_unformatted__department_people__' . $view->current_display . '__department_page';
 }
 
 /**
@@ -249,10 +256,10 @@ function utk_lib_main_d11_theme_suggestions_views_view_unformatted_alter(array &
  */
 function utk_lib_main_d11_is_department_people_page_context($view)
 {
-  if (($view->id() ?? '') !== 'department_people') {
-    return FALSE;
-  }
+    if (($view->id() ?? '') !== 'department_people') {
+        return FALSE;
+    }
 
-  $node = \Drupal::routeMatch()->getParameter('node');
-  return $node && method_exists($node, 'bundle') && $node->bundle() === 'department';
+    $node = \Drupal::routeMatch()->getParameter('node');
+    return $node && method_exists($node, 'bundle') && $node->bundle() === 'department';
 }
