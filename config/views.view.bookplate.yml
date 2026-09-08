@@ -118,13 +118,15 @@ display:
         options: {  }
       empty: {  }
       sorts:
-        field_year_weight_value:
-          id: field_year_weight_value
-          table: taxonomy_term__field_year_weight
-          field: field_year_weight_value
+        name:
+          id: name
+          table: taxonomy_term_field_data
+          field: name
           relationship: field_award_year
           group_type: group
           admin_label: ''
+          entity_type: taxonomy_term
+          entity_field: name
           plugin_id: standard
           order: DESC
           expose:

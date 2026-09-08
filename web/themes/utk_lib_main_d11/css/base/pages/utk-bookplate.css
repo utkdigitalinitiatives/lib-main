@@ -163,6 +163,10 @@
   margin-bottom: 0.5rem;
 }
 
+.bookplate-exposed-filters .form-item {
+  margin: 0;
+}
+
 input.bookplate-input,
 select.bookplate-input {
   display: block;
