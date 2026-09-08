@@ -3,8 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.student_position_details.field_hourly_wage
     - field.field.paragraph.student_position_details.field_hours_per_week
+    - field.field.paragraph.student_position_details.field_salary_details
     - field.field.paragraph.student_position_details.field_student_job_category
     - paragraphs.paragraphs_type.student_position_details
 id: paragraph.student_position_details.default
@@ -12,18 +12,19 @@ targetEntityType: paragraph
 bundle: student_position_details
 mode: default
 content:
-  field_hourly_wage:
-    type: number
-    weight: 0
-    region: content
-    settings:
-      placeholder: ''
-    third_party_settings: {  }
   field_hours_per_week:
     type: number
     weight: 1
     region: content
     settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_salary_details:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
       placeholder: ''
     third_party_settings: {  }
   field_student_job_category:
