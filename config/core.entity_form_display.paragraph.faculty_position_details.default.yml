@@ -6,8 +6,7 @@ dependencies:
     - field.field.paragraph.faculty_position_details.field_appointment_rank
     - field.field.paragraph.faculty_position_details.field_available
     - field.field.paragraph.faculty_position_details.field_faculty_category
-    - field.field.paragraph.faculty_position_details.field_salary_maximum
-    - field.field.paragraph.faculty_position_details.field_salary_minimum
+    - field.field.paragraph.faculty_position_details.field_salary_details
     - paragraphs.paragraphs_type.faculty_position_details
   module:
     - datetime
@@ -40,18 +39,12 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  field_salary_maximum:
-    type: number
-    weight: 4
-    region: content
-    settings:
-      placeholder: ''
-    third_party_settings: {  }
-  field_salary_minimum:
-    type: number
+  field_salary_details:
+    type: string_textfield
     weight: 3
     region: content
     settings:
+      size: 60
       placeholder: ''
     third_party_settings: {  }
 hidden:

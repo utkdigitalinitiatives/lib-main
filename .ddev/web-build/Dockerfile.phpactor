@@ -1,0 +1,6 @@
+ARG PHPACTOR_VERSION=2026.07.22.0
+
+RUN curl -fsSL \
+  "https://github.com/phpactor/phpactor/releases/download/${PHPACTOR_VERSION}/phpactor.phar" \
+  -o /usr/local/bin/phpactor \
+  && chmod 755 /usr/local/bin/phpactor

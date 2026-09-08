@@ -477,11 +477,11 @@ display:
           default_row_class: true
       defaults:
         title: false
+        style: false
         fields: false
         sorts: false
         filters: false
         filter_groups: false
-        style: false
       display_description: ''
       display_extenders: {  }
       path: services
