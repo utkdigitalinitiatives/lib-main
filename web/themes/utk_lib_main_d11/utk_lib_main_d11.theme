@@ -5,6 +5,9 @@
  * Functions to support theming.
  */
 
+use Drupal\media\Entity\Media;
+use Drupal\taxonomy\Entity\Term;
+
 /**
  * Implements hook_preprocess_image_widget().
  */

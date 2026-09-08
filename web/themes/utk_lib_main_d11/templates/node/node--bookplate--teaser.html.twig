@@ -1,0 +1,94 @@
+{#
+/**
+ * Bookplate grid card. Desktop cards open a modal; mobile cards link to the node.
+ */
+#}
+
+{% set raw_label = label is defined
+  ? (label is iterable ? (label|render) : label)
+  : '' %}
+{% set safe_label = raw_label|striptags|trim %}
+{% set modal_id = 'bookplate-modal-' ~ node.id %}
+{% set modal_label = modal_id ~ '-label' %}
+
+{% set default_cover_src = '/themes/utk_lib_main_d11/images/placeholder-bookcover.png' %}
+{% set default_cover_alt = 'Book cover for ' ~ (content.field_book_title|render|striptags|trim ?: safe_label) %}
+{% set media_cover_src = node.field_book_cover|file_url %}
+{% set cover_src = cover_src_from_preprocess ?: (media_cover_src ?: default_cover_src) %}
+{% set cover_alt = cover_alt_from_preprocess ?: default_cover_alt %}
+
+{% set headshot_src = null %}
+{% set headshot_alt = '' %}
+{% if node.field_honoree_photo is defined and node.field_honoree_photo.entity and node.field_honoree_photo.entity.field_media_image.entity %}
+  {% set head_file = node.field_honoree_photo.entity.field_media_image.entity %}
+  {% if head_file.uri is defined and head_file.uri.value %}
+    {% set headshot_src = head_file.uri.value|image_style('thumbnail') %}
+    {% set headshot_alt = node.field_honoree_photo.entity.field_media_image.alt ?: 'Honoree photo' %}
+  {% endif %}
+{% endif %}
+
+{% set honoree_name = safe_label ?: null %}
+{% set book_title = content.field_book_title|render|striptags|trim %}
+{% set book_author = content.field_book_author|render|striptags|trim %}
+{% set award_year = node.field_award_year.entity ? node.field_award_year.entity.label : '' %}
+{% set position_role = content.field_position_role is defined ? content.field_position_role : null %}
+{% set department = content.field_bp_department is defined ? content.field_bp_department : null %}
+{% set occasion = content.field_occasion is defined ? content.field_occasion : null %}
+{% set why_chosen = content.field_why_chosen is defined ? content.field_why_chosen : null %}
+{% set ebook = content.field_ebook is defined ? content.field_ebook : null %}
+{% set is_author = node.field_is_author is defined and node.field_is_author.value|default('0') == '1' %}
+{% set record_url = null %}
+{% if content.field_link_to_record is defined
+  and content.field_link_to_record[0] is defined
+  and content.field_link_to_record[0]['#url'] is defined %}
+  {% set record_url = content.field_link_to_record[0]['#url'] %}
+{% endif %}
+
+<div class="col d-none d-md-flex justify-content-center align-items-center">
+  <a class="bookplate--card" data-bs-toggle="modal" data-bs-target="#{{ modal_id }}" role="button" tabindex="0" aria-label="View details of {{ book_title ?: safe_label }}">
+    <img src="{{ cover_src }}" alt="{{ cover_alt }}" loading="lazy">
+    <div class="bookplate--card-text-body">
+      <p class="fs-6 fw-medium m-0">{{ book_title ?: safe_label }}</p>
+      <p class="fw-light mb-0">Honoree Details -</p>
+      <p class="m-0">
+        {% if honoree_name %}{{ honoree_name }}{% endif %}
+        {% if award_year %} · {{ award_year }}{% endif %}
+      </p>
+    </div>
+  </a>
+</div>
+
+<div class="col d-flex d-md-none justify-content-center align-items-center">
+  <a class="bookplate--card" href="{{ url }}">
+    <img src="{{ cover_src }}" alt="{{ cover_alt }}" loading="lazy">
+    <div class="bookplate--card-text-body">
+      <p class="fs-6 fw-medium m-0">{{ book_title ?: safe_label }}</p>
+      <p class="fw-light mb-0">Honoree Details -</p>
+      <p class="honoree-details m-0">
+        {% if honoree_name %}{{ honoree_name }}{% endif %}
+        {% if award_year %} · {{ award_year }}{% endif %}
+      </p>
+    </div>
+  </a>
+</div>
+
+{% include "@utk_lib_main_d11/templates/components/utk--bookplate-modal.html.twig" with {
+  modalId: modal_id,
+  modalLabel: modal_label,
+  cover_src: cover_src,
+  cover_alt: cover_alt,
+  headshot_src: headshot_src,
+  headshot_alt: headshot_alt,
+  honoree_name: honoree_name,
+  book_title: book_title ?: safe_label,
+  book_author: book_author,
+  award_year: award_year,
+  is_author: is_author,
+  position_role: position_role,
+  department: department,
+  occasion: occasion,
+  why_chosen: why_chosen,
+  record_url: record_url,
+  ebook: ebook,
+  url: url
+} %}
