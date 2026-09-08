@@ -81,7 +81,7 @@
 {% endif %}
 
 {# Check if room is reservable #}
-{% if content.field_reservation_link_url|length > 2 %}
+{% if not node.field_reservation_link_url.isEmpty %}
     {% set reservable = "Yes" %}
 {% else %}
     {% set reservable = "No" %}
@@ -102,7 +102,7 @@
     'Reservable': reservable,
 } %}
 
-{% if content.field_reservation_link_url|length > 2 %}
+  {% if not node.field_reservation_link_url.isEmpty %}
     {% set button_details = {
             button_title: 'Reserve Now',
            button_url: content.field_reservation_link_url[0]|render|striptags|trim

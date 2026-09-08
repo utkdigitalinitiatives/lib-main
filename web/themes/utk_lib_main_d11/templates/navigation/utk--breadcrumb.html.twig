@@ -26,7 +26,7 @@
 {% set content_path = path('<current>') %}
 {% set split_path = content_path|split('/') %}
 
-{% if split_path|length > 2 %}
+{% if split_path[2] is defined %}
     {% set endpoint_arr = split_path[2]|split('-') %}
     {% set capitalized_words = [] %}
 
@@ -38,7 +38,7 @@
         {% if word == "and" %}
              {% set capitalized_words = capitalized_words|merge([word]) %}
         {% endif %}
-        
+
     {% endfor %}
 
     {% if node.title.0.value is defined %}
@@ -58,15 +58,15 @@
     {% set content_url = "directory" %}
     {% set content_url_name = "directory" %}
 {% else %}
-    {% set content_url = split_path[1] %}    
+    {% set content_url = split_path[1] %}
     {% set content_url_name = split_path[1] %}
-{% endif %} 
+{% endif %}
 
 <nav class="breadcrumb-wrapper text-white" role="navigation" aria-labelledby="system-breadcrumb" aria-label='breadcrumb'>
     <div class="breadcrumb-bg px-3 py-1 d-inline-block">
         <ol class="breadcrumb m-0">
             {% set is_home = split_path|length <= 1 %}
-        
+
             <li class="breadcrumb-item link-white font-small breadcrumb-search-selector {% if is_home %}active{% endif %}">
                 {% if is_home %}
                     <a href="{{ path('<front>') }}" aria-current="page">Home</a>
@@ -75,7 +75,7 @@
                 {% endif %}
             </li>
             {% set is_section = split_path|length == 2 %}
-        
+
             {% if content_url_name %}
                 <li class="breadcrumb-item link-white font-small breadcrumb-search-selector {% if is_section %}active{% endif %}">
                     {% if is_section %}
@@ -85,7 +85,7 @@
                     {% endif %}
                 </li>
             {% endif %}
-            {% if split_path|length > 2 %}
+            {% if split_path[2] is defined %}
                 <li class="breadcrumb-item link-white font-small breadcrumb-search-selector active" aria-current="page">{{ final_string }}</li>
             {% endif %}
         </ol>
