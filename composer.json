@@ -49,7 +49,7 @@
         "drupal/twig_tweak": "^3.4",
         "drupal/views_bulk_operations": "^4.4",
         "drupal/viewsreference": "^2.0@beta",
-        "drupal/webform": "6.3.0-rc2",
+        "drupal/webform": "^6.3",
         "drupal/webform_group": "^3.0",
         "drupal/webform_submission_import": "^2.2",
         "drush/drush": "^13.7"
