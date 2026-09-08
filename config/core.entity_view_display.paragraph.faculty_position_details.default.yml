@@ -6,8 +6,7 @@ dependencies:
     - field.field.paragraph.faculty_position_details.field_appointment_rank
     - field.field.paragraph.faculty_position_details.field_available
     - field.field.paragraph.faculty_position_details.field_faculty_category
-    - field.field.paragraph.faculty_position_details.field_salary_maximum
-    - field.field.paragraph.faculty_position_details.field_salary_minimum
+    - field.field.paragraph.faculty_position_details.field_salary_details
     - paragraphs.paragraphs_type.faculty_position_details
   module:
     - datetime
@@ -21,6 +20,7 @@ content:
     label: hidden
     settings:
       link_to_entity: false
+      link_rel: canonical
     third_party_settings: {  }
     weight: 0
     region: content
@@ -41,23 +41,14 @@ content:
     third_party_settings: {  }
     weight: 4
     region: content
-  field_salary_maximum:
-    type: number_integer
+  field_salary_details:
+    type: string
     label: hidden
     settings:
-      thousand_separator: ''
-      prefix_suffix: true
+      link_to_entity: false
+      link_rel: canonical
     third_party_settings: {  }
-    weight: 3
-    region: content
-  field_salary_minimum:
-    type: number_integer
-    label: hidden
-    settings:
-      thousand_separator: ''
-      prefix_suffix: true
-    third_party_settings: {  }
-    weight: 2
+    weight: 5
     region: content
 hidden:
   search_api_excerpt: true

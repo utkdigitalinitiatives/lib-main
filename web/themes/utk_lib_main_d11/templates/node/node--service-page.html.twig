@@ -44,7 +44,7 @@ set classes = [
     'text-smokey',
     ]
 %}
-{% if content.field_related_services is defined and content.field_related_services|length > 2 %}
+{% if not node.field_related_services.isEmpty %}
     {% set related_links = true %}
 {% else %}
     {% set related_links = false %}
@@ -60,7 +60,7 @@ set classes = [
     } %}
     <div class='container-fluid utk--inset-box-shadow py-4'>
     <div class='row max-row-width mx-auto'>
-        {% if (content.field_service_contacts is defined and content.field_service_contacts|length > 2) or (content.field_related_services is defined and content.field_related_services|length > 2) or (content.field_about_this_service is defined and content.field_about_this_service|length > 2) %}
+        {% if not node.field_service_contacts.isEmpty or not node.field_related_services.isEmpty or not node.field_about_this_service.isEmpty %}
         <div class='col-lg-8 px-4'>
         {% else %}
         <div class='col-lg-8 mx-auto px-3'>
@@ -76,9 +76,9 @@ set classes = [
             </div>
             {% endif %}
         </div>
-        {% if (content.field_service_contacts is defined and content.field_service_contacts|length > 2) or (content.field_related_services is defined and content.field_related_services|length > 2) or (content.field_about_this_service is defined and content.field_about_this_service|length > 2) %}
+        {% if not node.field_service_contacts.isEmpty or not node.field_related_services.isEmpty or not node.field_about_this_service.isEmpty %}
         <div class='col-lg-4 py-2'>
-            {% if content.field_service_contacts is defined and content.field_service_contacts|length > 2 %}
+            {% if not node.field_service_contacts.isEmpty %}
                 <div class='utk-sidebar-card utk-service-sidebar-card'>
                     <div class='utk-card-header utk-card-header--small-section'>
                         <h2 class='fs-5 mb-0'>
@@ -90,7 +90,7 @@ set classes = [
                     </div>
                 </div>
             {% endif %}
-            {% if content.field_related_services is defined and content.field_related_services|length > 2 %}
+            {% if not node.field_related_services.isEmpty %}
                 <div class='utk-sidebar-card utk-service-sidebar-card'>
                     <div class='utk-card-header utk-card-header--small-section'>
                         <h2 class='fs-5 mb-0'>
@@ -102,7 +102,7 @@ set classes = [
                     </div>
                 </div>
             {% endif %}
-            {% if content.field_about_this_service is defined and content.field_about_this_service|length > 2 %}
+            {% if not node.field_about_this_service.isEmpty %}
                 <div class='utk-sidebar-card utk-service-sidebar-card'>
                     <div class='utk-card-header utk-card-header--small-section'>
                         <h2 class='fs-5 mb-0'>
