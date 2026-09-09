@@ -33,7 +33,7 @@
 <hr class="top-line py-0">
 <div class="layout-container">
     <header class="header">
-        {{ include('/themes/utk_lib_main_d11/templates/layout/utk--header.html.twig') }}
+        {{ include('@utk_lib_main_d11/templates/layout/utk--header.html.twig') }}
     </header>
 
     <main role="main" id="main-content">
@@ -43,13 +43,13 @@
                                                                             /themes/utk_lib_main_d11/images/front-bright-medium.webp 1200w,
                                                                             /themes/utk_lib_main_d11/images/front-bright.webp 1920w" sizes="100vw" alt="University of Tennessee Libraries background" class="w-100 h-100 position-absolute top-0 start-0 object-fit-cover z-n2" loading="eager" fetchpriority="high">
             <section class='container-fluid d-flex align-items-end utk--search-section position-relative py-4 utk--1400px-width z-2'>
-                {{ include('/themes/utk_lib_main_d11/templates/layout/utk-front-page/utk--search-section.html.twig') }}
+                {{ include('@utk_lib_main_d11/templates/layout/utk-front-page/utk--search-section.html.twig') }}
             </section>
         </div>
 
         <div class="utk-icon--svg">
             <section class='container-fluid position-relative py-4 z-2 utk-icon-section-overlay'>
-                {{ include('/themes/utk_lib_main_d11/templates/layout/utk-front-page/utk--icon-section.html.twig') }}
+                {{ include('@utk_lib_main_d11/templates/layout/utk-front-page/utk--icon-section.html.twig') }}
             </section>
 
             <div class="utk-homepage-subtle-overlay">
@@ -59,7 +59,7 @@
                 </section>
 
                 <section class='container-fluid pb-5 my-5'>
-                    {{ include('/themes/utk_lib_main_d11/templates/layout/utk-front-page/utk--quicklink-section.html.twig') }}
+                    {{ include('@utk_lib_main_d11/templates/layout/utk-front-page/utk--quicklink-section.html.twig') }}
                 </section>
             </div>
         </div>
@@ -124,8 +124,8 @@
     </main>
     <footer>
         <hr class="top-line py-0">
-        {{ include('themes/utk_lib_main_d11/templates/layout/utk--library-footer.html.twig') }}
-        {{ include('themes/utk_lib_main_d11/templates/layout/utk--campus-footer/utk--campus-footer.html.twig') }}
-        {{ include('themes/utk_lib_main_d11/templates/layout/utk--campus-footer/utk--campus-footer-subfooter.html.twig') }}
+        {{ include('@utk_lib_main_d11/templates/layout/utk--library-footer.html.twig') }}
+        {{ include('@utk_lib_main_d11/templates/layout/utk--campus-footer/utk--campus-footer.html.twig') }}
+        {{ include('@utk_lib_main_d11/templates/layout/utk--campus-footer/utk--campus-footer-subfooter.html.twig') }}
     </footer>
 </div>

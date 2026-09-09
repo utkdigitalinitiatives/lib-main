@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.staff_position_details.field_market_range
+    - field.field.paragraph.staff_position_details.field_salary_details
     - field.field.paragraph.staff_position_details.field_staff_category
     - paragraphs.paragraphs_type.staff_position_details
 id: paragraph.staff_position_details.default
@@ -11,13 +11,14 @@ targetEntityType: paragraph
 bundle: staff_position_details
 mode: default
 content:
-  field_market_range:
+  field_salary_details:
     type: string
     label: hidden
     settings:
       link_to_entity: false
+      link_rel: canonical
     third_party_settings: {  }
-    weight: 0
+    weight: 5
     region: content
   field_staff_category:
     type: entity_reference_label
