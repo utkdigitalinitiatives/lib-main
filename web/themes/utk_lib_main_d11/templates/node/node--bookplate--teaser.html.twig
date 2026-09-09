@@ -32,7 +32,7 @@
 {% set book_author = content.field_book_author|render|striptags|trim %}
 {% set award_year = node.field_award_year.entity ? node.field_award_year.entity.label : '' %}
 {% set position_role = content.field_position_role is defined ? content.field_position_role : null %}
-{% set department = content.field_bp_department is defined ? content.field_bp_department : null %}
+{% set department = content.field_bp_department is defined ? content.field_bp_department|render|striptags|trim : '' %}
 {% set occasion = content.field_occasion is defined ? content.field_occasion : null %}
 {% set why_chosen = content.field_why_chosen is defined ? content.field_why_chosen : null %}
 {% set is_ebook = node.field_ebook is defined and node.field_ebook.value|default('0') == '1' %}
