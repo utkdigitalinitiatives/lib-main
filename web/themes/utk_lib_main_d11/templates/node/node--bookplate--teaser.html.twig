@@ -35,7 +35,7 @@
 {% set department = content.field_bp_department is defined ? content.field_bp_department : null %}
 {% set occasion = content.field_occasion is defined ? content.field_occasion : null %}
 {% set why_chosen = content.field_why_chosen is defined ? content.field_why_chosen : null %}
-{% set ebook = content.field_ebook is defined ? content.field_ebook : null %}
+{% set is_ebook = node.field_ebook is defined and node.field_ebook.value|default('0') == '1' %}
 {% set is_author = node.field_is_author is defined and node.field_is_author.value|default('0') == '1' %}
 {% set record_url = null %}
 {% if content.field_link_to_record is defined
@@ -45,7 +45,7 @@
 {% endif %}
 
 <div class="col d-none d-md-flex justify-content-center align-items-center">
-  <a class="bookplate--card" data-bs-toggle="modal" data-bs-target="#{{ modal_id }}" role="button" tabindex="0" aria-label="View details of {{ book_title ?: safe_label }}">
+  <a class="bookplate--card" href="#{{ modal_id }}" data-bs-toggle="modal" data-bs-target="#{{ modal_id }}" aria-label="View details of {{ book_title ?: safe_label }}">
     <img src="{{ cover_src }}" alt="{{ cover_alt }}" loading="lazy">
     <div class="bookplate--card-text-body">
       <p class="fs-6 fw-medium m-0">{{ book_title ?: safe_label }}</p>
@@ -89,6 +89,6 @@
   occasion: occasion,
   why_chosen: why_chosen,
   record_url: record_url,
-  ebook: ebook,
+  ebook: is_ebook,
   url: url
 } %}

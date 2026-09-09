@@ -89,7 +89,7 @@
 
             <div class="bookplate-bookmeta">
             {% if book_author %}<p class="mb-1"><strong>Author</strong> — {% autoescape false %}{{ book_author }}{% endautoescape %}</p>{% endif %}
-            {% if ebook.0["#markup"] == "Yes" %}<p class="mb-1">Ebook</p>{% endif %}
+            {% if ebook %}<p class="mb-1">Ebook</p>{% endif %}
             </div>
 
              <div class="fst-italic text-muted my-2 small">

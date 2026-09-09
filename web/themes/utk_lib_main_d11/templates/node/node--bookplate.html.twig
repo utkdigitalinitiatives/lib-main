@@ -38,8 +38,8 @@
               {% if content.field_book_title %}<div class="mb-3"><strong>Title</strong>{{ content.field_book_title }}</div>{% endif %}
               {% if content.field_book_author %}<div class="mb-3"><strong>Author</strong>{{ content.field_book_author }}</div>{% endif %}
               {% if content.field_award_year %}<div class="mb-3"><strong>Award Year</strong>{{ content.field_award_year }}</div>{% endif %}
-              {% if content.field_isbn.0['#context'].value|length > 0 %}<div class="mb-3"><strong>ISBN</strong>{{ content.field_isbn }}</div>{% endif %}
-              {% if content.field_ebook.0['#markup'] == 'Yes' %}<div class="mb-3"><strong>Ebook</strong></div>{% endif %}
+              {% if not node.field_isbn.isEmpty %}<div class="mb-3"><strong>ISBN</strong>{{ content.field_isbn }}</div>{% endif %}
+              {% if node.field_ebook.value == '1' %}<div class="mb-3"><strong>Ebook</strong></div>{% endif %}
               {% if content.field_link_to_record %}<div class="mb-0">{{ content.field_link_to_record }}</div>{% endif %}
             </div>
           </div>
