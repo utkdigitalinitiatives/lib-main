@@ -43,11 +43,8 @@
       <div class="col-lg-8 mx-auto px-3">
         <div class="bookplate-content mb-4">
           <div class="utk-card bookplate-card h-auto shadow-sm mb-4 mx-auto">
-            <div class="utk-card-body position-relative p-0">
+            <div class="utk-card-body p-0">
               <img src="{{ cover_src }}" alt="{{ cover_alt }}" class="img-fluid w-100 rounded-top" loading="lazy">
-              {% if is_author %}
-                <span class="bookplate-isauthor-badge">Written by the Honoree</span>
-              {% endif %}
             </div>
           </div>
 
@@ -56,7 +53,15 @@
               <h2 class="fs-5 mb-0">Book Details</h2>
             </div>
             <div class="utk-card-body">
-              {% if content.field_book_title %}<div class="mb-3"><strong>Title</strong>{{ content.field_book_title }}</div>{% endif %}
+              {% if content.field_book_title %}
+                <div class="mb-3">
+                  <strong>Title</strong>
+                  {{ content.field_book_title }}
+                  {% if is_author %}
+                    <span class="bookplate-isauthor-badge position-static d-inline-block mt-2">Written by the Honoree</span>
+                  {% endif %}
+                </div>
+              {% endif %}
               {% if content.field_book_author %}<div class="mb-3"><strong>Author</strong>{{ content.field_book_author }}</div>{% endif %}
               {% if content.field_award_year %}<div class="mb-3"><strong>Award Year</strong>{{ content.field_award_year }}</div>{% endif %}
               {% if not node.field_isbn.isEmpty %}<div class="mb-3"><strong>ISBN</strong>{{ content.field_isbn }}</div>{% endif %}
