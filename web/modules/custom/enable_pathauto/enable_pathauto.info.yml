@@ -4,5 +4,6 @@ description: Provides a Views Bulk Operations action that enables automatic Path
 package: Custom
 core_version_requirement: ^11
 dependencies:
+  - drupal:node
   - drupal:pathauto
   - drupal:views_bulk_operations
