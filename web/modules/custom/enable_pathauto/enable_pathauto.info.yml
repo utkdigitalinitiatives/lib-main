@@ -1,0 +1,8 @@
+name: Enable Pathauto
+type: module
+description: Provides a Views Bulk Operations action that enables automatic Pathauto aliases for nodes.
+package: Custom
+core_version_requirement: ^11
+dependencies:
+  - drupal:pathauto
+  - drupal:views_bulk_operations
