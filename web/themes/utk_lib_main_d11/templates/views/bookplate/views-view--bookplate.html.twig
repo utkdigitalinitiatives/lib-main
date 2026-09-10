@@ -1,0 +1,34 @@
+{#
+/**
+ * Custom presentation for the Bookplate View.
+ *
+ * The View, filters, sorting, and pager remain configured in Drupal. This
+ * template only supplies the page layout and responsive results grid.
+ */
+#}
+
+{% set title = view.title %}
+
+{% include "@utk_lib_main_d11/templates/views/utk--page-hero.html.twig" with {
+  title: title
+} %}
+
+<section class="container-fluid">
+  <div class="row d-flex justify-content-center bg-light-gray py-2">
+    {{ exposed }}
+  </div>
+</section>
+
+<div class="container-fluid utk--inset-box-shadow">
+  <div class="row d-flex px-2 pt-2 justify-content-center justify-content-md-start row-cols-1 row-cols-md-2 row-cols-lg-3 utk--1400px-width mx-auto">
+    {% if rows %}
+      {{ rows }}
+    {% endif %}
+  </div>
+</div>
+
+{% if pager %}
+  <div class="p-2 m-3 utk-search-selector">
+    {{ pager }}
+  </div>
+{% endif %}

@@ -44,7 +44,7 @@
             <header class="d-flex justify-content-between align-items-start">
             <div class="pe-3">
                 {% if honoree_name is not null and honoree_name|trim != '' %}
-                <h2 id="{{ modalLabel }}" class="m-0 fw-bold">{% autoescape false %}{{ honoree_name }}{% endautoescape %}</h2>
+                <h2 id="{{ modalLabel }}" class="m-0 fw-bold">{{ honoree_name }}</h2>
                 {% endif %}
             </div>
 
@@ -64,7 +64,7 @@
             {# {{ dd() }} #}
             {% if department %}
               <div class="bookplate-meta mt-3">
-                <strong>Department</strong> - {% autoescape false %}{{ department[0]["#text"] }}{% endautoescape %}
+                <strong>Department</strong> - {{ department }}
               </div>
             {% endif %}
 
@@ -88,8 +88,8 @@
             {% endif %}
 
             <div class="bookplate-bookmeta">
-            {% if book_author %}<p class="mb-1"><strong>Author</strong> — {% autoescape false %}{{ book_author }}{% endautoescape %}</p>{% endif %}
-            {% if ebook.0["#markup"] == "Yes" %}<p class="mb-1">Ebook</p>{% endif %}
+            {% if book_author %}<p class="mb-1"><strong>Author</strong> — {{ book_author }}</p>{% endif %}
+            {% if ebook %}<p class="mb-1">Ebook</p>{% endif %}
             </div>
 
              <div class="fst-italic text-muted my-2 small">
