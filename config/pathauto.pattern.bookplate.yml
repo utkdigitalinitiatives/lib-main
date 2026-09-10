@@ -1,0 +1,23 @@
+uuid: f0805537-f445-46dc-81bb-dcba4790079d
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bookplate
+  module:
+    - node
+id: bookplate
+label: Bookplate
+type: 'canonical_entities:node'
+pattern: '/bookplate/[node:title]'
+selection_criteria:
+  3ae40ee1-00b6-4985-9dd3-7da7737348c3:
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: node
+    bundles:
+      bookplate: bookplate
+selection_logic: and
+weight: -5
+relationships: {  }

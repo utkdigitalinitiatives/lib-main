@@ -1,0 +1,24 @@
+<div class="bookplate-exposed-filters">
+  <div class="container-fluid">
+    <div class="row mx-auto d-flex justify-content-center align-items-end gap-3">
+      <div class="col-auto">
+        {{ form.title|add_class(['bookplate-input']) }}
+      </div>
+      <div class="col-auto">
+        {{ form.field_bp_department_value|add_class(['bookplate-input']) }}
+      </div>
+      <div class="col-auto">
+        {{ form.field_award_year_target_id|add_class(['bookplate-input']) }}
+      </div>
+      <div class="col-auto">
+        <div class="d-flex gap-2">
+          {{ form.actions.submit|add_class(['btn', 'utk-smokey-button']) }}
+          {{ form.actions.reset|add_class(['btn', 'utk-blue-button']) }}
+        </div>
+      </div>
+    </div>
+  </div>
+  {{ form.form_build_id }}
+  {{ form.form_token }}
+  {{ form.form_id }}
+</div>
