@@ -23,7 +23,7 @@ final class EnablePathautoState extends ActionBase
     /**
      * {@inheritdoc}
      */
-    public function execute($entity = NULL): void
+    public function execute($entity = null): void
     {
         if (!$entity instanceof NodeInterface || !$entity->hasField('path')) {
             return;
@@ -46,10 +46,10 @@ final class EnablePathautoState extends ActionBase
     /**
      * {@inheritdoc}
      */
-    public function access($object, ?AccountInterface $account = NULL, $return_as_object = FALSE)
+    public function access($object, ?AccountInterface $account = null, $return_as_object = false)
     {
         return $object instanceof NodeInterface
             ? $object->access('update', $account, $return_as_object)
-            : FALSE;
+            : false;
     }
 }
