@@ -1,0 +1,35 @@
+{#
+/**
+ * @file
+ * UTK Custom - Spotlight Block View Fields template.
+ *
+ * Renders an individual Spotlight card in the homepage Spotlight block.
+ *
+ * Available variables:
+ * - fields: The fields configured by the Spotlight Collection view:
+ *   - fields.title: The Spotlight title.
+ *   - fields.field_spotlight_description: The Spotlight description.
+ *   - fields.field_spotlight_link: The Spotlight destination URL.
+ *   - fields.thumbnail__target_id: The Spotlight image URL.
+ * - row: The current result row containing the Spotlight node.
+ *
+ * @see views-view-fields.html.twig
+ */
+#}
+
+{% set url = fields.field_spotlight_link.content|render|striptags|trim %}
+{% set text = fields.field_spotlight_description.content|render|striptags %}
+{% set title = fields.title.content|render|striptags|trim %}
+{% set image_src = fields.thumbnail__target_id.content|render|striptags|trim %}
+{% set image_alt = row._entity.field_spotlight_image.entity.field_media_image.alt %}
+<div class="d-flex justify-content-center align-items-center col col-sm-6 col-lg-4 pb-4">
+  <a class="utk--cards" href="{{ url }}">
+    {% if image_src %}
+      <img src="{{ image_src }}" alt="{{ image_alt }}" loading="lazy">
+    {% endif %}
+    <div class="utk--cards-text-body">
+      <p class="fs-6 fw-medium">{{ title }}</p>
+      <p>{{ text }}</p>
+    </div>
+  </a>
+</div>
