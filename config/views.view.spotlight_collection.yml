@@ -3,13 +3,11 @@ langcode: en
 status: true
 dependencies:
   config:
-    - entityqueue.entity_queue.homepage_spotlight
     - field.storage.node.field_spotlight_description
     - field.storage.node.field_spotlight_link
     - node.type.spotlight
   module:
     - datetime
-    - entityqueue
     - image
     - link
     - media
@@ -316,21 +314,21 @@ display:
         options: {  }
       empty: {  }
       sorts:
-        entityqueue_relationship:
-          id: entityqueue_relationship
+        created:
+          id: created
           table: node_field_data
-          field: entityqueue_relationship
+          field: created
           relationship: none
           group_type: group
           admin_label: ''
           entity_type: node
-          plugin_id: entity_queue_position
-          order: ASC
+          entity_field: created
+          plugin_id: date
+          order: DESC
           expose:
             label: ''
             field_identifier: ''
           exposed: false
-          queue_relationship: null
       arguments: {  }
       filters:
         status:
@@ -450,18 +448,6 @@ display:
           replica: false
           query_tags: {  }
       relationships:
-        entityqueue_relationship:
-          id: entityqueue_relationship
-          table: node_field_data
-          field: entityqueue_relationship
-          relationship: none
-          group_type: group
-          admin_label: 'Content queue'
-          entity_type: node
-          plugin_id: entity_queue
-          required: true
-          limit_queue:
-            - homepage_spotlight
         field_spotlight_image:
           id: field_spotlight_image
           table: node__field_spotlight_image
@@ -482,7 +468,6 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:entityqueue.entity_queue.homepage_spotlight'
         - 'config:field.storage.node.field_spotlight_description'
         - 'config:field.storage.node.field_spotlight_link'
   spotlight_block:
@@ -502,6 +487,5 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:entityqueue.entity_queue.homepage_spotlight'
         - 'config:field.storage.node.field_spotlight_description'
         - 'config:field.storage.node.field_spotlight_link'
