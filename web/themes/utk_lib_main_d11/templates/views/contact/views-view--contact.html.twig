@@ -1,0 +1,40 @@
+{#
+/**
+ * @file
+ * UTK Custom - Department Directory View template.
+ *
+ * Renders the Department contact directory using the D10 page structure.
+ *
+ * Available variables:
+ * - view: The View object being rendered.
+ * - rows: The rendered Department rows.
+ *
+ * Included templates:
+ * - utk--page-hero.html.twig: Renders the shared page hero.
+ * - utk--directory-buttons.html.twig: Renders directory navigation.
+ *
+ * @see views-view.html.twig
+ * @see template_preprocess_views_view()
+ */
+#}
+
+{% set title = view.title %}
+
+{{ include('@utk_lib_main_d11/templates/views/utk--page-hero.html.twig', {
+    title: title,
+}) }}
+<section class='container-fluid utk-page-hero-panel utk-page-hero-panel--curved'>
+    <div class='utk-page-hero-panel__section'>
+        {{ include('@utk_lib_main_d11/templates/components/utk--directory-buttons.html.twig', {}, with_context: false) }}
+    </div>
+</section>
+<section class='container-fluid my-3 text-smokey link-link'>
+    <div class='row d-flex justify-content-center utk--striped-background py-3 utk--1400px-width mx-auto'>
+        <h3 class='col-lg-4 text-center'>Department</h3>
+        <h3 class='col-lg-4 text-center'>Email</h3>
+        <h3 class='col-lg-4 text-center'>Phone Number</h3>
+    </div>
+    {% if rows %}
+        {{ rows }}
+    {% endif %}
+</section>
