@@ -20,6 +20,7 @@ module:
   dependent_fields: 0
   dynamic_page_cache: 0
   editor: 0
+  enable_pathauto: 0
   entity: 0
   entity_reference_revisions: 0
   entityqueue: 0
