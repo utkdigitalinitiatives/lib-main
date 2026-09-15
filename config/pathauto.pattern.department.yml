@@ -1,0 +1,23 @@
+uuid: 9f85a899-caf4-4448-81c7-cc8eb08fce25
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.department
+  module:
+    - node
+id: department
+label: Department
+type: 'canonical_entities:node'
+pattern: '/department/[node:title]'
+selection_criteria:
+  910425c9-e388-447e-94ad-35c770fc28f7:
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: node
+    bundles:
+      department: department
+selection_logic: and
+weight: -5
+relationships: {  }

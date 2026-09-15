@@ -1,0 +1,32 @@
+{#
+/**
+ * @file
+ * UTK Custom - Department Directory fields template.
+ *
+ * Available variables:
+ * - fields: The rendered View fields, including the Department title.
+ * - department_emails: Email addresses from Department email paragraphs.
+ * - department_phones: Phone numbers from Department phone paragraphs.
+ *
+ * @see views-view-fields.html.twig
+ * @see utk_lib_main_d11_preprocess_views_view_fields()
+ */
+#}
+
+<div class='col-lg-4 text-center text-lg-start'>
+    {{ fields.title.content }}
+</div>
+<div class='col-lg-4 text-center mt-2 mt-lg-0'>
+    {% for email in department_emails %}
+        <div>
+            <a href='mailto:{{ email }}'>{{ email }}</a>
+        </div>
+    {% endfor %}
+</div>
+<div class='col-lg-4 text-center mt-2 mt-lg-0'>
+    {% for phone in department_phones %}
+        <div>
+            <a href='tel:{{ phone }}'>{{ phone }}</a>
+        </div>
+    {% endfor %}
+</div>

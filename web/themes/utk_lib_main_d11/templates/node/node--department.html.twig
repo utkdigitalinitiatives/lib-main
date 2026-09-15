@@ -1,0 +1,157 @@
+{#
+/**
+ * @file
+ * UTK Custom - Department Page template.
+ *
+ * Renders the migrated Department content type. The D10 Services section is
+ * replaced by standard Card paragraphs, and editors select Department Heads
+ * and Department Members directly on the Department node.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the main container.
+ * - node: The Department node entity.
+ * - content: Rendered fields for the Department node.
+ * - department_heads: Published profiles selected as Department Heads.
+ * - department_members: Published profiles selected as Department Members.
+ * - hero_image_src: URL for the Department hero image.
+ * - hero_image_alt: Alternative text for the Department hero image.
+ *
+ * Included templates:
+ * - utk--page-hero.html.twig: Renders the shared page hero.
+ * - utk--department-person-card.html.twig: Renders a selected profile.
+ *
+ * @see node.html.twig
+ * @see utk_lib_main_d11_preprocess_node()
+ */
+#}
+
+{%
+    set classes = [
+        'node',
+        'node--type-' ~ node.bundle|clean_class,
+        'container-fluid',
+        'px-0',
+        'text-smokey',
+    ]
+%}
+{% set hours = node.field_hours.entity|default(null) %}
+{% set hours_status = hours ? hours.field_status.value|default('') : '' %}
+{% set has_hours = hours_status in ['open', '24hours', 'closed'] %}
+{% set has_details = not node.field_building_and_room_number.isEmpty or has_hours or not node.field_emails.isEmpty or not node.field_phone_numbers.isEmpty %}
+
+<article {{ attributes.addClass(classes) }} id='utk-service'>
+    {{ include('@utk_lib_main_d11/templates/views/utk--page-hero.html.twig', {
+        title: node.label,
+        image_src: hero_image_src|default(''),
+        image_alt: hero_image_alt|default(''),
+    }) }}
+
+    <div class='container-fluid py-4 utk--striped-background'>
+        <div class='row max-row-width mx-auto px-3 gx-lg-5'>
+            <div class='col-lg-8 link-link utk-search-selector underline-active{% if not has_details %} mx-auto{% endif %}'>
+                {% if not node.field_department_summary.isEmpty %}
+                    <h2>About</h2>
+                    {{ content.field_department_summary }}
+                {% endif %}
+            </div>
+
+            {% if has_details %}
+                <div class='col-lg-4 pt-3 pt-lg-0'>
+                    <div class='utk-sidebar-card utk-service-sidebar-card'>
+                        <div class='utk-card-header utk-card-header--small-section'>
+                            <h2 class='fs-5 mb-0'>Contact and location</h2>
+                        </div>
+                        <div class='utk-card-body link-link utk-search-selector'>
+                            {% if not node.field_building_and_room_number.isEmpty %}
+                                <div class='mb-3'>
+                                    <h3 class='fs-6 mb-1'>Location</h3>
+                                    {{ content.field_building_and_room_number }}
+                                </div>
+                            {% endif %}
+                            {% if has_hours %}
+                                <div class='mb-3'>
+                                    <h3 class='fs-6 mb-1'>Hours</h3>
+                                    {% if hours_status == 'open' %}
+                                        {{ hours.field_open.value }}{% if not hours.field_close.isEmpty %} - {{ hours.field_close.value }}{% endif %}
+                                    {% elseif hours_status == '24hours' %}
+                                        24 Hours
+                                    {% elseif hours_status == 'closed' %}
+                                        Closed
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                            {% if not node.field_emails.isEmpty %}
+                                <div class='mb-3'>
+                                    <h3 class='fs-6 mb-1'>Email</h3>
+                                    {{ content.field_emails }}
+                                </div>
+                            {% endif %}
+                            {% if not node.field_phone_numbers.isEmpty %}
+                                <div>
+                                    <h3 class='fs-6 mb-1'>Phone</h3>
+                                    {{ content.field_phone_numbers }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    {% if not node.field_department_links_cards.isEmpty %}
+        <div class='container-fluid py-4 utk--striped-background text-smokey'>
+            <div class='max-row-width mx-auto px-3'>
+                <h2>Resources</h2>
+                <div class='utk-card-grid utk-card-grid--auto-grid utk-card-grid__grid'>
+                    {% for key, item in content.field_department_links_cards['#items']|default([]) %}
+                        <div>{{ content.field_department_links_cards[key] }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if not node.field_spaces_catalog.isEmpty %}
+        <div class='container-fluid py-4 utk--striped-background text-smokey'>
+            <div class='max-row-width mx-auto px-3'>
+                <h2>Department Spaces</h2>
+                <div class='row'>
+                    {{ content.field_spaces_catalog }}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if department_heads or department_members %}
+        <div class='container-fluid py-4 utk--striped-background text-smokey link-link'>
+            <div class='max-row-width mx-auto px-3 department-people-block directory-container'>
+                <h2 class='mb-3'>People</h2>
+                {% if department_heads %}
+                    <div class='directory-head-group'>
+                        <div class='directory-people-grid'>
+                            {% for person in department_heads %}
+                                {{ include('@utk_lib_main_d11/templates/components/utk--department-person-card.html.twig', {
+                                    person: person,
+                                    is_department_head: true,
+                                }, with_context: false) }}
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+                {% if department_members %}
+                    <div class='directory-members-group'>
+                        <div class='directory-people-grid'>
+                            {% for person in department_members %}
+                                {{ include('@utk_lib_main_d11/templates/components/utk--department-person-card.html.twig', {
+                                    person: person,
+                                    is_department_head: false,
+                                }, with_context: false) }}
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+</article>

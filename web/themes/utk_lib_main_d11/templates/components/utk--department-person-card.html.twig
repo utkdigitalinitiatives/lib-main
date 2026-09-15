@@ -1,0 +1,37 @@
+{#
+/**
+ * @file
+ * UTK Custom - Department Person Card template.
+ *
+ * Renders a name-only D10 directory card for a profile selected on a
+ * Department node. Public profiles link to their employee page; private
+ * profiles render as non-interactive cards.
+ *
+ * Available variables:
+ * - person: The selected Employee Profile node.
+ * - is_department_head: Whether to display the Department Head label.
+ */
+#}
+{% set has_public_profile = person.field_public_profile.value|default('0') == '1' %}
+{% set profile_url = has_public_profile ? path('entity.node.canonical', {node: person.id}) : null %}
+
+<div class="directory-person-column">
+  <div class="utk-glow-card{{ has_public_profile ? ' utk-glow-card-pointer' : '' }}">
+    {% if profile_url %}
+      <a href="{{ profile_url }}" class="utk-glow-card-link">
+    {% else %}
+      <div class="utk-glow-card-link">
+    {% endif %}
+      <div class="person-info">
+        <h4>{{ person.label }}</h4>
+        {% if is_department_head %}
+          <span class="directory-role-pill">Department Head</span>
+        {% endif %}
+      </div>
+    {% if profile_url %}
+      </a>
+    {% else %}
+      </div>
+    {% endif %}
+  </div>
+</div>

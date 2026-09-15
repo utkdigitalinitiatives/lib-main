@@ -1,0 +1,22 @@
+{#
+/**
+ * @file
+ * UTK Custom - Department Email paragraph template.
+ *
+ * Available variables:
+ * - paragraph: The Department Email paragraph entity.
+ *
+ * Renders the optional editor-supplied label and an email link.
+ *
+ * @see paragraph.html.twig
+ */
+#}
+{% set email_label = paragraph.field_label.value|default('') %}
+{% set email_address = paragraph.field_email.value|default('') %}
+
+{% if email_label %}
+  <div>{{ email_label }}</div>
+{% endif %}
+{% if email_address %}
+  <a href="mailto:{{ email_address }}">{{ email_address }}</a>
+{% endif %}

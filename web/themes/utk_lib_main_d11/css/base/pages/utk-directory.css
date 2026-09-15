@@ -144,8 +144,8 @@
   cursor: pointer;
 }
 
-.directory-container .utk-glow-card:hover,
-.directory-container .utk-glow-card:focus-within {
+.directory-container .utk-glow-card-pointer:hover,
+.directory-container .utk-glow-card-pointer:focus-within {
   transform: translateY(-7px) scale(1.01);
   border-color: var(--directory-card-border-color);
   box-shadow:

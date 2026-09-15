@@ -47,18 +47,52 @@ function utk_lib_main_d11_preprocess_paragraph(array &$variables): void
 function utk_lib_main_d11_preprocess_views_view_fields(array &$variables): void
 {
     $view = $variables['view'] ?? NULL;
-    $paragraph = $variables['row']->_relationship_entities['field_sections'] ?? NULL;
-    if (
-        !$view || $view->id() !== 'jump_to_section' || !$paragraph || !$paragraph->hasField('field_heading_text') ||
-        $paragraph->get('field_heading_text')->isEmpty()
-    ) {
+    if (!$view) {
         return;
     }
 
-    $variables['heading_anchor'] = utk_lib_main_d11_get_heading_anchor(
-        $paragraph->get('field_heading_text')->value,
-        $paragraph,
-    );
+    if ($view->id() === 'jump_to_section') {
+        $paragraph = $variables['row']->_relationship_entities['field_sections'] ?? NULL;
+        if (!$paragraph || !$paragraph->hasField('field_heading_text') || $paragraph->get('field_heading_text')->isEmpty()) {
+            return;
+        }
+
+        $variables['heading_anchor'] = utk_lib_main_d11_get_heading_anchor(
+            $paragraph->get('field_heading_text')->value,
+            $paragraph,
+        );
+        return;
+    }
+
+    if ($view->id() !== 'contact' || $view->current_display !== 'page_1') {
+        return;
+    }
+
+    $department = $variables['row']->_entity ?? NULL;
+    if (!$department) {
+        return;
+    }
+
+    $renderer = \Drupal::service('renderer');
+    $renderer->addCacheableDependency($variables, $department);
+    $variables['department_emails'] = [];
+    $variables['department_phones'] = [];
+
+    foreach ($department->get('field_emails')->referencedEntities() as $email_paragraph) {
+        $renderer->addCacheableDependency($variables, $email_paragraph);
+        $email = trim((string) $email_paragraph->get('field_email')->value);
+        if ($email !== '') {
+            $variables['department_emails'][] = $email;
+        }
+    }
+
+    foreach ($department->get('field_phone_numbers')->referencedEntities() as $phone_paragraph) {
+        $renderer->addCacheableDependency($variables, $phone_paragraph);
+        $phone = trim((string) $phone_paragraph->get('field_phone')->value);
+        if ($phone !== '') {
+            $variables['department_phones'][] = $phone;
+        }
+    }
 }
 
 /**
@@ -93,6 +127,33 @@ function utk_lib_main_d11_preprocess_node(&$variables)
 
     if (isset($hero_image_field_map[$bundle])) {
         utk_lib_main_d11_set_hero_image_from_field($variables, $node, $hero_image_field_map[$bundle]);
+    }
+
+    if ($bundle === 'department') {
+        $renderer = \Drupal::service('renderer');
+        $variables['department_heads'] = [];
+        $variables['department_members'] = [];
+        $listed_people = [];
+        $people_fields = [
+            'field_department_heads' => 'department_heads',
+            'field_department_members' => 'department_members',
+        ];
+
+        foreach ($people_fields as $field_name => $variable_name) {
+            foreach ($node->get($field_name)->referencedEntities() as $referenced_entity) {
+                $renderer->addCacheableDependency($variables, $referenced_entity);
+                if (!$referenced_entity->isPublished() || isset($listed_people[$referenced_entity->id()])) {
+                    continue;
+                }
+
+                $variables[$variable_name][] = $referenced_entity;
+                $listed_people[$referenced_entity->id()] = TRUE;
+            }
+        }
+
+        foreach ($node->get('field_hours')->referencedEntities() as $hours_entity) {
+            $renderer->addCacheableDependency($variables, $hours_entity);
+        }
     }
 
     switch ($bundle) {
@@ -223,43 +284,4 @@ function utk_lib_main_d11_set_hero_image_from_field(array &$variables, $entity, 
 
         return;
     }
-}
-
-/**
- * Implements hook_theme_suggestions_views_view_fields_alter().
- */
-function utk_lib_main_d11_theme_suggestions_views_view_fields_alter(array &$suggestions, array $variables)
-{
-    $view = $variables['view'] ?? NULL;
-    if (!$view || !utk_lib_main_d11_is_department_people_page_context($view)) {
-        return;
-    }
-
-    $suggestions[] = 'views_view_fields__department_people__' . $view->current_display . '__department_page';
-}
-
-/**
- * Implements hook_theme_suggestions_views_view_unformatted_alter().
- */
-function utk_lib_main_d11_theme_suggestions_views_view_unformatted_alter(array &$suggestions, array $variables)
-{
-    $view = $variables['view'] ?? NULL;
-    if (!$view || !utk_lib_main_d11_is_department_people_page_context($view)) {
-        return;
-    }
-
-    $suggestions[] = 'views_view_unformatted__department_people__' . $view->current_display . '__department_page';
-}
-
-/**
- * Returns TRUE when department_people is rendering on a department node page.
- */
-function utk_lib_main_d11_is_department_people_page_context($view)
-{
-    if (($view->id() ?? '') !== 'department_people') {
-        return FALSE;
-    }
-
-    $node = \Drupal::routeMatch()->getParameter('node');
-    return $node && method_exists($node, 'bundle') && $node->bundle() === 'department';
 }

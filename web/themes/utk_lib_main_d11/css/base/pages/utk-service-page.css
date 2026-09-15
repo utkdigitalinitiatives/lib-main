@@ -82,6 +82,15 @@
   display: contents;
 }
 
+#utk-service .department-people-block .person-info {
+  min-height: 72px;
+  padding: 0.75rem 1rem;
+}
+
+#utk-service .department-people-block .directory-head-group .person-info {
+  min-height: 88px;
+}
+
 #utk-service .department-person-column {
   display: flex;
 }
