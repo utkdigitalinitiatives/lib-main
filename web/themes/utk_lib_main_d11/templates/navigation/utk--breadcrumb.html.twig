@@ -58,6 +58,9 @@
 {% elseif node.bundle is defined and node.bundle == "bookplate" %}
     {% set content_url = "bookplate" %}
     {% set content_url_name = "bookplate" %}
+{% elseif node.bundle is defined and node.bundle == "employee_profile" %}
+    {% set content_url = "directory" %}
+    {% set content_url_name = "directory" %}
 {% elseif split_path[1] == "department" or split_path[1] == "employee" or split_path[1] == "contact" %}
     {% set content_url = "directory" %}
     {% set content_url_name = "directory" %}
