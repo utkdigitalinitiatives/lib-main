@@ -43,16 +43,16 @@
                         <div class="col-12 col-lg-6">
                             <div id="{{ carouselId }}" class="carousel slide utk-carousel shadow-sm rounded-3 overflow-hidden" style="height: auto;">
                                 <div class="carousel-indicators">
-                                    {% for key, imgUrl in imageUrls %}
+                                    {% for key, img_url in imageUrls %}
                                         <button type="button" data-bs-target="#{{ carouselId }}" data-bs-slide-to="{{ key }}" {% if key == 0 %}class="active" aria-current="true"{% endif %} aria-label="Slide {{ key + 1 }}"></button>
                                     {% endfor %}
                                 </div>
 
                                 <div class="carousel-inner">
-                                {% for key, imgUrl in imageUrls %}
+                                {% for key, img_url in imageUrls %}
                                 <div class="carousel-item {% if key == 0 %}active{% endif %} h-100">
                                     <div class="image-wrapper">
-                                        <img src="{{ imgUrl }}" alt="{{ altTexts[key] }}" loading="lazy">
+                                        <img src="{{ img_url }}" alt="{{ altTexts[key] }}" loading="lazy">
                                     </div>
                                 </div>
                                 {% endfor %}
