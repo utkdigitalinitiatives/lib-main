@@ -17,6 +17,7 @@
  * - Uses the About portal as the parent link for About pages.
  * - Uses the Services portal as the parent link for Service pages.
  * - Uses the Bookplate listing as the parent link for Bookplate pages.
+ * - Uses the Equipment listing as the parent link for Equipment pages.
  * - Capitalizes breadcrumb labels for better readability.
  * - Ensures responsive design for both desktop and mobile layouts.
  *
@@ -58,6 +59,9 @@
 {% elseif node.bundle is defined and node.bundle == "bookplate" %}
     {% set content_url = "bookplate" %}
     {% set content_url_name = "bookplate" %}
+{% elseif node.bundle is defined and node.bundle == "equipment" %}
+    {% set content_url = "equipment" %}
+    {% set content_url_name = "equipment" %}
 {% elseif split_path[1] == "department" or split_path[1] == "employee" or split_path[1] == "contact" %}
     {% set content_url = "directory" %}
     {% set content_url_name = "directory" %}

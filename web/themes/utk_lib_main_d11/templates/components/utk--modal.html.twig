@@ -43,16 +43,16 @@
                         <div class="col-12 col-lg-6">
                             <div id="{{ carouselId }}" class="carousel slide utk-carousel shadow-sm rounded-3 overflow-hidden" style="height: auto;">
                                 <div class="carousel-indicators">
-                                    {% for key, imgUrl in imageUrls %}
+                                    {% for key, img_url in imageUrls %}
                                         <button type="button" data-bs-target="#{{ carouselId }}" data-bs-slide-to="{{ key }}" {% if key == 0 %}class="active" aria-current="true"{% endif %} aria-label="Slide {{ key + 1 }}"></button>
                                     {% endfor %}
                                 </div>
 
                                 <div class="carousel-inner">
-                                {% for key, imgUrl in imageUrls %}
+                                {% for key, img_url in imageUrls %}
                                 <div class="carousel-item {% if key == 0 %}active{% endif %} h-100">
                                     <div class="image-wrapper">
-                                        <img src="{{ imgUrl }}" alt="{{ altTexts[key] }}" loading="lazy">
+                                        <img src="{{ img_url }}" alt="{{ altTexts[key] }}" loading="lazy">
                                     </div>
                                 </div>
                                 {% endfor %}
@@ -73,10 +73,18 @@
                             </div>
                             </div>
                         </div>
-                        {% else %}
+                        {% elseif imageUrls|length == 1 %}
                             <div class='col-12 col-md-6'>
                                 <div class="image-wrapper rounded-3 shadow-sm">
                                     <img src="{{ imageUrls[0] }}" alt="{{ altTexts[0] }}" loading='lazy'>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class='col-12 col-md-6'>
+                                <div class="image-wrapper rounded-3 shadow-sm">
+                                    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center text-muted fw-semibold">
+                                        Image unavailable
+                                    </div>
                                 </div>
                             </div>
                         {% endif %}
