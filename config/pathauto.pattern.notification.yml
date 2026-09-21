@@ -1,0 +1,23 @@
+uuid: 04b8b4d5-b46e-4c47-882c-e42c64a31c6c
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.notification
+  module:
+    - node
+id: notification
+label: Notification
+type: 'canonical_entities:node'
+pattern: '/notification/[node:title]'
+selection_criteria:
+  51b36d29-47cc-4285-8bf6-0eb0bf7214ee:
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: node
+    bundles:
+      notification: notification
+selection_logic: and
+weight: -5
+relationships: {  }
