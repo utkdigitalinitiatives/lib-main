@@ -1,0 +1,101 @@
+{#
+/**
+ * @file
+ * Equipment teaser card and details modal.
+ */
+#}
+
+{% set modal_id = 'equipment-modal-' ~ node.id %}
+{% set modal_label = modal_id ~ '-label' %}
+{% set carousel_id = 'equipment-carousel-' ~ node.id %}
+{% set image_style = 'large' %}
+{% set image_urls = [] %}
+{% set alt_texts = [] %}
+
+{% if node.field_equipment_featured_image.entity %}
+  {% set media = node.field_equipment_featured_image.entity %}
+  {% if media.field_media_image.entity %}
+    {% set image_urls = image_urls|merge([media.field_media_image.entity.uri.value|image_style(image_style)]) %}
+    {% set alt_texts = alt_texts|merge([media.field_media_image.alt|default('')]) %}
+  {% endif %}
+{% endif %}
+
+{% for item in node.field_additional_equipment_image %}
+  {% set media = item.entity %}
+  {% if media and media.field_media_image.entity %}
+    {% set image_urls = image_urls|merge([media.field_media_image.entity.uri.value|image_style(image_style)]) %}
+    {% set alt_texts = alt_texts|merge([media.field_media_image.alt|default('')]) %}
+  {% endif %}
+{% endfor %}
+
+{% set details = {
+  'Brand': content.field_equipment_brand|render|striptags|trim,
+  'Type': content.field_equipment_type|render|striptags|trim,
+  'Location': content.field_equipment_location|render|striptags|trim,
+  'Loan Period': content.field_loan_period|render|striptags|trim,
+  'Description/Specifications': content.field_equipment_description,
+} %}
+
+{% set button_details = {} %}
+{% if not node.field_primo_link.isEmpty %}
+  {% set button_details = {
+    button_title: 'Check Availability',
+    button_url: node.field_primo_link.0.url,
+  } %}
+{% endif %}
+
+<div class="utk-grid-card h-100 d-none d-md-block">
+  <a class="utk-grid-card__link" href="{{ url }}" data-bs-toggle="modal" data-bs-target="#{{ modal_id }}" aria-label="View details for {{ node.label }}">
+    {% if image_urls|length %}
+      <div class="utk-grid-card__media">
+        <img src="{{ image_urls[0] }}" alt="" loading="lazy">
+      </div>
+    {% else %}
+      <div class="utk-grid-card__media bg-light text-muted fw-semibold" aria-hidden="true">
+        <span>Image unavailable</span>
+      </div>
+    {% endif %}
+    <div class="utk-grid-card__body">
+      <h2 class="utk-grid-card__title">
+        <span class="utk-grid-card__title-text">{{ node.label }}</span>
+      </h2>
+      {% if details.Type %}
+        <span class="utk-grid-card__badge">{{ details.Type }}</span>
+      {% endif %}
+    </div>
+  </a>
+</div>
+
+<div class="utk-grid-card h-100 d-md-none">
+  <a class="utk-grid-card__link" href="{{ url }}">
+    {% if image_urls|length %}
+      <div class="utk-grid-card__media">
+        <img src="{{ image_urls[0] }}" alt="" loading="lazy">
+      </div>
+    {% else %}
+      <div class="utk-grid-card__media bg-light text-muted fw-semibold" aria-hidden="true">
+        <span>Image unavailable</span>
+      </div>
+    {% endif %}
+    <div class="utk-grid-card__body">
+      <h2 class="utk-grid-card__title">
+        <span class="utk-grid-card__title-text">{{ node.label }}</span>
+      </h2>
+      {% if details.Type %}
+        <span class="utk-grid-card__badge">{{ details.Type }}</span>
+      {% endif %}
+    </div>
+  </a>
+</div>
+
+{% include "@utk_lib_main_d11/templates/components/utk--modal.html.twig" with {
+  title: node.label,
+  modalId: modal_id,
+  modalLabel: modal_label,
+  carouselId: carousel_id,
+  imageUrls: image_urls,
+  altTexts: alt_texts,
+  details: details,
+  button_details: button_details,
+  url: url,
+} only %}

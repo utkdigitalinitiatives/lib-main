@@ -1,0 +1,30 @@
+{#
+/**
+ * @file
+ * Renders the optional detail page for a Notification node.
+ *
+ * @see node.html.twig
+ */
+#}
+
+{% set classes = [
+  'node',
+  'node--type-notification',
+  'container',
+  'py-4',
+  'text-smokey',
+  'link-link',
+] %}
+
+<article{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  <h1{{ title_attributes }}>{{ label }}</h1>
+  {{ title_suffix }}
+
+  <div{{ content_attributes.addClass('node__content') }}>
+    <div class="fw-medium mb-3">
+      {{ content.field_notification_text }}
+    </div>
+    {{ content.field_notification_page_addition }}
+  </div>
+</article>

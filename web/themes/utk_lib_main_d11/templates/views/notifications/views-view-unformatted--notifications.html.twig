@@ -1,0 +1,12 @@
+{#
+/**
+ * @file
+ * Renders Notification rows without the default per-row wrapper.
+ *
+ * @see views-view-unformatted.html.twig
+ */
+#}
+
+{% for row in rows %}
+  {{ row.content }}
+{% endfor %}

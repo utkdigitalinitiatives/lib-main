@@ -1,0 +1,23 @@
+uuid: df3ec542-b802-454d-894d-8226a3139146
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.equipment
+  module:
+    - node
+id: equipment
+label: Equipment
+type: 'canonical_entities:node'
+pattern: '/equipment/[node:title]'
+selection_criteria:
+  08ce8467-0a94-49f1-a38f-b23bc841c9a3:
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: node
+    bundles:
+      equipment: equipment
+selection_logic: and
+weight: -5
+relationships: {  }
