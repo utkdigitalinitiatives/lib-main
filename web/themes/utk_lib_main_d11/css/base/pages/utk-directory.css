@@ -144,6 +144,7 @@
   cursor: pointer;
 }
 
+/* Reserve interactive feedback for cards that link to a public profile. */
 .directory-container .utk-glow-card-pointer:hover,
 .directory-container .utk-glow-card-pointer:focus-within {
   transform: translateY(-7px) scale(1.01);
