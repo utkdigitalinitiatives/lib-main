@@ -156,6 +156,46 @@ function utk_lib_main_d11_preprocess_node(&$variables)
         }
     }
 
+    if ($bundle === 'position_posting') {
+        $variables['position_application_url'] = '';
+        $variables['position_department'] = NULL;
+        $variables['position_type'] = '';
+
+        if (!$node->get('field_application_link')->isEmpty()) {
+            $variables['position_application_url'] = $node
+                ->get('field_application_link')
+                ->first()
+                ->getUrl()
+                ->toString();
+        }
+
+        $renderer = \Drupal::service('renderer');
+        $department = $node->get('field_department')->entity;
+        if ($department && $department->isPublished()) {
+            $renderer->addCacheableDependency($variables, $department);
+            $variables['position_department'] = $department;
+        }
+
+        $details = $node->get('field_position_posting_details')->entity;
+        if ($details) {
+            $renderer->addCacheableDependency($variables, $details);
+            $type_field_map = [
+                'faculty_position_details' => 'field_faculty_category',
+                'staff_position_details' => 'field_staff_category',
+                'student_position_details' => 'field_student_job_category',
+            ];
+            $type_field = $type_field_map[$details->bundle()] ?? NULL;
+
+            if ($type_field && !$details->get($type_field)->isEmpty()) {
+                $position_type = $details->get($type_field)->entity;
+                if ($position_type) {
+                    $renderer->addCacheableDependency($variables, $position_type);
+                    $variables['position_type'] = $position_type->label();
+                }
+            }
+        }
+    }
+
     switch ($bundle) {
         case 'about_page':
             $variables['hero_responsive_image_base'] = 'about-image';

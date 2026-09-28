@@ -1,0 +1,24 @@
+{#
+/**
+ * @file
+ * Position details for a staff posting.
+ */
+#}
+
+<div{{ attributes.addClass('position-posting-details') }}>
+    {% if not paragraph.field_staff_category.isEmpty %}
+        <div class="row py-1">
+            <p class="fs-6 fw-semibold py-0 my-0">Position Type</p>
+            <div>{{ content.field_staff_category|render|striptags|trim }}</div>
+        </div>
+    {% endif %}
+
+    {% if not paragraph.field_salary_details.isEmpty %}
+        <div class="row py-1">
+            <div class="col-sm-6">
+                <p class="fs-6 fw-semibold py-0 my-0">Salary</p>
+                {{ content.field_salary_details }}
+            </div>
+        </div>
+    {% endif %}
+</div>

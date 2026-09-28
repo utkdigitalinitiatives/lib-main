@@ -1,0 +1,152 @@
+{#
+/**
+ * @file
+ * UTK Custom - Position Posting page template.
+ *
+ * Renders the position summary, type-specific details, description,
+ * qualifications, and application information.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the main container.
+ * - node: The Position Posting node entity.
+ * - content: Rendered fields for the Position Posting node.
+ * - position_application_url: The normalized application URL.
+ * - position_department: The referenced, published Department node.
+ *
+ * @see node.html.twig
+ * @see utk_lib_main_d11_preprocess_node()
+ */
+#}
+
+{% set classes = [
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    'container-fluid',
+    'mb-4',
+    'pb-4',
+    'px-0',
+    'mx-0',
+    'text-smokey',
+    'link-link',
+] %}
+
+<article {{ attributes.addClass(classes) }} id="utk-article">
+    {{ include('@utk_lib_main_d11/templates/views/utk--page-hero.html.twig', {
+        title: node.label,
+        image_alt: 'University of Tennessee Libraries ' ~ node.label ~ ' background',
+    }) }}
+
+    <div class="container-fluid utk-article bg-light-gray py-3 utk-search-selector">
+        <div class="row d-lg-flex justify-content-center utk-section-body mx-auto">
+            <div class="col-lg-6">
+                {% if position_department %}
+                    <div class="row mb-3">
+                        <p class="fs-5 fw-semibold py-0 my-0">Department</p>
+                        <div>
+                            <a href="{{ path('entity.node.canonical', {'node': position_department.id}) }}">{{ position_department.label }}</a>
+                        </div>
+                    </div>
+                {% endif %}
+
+                <div class="row">
+                    <div class="d-flex align-items-center">
+                        <a class="btn utk-blue-button px-4 py-2 fw-medium" href="{{ position_application_url }}">
+                            Apply for Position
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 pt-3 pt-lg-0">
+                {{ content.field_position_posting_details }}
+            </div>
+        </div>
+    </div>
+
+    {% if not node.field_position_description.isEmpty %}
+        <section class="container-fluid d-lg-flex justify-content-center utk-article">
+            <div class="row pt-4 px-2 d-lg-flex justify-content-center utk-section-body">
+                <h2 class="text-start px-0">Description</h2>
+                <div class="d-lg-flex justify-content-center">
+                    {{ content.field_position_description }}
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
+    {% if not node.field_responsibilities.isEmpty %}
+        <section class="container-fluid d-lg-flex justify-content-center utk-article">
+            <div class="row pt-4 px-2 d-lg-flex justify-content-center utk-section-body">
+                <h2 class="text-start px-0">Responsibilities &amp; Duties</h2>
+                <div class="d-lg-flex justify-content-center">
+                    {{ content.field_responsibilities }}
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
+    {% if not node.field_required_qualifications.isEmpty %}
+        <section class="container-fluid d-lg-flex justify-content-center utk-article">
+            <div class="row pt-4 px-2 d-lg-flex justify-content-center utk-section-body">
+                <h2 class="text-start px-0">Required Qualifications</h2>
+                <div class="d-lg-flex justify-content-center">
+                    {{ content.field_required_qualifications }}
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
+    {% if not node.field_preferred_qualifications.isEmpty %}
+        <section class="container-fluid d-lg-flex justify-content-center utk-article">
+            <div class="row pt-4 px-2 d-lg-flex justify-content-center utk-section-body">
+                <h2 class="text-start px-0">Preferred Qualifications</h2>
+                <div class="d-lg-flex justify-content-center">
+                    {{ content.field_preferred_qualifications }}
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
+    {% if not node.field_environment.isEmpty %}
+        <section class="container-fluid d-lg-flex justify-content-center utk-article">
+            <div class="row pt-4 px-2 d-lg-flex justify-content-center utk-section-body">
+                <h2 class="text-start px-0">Environment</h2>
+                <div class="d-lg-flex justify-content-center">
+                    {{ content.field_environment }}
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
+    {% if not node.field_benefits.isEmpty %}
+        <section class="container-fluid d-lg-flex justify-content-center utk-article">
+            <div class="row pt-4 px-2 d-lg-flex justify-content-center utk-section-body">
+                <h2 class="text-start px-0">Benefits</h2>
+                <div class="d-lg-flex justify-content-center">
+                    {{ content.field_benefits }}
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
+    {% if not node.field_application_procedures.isEmpty %}
+        <section class="container-fluid d-lg-flex justify-content-center utk-article">
+            <div class="row pt-4 px-2 d-lg-flex justify-content-center utk-section-body">
+                <h2 class="text-start px-0">Application Procedures</h2>
+                <div class="d-lg-flex justify-content-center">
+                    {{ content.field_application_procedures }}
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
+    <div class="container-fluid d-lg-flex justify-content-center utk-article pt-4">
+        <div class="row utk-section-body">
+            <div class="d-flex align-items-center px-0">
+                <a class="btn utk-blue-button px-4 py-2 fw-medium" href="{{ position_application_url }}">
+                    Apply for Position
+                </a>
+            </div>
+        </div>
+    </div>
+</article>
