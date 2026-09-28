@@ -1,0 +1,23 @@
+uuid: 4ffabbfb-372a-4421-96fe-da22aa9f690b
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.position_posting
+  module:
+    - node
+id: position_posting
+label: 'Position Posting'
+type: 'canonical_entities:node'
+pattern: '/employment/position/[node:title]'
+selection_criteria:
+  8cf110e6-47d4-464f-bfdc-d4de0113d50a:
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: node
+    bundles:
+      position_posting: position_posting
+selection_logic: and
+weight: -5
+relationships: {  }
