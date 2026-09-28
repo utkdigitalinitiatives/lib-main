@@ -1,0 +1,103 @@
+{#
+/**
+ * @file
+ * UTK Custom - Employee Profile Page template.
+ *
+ * Renders the migrated Employee Profile content type using the D10 profile
+ * layout and the D11 field names. Profile link Cards appear below the profile
+ * picture and biography row.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the main container.
+ * - node: The Employee Profile node entity.
+ * - content: Rendered fields for the Employee Profile node.
+ *
+ * Included templates:
+ * - utk--page-hero.html.twig: Renders the shared page hero.
+ *
+ * @see node.html.twig
+ */
+#}
+
+{%
+set classes = [
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    'container-fluid',
+    'mb-4',
+    'pb-4',
+    'px-0',
+    'mx-0',
+    'text-smokey',
+    ]
+%}
+{% set profile_media = node.field_profile_picture.entity|default(null) %}
+{% set has_profile_picture = profile_media and profile_media.field_media_image is defined %}
+{% if has_profile_picture %}
+    {% set image_src = node.field_profile_picture|file_url %}
+    {% set image_alt = profile_media.field_media_image.alt|default('') %}
+{% endif %}
+{% set has_contact = not node.field_email.isEmpty or not node.field_phone.isEmpty %}
+
+<article {{ attributes.addClass(classes) }} id="utk-article">
+    {{ include('@utk_lib_main_d11/templates/views/utk--page-hero.html.twig', {
+        title: node.label,
+        image_src: '/themes/utk_lib_main_d11/images/hodges-2023.webp',
+        image_alt: '',
+    }) }}
+
+    <div class="container-fluid utk--1400px-width py-3 text-smokey link-link">
+        <div class="row d-flex justify-content-center">
+            {% if has_profile_picture %}
+            <div class="col-lg-6 d-flex justify-content-center utk--employee-img">
+                <img src="{{ image_src }}" alt="{{ image_alt }}" class="img-fluid rounded" loading="lazy">
+            </div>
+            {% endif %}
+            <div class="{% if has_profile_picture %}col-lg-6 pt-3 pt-lg-0{% else %}col-lg-8{% endif %} utk-search-selector">
+                {% if not node.field_position.isEmpty %}
+                    <div class="mb-3 fw-medium fs-3">
+                        {{ content.field_position }}
+                    </div>
+                {% endif %}
+
+                {% if has_contact %}
+                    <h2 class="fs-5 mb-2">Contact Information</h2>
+                    {% if not node.field_email.isEmpty %}
+                        <div class="pb-1">
+                            <a href="mailto:{{ node.field_email.value }}">{{ node.field_email.value }}</a>
+                        </div>
+                    {% endif %}
+                    {% if not node.field_phone.isEmpty %}
+                        <div class="pb-1">
+                            <a href="tel:{{ node.field_phone.value }}">{{ node.field_phone.value }}</a>
+                        </div>
+                    {% endif %}
+                {% endif %}
+
+                {% if not node.field_profile_bio.isEmpty %}
+                    <div class="py-1">
+                        {{ content.field_profile_bio }}
+                    </div>
+                {% endif %}
+
+                {% if not node.field_librarian_specialties.isEmpty %}
+                    <h2 class="fw-medium fs-3 mt-3 mb-2">Specialties</h2>
+                    <div>
+                        {{ content.field_librarian_specialties }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        {% if not node.field_profile_links_cards.isEmpty %}
+            <div class="mt-4">
+                <h2>Resources</h2>
+                <div class="utk-card-grid utk-card-grid--auto-grid utk-card-grid__grid">
+                    {% for key, item in content.field_profile_links_cards['#items']|default([]) %}
+                        <div>{{ content.field_profile_links_cards[key] }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</article>

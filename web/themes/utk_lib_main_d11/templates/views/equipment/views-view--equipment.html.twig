@@ -1,0 +1,36 @@
+{#
+/**
+ * @file
+ * Equipment directory view.
+ */
+#}
+
+{% include "@utk_lib_main_d11/templates/views/utk--page-hero.html.twig" with {
+  title: view.title
+} only %}
+
+<div class="utk-page-hero-panel utk-page-hero-panel--curved">
+  <section class="container-fluid utk-page-hero-panel__section">
+    <div class="utk-page-hero-panel__content">
+      {{ exposed }}
+    </div>
+  </section>
+</div>
+
+<section class="container-fluid my-4 py-3">
+  <div class="utk-card-grid utk-card-grid--three-up">
+    <div class="utk-card-grid__grid max-row-width mx-auto">
+      {% if rows %}
+        {{ rows }}
+      {% else %}
+        {{ empty }}
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% if pager %}
+  <div class="pb-2 mb-2">
+    {{ pager }}
+  </div>
+{% endif %}

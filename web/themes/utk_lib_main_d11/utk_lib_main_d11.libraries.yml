@@ -26,6 +26,7 @@ base:
         css/base/utk-components/card-grid.css: {}
         css/base/utk-componentss/homepage-search-tabs.css: {}
         css/base/utk-components/page-hero.css: {}
+        css/base/utk-components/notification.css: {}
         css/base/pages/utk-bookplate.css: {}
     component:
       css/components/action-links.css:
