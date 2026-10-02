@@ -1,0 +1,113 @@
+{#
+/**
+ * @file
+ * UTK Custom - Hours Block View Fields template.
+ *
+ * Renders one Department and its related LibCal Hours record in the
+ * Homepage Hours block.
+ *
+ * Available variables:
+ * - fields: An array of fields available in the view, including:
+ *   - fields.field_status: The status of the library (e.g., open, closed, 24 hours).
+ *   - fields.title: The title of the library or location.
+ *   - fields.field_open: The opening time of the library.
+ *   - fields.field_close: The closing time of the library.
+ *   - fields.view_node: The link to the library's full details page.
+ * - view: The view object being rendered.
+ *
+ * Customizations:
+ * - Dynamically maps library titles to user-friendly names and URLs.
+ * - Displays a placeholder subtitle for specific libraries (e.g., "In Hodges").
+ * - Provides a structured layout with the library title, subtitle, and hours.
+ * - Includes SVG icons to visually represent the library's status (open, closed, 24 hours).
+ * - Ensures responsive design for both desktop and mobile layouts.
+ *
+ * @see views-view-fields.html.twig
+ */
+#}
+
+{{ attach_library('utk_lib_main_d11/base') }}
+{{ attach_library('utk_lib_main_d11/library-hours') }}
+
+{% set lib_status = fields.field_status.content|render|striptags|trim %}
+{% set location_title = fields.title.content|render|striptags|trim %}
+
+{% set subtitle = fields.field_homepage_description.content|render|striptags|trim %}
+{% set address = fields.field_building_and_room_number.content|render|striptags|trim %}
+{% set image_url = row._entity.field_department_featured_image|file_url %}
+
+{% if location_title == 'Studio and Makerspace' %}
+    {% set temp_url = '/services/studio' %}
+{% elseif location_title == 'George F. DeVine Music Library' %}
+    {% set temp_url = '/department/music' %}
+{% elseif location_title == 'Hodges' %}
+    {% set temp_url = '/about/about-the-libraries' %}
+{% elseif location_title == 'Webster C. Pendergrass Agriculture and Veterinary Medicine Library' %}
+    {% set temp_url = '/department/agvet' %}
+{% elseif location_title == 'Betsey B. Creekmore Special Collections and University Archives' %}
+    {% set temp_url = '/department/special' %}
+{% endif %}
+
+<div class="library-hours-item">
+  <div class="library-item d-flex w-100 align-items-center{% if loop.first %} active{% endif %}"
+       role="button"
+       tabindex="0"
+       aria-label="View {{ location_title }} information"
+       data-library="{{ location_title|lower|replace({' ': '-'}) }}"
+       data-image-url="{{ image_url }}"
+       data-title="{{ location_title }}"
+       data-subtitle="{{ subtitle }}"
+       data-description="{{ subtitle }}"
+       data-address="{{ address }}">
+
+    <div class="d-flex w-100 align-items-center library-link" data-url="{{ temp_url }}">
+      <div class="library-info d-flex flex-column">
+        <span class="fw-medium">{{ fields.field_department_short_name.content|render|striptags }}</span>
+        <span class="font-small">({{ subtitle }})</span>
+      </div>
+
+      <div class="ms-auto status-indicator">
+        {% if lib_status == 'open' %}
+          <div class="d-flex align-items-center">
+            <svg width="19" height="19" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="open-status-icon">
+              <title id="open-status-icon">Status: Open</title>
+              <circle cx="12" cy="12" r="9" fill="#43A047" stroke="#ffffff" stroke-width="1"/>
+              <path d="M9 12.5l2 2 4-5" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="ms-1">{{ fields.field_open.content }} - {{ fields.field_close.content }}</span>
+          </div>
+        {% elseif lib_status == '24hours' %}
+          <div class="d-flex align-items-center">
+            <svg width="19" height="19" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="24hours-status-icon">
+              <title id="24hours-status-icon">Status: Open 24 hours</title>
+              <circle cx="12" cy="12" r="9" fill="#1E88E5" stroke="#ffffff" stroke-width="1"/>
+              <circle cx="12" cy="12" r="6" fill="none" stroke="#ffffff" stroke-width="1.5"/>
+              <path d="M12 8v4l2 2" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="ms-1">24 Hours</span>
+          </div>
+        {% elseif lib_status == 'ByApp' %}
+          <div class="d-flex align-items-center">
+            <svg width="19" height="19" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="byapp-status-icon">
+              <title id="byapp-status-icon">Status: by appointment</title>
+              <circle cx="12" cy="12" r="9" fill="#FB8C00" stroke="#ffffff" stroke-width="1"/>
+              <rect x="8" y="7" width="8" height="10" rx="1" fill="none" stroke="#ffffff" stroke-width="1.5"/>
+              <path d="M10 10h4M10 13h4" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span class="ms-1">By Appointment</span>
+          </div>
+        {% else %}
+          <div class="d-flex align-items-center">
+            <svg width="19" height="19" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="closed-status-icon">
+              <title id="closed-status-icon">Status: closed</title>
+              <circle cx="12" cy="12" r="9" fill="#E53935" stroke="#ffffff" stroke-width="1"/>
+              <path d="M9 9l6 6M15 9l-6 6" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span class="ms-1">Closed</span>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+</div>
