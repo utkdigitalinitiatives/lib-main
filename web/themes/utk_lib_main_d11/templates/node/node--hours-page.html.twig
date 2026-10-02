@@ -1,0 +1,35 @@
+{% set attributes = attributes.addClass('libcal-hours-widget') %}
+{{ attach_library('utk_lib_main_d11/libcal_hours') }}
+
+{% set classes = [
+  'node',
+  'node--type-' ~ node.bundle|clean_class,
+  'container-fluid',
+  'px-0',
+  'mx-0',
+  'text-smokey',
+  'link-link',
+] %}
+
+<div {{ attributes.addClass(classes) }} id="utk-service">
+  {{ include('@utk_lib_main_d11/templates/views/utk--page-hero.html.twig', {
+    title: node.label,
+  }) }}
+</div>
+
+<div class="container-fluid link-link text-smokey utk-search-selector py-3">
+  <div class="row max-row-width mx-auto my-3 py-3" id="hodges">
+    <h2 class="px-0">Main Library</h2>
+    <div data-libcal-id="52" data-libcal-iid="968" class="s-lc-whw"></div>
+  </div>
+
+  <div class="row max-row-width mx-auto my-3 py-3" id="pendergrass">
+    <h2 class="px-0">Pendergrass - Agriculture &amp; Veterinary Medicine Library</h2>
+    <div data-libcal-id="225" data-libcal-iid="968" class="s-lc-whw"></div>
+  </div>
+
+  <div class="row max-row-width mx-auto my-3 py-3" id="devine">
+    <h2 class="px-0">DeVine - Music Library</h2>
+    <div data-libcal-id="226" data-libcal-iid="968" class="s-lc-whw"></div>
+  </div>
+</div>

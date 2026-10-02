@@ -1,0 +1,117 @@
+{#
+/**
+ * @file
+ * UTK Custom - Hours Block View Fields template.
+ *
+ * This template is used to render individual fields within the Library Hours Block view
+ * with custom styling and layout.
+ *
+ * Available variables:
+ * - fields: An array of fields available in the view, including:
+ *   - fields.field_status: The status of the library (e.g., open, closed, 24 hours).
+ *   - fields.title: The title of the library or location.
+ *   - fields.field_open: The opening time of the library.
+ *   - fields.field_close: The closing time of the library.
+ *   - fields.view_node: The link to the library's full details page.
+ * - view: The view object being rendered.
+ *
+ * Customizations:
+ * - Dynamically maps library titles to user-friendly names and URLs.
+ * - Displays a placeholder subtitle for specific libraries (e.g., "In Hodges").
+ * - Provides a structured layout with the library title, subtitle, and hours.
+ * - Includes SVG icons to visually represent the library's status (open, closed, 24 hours).
+ * - Ensures responsive design for both desktop and mobile layouts.
+ *
+ * @see views-view-fields.html.twig
+ */
+#}
+{% set lib_status = fields.field_status.content|render|striptags|trim %}
+{% set location_title = fields.title.content|render|striptags|trim|split('-') %}
+
+{% if location_title[0] == 'The Studio' %}
+    {% set library_title = 'Studio & Makerspace' %}
+{% else %}
+    {% set library_title = location_title[0] %}
+{% endif %}
+
+{% if location_title[0] == 'The Studio' %}
+    {% set subtitle = '(In Hodges)' %}
+    {% set temp_url = '/services/studio' %}
+{% elseif location_title[0] == 'DeVine ' %}
+    {% set subtitle = '(Music Library)' %}
+    {% set temp_url = '/department/music' %}
+{% elseif location_title[0] == 'Hodges ' %}
+    {% set subtitle = '(Main Library)' %}
+    {% set temp_url = '/about/about-libraries' %}
+{% elseif location_title[0] == 'Pendergrass ' %}
+    {% set subtitle = '(AgVet Library)' %}
+    {% set temp_url = '/department/agvet' %}
+{% elseif location_title[0] == 'Special Collections' %}
+    {% set subtitle = '(In Hodges)' %}
+    {% set temp_url = '/department/special' %}
+{% endif %}
+
+<a href="{{ temp_url }}">
+    <div class='row d-lg-flex justify-content-center text-center fw-medium d-none'>
+        {{ library_title }}
+    </div>
+    <div class='utk-library-subtitle row d-lg-flex justify-content-center d-none'>
+        {{ subtitle }}
+    </div>
+    <div class='utk--hours-line py-0 my-1 mx-auto d-lg-flex d-none'></div>
+    <div class='row d-lg-flex justify-content-center d-none font-small'>
+        {% if lib_status == 'open' %}
+        <div class='d-inline-flex justify-content-center align-items-center'>
+            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 12a4 4 0 1 1 8 0 4 4 0 0 1-8 0Z" fill="#abc178"/></svg>
+            {{ fields.field_open.content }} - {{ fields.field_close.content }}
+        </div>
+        {% elseif lib_status == '24hours' %}
+        <div class='d-inline-flex justify-content-center align-items-center'>
+            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 12a4 4 0 1 1 8 0 4 4 0 0 1-8 0Z" fill="#abc178"/></svg>
+                24 Hours
+        </div>
+        {% elseif lib_status == 'ByApp' %}
+        <div class='d-inline-flex justify-content-center align-items-center'>
+            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 12a4 4 0 1 1 8 0 4 4 0 0 1-8 0Z" fill="#f4bc65"/></svg>
+                By Appointment
+        </div>
+        {% else %}
+            <div class='d-inline-flex justify-content-center align-items-center'>
+                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 9.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5ZM8 12a4 4 0 1 1 8 0 4 4 0 0 1-8 0Z" fill="#4b4b4b"/></svg>
+                Closed
+            </div>
+        {% endif %}
+    </div>
+    <div class='row d-lg-none justify-content-center py-0 my-0'>
+        <div class='col text-end fw-medium'>
+            {{ library_title }}:
+            <p class='utk-library-subtitle fw-normal'>
+                {{ subtitle }}
+            </p>
+        </div>
+
+        <div class='col d-flex justify-content-start font-small'>
+            {% if lib_status == 'open' %}
+            <div class='d-inline-flex justify-content-center align-items-center'>
+                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 12a4 4 0 1 1 8 0 4 4 0 0 1-8 0Z" fill="#abc178"/></svg>
+                {{ fields.field_open.content }} - {{ fields.field_close.content }}
+            </div>
+            {% elseif lib_status == '24hours' %}
+            <div class='d-inline-flex justify-content-center align-items-center'>
+                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 12a4 4 0 1 1 8 0 4 4 0 0 1-8 0Z" fill="#abc178"/></svg>
+                    24 Hours
+            </div>
+            {% elseif lib_status == 'ByApp' %}
+            <div class='d-inline-flex justify-content-center align-items-center'>
+                    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 12a4 4 0 1 1 8 0 4 4 0 0 1-8 0Z" fill="#f4bc65"/></svg>
+                    By Appointment
+            </div>
+            {% else %}
+            <div class='d-inline-flex justify-content-center align-items-center'>
+                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 9.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5ZM8 12a4 4 0 1 1 8 0 4 4 0 0 1-8 0Z" fill="#4b4b4b"/></svg>
+                Closed
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</a>
