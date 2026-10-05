@@ -1,0 +1,31 @@
+<div class="row mx-0">
+  <div class="col-md-6 px-0 library-list rounded-start rounded-end rounded-md-end-0">
+    {% for row in rows %}
+      {{ row.content }}
+    {% endfor %}
+  </div>
+
+  <div class="col-md-6 px-0 library-image-container rounded rounded-md-start-0 position-relative">
+    <img src="https://www.lib.utk.edu/sites/default/files/2019-08/placeholder-building-new.jpg"
+         alt="Selected library building"
+         class="img-fluid w-100 h-100 object-fit-cover"
+         id="library-active-image">
+
+    {# Dark overlay with information - content will be dynamically populated from the first item #}
+    <div class="library-image-overlay">
+      <div class="library-image-info" aria-live="polite">
+        <h3 id="library-overlay-title"></h3>
+        <p id="library-overlay-description"></p>
+        <a href="/hours" class="btn btn-outline-light btn-md mt-2 utk-overlay-btn" id="library-overlay-link" aria-label="View hours for this library">
+          More Hours
+          <svg style="fill: var(--utk-logo--orange)" width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2c5.523 0 10 4.478 10 10s-4.477 10-10 10S2 17.522 2 12 6.477 2 12 2Zm0 1.667c-4.595 0-8.333 3.738-8.333 8.333 0 4.595 3.738 8.333 8.333 8.333 4.595 0 8.333-3.738 8.333-8.333 0-4.595-3.738-8.333-8.333-8.333ZM11.25 6a.75.75 0 0 1 .743.648L12 6.75V12h3.25a.75.75 0 0 1 .102 1.493l-.102.007h-4a.75.75 0 0 1-.743-.648l-.007-.102v-6a.75.75 0 0 1 .75-.75Z" />
+          </svg>
+        </a>
+        <a href="/about/about-the-libraries" class="btn btn-outline-light btn-md utk-overlay-btn mt-2" id="library-overlay-details-link" aria-label="Learn more about this library">
+          Learn More
+          <svg style="fill: var(--utk-logo--orange)" width="19" height="19" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.001c5.524 0 10 4.477 10 10s-4.476 10-10 10c-5.522 0-10-4.477-10-10s4.478-10 10-10Zm0 1.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17Zm-.352 4.053.072-.084a.75.75 0 0 1 .977-.073l.084.073 4 4a.75.75 0 0 1 .073.977l-.072.085-4.002 4a.75.75 0 0 1-1.133-.977l.073-.084 2.722-2.721H7.75a.75.75 0 0 1-.743-.648L7 12a.75.75 0 0 1 .648-.743l.102-.007h6.69l-2.72-2.72a.75.75 0 0 1-.072-.976l.072-.084-.072.084Z" /></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

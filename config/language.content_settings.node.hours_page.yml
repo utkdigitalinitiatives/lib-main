@@ -1,0 +1,11 @@
+uuid: 1ea1356d-a60a-49b2-85d7-15381000ef3a
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.hours_page
+id: node.hours_page
+target_entity_type_id: node
+target_bundle: hours_page
+default_langcode: site_default
+language_alterable: false
