@@ -1,0 +1,17 @@
+{#
+/**
+ * @file
+ * UTK Custom - Department Directory rows template.
+ *
+ * Available variables:
+ * - rows: The rendered Department rows.
+ *
+ * @see views-view-unformatted.html.twig
+ */
+#}
+
+{% for row in rows %}
+    <div class='row d-flex justify-content-center utk--striped-background py-3 utk--1400px-width mx-auto link-link utk-search-selector'>
+        {{ row.content }}
+    </div>
+{% endfor %}
