@@ -1,0 +1,84 @@
+{#
+/**
+ * @file
+ * Position Posting teaser card for the Employment listing.
+ *
+ * Available variables:
+ * - node: The Position Posting node entity.
+ * - url: The canonical node URL.
+ * - position_application_url: The normalized application URL.
+ * - position_department: The referenced, published Department node.
+ * - position_type: The type label from the posting details paragraph.
+ *
+ * @see node.html.twig
+ * @see utk_lib_main_d11_preprocess_node()
+ */
+#}
+
+{% set description = content.field_position_description|render|striptags|trim %}
+{% set description_limit = 240 %}
+{% if description|length > description_limit %}
+    {% set description = description|slice(0, description_limit)|split(' ')|slice(0, -1)|join(' ') ~ '…' %}
+{% endif %}
+
+<div{{ attributes.addClass('container-fluid', 'utk-job-posting', 'p-4', 'mb-4', 'rounded', 'shadow-sm', 'border') }}>
+    <div class="row mb-3">
+        <div class="col-12">
+            {{ title_prefix }}
+            <h3{{ title_attributes.addClass('fs-4', 'fw-bold', 'text-primary', 'mb-0', 'utk-search-selector') }}>
+                <a href="{{ url }}">{{ node.label }}</a>
+            </h3>
+            {{ title_suffix }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8 d-lg-flex flex-lg-column">
+            {% if description %}
+                <div class="flex-grow-1">
+                    <p>{{ description }}</p>
+                </div>
+            {% endif %}
+
+            <div class="d-none d-lg-flex flex-wrap gap-3 justify-content-start mt-3">
+                <a class="btn utk-blue-button px-4 py-2 fw-medium" href="{{ url }}">Read More</a>
+                {% if position_application_url %}
+                    <a class="btn utk-blue-button px-4 py-2 fw-medium" href="{{ position_application_url }}">Apply for Position</a>
+                {% endif %}
+            </div>
+        </div>
+
+        {% if position_type or position_department %}
+            <div class="col-lg-4">
+                <div class="bg-light p-3 rounded mb-3 utk-search-selector">
+                    {% if position_type %}
+                        <div class="mb-3">
+                            <h3 class="fs-6 fw-bold text-secondary mb-1">Position Type</h3>
+                            <div class="job-detail-value">{{ position_type }}</div>
+                        </div>
+                    {% endif %}
+
+                    {% if position_department %}
+                        <div class="mb-2">
+                            <h3 class="fs-6 fw-bold text-secondary mb-1">Department</h3>
+                            <div class="job-detail-value">
+                                <a href="{{ path('entity.node.canonical', {'node': position_department.id}) }}">{{ position_department.label }}</a>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="row d-lg-none mt-3">
+        <div class="col-12">
+            <div class="d-flex flex-wrap gap-3 justify-content-center">
+                <a class="btn utk-blue-button px-4 py-2 fw-medium" href="{{ url }}">Read More</a>
+                {% if position_application_url %}
+                    <a class="btn utk-blue-button px-4 py-2 fw-medium" href="{{ position_application_url }}">Apply for Position</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

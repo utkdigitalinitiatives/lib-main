@@ -1,0 +1,18 @@
+{#
+/**
+ * @file
+ * Unformatted rows for the Position Postings page.
+ *
+ * @see views-view-unformatted.html.twig
+ */
+#}
+
+{% if title %}
+    <h3>{{ title }}</h3>
+{% endif %}
+
+{% for row in rows %}
+    <div{{ row.attributes.addClass('job-posting-wrapper') }}>
+        {{ row.content }}
+    </div>
+{% endfor %}
