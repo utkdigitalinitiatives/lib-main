@@ -1,0 +1,43 @@
+{#
+/**
+ * @file
+ * Position details for a faculty posting.
+ */
+#}
+
+<div{{ attributes.addClass('position-posting-details') }}>
+    {% if not paragraph.field_faculty_category.isEmpty %}
+        <div class="row py-1">
+            <p class="fs-6 fw-semibold py-0 my-0">Position Type</p>
+            <div>{{ content.field_faculty_category|render|striptags|trim }}</div>
+        </div>
+    {% endif %}
+
+    {% if not paragraph.field_appointment_rank.isEmpty or not paragraph.field_salary_details.isEmpty %}
+        <div class="row py-1">
+            {% if not paragraph.field_appointment_rank.isEmpty %}
+                <div class="col-sm-6">
+                    <p class="fs-6 fw-semibold py-0 my-0">Rank</p>
+                    {{ content.field_appointment_rank }}
+                </div>
+            {% endif %}
+            {% if not paragraph.field_salary_details.isEmpty %}
+                <div class="col-sm-6">
+                    <p class="fs-6 fw-semibold py-0 my-0">Salary</p>
+                    {{ content.field_salary_details }}
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% if not paragraph.field_available.isEmpty %}
+        <div class="row py-1">
+            <div class="col-sm-6">
+                <p class="fs-6 fw-semibold py-0 my-0">Available</p>
+                <time datetime="{{ paragraph.field_available.value }}">
+                    {{ paragraph.field_available.value|date('j F, Y') }}
+                </time>
+            </div>
+        </div>
+    {% endif %}
+</div>

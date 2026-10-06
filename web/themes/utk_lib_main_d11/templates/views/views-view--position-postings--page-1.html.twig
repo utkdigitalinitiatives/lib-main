@@ -1,0 +1,56 @@
+{#
+/**
+ * @file
+ * Employment page wrapper for the Position Postings View.
+ *
+ * @see views-view.html.twig
+ */
+#}
+
+{% set classes = [
+    'view',
+    'view-' ~ id|clean_class,
+    'view-id-' ~ id,
+    'view-display-id-' ~ display_id,
+    dom_id ? 'js-view-dom-id-' ~ dom_id,
+] %}
+
+<div{{ attributes.addClass(classes) }}>
+    {{ include('@utk_lib_main_d11/templates/views/utk--page-hero.html.twig', {
+        title: view.title,
+    }) }}
+
+    {% if header %}
+        <div class="view-header">{{ header }}</div>
+    {% endif %}
+
+    {% if exposed %}
+        <div class="view-filters">{{ exposed }}</div>
+    {% endif %}
+
+    <div class="container-fluid d-flex justify-content-center py-2 my-2">
+        <div class="d-flex justify-content-center">
+            <div class="row utk-section-body text-smokey link-link px-2">
+                {% if rows %}
+                    <div class="employment-listings px-3 px-md-4 py-3">
+                        {{ rows }}
+                    </div>
+                {% elseif empty %}
+                    <div class="view-empty px-3 px-md-4 py-4">
+                        {{ empty }}
+                    </div>
+                {% else %}
+                    <p class="py-4">There are currently no open positions.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    {% if pager %}
+        <div class="text-smokey link-link pb-4">{{ pager }}</div>
+    {% endif %}
+
+    {% if footer %}
+        <div class="view-footer">{{ footer }}</div>
+    {% endif %}
+</div>

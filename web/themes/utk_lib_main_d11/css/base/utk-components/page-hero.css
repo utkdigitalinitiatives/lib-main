@@ -17,6 +17,15 @@
   min-height: 190px;
 }
 
+.utk-page-hero__breadcrumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  padding: 0.25rem 1rem 0;
+}
+
 .utk-page-hero__title {
   margin: 0 0 0.5rem;
   font-size: 2.5rem;
@@ -144,6 +153,32 @@
 }
 
 @media (max-width: 767px) {
+  .utk-page-hero {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+
+  .utk-page-hero__breadcrumb {
+    position: relative;
+    flex: 0 0 auto;
+    box-sizing: border-box;
+    padding-bottom: 1rem;
+  }
+
+  .utk-page-hero__content {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .utk-page-hero--short:not(.utk-page-hero--nested) .utk-page-hero__breadcrumb {
+    position: absolute;
+    padding-bottom: 0;
+  }
 
   .utk-page-hero--standard,
   .utk-page-hero-frame {

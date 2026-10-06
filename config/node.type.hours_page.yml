@@ -1,0 +1,17 @@
+uuid: 5d720be3-3c9f-4c1d-82ec-a1973a4410b7
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Hours Page'
+type: hours_page
+description: 'Admin-only singleton landing page for /hours.'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

@@ -1,0 +1,26 @@
+{#
+/**
+ * @file
+ * UTK Custom - Library Hours View template.
+ *
+ * This template is used to render the Library Hours view with custom styling and layout.
+ *
+ * Available variables:
+ * - view: The view object being rendered.
+ * - rows: The rendered rows of the view.
+ *
+ * Customizations:
+ * - Displays the library hours in a structured layout.
+ * - Ensures responsive design for both desktop and mobile layouts.
+ * - Dynamically renders rows of library hours based on the view configuration.
+ *
+ * @see views-view.html.twig
+ * @see template_preprocess_views_view()
+ */
+#}
+
+<div class='row utk-hours-text d-flex justify-content-center max-row-width mx-auto'>
+    {% if rows %}
+        {{ rows }}
+    {% endif %}
+</div>

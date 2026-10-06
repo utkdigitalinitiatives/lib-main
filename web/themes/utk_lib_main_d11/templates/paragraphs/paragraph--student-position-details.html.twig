@@ -1,0 +1,32 @@
+{#
+/**
+ * @file
+ * Position details for a student posting.
+ */
+#}
+
+<div{{ attributes.addClass('position-posting-details') }}>
+    {% if not paragraph.field_student_job_category.isEmpty %}
+        <div class="row py-1">
+            <p class="fs-6 fw-semibold py-0 my-0">Position Type</p>
+            <div>{{ content.field_student_job_category|render|striptags|trim }}</div>
+        </div>
+    {% endif %}
+
+    {% if not paragraph.field_hours_per_week.isEmpty or not paragraph.field_salary_details.isEmpty %}
+        <div class="row py-1">
+            {% if not paragraph.field_hours_per_week.isEmpty %}
+                <div class="col-sm-6">
+                    <p class="fs-6 fw-semibold py-0 my-0">Hours Per Week</p>
+                    {{ content.field_hours_per_week }}
+                </div>
+            {% endif %}
+            {% if not paragraph.field_salary_details.isEmpty %}
+                <div class="col-sm-6">
+                    <p class="fs-6 fw-semibold py-0 my-0">Pay Rate</p>
+                    {{ content.field_salary_details }}
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+</div>

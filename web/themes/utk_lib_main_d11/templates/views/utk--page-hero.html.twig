@@ -22,8 +22,10 @@
 {% set image_alt = image_alt|default('') %}
 {% set responsive_image_base = responsive_image_base|default('') %}
 {% set show_breadcrumb = show_breadcrumb is defined ? show_breadcrumb : true %}
+{% set current_path_segments = path('<current>')|trim('/')|split('/') %}
+{% set has_nested_breadcrumb = current_path_segments|length > 1 %}
 
-<section class="position-relative utk-page-hero {{ hero_size_class }} overflow-hidden">
+<section class="position-relative utk-page-hero {{ hero_size_class }}{% if has_nested_breadcrumb %} utk-page-hero--nested{% endif %} overflow-hidden">
   <div class="black-overlay w-100 h-100 position-absolute top-0 start-0 object-fit-cover z-1"></div>
   {% if hero_image_markup|default('')|trim is not empty %}
     {{ hero_image_markup }}
@@ -47,12 +49,12 @@
   {% endif %}
 
   {% if show_breadcrumb %}
-    <div class="position-absolute top-0 start-0 w-100 z-2 pt-1 pb-lg-4 pb-sm-n2 px-3">
+    <div class="utk-page-hero__breadcrumb">
       {% include "@utk_lib_main_d11/templates/navigation/utk--breadcrumb.html.twig" %}
     </div>
   {% endif %}
 
-  <div class="container-fluid text-center position-relative z-2">
+  <div class="utk-page-hero__content container-fluid text-center position-relative z-2">
     {{ title_prefix|default('') }}
     <h1 class="utk-page-hero__title text-white m-0">{{ title }}</h1>
     {{ title_suffix|default('') }}

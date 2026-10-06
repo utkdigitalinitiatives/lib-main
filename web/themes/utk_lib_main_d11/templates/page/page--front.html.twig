@@ -20,7 +20,7 @@
  * - utk--campus-footer-subfooter.html.twig: Renders the subfooter for the campus footer.
  *
  * Dynamic content:
- * - drupal_block('views_block:library_hours-hours_block'): Displays the library hours block.
+ * - drupal_block('views_block:homepage_hours-hours_block'): Displays the homepage hours block.
  * - drupal_view('spotlight_collection', 'spotlight_block'): Displays the spotlight collection block.
  * - drupal_view('news_view', 'news_block'): Displays the recent news block.
  * - drupal_view('events_view', 'events_block'): Displays the upcoming events block.
@@ -54,8 +54,7 @@
 
             <div class="utk-homepage-subtle-overlay">
                 <section class='container-fluid  py-5 my-4'>
-                {# TODO: uncomment once the view has been added #}
-                    {# {{ drupal_block('views_block:homepage_hours-hours_block', wrapper=false)}} #}
+                    {{ drupal_block('views_block:homepage_hours-hours_block', wrapper: false) }}
                 </section>
 
                 <section class='container-fluid pb-5 my-5'>
