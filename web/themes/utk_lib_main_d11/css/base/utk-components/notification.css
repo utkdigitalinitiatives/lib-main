@@ -1,58 +1,100 @@
 .notification-wrapper {
+  --notification-accent: var(--utk-logo--smokey);
+
+  position: relative;
+  display: flex;
+  align-items: center;
   width: 100%;
-  max-width: 100vw;
-  margin: 0.5rem auto;
-  border-radius: 0.8rem;
-  box-shadow: 0 2px 8px rgb(from var(--utk-black) r g b / 0.04);
+  min-height: 2.5rem;
+  padding: 0.4375rem 4rem 0.4375rem clamp(1rem, 2vw, 2.5rem);
+  margin: 0;
+  color: var(--utk-logo--smokey);
+  background-color: rgb(from var(--notification-accent) r g b / 0.1);
+  border: 1.5px solid rgb(from var(--notification-accent) r g b / 0.8);
+  border-left-width: 3px;
+  border-radius: 0;
+}
+
+.notification-content {
+  display: flex;
+  align-items: baseline;
+  gap: 1.25rem;
+  min-width: 0;
+  line-height: 1.35;
+}
+
+.notification-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
 }
 
 .notification-text {
-  display: block;
-  max-width: 1200px;
-  padding-bottom: 0.5rem;
-  margin-right: auto;
-  margin-left: auto;
-  text-align: left;
+  min-width: 0;
+}
+
+.notification-text > :last-child,
+.notification-text p:last-child {
+  margin-bottom: 0;
+}
+
+.notification-wrapper a {
+  color: var(--utk-logo--smokey);
+  font-weight: 600;
+  text-underline-offset: 0.15em;
+}
+
+.notification-wrapper .notification-close {
+  position: absolute;
+  top: 50%;
+  right: clamp(1rem, 2vw, 2.5rem);
+  width: 0.75rem;
+  height: 0.75rem;
+  padding: 0.5rem;
+  background-size: 0.75rem auto;
+  opacity: 0.55;
+  transform: translateY(-50%);
+}
+
+.notification-wrapper .notification-close:hover {
+  opacity: 0.8;
+}
+
+.notification-wrapper .notification-close:focus-visible {
+  opacity: 1;
 }
 
 .notification-critical {
-  color: var(--utk-logo--smokey);
-  background-color: var(--utk-danger);
-}
-
-.notification-critical a {
-  color: var(--utk-logo--smokey);
-  text-decoration: underline;
-}
-
-.notification-critical path {
-  fill: #8a0303;
+  --notification-accent: #d64545;
 }
 
 .notification-standard {
-  color: var(--utk-logo--smokey);
-  background-color: var(--utk-standard);
-}
+  --notification-accent: #3a5311;
 
-.notification-standard a {
-  color: var(--utk-logo--smokey);
-  text-decoration: underline;
-}
-
-.notification-standard path {
-  fill: #3a5311;
+  background-color: rgb(from var(--utk-standard) r g b / 0.24);
 }
 
 .notification-warning {
-  color: var(--utk-logo--smokey);
-  background-color: var(--utk-warning);
+  --notification-accent: var(--utk-logo--orange);
 }
 
-.notification-warning a {
-  color: var(--utk-logo--smokey);
-  text-decoration: underline;
-}
+@media (max-width: 47.99rem) {
+  .notification-wrapper {
+    align-items: flex-start;
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+  }
 
-.notification-warning path {
-  fill: #9a7b0c;
+  .notification-content {
+    display: block;
+  }
+
+  .notification-title {
+    display: block;
+    margin-bottom: 0.125rem;
+  }
+
+  .notification-wrapper .notification-close {
+    top: 0.625rem;
+    transform: none;
+  }
 }
