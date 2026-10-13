@@ -1,0 +1,27 @@
+uuid: 2f77dc30-cbf2-4273-b597-10fbfb3f38a8
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: spotlight_queue
+label: 'Spotlight Queue'
+description: 'Order for spotlight items on homepage'
+handler: simple
+handler_configuration: {  }
+entity_settings:
+  target_type: node
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      spotlight: spotlight
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+queue_settings:
+  min_size: 0
+  max_size: 6
+  act_as_queue: false
+  reverse: false

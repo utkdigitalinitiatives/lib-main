@@ -1,0 +1,17 @@
+{
+    "_hash": "bdcd6f9c0244b68ae67a9c9902406da908753448cdd9d07749d16ddb8b290bc7",
+    "patches": {
+        "drupal/linkchecker": [
+            {
+                "package": "drupal/linkchecker",
+                "description": "Support string entity IDs in linkchecker_index (3203329)",
+                "url": "patches/linkchecker-3203329.patch",
+                "sha256": "bf556b00383d7529e2412cddcda0ba6eb99c4f24c7b30965e05a4a25f27c47d9",
+                "depth": 1,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ]
+    }
+}
