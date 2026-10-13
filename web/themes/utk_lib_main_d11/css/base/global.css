@@ -115,8 +115,9 @@
   overflow: hidden;
 }
 
-.utk--cards:hover {
-  box-shadow: 0 5px 20px rgb(247 127 0 / 0.4);
+.utk--cards:hover,
+.utk--cards:focus-visible {
+  box-shadow: 0 4px 12px rgb(from var(--utk-logo--orange) r g b / 0.14);
   border: 3px solid var(--utk-logo--orange);
 }
 

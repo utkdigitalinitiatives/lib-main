@@ -140,47 +140,67 @@ a:hover .utk--hours-line {
     }
 }
 
-.utk-homepage-subtle-overlay .utk-card {
+.utk-homepage-news-events-card {
     display: flex;
     flex: 1 1 auto;
     flex-direction: column;
     height: 100%;
     width: 100%;
     margin-bottom: 0;
-    border-radius: 12px;
-    border-right-width: 2px;
-    border-bottom-width: 2px;
-    border-left-width: 2px;
-    border-right-color: rgb(from var(--utk-logo--orange) r g b / 0.22);
-    border-bottom-color: rgb(from var(--utk-logo--orange) r g b / 0.22);
-    border-left-color: rgb(from var(--utk-logo--orange) r g b / 0.22);
-    box-shadow: 0 18px 38px rgb(from var(--utk-black) r g b / 0.1),
-        0 6px 16px rgb(from var(--utk-black) r g b / 0.08),
-        0 1px 3px rgb(from var(--utk-black) r g b / 0.05);
+    border: 1px solid rgb(from var(--utk-black) r g b / 0.18);
+    border-radius: 0.875rem;
+    background-color: var(--utk-logo--white);
+    box-shadow:
+        0.35rem 0.35rem 0 rgb(from var(--utk-logo--orange) r g b / 0.07),
+        0 0.25rem 0.75rem rgb(from var(--utk-black) r g b / 0.05);
 }
 
-.utk-homepage-subtle-overlay .utk-card-header {
-    padding: 0.95rem 1.21rem 0.87rem;
-    border-bottom-right-radius: 18px;
-    border-bottom-left-radius: 18px;
+.utk-homepage-news-events-card:hover {
+    box-shadow:
+        0.35rem 0.35rem 0 rgb(from var(--utk-logo--orange) r g b / 0.07),
+        0 0.25rem 0.75rem rgb(from var(--utk-black) r g b / 0.05);
 }
 
-.utk-homepage-subtle-overlay .utk-news-events-block {
+.utk-homepage-news-events-card .utk-card-header {
+    padding: 1.25rem 1.5rem 0.625rem;
+    background: var(--utk-logo--white);
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.utk-homepage-news-events-card .utk-card-header h3 {
+    display: inline-block;
+    width: fit-content;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid var(--utk-logo--orange);
+}
+
+.utk-homepage-news-events-card .utk-card-body {
+    padding: 0.625rem 1.5rem 1.25rem;
+}
+
+.utk-homepage-news-events-card .utk-news-events-block {
     display: flex;
     flex: 1 1 auto;
     flex-direction: column;
     height: 100%;
 }
 
-.utk-homepage-subtle-overlay .utk-news-events-block> :last-child {
+.utk-homepage-news-events-card .utk-news-events-block > :last-child {
     margin-top: auto;
+}
+
+.utk-homepage-news-events-more-link {
+    font-size: 1.0625rem;
+    font-weight: 600;
 }
 
 .utk-spotlight-section {
     border-radius: 0.75rem;
     border: 1px solid rgb(from var(--utk-logo--white) r g b / 0.15);
     padding: 2rem 1rem;
-    box-shadow: 0 0px 16px rgb(from var(--utk-black) r g b / 0.1);
+    box-shadow: 0 2px 12px rgb(from var(--utk-black) r g b / 0.06);
     background: linear-gradient(135deg,
             rgb(255 130 0 / 0.03) 0%,
             rgb(from var(--utk-black) r g b / 0.04) 100%);
