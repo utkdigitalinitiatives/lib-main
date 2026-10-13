@@ -1,6 +1,10 @@
+{% set webform_title = drupal_title() %}
 <div class='container-fluid py-2 webform-title'>
-    <p class='d-flex justify-content-center py-3'>
-        {{ drupal_title() }}
+    {% if is_standalone_webform %}
+        <h1 class='visually-hidden'>{{ webform_title }}</h1>
+    {% endif %}
+    <p class='d-flex justify-content-center py-3'{% if is_standalone_webform %} aria-hidden='true'{% endif %}>
+        {{ webform_title }}
     </p>
 </div>
 <div class='container-fluid d-lg-flex justify-content-center utk-article text-smokey link-link utk--webform mx-2 px-2'>
