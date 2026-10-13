@@ -6,6 +6,7 @@ dependencies:
     - node
 id: homepage_hours_queue
 label: 'Homepage Hours Queue'
+description: ''
 handler: simple
 handler_configuration: {  }
 entity_settings:
@@ -13,9 +14,9 @@ entity_settings:
   handler: 'default:node'
   handler_settings:
     target_bundles:
-      hours: hours
+      department: department
     sort:
-      field: _none
+      field: title
       direction: ASC
     auto_create: false
     auto_create_bundle: ''
