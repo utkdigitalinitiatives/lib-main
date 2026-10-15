@@ -1,0 +1,44 @@
+uuid: 2e3a198f-3384-4904-84f0-0548ec3c21dd
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.resource_link.field_card_group
+    - field.field.node.resource_link.field_card_page
+    - field.field.node.resource_link.field_external_link
+    - field.field.node.resource_link.field_image
+    - field.field.node.resource_link.field_link
+    - field.field.node.resource_link.field_summary
+    - node.type.resource_link
+  module:
+    - user
+id: node.resource_link.teaser
+targetEntityType: node
+bundle: resource_link
+mode: teaser
+content:
+  field_image:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_summary:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  field_card_group: true
+  field_card_page: true
+  field_external_link: true
+  field_link: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

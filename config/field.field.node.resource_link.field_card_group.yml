@@ -1,0 +1,21 @@
+uuid: a58dc29b-1bb7-4be3-bdfc-e04c27842d2b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_card_group
+    - node.type.resource_link
+  module:
+    - options
+id: node.resource_link.field_card_group
+field_name: field_card_group
+entity_type: node
+bundle: resource_link
+label: 'Card Group'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string
