@@ -1,0 +1,27 @@
+uuid: 9e05fe2b-ed4e-4ae4-8a44-bb9daa5f0fd5
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: login_queue
+label: 'Login Queue'
+description: ''
+handler: simple
+handler_configuration: {  }
+entity_settings:
+  target_type: node
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      resource_link: resource_link
+    sort:
+      field: title
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+queue_settings:
+  min_size: 0
+  max_size: 0
+  act_as_queue: false
+  reverse: false

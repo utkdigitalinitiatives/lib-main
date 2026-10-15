@@ -1,0 +1,27 @@
+uuid: c821883a-87f0-413f-a1b0-5c003ae86cb9
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: unique_resources_queue
+label: 'Unique Resources Queue'
+description: ''
+handler: simple
+handler_configuration: {  }
+entity_settings:
+  target_type: node
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      resource_link: resource_link
+    sort:
+      field: title
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+queue_settings:
+  min_size: 0
+  max_size: 0
+  act_as_queue: false
+  reverse: false
