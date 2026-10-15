@@ -44,6 +44,7 @@
         "drupal/pathauto": "^1.15",
         "drupal/postmark": "^1.5",
         "drupal/redirect": "^1.13",
+        "drupal/samlauth": "^3.14",
         "drupal/search_api_autocomplete": "^1.11",
         "drupal/search_api_solr": "^4.3",
         "drupal/tamper": "^1.0@beta",
