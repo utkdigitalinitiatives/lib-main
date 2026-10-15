@@ -44,8 +44,7 @@
 .utk--webform input[type=url],
 .utk--webform input[type=number],
 .utk--webform input[type=email],
-.utk--webform input[type=file],
-.utk--webform input[type="date"] {
+.utk--webform input[type=file] {
     display: block;
     width: 100%;
     padding: 0.375rem 0.75rem;
@@ -60,6 +59,24 @@
     background-clip: padding-box;
     border: var(--bs-border-width) solid var(--bs-border-color);
     border-radius: var(--bs-border-radius);
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.utk--webform input[type="date"] {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--bs-body-color);
+    background-color: var(--bs-body-bg);
+    background-clip: padding-box;
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    border-radius: var(--bs-border-radius);
+    -webkit-appearance: auto;
+    -moz-appearance: auto;
+    appearance: auto;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
@@ -305,18 +322,6 @@
     border-inline-end-width: var(--bs-border-width);
     border-radius: 0;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-.utk--webform input[type="date"] {
-    background: #fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png) 95% no-repeat;
-}
-
-.utk--webform input[type="date"]::-webkit-inner-spin-button {
-    display: none;
-}
-
-.utk--webform input[type="date"]::-webkit-calendar-picker-indicator {
-    opacity: 0;
 }
 
 .utk--webform :is(.form-item, .form-item--radios, .form-item--checkboxes, .form-actions, .form-check) {
