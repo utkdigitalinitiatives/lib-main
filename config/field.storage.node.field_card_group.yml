@@ -1,0 +1,27 @@
+uuid: a46122e2-a415-4330-ba6b-3c8996c4c8ff
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_card_group
+field_name: field_card_group
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: default
+      label: Default
+    -
+      value: online_exhibits
+      label: 'Online Exhibits'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
