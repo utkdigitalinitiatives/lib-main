@@ -1,0 +1,77 @@
+diff --git a/linkchecker.install b/linkchecker.install
+--- a/linkchecker.install
++++ b/linkchecker.install
+@@ -31,7 +31,8 @@ function linkchecker_schema() {
+     'description' => 'Stores entities from which links where extracted.',
+     'fields' => [
+       'entity_id' => [
+-        'type' => 'int',
++        'type' => 'varchar_ascii',
++        'length' => 255,
+         'not null' => TRUE,
+         'description' => 'Entity ID.',
+       ],
+@@ -218,3 +219,48 @@ function linkchecker_update_8007(&$sandbox) {
+     return t('The entity_id field storage definition successfully uninstalled.');
+   }
+ }
++
++/**
++ * Change linkchecker_index.entity_id field type.
++ */
++function linkchecker_update_8008(&$sandbox) {
++  $spec = [
++    'type' => 'varchar_ascii',
++    'length' => 255,
++    'not null' => TRUE,
++    'description' => 'Entity ID.',
++  ];
++
++  $schema = Database::getConnection()->schema();
++  $schema->changeField('linkchecker_index', 'entity_id', 'entity_id', $spec);
++}
++
++/**
++ * Change linkcheckerlink parent_entity_id field type to string.
++ */
++function linkchecker_update_8009() {
++  $key_value = \Drupal::keyValue('entity.storage_schema.sql');
++  $key = 'linkcheckerlink.field_schema_data.parent_entity_id';
++  $data = $key_value->get($key);
++  $spec = $data['linkchecker_link']['fields']['parent_entity_id'] ?? ['not null' => TRUE];
++  unset($spec['size'], $spec['unsigned']);
++  $spec['type'] = 'varchar';
++  $spec['length'] = 255;
++
++  Database::getConnection()->schema()->changeField('linkchecker_link', 'parent_entity_id', 'parent_entity_id', $spec);
++
++  if ($data) {
++    $data['linkchecker_link']['fields']['parent_entity_id'] = $spec;
++    $key_value->set($key, $data);
++  }
++
++  $definition = BaseFieldDefinition::create('string')
++    ->setName('parent_entity_id')
++    ->setTargetEntityTypeId('linkcheckerlink')
++    ->setProvider('linkchecker')
++    ->setLabel(new TranslatableMarkup('Entity ID'))
++    ->setDescription(new TranslatableMarkup('The entity id of the entity in which link was found.'))
++    ->setRequired(TRUE);
++  \Drupal::service('entity.last_installed_schema.repository')
++    ->setLastInstalledFieldStorageDefinition($definition);
++}
+diff --git a/src/Entity/LinkCheckerLink.php b/src/Entity/LinkCheckerLink.php
+--- a/src/Entity/LinkCheckerLink.php
++++ b/src/Entity/LinkCheckerLink.php
+@@ -323,9 +323,9 @@ class LinkCheckerLink extends ContentEntityBase implements LinkCheckerLinkInterf
+       ->setRequired(TRUE);
+ 
+     // Entity id related to the link.
+-    $fields['parent_entity_id'] = BaseFieldDefinition::create('integer')
++    $fields['parent_entity_id'] = BaseFieldDefinition::create('string')
+       ->setLabel(new TranslatableMarkup('Entity ID'))
+-      ->setDescription(new TranslatableMarkup('The entity id integer of the entity in which link was found.'))
++      ->setDescription(new TranslatableMarkup('The entity id of the entity in which link was found.'))
+       ->setRequired(TRUE);
+ 
+     // Entity field related to the link.

@@ -16,6 +16,7 @@
     ],
     "require": {
         "composer/installers": "^2.3",
+        "cweagans/composer-patches": "^2.0",
         "drupal/antibot": "^2.0",
         "drupal/az_blob_fs": "^3.0",
         "drupal/core-composer-scaffold": "^11.3",
@@ -62,6 +63,7 @@
     "config": {
         "allow-plugins": {
             "composer/installers": true,
+            "cweagans/composer-patches": true,
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "drupal/core-composer-scaffold": true,
             "drupal/core-project-message": true,
@@ -79,6 +81,11 @@
         }
     },
     "extra": {
+        "patches": {
+            "drupal/linkchecker": {
+                "Support string entity IDs in linkchecker_index (3203329)": "patches/linkchecker-3203329.patch"
+            }
+        },
         "drupal-scaffold": {
             "locations": {
                 "web-root": "web/"

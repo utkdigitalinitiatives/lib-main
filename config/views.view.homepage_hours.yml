@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - entityqueue.entity_queue.homepage_hours_queue
     - field.storage.node.field_building_and_room_number
     - field.storage.node.field_close
     - field.storage.node.field_department_featured_image
@@ -12,6 +13,7 @@ dependencies:
     - field.storage.node.field_status
     - node.type.department
   module:
+    - entityqueue
     - node
     - user
 id: homepage_hours
@@ -548,21 +550,21 @@ display:
         options: {  }
       empty: {  }
       sorts:
-        title:
-          id: title
+        entityqueue_relationship:
+          id: entityqueue_relationship
           table: node_field_data
-          field: title
+          field: entityqueue_relationship
           relationship: none
           group_type: group
           admin_label: ''
           entity_type: node
-          entity_field: title
-          plugin_id: standard
+          plugin_id: entity_queue_position
           order: ASC
           expose:
             label: ''
             field_identifier: ''
           exposed: false
+          queue_relationship: null
       arguments: {  }
       filters:
         status:
@@ -607,6 +609,18 @@ display:
           admin_label: 'field_hours: Content'
           plugin_id: standard
           required: true
+        entityqueue_relationship:
+          id: entityqueue_relationship
+          table: node_field_data
+          field: entityqueue_relationship
+          relationship: none
+          group_type: group
+          admin_label: 'Content queue'
+          entity_type: node
+          plugin_id: entity_queue
+          required: true
+          limit_queue:
+            - homepage_hours_queue
       header: {  }
       footer: {  }
       display_extenders: {  }
@@ -618,6 +632,7 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
+        - 'config:entityqueue.entity_queue.homepage_hours_queue'
         - 'config:field.storage.node.field_building_and_room_number'
         - 'config:field.storage.node.field_close'
         - 'config:field.storage.node.field_department_featured_image'
@@ -641,6 +656,7 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
+        - 'config:entityqueue.entity_queue.homepage_hours_queue'
         - 'config:field.storage.node.field_building_and_room_number'
         - 'config:field.storage.node.field_close'
         - 'config:field.storage.node.field_department_featured_image'
