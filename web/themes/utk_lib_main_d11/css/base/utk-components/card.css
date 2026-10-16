@@ -147,21 +147,37 @@
 }
 
 .utk-card-surface,
-.utk-sidebar-card {
+.utk-sidebar-card,
+.utk-portal-card,
+.utk-contact-card,
+.utk-details-card {
   width: 100%;
   margin: 0 auto;
   border-radius: 12px;
+  overflow: hidden;
+}
+
+.utk-card-surface,
+.utk-sidebar-card,
+.utk-portal-card,
+.utk-contact-card,
+.utk-details-card,
+.utk-card-background--warm {
   background: linear-gradient(
     180deg,
     rgb(from var(--utk-logo--white) r g b / 0.995) 0%,
     rgb(from var(--utk-logo--white) r g b / 0.985) 58%,
     rgb(from var(--utk-logo--orange) r g b / 0.035) 100%
   );
-  overflow: hidden;
 }
 
 .utk-card-surface {
   border: 1px solid rgb(from var(--utk-black) r g b / 0.16);
+}
+
+.utk-card-border--subtle {
+  border: 1px solid rgb(from var(--utk-black) r g b / 0.18);
+  border-radius: 0.875rem;
 }
 
 .utk-sidebar-card {
@@ -197,6 +213,24 @@
   box-shadow: 0.35rem 0.35rem 0.9rem rgb(from var(--utk-black) r g b / 0.09);
 }
 
+.utk-portal-card,
+.utk-contact-card,
+.utk-details-card {
+  border: 0.7px solid rgb(from var(--utk-logo--orange) r g b / 0.5);
+  border-top: 2px solid var(--utk-logo--orange);
+}
+
+.utk-portal-card,
+.utk-contact-card,
+.utk-details-card,
+.utk-card-shadow--offset {
+  box-shadow: 0.35rem 0.35rem 0.9rem rgb(from var(--utk-black) r g b / 0.09);
+}
+
+.utk-job-card__meta {
+  border: 0.5px solid var(--utk-logo--smokey);
+}
+
 .utk-card-header--small-section.utk-card-header--minimal {
   padding: 1.25rem 1.5rem 0.875rem;
   border: 0;
@@ -207,7 +241,72 @@
 
 .utk-card-body--compact {
   padding: 0 1.5rem 1.25rem;
+}
+
+.utk-contact-card__body,
+.utk-details-card__body {
   background-color: transparent;
+  font-size: 0.95rem;
+}
+
+.utk-contact-card__label,
+.utk-details-card__label {
+  font-size: inherit;
+}
+
+.utk-details-card__status {
+  padding: 0.44rem 0.88rem;
+  font-size: 0.66em;
+  font-weight: 500;
+}
+
+.utk-details-card__status--reservable {
+  color: var(--utk-notification-standard);
+  background-color: var(--utk-notification-standard-background);
+  border: 1px solid rgb(from var(--utk-notification-standard) r g b / 0.8);
+}
+
+.utk-details-card__status--not-reservable {
+  color: var(--utk-notification-critical);
+  background-color: var(--utk-notification-critical-background);
+  border: 1px solid rgb(from var(--utk-notification-critical) r g b / 0.8);
+}
+
+.utk-contact-card__body a {
+  color: var(--utk-link);
+  text-decoration: none;
+}
+
+.utk-contact-card__body a:hover,
+.utk-contact-card__body a:focus-visible,
+.utk-contact-card__body a:active {
+  color: var(--utk-link);
+  text-decoration: none;
+}
+
+.utk-contact-card .utk-service-contact__link {
+  background-image: none;
+}
+
+.utk-contact-card .utk-service-contact__link .utk-service-contact__title {
+  background-image: linear-gradient(
+    var(--utk-logo--orange),
+    var(--utk-logo--orange)
+  );
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 0 1px;
+  transition: background-size 0.2s ease-out;
+}
+
+.utk-contact-card .utk-service-contact__link .utk-service-contact__title {
+  display: inline;
+}
+
+.utk-contact-card .utk-service-contact__link:hover .utk-service-contact__title,
+.utk-contact-card .utk-service-contact__link:focus-visible .utk-service-contact__title,
+.utk-contact-card .utk-service-contact__link:active .utk-service-contact__title {
+  background-size: 100% 1px;
 }
 
 .utk-about-sidebar-card .field--name-field-parent-page,
@@ -281,38 +380,13 @@
   line-height: 1.2;
 }
 
-.utk-portal-card {
-  width: 100%;
-  margin: 0 auto;
-  border-radius: 12px;
-  border-color: rgb(from var(--utk-black) r g b / 0.11);
-  border-right-width: 2px;
-  border-bottom-width: 2px;
-  border-left-width: 2px;
-  border-right-color: rgb(from var(--utk-logo--orange) r g b / 0.22);
-  border-bottom-color: rgb(from var(--utk-logo--orange) r g b / 0.22);
-  border-left-color: rgb(from var(--utk-logo--orange) r g b / 0.22);
-  box-shadow: 0 10px 24px rgb(from var(--utk-black) r g b / 0.06),
-    0 2px 6px rgb(from var(--utk-black) r g b / 0.05);
-  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
-}
-
 .utk-portal-card-column--featured {
   padding-top: 0.85rem;
   padding-bottom: 0.85rem;
 }
 
-.utk-portal-card:hover,
-.utk-portal-card:focus-within {
-  transform: translateY(-7px) scale(1.01);
-  border-color: rgb(from var(--utk-logo--orange) r g b / 0.28);
-  box-shadow: 0 24px 44px rgb(from var(--utk-black) r g b / 0.18),
-    0 10px 20px rgb(from var(--utk-black) r g b / 0.1),
-    0 0 22px rgb(from var(--utk-logo--orange) r g b / 0.24);
-}
-
-.utk-portal-card .utk-card-header {
-  padding: 0.78rem 1.85rem 0.72rem;
+.utk-card-header.utk-portal-card__header {
+  padding: 1.5rem 1.5rem 0.875rem;
 }
 
 .utk-portal-card__header-row {
@@ -322,10 +396,19 @@
   gap: 1.5rem;
 }
 
-.utk-portal-card .utk-card-header p {
-  font-size: clamp(2rem, 2.4vw, 2.45rem);
+.utk-portal-card__title {
+  width: fit-content;
   line-height: 1.1;
   text-align: left;
+}
+
+.utk-portal-card__title::after {
+  content: "";
+  display: block;
+  width: calc(100% + 1rem);
+  height: 0;
+  margin-top: 0.4rem;
+  border-top: 1px solid var(--utk-logo--orange);
 }
 
 .utk-portal-card .utk-card-header a {
@@ -350,23 +433,20 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.35rem 1.83rem;
   align-items: start;
-  padding: 1.11rem 1.57rem 1.02rem;
+  padding: 0 1.5rem 1.25rem;
+  background-color: transparent;
 }
 
 .utk-portal-card__body-grid > * {
   min-width: 0;
 }
 
-.utk-portal-card__body-grid .mx-2 {
-  margin-right: 0 !important;
-  margin-left: 0 !important;
-}
-
 .utk-portal-card__item-row {
+  display: flex;
+  align-items: flex-start;
   gap: 0.35rem;
   min-height: 0;
-  padding-top: 0.31rem !important;
-  padding-bottom: 0.31rem !important;
+  padding: 0.31rem 0;
 }
 
 .utk-portal-card__item-row .portal-icon {
@@ -375,8 +455,8 @@
   margin-top: 0.05rem;
 }
 
-.utk-portal-card__item-row .ps-2 {
-  padding-left: 0.42rem !important;
+.utk-portal-card__item-content {
+  padding-left: 0.42rem;
 }
 
 .utk-portal-card__item-row a {
@@ -386,8 +466,8 @@
 }
 
 @media (max-width: 767px) {
-  .utk-portal-card .utk-card-header {
-    padding: 0.72rem 1.15rem 0.66rem;
+  .utk-card-header.utk-portal-card__header {
+    padding: 1.25rem 1.15rem 0.75rem;
   }
 
   .utk-portal-card__header-row {
@@ -403,7 +483,7 @@
   .utk-portal-card__body-grid {
     grid-template-columns: 1fr;
     gap: 0.2rem;
-    padding: 0.94rem 0.98rem 0.85rem;
+    padding: 0 1.15rem 1rem;
   }
 
   .utk-grid-card__media {

@@ -21,7 +21,7 @@
     {% set description = description|slice(0, description_limit)|split(' ')|slice(0, -1)|join(' ') ~ '…' %}
 {% endif %}
 
-<div{{ attributes.addClass('container-fluid', 'utk-job-posting', 'p-4', 'mb-4', 'rounded', 'shadow-sm', 'border') }}>
+<div{{ attributes.addClass('container-fluid', 'utk-job-posting', 'utk-card-border--subtle', 'utk-card-background--warm', 'utk-card-shadow--offset', 'p-4', 'mb-4') }}>
     <div class="row mb-3">
         <div class="col-12">
             {{ title_prefix }}
@@ -50,7 +50,7 @@
 
         {% if position_type or position_department %}
             <div class="col-lg-4">
-                <div class="bg-light p-3 rounded mb-3 utk-search-selector">
+                <div class="utk-job-card__meta bg-light p-3 rounded mb-3 utk-search-selector">
                     {% if position_type %}
                         <div class="mb-3">
                             <h3 class="fs-6 fw-bold text-secondary mb-1">Position Type</h3>
@@ -62,7 +62,7 @@
                         <div class="mb-2">
                             <h3 class="fs-6 fw-bold text-secondary mb-1">Department</h3>
                             <div class="job-detail-value">
-                                <a href="{{ path('entity.node.canonical', {'node': position_department.id}) }}">{{ position_department.label }}</a>
+                                <a href="{{ path('entity.node.canonical', {node: position_department.id}) }}">{{ position_department.label }}</a>
                             </div>
                         </div>
                     {% endif %}

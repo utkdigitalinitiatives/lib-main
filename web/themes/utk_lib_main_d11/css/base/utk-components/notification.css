@@ -64,13 +64,15 @@
 }
 
 .notification-critical {
-  --notification-accent: #d64545;
+  --notification-accent: var(--utk-notification-critical);
+
+  background-color: var(--utk-notification-critical-background);
 }
 
 .notification-standard {
-  --notification-accent: #3a5311;
+  --notification-accent: var(--utk-notification-standard);
 
-  background-color: rgb(from var(--utk-standard) r g b / 0.24);
+  background-color: var(--utk-notification-standard-background);
 }
 
 .notification-warning {

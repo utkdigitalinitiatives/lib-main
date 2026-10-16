@@ -9,28 +9,14 @@
  */
 #}
 
-{% set profile_media = node.field_profile_picture.entity|default(null) %}
-{% if profile_media and profile_media.field_media_image is defined %}
-  {% set image_src = node.field_profile_picture|file_url %}
-  {% set image_alt = profile_media.field_media_image.alt|default('') %}
-{% else %}
-  {% set image_src = '/themes/utk_lib_main_d11/images/placeholder-avatar.png' %}
-  {% set image_alt = '' %}
-{% endif %}
 {% set is_public_profile = node.field_public_profile.value == '1' %}
 
 {% if is_public_profile %}
-<a href="{{ url }}" aria-label="View {{ node.label }}'s profile">
+<a class="utk-service-contact__link" href="{{ url }}" aria-label="View {{ node.label }}'s profile">
 {% endif %}
   <div class="row g-0 d-flex align-items-center utk-service-contact{% if is_public_profile %} utk-contact-hover{% endif %}">
-    <div class="col-4 d-flex justify-content-center pe-1">
-      <img class="img-fluid rounded-circle"
-           src="{{ image_src }}"
-           alt="{{ image_alt }}"
-           loading="lazy">
-    </div>
-    <div class="col-8 ps-1">
-      <div class="fw-semibold">{{ node.label }}</div>
+    <div class="col-12 px-0">
+      <div class="utk-service-contact__title fw-semibold">{{ node.label }}</div>
       {% if not node.field_position.isEmpty %}
         <div class="text-muted small">{{ node.field_position.value }}</div>
       {% endif %}

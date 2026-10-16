@@ -147,8 +147,6 @@ a:hover .utk--hours-line {
     height: 100%;
     width: 100%;
     margin-bottom: 0;
-    border: 1px solid rgb(from var(--utk-black) r g b / 0.18);
-    border-radius: 0.875rem;
     background-color: var(--utk-logo--white);
     box-shadow:
         0.35rem 0.35rem 0 rgb(from var(--utk-logo--orange) r g b / 0.07),
