@@ -4,20 +4,17 @@
   border-radius: 10px;
   background: var(--utk-logo--white);
   overflow: hidden;
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
   box-shadow: 0 10px 24px rgb(from var(--utk-black) r g b / 0.08),
     0 2px 6px rgb(from var(--utk-black) r g b / 0.06);
-  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
 }
 
 .utk-grid-card:hover,
 .utk-grid-card:focus-within {
-  transform: translateY(-7px) scale(1.01);
-  border-color: rgb(from var(--utk-logo--orange) r g b / 0.28);
-  box-shadow: 0 24px 44px rgb(from var(--utk-black) r g b / 0.18),
-    0 10px 20px rgb(from var(--utk-black) r g b / 0.1),
-    0 0 22px rgb(from var(--utk-logo--orange) r g b / 0.24);
+  transform: translateY(-4px) scale(1.005);
+  box-shadow: 0.625rem 0.625rem 1.25rem 0.1rem rgb(from var(--utk-black) r g b / 0.28);
 }
 
 .utk-grid-card__link {
@@ -84,11 +81,11 @@
   position: relative;
   z-index: 1;
   margin-top: -10px;
-  padding: 1rem 22px;
+  padding: 1.15rem 22px;
   background: linear-gradient(180deg, rgba(250, 248, 245, 0.98) 0%, rgba(244, 242, 238, 0.96) 100%);
+  border: 0.7px solid rgb(from var(--utk-logo--orange) r g b / 0.5);
   border-top: 3px solid var(--utk-logo--orange);
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-radius: 10px;
   box-shadow: inset 0 1px 0 rgb(from var(--utk-logo--white) r g b / 0.9);
 }
 
@@ -113,9 +110,9 @@
   gap: 0.45rem;
   margin: 0 0 0.15rem;
   color: rgb(from var(--utk-black) r g b / 0.87);
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 600;
-  line-height: 1.3;
+  line-height: 1.35;
 }
 
 .utk-grid-card__title-text {

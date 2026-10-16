@@ -5,9 +5,9 @@
  */
 #}
 
-{% include "@utk_lib_main_d11/templates/views/utk--page-hero.html.twig" with {
-  title: view.title
-} only %}
+{{ include('@utk_lib_main_d11/templates/views/utk--page-hero.html.twig', {
+  title: view.title,
+}, with_context: false) }}
 
 <div class="utk-page-hero-panel utk-page-hero-panel--curved">
   <section class="container-fluid utk-page-hero-panel__section">
@@ -18,7 +18,7 @@
 </div>
 
 <section class="container-fluid my-4 py-3">
-  <div class="utk-card-grid utk-card-grid--three-up">
+  <div class="utk-card-grid utk-card-grid--three-up utk-card-grid--catalog">
     <div class="utk-card-grid__grid max-row-width mx-auto">
       {% if rows %}
         {{ rows }}
