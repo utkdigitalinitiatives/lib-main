@@ -1,0 +1,21 @@
+uuid: 9c61f82f-7091-4ad7-bac5-328b84d3e8a1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_card_page
+    - node.type.resource_link
+  module:
+    - options
+id: node.resource_link.field_card_page
+field_name: field_card_page
+entity_type: node
+bundle: resource_link
+label: 'Card Page'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string
