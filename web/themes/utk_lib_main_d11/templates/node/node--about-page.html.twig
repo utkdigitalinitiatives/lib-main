@@ -47,14 +47,15 @@
 %}
 
 <article {{ attributes.addClass(classes) }} id='utk-article'>
-    {% include "@utk_lib_main_d11/templates/views/utk--page-hero.html.twig" with {
+    {{ include('@utk_lib_main_d11/templates/views/utk--page-hero.html.twig', {
         title: node.label,
         image_src: hero_image_src|default(''),
         responsive_image_base: hero_responsive_image_base|default(''),
-        image_alt: hero_image_alt|default('')
-    } %}
-    <div class='container-fluid d-lg-flex justify-content-center max-row-width text-smokey link-link pe-4'>
-        <div class='col-lg-8'>
+        image_alt: hero_image_alt|default(''),
+    }) }}
+    <div class='container-fluid py-4'>
+    <div class='row max-row-width mx-auto text-smokey link-link'>
+        <div class='col-lg-8 px-4'>
             {% if node.field_include_table_of_contents.value %}
                 <div class='row pe-2 mx-0'>
                     {{ drupal_view('jump_to_section', 'jump_to_block', node.id, related_links) }}
@@ -66,15 +67,15 @@
                 </div>
             </div>
         </div>
-                {% if not node.field_parent_page.isEmpty %}
-            <div class='col-lg-4 pt-3'>
-                <div class='utk-sidebar-card utk-about-sidebar-card'>
-                    <div class='utk-card-header utk-card-header--small-section'>
+            {% if not node.field_parent_page.isEmpty %}
+            <div class='col-lg-4 py-2'>
+                <div class='utk-sidebar-card utk-about-sidebar-card utk-contact-card'>
+                    <div class='utk-card-header utk-card-header--small-section utk-card-header--minimal'>
                         <h2 class='fs-5 mb-0'>
                             Also See
                         </h2>
                     </div>
-                    <div class='utk-card-body link-link utk-search-selector'>
+                    <div class='utk-card-body utk-card-body--compact utk-contact-card__body utk-search-selector-thin'>
                         {{ content.field_parent_page }}
                     </div>
                 </div>

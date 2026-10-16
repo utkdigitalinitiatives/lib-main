@@ -8,6 +8,10 @@
   --utk-danger: rgb(226 124 124 / 0.7);
   --utk-standard: rgb(171 193 120 / 0.7);
   --utk-warning: rgb(244 188 101 / 0.5);
+  --utk-notification-critical: #d64545;
+  --utk-notification-standard: #3a5311;
+  --utk-notification-critical-background: rgb(214 69 69 / 0.1);
+  --utk-notification-standard-background: rgb(171 193 120 / 0.24);
   --utk-teal: rgb(0 117 148);
   --utk-teal-weak: rgb(0 117 148 / 0.55);
   --utk-black: #000;
@@ -376,8 +380,8 @@ a {
 
 /* Underline effect */
 .utk-search-selector a:hover,
-a:focus,
-a:active {
+.utk-search-selector a:focus,
+.utk-search-selector a:active {
   color: var(--hover-color, #ccc2c0);
   text-decoration: none;
   background-size: 100% 2px;
@@ -401,6 +405,27 @@ a:active {
     color 0.1s,
     background-color 0.1s,
     background-size 0.2s ease-out;
+}
+
+.utk-search-selector-thin a {
+  width: fit-content;
+  max-width: 100%;
+  text-decoration: none;
+  background-image: linear-gradient(
+    var(--utk-logo--orange),
+    var(--utk-logo--orange)
+  );
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 0 1px;
+  transition: background-size 0.2s ease-out;
+}
+
+.utk-search-selector-thin a:hover,
+.utk-search-selector-thin a:focus-visible,
+.utk-search-selector-thin a:active {
+  text-decoration: none;
+  background-size: 100% 1px;
 }
 
 .max-row-width {

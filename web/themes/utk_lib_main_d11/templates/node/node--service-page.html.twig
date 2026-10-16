@@ -49,15 +49,17 @@ set classes = [
 {% else %}
     {% set related_links = false %}
 {% endif %}
-
+{% set contact_card_classes = 'utk-sidebar-card utk-service-sidebar-card utk-contact-card' %}
+{% set contact_card_header_classes = 'utk-card-header utk-card-header--small-section utk-card-header--minimal' %}
+{% set contact_card_body_classes = 'utk-card-body utk-card-body--compact utk-contact-card__body utk-search-selector-thin' %}
 
 <article {{ attributes.addClass(classes) }} id='utk-service'>
-    {% include "@utk_lib_main_d11/templates/views/utk--page-hero.html.twig" with {
+    {{ include('@utk_lib_main_d11/templates/views/utk--page-hero.html.twig', {
         title: node.label,
         image_src: hero_image_src|default(''),
         responsive_image_base: hero_responsive_image_base|default(''),
-        image_alt: hero_image_alt|default('')
-    } %}
+        image_alt: hero_image_alt|default(''),
+    }) }}
     <div class='container-fluid utk--inset-box-shadow py-4'>
     <div class='row max-row-width mx-auto'>
         {% if not node.field_service_contacts.isEmpty or not node.field_related_services.isEmpty or not node.field_about_this_service.isEmpty %}
@@ -79,25 +81,25 @@ set classes = [
         {% if not node.field_service_contacts.isEmpty or not node.field_related_services.isEmpty or not node.field_about_this_service.isEmpty %}
         <div class='col-lg-4 py-2'>
             {% if not node.field_service_contacts.isEmpty %}
-                <div class='utk-sidebar-card utk-service-sidebar-card'>
-                    <div class='utk-card-header utk-card-header--small-section'>
+                <div class='{{ contact_card_classes }}'>
+                    <div class='{{ contact_card_header_classes }}'>
                         <h2 class='fs-5 mb-0'>
                             Contacts for this Service
                         </h2>
                     </div>
-                    <div class='utk-card-body utk-search-selector link-link'>
+                    <div class='{{ contact_card_body_classes }}'>
                         {{ content.field_service_contacts }}
                     </div>
                 </div>
             {% endif %}
             {% if not node.field_related_services.isEmpty %}
-                <div class='utk-sidebar-card utk-service-sidebar-card'>
-                    <div class='utk-card-header utk-card-header--small-section'>
+                <div class='{{ contact_card_classes }}'>
+                    <div class='{{ contact_card_header_classes }}'>
                         <h2 class='fs-5 mb-0'>
                             Related Services
                         </h2>
                     </div>
-                    <div class='utk-card-body link-link utk-search-selector'>
+                    <div class='{{ contact_card_body_classes }}'>
                         {{ content.field_related_services }}
                     </div>
                 </div>
