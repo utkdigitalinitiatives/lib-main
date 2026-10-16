@@ -8,6 +8,10 @@
   --utk-card-grid-gap: 1.8rem;
 }
 
+.utk-card-grid--catalog {
+  --utk-card-grid-gap: 2.5rem;
+}
+
 .utk-card-grid__grid,
 .utk-card-grid__grid > .view-content {
   display: grid;
