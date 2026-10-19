@@ -1,0 +1,83 @@
+uuid: 381a72c5-04f3-4778-b9eb-aa90ecb0d767
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_result_display
+    - field.field.node.space.feeds_item
+    - field.field.node.space.field_additional_space_photos
+    - field.field.node.space.field_capacity
+    - field.field.node.space.field_floor
+    - field.field.node.space.field_location
+    - field.field.node.space.field_noise_level
+    - field.field.node.space.field_reservation_link_url
+    - field.field.node.space.field_room_number
+    - field.field.node.space.field_service_catalog
+    - field.field.node.space.field_space_description
+    - field.field.node.space.field_space_featured_photo
+    - field.field.node.space.field_space_type
+    - node.type.space
+  module:
+    - text
+    - user
+id: node.space.search_result_display
+targetEntityType: node
+bundle: space
+mode: search_result_display
+content:
+  field_location:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_room_number:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_service_catalog:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_space_description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_space_type:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  feeds_item: true
+  field_additional_space_photos: true
+  field_capacity: true
+  field_floor: true
+  field_noise_level: true
+  field_reservation_link_url: true
+  field_space_featured_photo: true
+  langcode: true
+  search_api_excerpt: true

@@ -1,10 +1,9 @@
-uuid: c44a1fec-180d-4a36-823c-3d0a04c06b0a
+uuid: c9c7a89c-71b9-439e-8343-b72533d85382
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_about_page_category
-    - field.storage.node.field_sections
+    - core.entity_view_mode.node.search_result_display
     - search_api.server.solr
   module:
     - node
@@ -56,34 +55,44 @@ third_party_settings:
       specific_languages:
         en: '0'
       use_universal_collation: false
-id: about_test
-name: 'about test'
+id: site_search
+name: 'Site Search'
 description: ''
 read_only: false
 field_settings:
-  field_about_page_category:
-    label: 'About page category'
+  changed:
+    label: Changed
     datasource_id: 'entity:node'
-    property_path: field_about_page_category
-    type: text
-    boost: 1.1
+    property_path: changed
+    type: date
     dependencies:
-      config:
-        - field.storage.node.field_about_page_category
-  field_sections:
-    label: Sections
-    datasource_id: 'entity:node'
-    property_path: field_sections
+      module:
+        - node
+  full_page:
+    label: 'Rendered HTML output'
+    property_path: rendered_item
     type: text
-    dependencies:
-      config:
-        - field.storage.node.field_sections
+    configuration:
+      roles:
+        - anonymous
+      view_mode:
+        'entity:node':
+          ':default': search_result_display
+          about_page: ':default'
+          bookplate: ':default'
+          department: ':default'
+          employee_profile: ':default'
+          equipment: ':default'
+          news: ':default'
+          resource_link: ':default'
+          service_page: ':default'
+          space: ':default'
+          webform: ':default'
   title:
     label: Title
     datasource_id: 'entity:node'
     property_path: title
-    type: text
-    boost: 1.5
+    type: string
     dependencies:
       module:
         - node
@@ -93,6 +102,15 @@ datasource_settings:
       default: false
       selected:
         - about_page
+        - bookplate
+        - department
+        - employee_profile
+        - equipment
+        - news
+        - resource_link
+        - service_page
+        - space
+        - webform
     languages:
       default: true
       selected: {  }
@@ -101,6 +119,15 @@ processor_settings:
   aggregated_field: {  }
   auto_aggregated_fulltext_field: {  }
   custom_value: {  }
+  double_quote_workaround:
+    weights:
+      postprocess_query: 0
+      preprocess_index: -15
+      preprocess_query: -15
+    all_fields: true
+    fields:
+      - full_page
+    replacement: '|9999999998|'
   entity_status: {  }
   entity_type: {  }
   highlight:
@@ -110,12 +137,23 @@ processor_settings:
     suffix: '</strong>'
     excerpt: true
     excerpt_always: false
-    excerpt_length: 256
+    excerpt_length: 511
     exclude_fields: {  }
     highlight: always
-    highlight_partial: false
+    highlight_partial: true
   language_with_fallback: {  }
   rendered_item: {  }
+  solr_boost_more_recent:
+    weights:
+      preprocess_query: 0
+    boosts:
+      changed:
+        boost: 1.1
+        resolution: NOW
+        m: '3.16e-11'
+        a: 0.1
+        b: 0.05
+        support_future_dates: false
   solr_date_range:
     weights:
       preprocess_index: 0

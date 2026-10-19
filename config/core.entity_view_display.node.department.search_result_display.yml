@@ -1,0 +1,116 @@
+uuid: 79448c03-1eb5-4ca6-8f0d-a9287f9d237c
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_result_display
+    - field.field.node.department.feeds_item
+    - field.field.node.department.field_building_and_room_number
+    - field.field.node.department.field_department_featured_image
+    - field.field.node.department.field_department_heads
+    - field.field.node.department.field_department_links_cards
+    - field.field.node.department.field_department_members
+    - field.field.node.department.field_department_short_name
+    - field.field.node.department.field_department_summary
+    - field.field.node.department.field_emails
+    - field.field.node.department.field_hide_from_directory
+    - field.field.node.department.field_homepage_description
+    - field.field.node.department.field_hours
+    - field.field.node.department.field_library_leadership
+    - field.field.node.department.field_phone_numbers
+    - field.field.node.department.field_service_group
+    - field.field.node.department.field_spaces_catalog
+    - node.type.department
+  module:
+    - entity_reference_revisions
+    - text
+    - user
+id: node.department.search_result_display
+targetEntityType: node
+bundle: department
+mode: search_result_display
+content:
+  field_building_and_room_number:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_department_heads:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_department_links_cards:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_department_members:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_department_short_name:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_department_summary:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_emails:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_phone_numbers:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  feeds_item: true
+  field_department_featured_image: true
+  field_hide_from_directory: true
+  field_homepage_description: true
+  field_hours: true
+  field_library_leadership: true
+  field_service_group: true
+  field_spaces_catalog: true
+  langcode: true
+  search_api_excerpt: true

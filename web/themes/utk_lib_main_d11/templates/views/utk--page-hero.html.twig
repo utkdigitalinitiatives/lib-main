@@ -21,7 +21,7 @@
 {% set image_src = image_src|default('/themes/utk_lib_main_d11/images/hodges-2023.webp') %}
 {% set image_alt = image_alt|default('') %}
 {% set responsive_image_base = responsive_image_base|default('') %}
-{% set show_breadcrumb = show_breadcrumb is defined ? show_breadcrumb : true %}
+{% set show_breadcrumb = view_mode|default('') != 'search_result_display' and (show_breadcrumb is not defined or show_breadcrumb) %}
 {% set current_path_segments = path('<current>')|trim('/')|split('/') %}
 {% set has_nested_breadcrumb = current_path_segments|length > 1 %}
 
