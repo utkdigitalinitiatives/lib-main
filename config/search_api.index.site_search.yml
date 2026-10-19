@@ -1,0 +1,158 @@
+uuid: c9c7a89c-71b9-439e-8343-b72533d85382
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.server.solr
+  module:
+    - node
+    - search_api_solr
+third_party_settings:
+  search_api_solr:
+    finalize: false
+    commit_before_finalize: false
+    commit_after_finalize: false
+    debug_finalize: false
+    highlighter:
+      maxAnalyzedChars: 51200
+      fragmenter: gap
+      usePhraseHighlighter: true
+      highlightMultiTerm: true
+      preserveMulti: false
+      regex:
+        slop: 0.5
+        pattern: blank
+        maxAnalyzedChars: 10000
+      highlight:
+        mergeContiguous: false
+        requireFieldMatch: false
+        snippets: 3
+        fragsize: 0
+    mlt:
+      mintf: 1
+      mindf: 1
+      maxdf: 0
+      maxdfpct: 0
+      minwl: 0
+      maxwl: 0
+      maxqt: 100
+      maxntp: 2000
+      boost: false
+      interestingTerms: none
+    term_modifiers:
+      slop: 3
+      fuzzy: 2
+      fuzzy_analyzer: true
+    advanced:
+      index_prefix: ''
+      collection: ''
+      timezone: ''
+    multilingual:
+      limit_to_content_language: false
+      include_language_independent: true
+      use_language_undefined_as_fallback_language: false
+      specific_languages:
+        en: '0'
+      use_universal_collation: false
+id: site_search
+name: 'Site Search'
+description: ''
+read_only: false
+field_settings:
+  changed:
+    label: Changed
+    datasource_id: 'entity:node'
+    property_path: changed
+    type: date
+    dependencies:
+      module:
+        - node
+  rendered_item:
+    label: 'Rendered HTML output'
+    property_path: rendered_item
+    type: text
+    configuration:
+      roles:
+        - anonymous
+      view_mode:
+        'entity:node':
+          ':default': default
+          about_page: ':default'
+          bookplate: ':default'
+          department: ':default'
+          employee_profile: ':default'
+          equipment: ':default'
+          news: ':default'
+          resource_link: ':default'
+          service_page: ':default'
+          space: ':default'
+          webform: ':default'
+datasource_settings:
+  'entity:node':
+    bundles:
+      default: false
+      selected:
+        - about_page
+        - bookplate
+        - department
+        - employee_profile
+        - equipment
+        - news
+        - resource_link
+        - service_page
+        - space
+        - webform
+    languages:
+      default: true
+      selected: {  }
+processor_settings:
+  add_url: {  }
+  aggregated_field: {  }
+  auto_aggregated_fulltext_field: {  }
+  custom_value: {  }
+  double_quote_workaround:
+    weights:
+      postprocess_query: 0
+      preprocess_index: -15
+      preprocess_query: -15
+    all_fields: false
+    fields:
+      - rendered_item
+    replacement: '|9999999998|'
+  entity_type: {  }
+  highlight:
+    weights:
+      postprocess_query: 0
+    prefix: '<strong>'
+    suffix: '</strong>'
+    excerpt: true
+    excerpt_always: false
+    excerpt_length: 256
+    exclude_fields: {  }
+    highlight: always
+    highlight_partial: true
+  language_with_fallback: {  }
+  rendered_item: {  }
+  solr_boost_more_recent:
+    weights:
+      preprocess_query: 0
+    boosts:
+      changed:
+        boost: 1.1
+        resolution: NOW
+        m: '3.16e-11'
+        a: 0.1
+        b: 0.05
+        support_future_dates: false
+  solr_date_range:
+    weights:
+      preprocess_index: 0
+tracker_settings:
+  default:
+    indexing_order: fifo
+options:
+  cron_limit: 50
+  delete_on_fail: true
+  index_directly: true
+  track_changes_in_references: true
+server: solr
