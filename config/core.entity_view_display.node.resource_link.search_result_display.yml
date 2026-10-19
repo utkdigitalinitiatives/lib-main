@@ -1,0 +1,40 @@
+uuid: 2fd19a40-1f31-4152-91c7-b9d3bff175a7
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_result_display
+    - field.field.node.resource_link.field_card_group
+    - field.field.node.resource_link.field_card_page
+    - field.field.node.resource_link.field_external_link
+    - field.field.node.resource_link.field_image
+    - field.field.node.resource_link.field_link
+    - field.field.node.resource_link.field_summary
+    - node.type.resource_link
+  module:
+    - user
+id: node.resource_link.search_result_display
+targetEntityType: node
+bundle: resource_link
+mode: search_result_display
+content:
+  field_summary:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_card_group: true
+  field_card_page: true
+  field_external_link: true
+  field_image: true
+  field_link: true
+  langcode: true
+  search_api_excerpt: true

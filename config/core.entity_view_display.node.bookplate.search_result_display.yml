@@ -1,0 +1,88 @@
+uuid: f2387e6f-e905-40a9-8605-90d610371b46
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_result_display
+    - field.field.node.bookplate.feeds_item
+    - field.field.node.bookplate.field_award_year
+    - field.field.node.bookplate.field_book_author
+    - field.field.node.bookplate.field_book_cover
+    - field.field.node.bookplate.field_book_title
+    - field.field.node.bookplate.field_bp_department
+    - field.field.node.bookplate.field_ebook
+    - field.field.node.bookplate.field_honoree_photo
+    - field.field.node.bookplate.field_is_author
+    - field.field.node.bookplate.field_isbn
+    - field.field.node.bookplate.field_link_to_record
+    - field.field.node.bookplate.field_occasion
+    - field.field.node.bookplate.field_position_role
+    - field.field.node.bookplate.field_why_chosen
+    - node.type.bookplate
+  module:
+    - text
+    - user
+id: node.bookplate.search_result_display
+targetEntityType: node
+bundle: bookplate
+mode: search_result_display
+content:
+  field_award_year:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_book_author:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_book_title:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_bp_department:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_occasion:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_why_chosen:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  feeds_item: true
+  field_book_cover: true
+  field_ebook: true
+  field_honoree_photo: true
+  field_is_author: true
+  field_isbn: true
+  field_link_to_record: true
+  field_position_role: true
+  langcode: true
+  search_api_excerpt: true

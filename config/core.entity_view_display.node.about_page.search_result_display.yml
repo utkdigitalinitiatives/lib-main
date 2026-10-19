@@ -1,0 +1,48 @@
+uuid: de5d7c18-a078-4757-b350-815d352d2a7f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_result_display
+    - field.field.node.about_page.field_about_page_category
+    - field.field.node.about_page.field_include_table_of_contents
+    - field.field.node.about_page.field_page_summary
+    - field.field.node.about_page.field_parent_page
+    - field.field.node.about_page.field_sections
+    - node.type.about_page
+  module:
+    - entity_reference_revisions
+    - text
+    - user
+id: node.about_page.search_result_display
+targetEntityType: node
+bundle: about_page
+mode: search_result_display
+content:
+  field_page_summary:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_sections:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  field_about_page_category: true
+  field_include_table_of_contents: true
+  field_parent_page: true
+  langcode: true
+  search_api_excerpt: true
