@@ -195,11 +195,6 @@
   padding: 0.95rem 1.21rem 0.87rem;
 }
 
-.utk-sidebar-card--accent-top {
-  border: 1px solid rgb(from var(--utk-black) r g b / 0.18);
-  border-top: 3px solid var(--utk-logo--orange);
-}
-
 .utk-sidebar-card--narrow-right {
   width: calc(100% - 0.75rem);
   margin-right: 0;
@@ -208,8 +203,7 @@
 
 .utk-card-surface,
 .utk-card-surface:hover,
-.utk-card-surface:focus-within,
-.utk-sidebar-card--accent-top {
+.utk-card-surface:focus-within {
   box-shadow: 0.35rem 0.35rem 0.9rem rgb(from var(--utk-black) r g b / 0.09);
 }
 
@@ -289,6 +283,7 @@
 }
 
 .utk-contact-card .utk-service-contact__link .utk-service-contact__title {
+  display: inline;
   background-image: linear-gradient(
     var(--utk-logo--orange),
     var(--utk-logo--orange)
@@ -297,10 +292,6 @@
   background-position: left bottom;
   background-size: 0 1px;
   transition: background-size 0.2s ease-out;
-}
-
-.utk-contact-card .utk-service-contact__link .utk-service-contact__title {
-  display: inline;
 }
 
 .utk-contact-card .utk-service-contact__link:hover .utk-service-contact__title,
