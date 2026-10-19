@@ -1,0 +1,101 @@
+uuid: a647cbaf-6a70-42a7-9bda-ab61d5768991
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_result_display
+    - field.field.node.position_posting.field_application_link
+    - field.field.node.position_posting.field_application_procedures
+    - field.field.node.position_posting.field_benefits
+    - field.field.node.position_posting.field_department
+    - field.field.node.position_posting.field_environment
+    - field.field.node.position_posting.field_position_description
+    - field.field.node.position_posting.field_position_posting_details
+    - field.field.node.position_posting.field_preferred_qualifications
+    - field.field.node.position_posting.field_required_qualifications
+    - field.field.node.position_posting.field_responsibilities
+    - node.type.position_posting
+  module:
+    - entity_reference_revisions
+    - text
+    - user
+id: node.position_posting.search_result_display
+targetEntityType: node
+bundle: position_posting
+mode: search_result_display
+content:
+  field_application_procedures:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_benefits:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_department:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  field_environment:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_position_description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_position_posting_details:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_preferred_qualifications:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_required_qualifications:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_responsibilities:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_application_link: true
+  langcode: true
+  search_api_excerpt: true

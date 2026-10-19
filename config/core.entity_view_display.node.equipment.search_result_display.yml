@@ -1,0 +1,68 @@
+uuid: 977a81d0-346d-466f-9139-7d146ab03e1b
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_result_display
+    - field.field.node.equipment.feeds_item
+    - field.field.node.equipment.field_additional_equipment_image
+    - field.field.node.equipment.field_equipment_brand
+    - field.field.node.equipment.field_equipment_description
+    - field.field.node.equipment.field_equipment_featured_image
+    - field.field.node.equipment.field_equipment_location
+    - field.field.node.equipment.field_equipment_type
+    - field.field.node.equipment.field_loan_period
+    - field.field.node.equipment.field_primo_link
+    - node.type.equipment
+  module:
+    - text
+    - user
+id: node.equipment.search_result_display
+targetEntityType: node
+bundle: equipment
+mode: search_result_display
+content:
+  field_equipment_brand:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_equipment_description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_equipment_location:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_equipment_type:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  feeds_item: true
+  field_additional_equipment_image: true
+  field_equipment_featured_image: true
+  field_loan_period: true
+  field_primo_link: true
+  langcode: true
+  search_api_excerpt: true
