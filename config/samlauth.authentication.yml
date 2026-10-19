@@ -1,0 +1,13 @@
+_core:
+  default_config_hash: U_osGwFmSBlCxLj13jTNB0qVtGbS876-wUPqWc74K6A
+local_login_saml_error: false
+metadata_valid_secs: 60
+metadata_cache_http: false
+strict: true
+security_authn_requests_sign: true
+security_logout_requests_sign: true
+security_logout_responses_sign: true
+security_messages_sign: true
+security_request_authn_context: true
+security_lowercase_url_encoding: true
+use_base_url: true
