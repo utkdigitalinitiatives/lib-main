@@ -1,0 +1,23 @@
+uuid: 1a833857-0f28-48ae-b055-abf830e81b97
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.index.site_search
+    - views.view.site_search
+  module:
+    - views
+id: site_search
+label: 'Site Search'
+index_id: site_search
+suggester_settings:
+  server:
+    fields: {  }
+suggester_weights: {  }
+suggester_limits: {  }
+search_settings:
+  'views:site_search':
+    displays:
+      default: true
+      selected: {  }
+options: {  }
