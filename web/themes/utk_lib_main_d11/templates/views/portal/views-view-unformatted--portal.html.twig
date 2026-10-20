@@ -21,13 +21,13 @@
 #}
 
 {% set card_column_classes = 'col-12 px-0 utk-portal-card-column--featured' %}
-{% set card_classes = 'utk-card utk-portal-card' %}
+{% set card_classes = 'utk-card utk-card-frame utk-portal-card' %}
 {% set card_body_classes = 'utk-card-body utk-portal-card__body-grid' %}
 
 <div class='{{ card_column_classes }}'>
     <div class='{{ card_classes }}'>
     {% if title %}
-        <div class='utk-card-header utk-card-header--small-section utk-card-header--minimal utk-portal-card__header text-center link-link utk-search-selector'>
+        <div class='utk-card-header utk-card-header--small-section utk-card-header--plain utk-portal-card__header text-center link-link utk-search-selector'>
             <div class='utk-portal-card__header-row'>
                 <p class='fs-4 fw-semibold utk-portal-card__title'>{{ title }}</p>
             </div>

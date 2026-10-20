@@ -71,35 +71,31 @@
       {% endif %}
 
       <div class="col-12 pt-2 {% if image_urls|length %}col-lg-6{% endif %}">
-        <div class="utk-sidebar-card utk-details-card details-container mb-4">
-          <div class="utk-card-header utk-card-header--small-section utk-card-header--minimal">
-            <h2 class="fs-3 mb-0">Details</h2>
-          </div>
-          <div class="utk-card-body utk-card-body--compact utk-details-card__body">
+        {% set equipment_details_content %}
             <div class="row g-4">
               {% if not node.field_equipment_brand.isEmpty %}
-                <div class="col-12 col-sm-6">
-                  <h3 class="utk-details-card__label mb-1 fw-semibold">Brand</h3>
-                  {{ content.field_equipment_brand }}
-                </div>
+                {{ include('@utk_lib_main_d11/templates/components/utk--detail-item.html.twig', {
+                  label: 'Brand',
+                  value: content.field_equipment_brand,
+                }, with_context: false) }}
               {% endif %}
               {% if not node.field_equipment_type.isEmpty %}
-                <div class="col-12 col-sm-6">
-                  <h3 class="utk-details-card__label mb-1 fw-semibold">Type</h3>
-                  {{ content.field_equipment_type }}
-                </div>
+                {{ include('@utk_lib_main_d11/templates/components/utk--detail-item.html.twig', {
+                  label: 'Type',
+                  value: content.field_equipment_type,
+                }, with_context: false) }}
               {% endif %}
               {% if not node.field_equipment_location.isEmpty %}
-                <div class="col-12 col-sm-6">
-                  <h3 class="utk-details-card__label mb-1 fw-semibold">Location</h3>
-                  {{ content.field_equipment_location }}
-                </div>
+                {{ include('@utk_lib_main_d11/templates/components/utk--detail-item.html.twig', {
+                  label: 'Location',
+                  value: content.field_equipment_location,
+                }, with_context: false) }}
               {% endif %}
               {% if not node.field_loan_period.isEmpty %}
-                <div class="col-12 col-sm-6">
-                  <h3 class="utk-details-card__label mb-1 fw-semibold">Loan Period</h3>
-                  {{ content.field_loan_period }}
-                </div>
+                {{ include('@utk_lib_main_d11/templates/components/utk--detail-item.html.twig', {
+                  label: 'Loan Period',
+                  value: content.field_loan_period,
+                }, with_context: false) }}
               {% endif %}
             </div>
 
@@ -108,8 +104,13 @@
                 <a class="btn utk-blue-button" href="{{ node.field_primo_link.0.url }}">Check Availability</a>
               </div>
             {% endif %}
-          </div>
-        </div>
+        {% endset %}
+        {{ include('@utk_lib_main_d11/templates/components/utk--panel-card.html.twig', {
+          title: 'Details',
+          card_content: equipment_details_content,
+          variant: 'details',
+          card_classes: ['mb-4'],
+        }, with_context: false) }}
 
         {% if not node.field_equipment_description.isEmpty %}
           <div class="utk-search-selector link-link underline-active">

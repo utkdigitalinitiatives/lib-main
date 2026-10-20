@@ -106,90 +106,62 @@
             {% endif %}
             <div class='col-12 col-lg-6 d-flex justify-content-lg-start justify-content-center text-smokey link-link pt-3 pt-lg-2'>
                 <div class='font-medium'>
-                    <div class="utk-sidebar-card utk-details-card details-container mb-4">
-                        <div class="utk-card-header utk-card-header--small-section utk-card-header--minimal d-flex justify-content-between align-items-center">
-                            <h2 class="fs-3 mb-0">Details</h2>
-                            {% if not node.field_reservation_link_url.isEmpty %}
-                            <span class="badge rounded-pill utk-details-card__status utk-details-card__status--reservable">Reservable</span>
-                            {% else %}
-                            <span class="badge rounded-pill utk-details-card__status utk-details-card__status--not-reservable">Not Reservable</span>
-                            {% endif %}
-                        </div>
-                        <div class="utk-card-body utk-card-body--compact utk-details-card__body">
+                    {% set reservation_status %}
+                        {% if not node.field_reservation_link_url.isEmpty %}
+                        <span class="badge rounded-pill utk-details-card__status utk-details-card__status--reservable">Reservable</span>
+                        {% else %}
+                        <span class="badge rounded-pill utk-details-card__status utk-details-card__status--not-reservable">Not Reservable</span>
+                        {% endif %}
+                    {% endset %}
+                    {% set space_details_content %}
                             <div class="row g-4">
                                 {% if not node.field_location.isEmpty %}
-                                <div class="col-12 col-md-6">
-                                    <div class="detail-item d-flex flex-row align-items-start">
-                                        <div class="detail-icon me-3 text-smokey">
-                                            <span class="fluent-icon-location" aria-hidden="true"></span>
-                                        </div>
-                                        <div class="detail-content">
-                                            <h3 class="utk-details-card__label mb-1 fw-semibold">Location</h3>
-                                            {{ content.field_location.0['#title'] }}
-                                            {% if not node.field_room_number.isEmpty %}
-                                            , Room {{ content.field_room_number }}
-                                            {% endif %}
-                                        </div>
-                                    </div>
-                                </div>
+                                    {% set location_value %}
+                                        {{ content.field_location.0['#title'] }}{% if not node.field_room_number.isEmpty %}, Room {{ content.field_room_number }}{% endif %}
+                                    {% endset %}
+                                    {{ include('@utk_lib_main_d11/templates/components/utk--detail-item.html.twig', {
+                                        label: 'Location',
+                                        value: location_value,
+                                        icon_class: 'fluent-icon-location',
+                                        column_classes: ['col-12', 'col-md-6'],
+                                    }, with_context: false) }}
                                 {% endif %}
 
                                 {% if not node.field_floor.isEmpty %}
-                                <div class="col-12 col-md-6">
-                                    <div class='detail-item d-flex flex-row align-items-start'>
-                                        <div class="detail-icon me-3 text-smokey">
-                                            <span class="fluent-icon-arrow-circle-right" aria-hidden="true"></span>
-                                        </div>
-                                        <div class="detail-content">
-                                            <h3 class="utk-details-card__label mb-1 fw-semibold">Floor</h3>
-                                            {{ content.field_floor }}
-                                        </div>
-                                    </div>
-                                </div>
+                                    {{ include('@utk_lib_main_d11/templates/components/utk--detail-item.html.twig', {
+                                        label: 'Floor',
+                                        value: content.field_floor,
+                                        icon_class: 'fluent-icon-arrow-circle-right',
+                                        column_classes: ['col-12', 'col-md-6'],
+                                    }, with_context: false) }}
                                 {% endif %}
 
                                 {% if not node.field_capacity.isEmpty %}
-                                <div class="col-12 col-md-6">
-                                    <div class='detail-item d-flex flex-row align-items-start'>
-                                        <div class="detail-icon me-3 text-smokey">
-                                            <span class="fluent-icon-couch" aria-hidden="true"></span>
-                                        </div>
-                                        <div class="detail-content">
-                                            <h3 class="utk-details-card__label mb-1 fw-semibold">Capacity</h3>
-                                            {{ content.field_capacity }}
-                                        </div>
-                                    </div>
-                                </div>
+                                    {{ include('@utk_lib_main_d11/templates/components/utk--detail-item.html.twig', {
+                                        label: 'Capacity',
+                                        value: content.field_capacity,
+                                        icon_class: 'fluent-icon-couch',
+                                        column_classes: ['col-12', 'col-md-6'],
+                                    }, with_context: false) }}
                                 {% endif %}
 
                                 {% if not node.field_noise_level.isEmpty %}
-                                <div class="col-12 col-md-6">
-                                    <div class='detail-item d-flex flex-row align-items-start'>
-                                        <div class="detail-icon me-3 text-smokey">
-                                            <span class="fluent-icon-headphones" aria-hidden="true"></span>
-                                        </div>
-                                        <div class="detail-content">
-                                            <h3 class="utk-details-card__label mb-1 fw-semibold">Noise Level</h3>
-                                            {{ content.field_noise_level }}
-                                        </div>
-                                    </div>
-                                </div>
+                                    {{ include('@utk_lib_main_d11/templates/components/utk--detail-item.html.twig', {
+                                        label: 'Noise Level',
+                                        value: content.field_noise_level,
+                                        icon_class: 'fluent-icon-headphones',
+                                        column_classes: ['col-12', 'col-md-6'],
+                                    }, with_context: false) }}
                                 {% endif %}
 
                                 {% if not node.field_space_type.isEmpty %}
-                                <div class="col-12 col-md-6">
-                                    <div class='detail-item d-flex flex-row align-items-start'>
-                                        <div class="detail-icon me-3 text-smokey">
-                                            <span class="fluent-icon-building" aria-hidden="true"></span>
-                                        </div>
-                                        <div class="detail-content">
-                                            <h3 class="utk-details-card__label mb-1 fw-semibold">Space Type</h3>
-                                            {{ content.field_space_type }}
-                                        </div>
-                                    </div>
-                                </div>
+                                    {{ include('@utk_lib_main_d11/templates/components/utk--detail-item.html.twig', {
+                                        label: 'Space Type',
+                                        value: content.field_space_type,
+                                        icon_class: 'fluent-icon-building',
+                                        column_classes: ['col-12', 'col-md-6'],
+                                    }, with_context: false) }}
                                 {% endif %}
-
                             </div>
 
                             {% if not node.field_reservation_link_url.isEmpty %}
@@ -197,8 +169,14 @@
                                 <a class='btn utk-blue-button' href="{{ content.field_reservation_link_url[0]['#plain_text'] }}">Reserve Now</a>
                             </div>
                             {% endif %}
-                        </div>
-                    </div>
+                    {% endset %}
+                    {{ include('@utk_lib_main_d11/templates/components/utk--panel-card.html.twig', {
+                        title: 'Details',
+                        card_content: space_details_content,
+                        header_content: reservation_status,
+                        variant: 'details',
+                        card_classes: ['mb-4'],
+                    }, with_context: false) }}
 
                     {% if not node.field_space_description.isEmpty %}
                     <div class="mb-4 utk-search-selector link-link underline-active">
