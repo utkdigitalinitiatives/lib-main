@@ -21,7 +21,7 @@
     {% set description = description|slice(0, description_limit)|split(' ')|slice(0, -1)|join(' ') ~ '…' %}
 {% endif %}
 
-<div{{ attributes.addClass('container-fluid', 'utk-job-posting', 'utk-card-border--subtle', 'utk-card-background--warm', 'utk-card-shadow--offset', 'p-4', 'mb-4') }}>
+<div{{ attributes.addClass('container-fluid', 'utk-card-frame', 'utk-details-card', 'p-4', 'mb-4') }}>
     <div class="row mb-3">
         <div class="col-12">
             {{ title_prefix }}

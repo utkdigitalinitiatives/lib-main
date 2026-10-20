@@ -1,0 +1,76 @@
+{#
+/**
+ * @file
+ * UTK Custom - Panel Card template.
+ *
+ * Renders the shared shell used by contact, sidebar, and details cards.
+ * Page templates provide the content while this component keeps the card
+ * structure and standard class combinations consistent.
+ *
+ * Available variables:
+ * - title: The card heading.
+ * - card_content: The rendered content inside the card body.
+ * - variant: One of contact, sidebar, or details.
+ * - heading_level: One of h2, h3, or h4. Defaults to h2.
+ * - header_content: Optional content displayed beside the heading.
+ * - header_spacing: compact, standard, or none.
+ * - body_spacing: compact or standard.
+ * - card_classes: Optional additional classes for the outer card.
+ * - header_classes: Optional additional header classes.
+ */
+#}
+
+{% set allowed_variants = ['contact', 'sidebar', 'details'] %}
+{% set card_variant = variant|default('contact') %}
+{% set card_variant = card_variant in allowed_variants ? card_variant : 'contact' %}
+{% set allowed_heading_levels = ['h2', 'h3', 'h4'] %}
+{% set heading_tag = heading_level|default('h2') %}
+{% set heading_tag = heading_tag in allowed_heading_levels ? heading_tag : 'h2' %}
+
+{% set default_header_spacing = card_variant == 'sidebar' ? 'compact' : 'standard' %}
+{% set selected_header_spacing = header_spacing|default(default_header_spacing) %}
+{% set default_body_spacing = card_variant == 'sidebar' ? 'standard' : 'compact' %}
+{% set selected_body_spacing = body_spacing|default(default_body_spacing) %}
+
+{% set outer_classes = [
+  'utk-card-frame',
+  card_variant == 'contact' ? 'utk-contact-card',
+  card_variant == 'sidebar' ? 'utk-sidebar-card',
+  card_variant == 'details' ? 'utk-details-card',
+]|merge(card_classes|default([])) %}
+
+{% set panel_header_classes = [
+  'utk-card-header',
+  'utk-card-header--small-section',
+  card_variant != 'sidebar' ? 'utk-card-header--plain',
+  selected_header_spacing == 'compact' ? 'utk-card-header--spacing-compact',
+  selected_header_spacing == 'standard' ? 'utk-card-header--spacing-standard',
+  header_content is not empty ? 'd-flex justify-content-between align-items-center',
+]|merge(header_classes|default([])) %}
+
+{% set panel_title_classes = [
+  card_variant == 'details' ? 'utk-card-title--large' : 'utk-card-title--medium',
+  'mb-0',
+] %}
+
+{% set panel_body_classes = [
+  'utk-card-body',
+  selected_body_spacing == 'compact' ? 'utk-card-body--spacing-compact',
+  selected_body_spacing == 'standard' ? 'utk-card-body--spacing-standard',
+  card_variant == 'sidebar' ? 'utk-card-body--white' : 'utk-card-body--transparent',
+  card_variant != 'sidebar' ? 'utk-card-text--small',
+  card_variant == 'contact' ? 'utk-contact-card__body',
+  card_variant == 'contact' ? 'utk-search-selector-thin',
+] %}
+
+<div class="{{ outer_classes|join(' ')|trim }}">
+  <div class="{{ panel_header_classes|join(' ')|trim }}">
+    <{{ heading_tag }} class="{{ panel_title_classes|join(' ')|trim }}">{{ title }}</{{ heading_tag }}>
+    {% if header_content is not empty %}
+      {{ header_content }}
+    {% endif %}
+  </div>
+  <div class="{{ panel_body_classes|join(' ')|trim }}">
+    {{ card_content }}
+  </div>
+</div>

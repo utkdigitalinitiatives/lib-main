@@ -49,10 +49,6 @@ set classes = [
 {% else %}
     {% set related_links = false %}
 {% endif %}
-{% set contact_card_classes = 'utk-sidebar-card utk-service-sidebar-card utk-contact-card' %}
-{% set contact_card_header_classes = 'utk-card-header utk-card-header--small-section utk-card-header--minimal' %}
-{% set contact_card_body_classes = 'utk-card-body utk-card-body--compact utk-contact-card__body utk-search-selector-thin' %}
-
 <article {{ attributes.addClass(classes) }} id='utk-service'>
     {{ include('@utk_lib_main_d11/templates/views/utk--page-hero.html.twig', {
         title: node.label,
@@ -79,44 +75,32 @@ set classes = [
             {% endif %}
         </div>
         {% if not node.field_service_contacts.isEmpty or not node.field_related_services.isEmpty or not node.field_about_this_service.isEmpty %}
-        <div class='col-lg-4 py-2'>
+        <div class='col-lg-4 py-2 utk-card-stack utk-card-stack--narrow-right'>
             {% if not node.field_service_contacts.isEmpty %}
-                <div class='{{ contact_card_classes }}'>
-                    <div class='{{ contact_card_header_classes }}'>
-                        <h2 class='fs-5 mb-0'>
-                            Contacts for this Service
-                        </h2>
-                    </div>
-                    <div class='{{ contact_card_body_classes }}'>
-                        {{ content.field_service_contacts }}
-                    </div>
-                </div>
+                {{ include('@utk_lib_main_d11/templates/components/utk--panel-card.html.twig', {
+                    title: 'Contacts for this Service',
+                    card_content: content.field_service_contacts,
+                    variant: 'contact',
+                }, with_context: false) }}
             {% endif %}
             {% if not node.field_related_services.isEmpty %}
-                <div class='{{ contact_card_classes }}'>
-                    <div class='{{ contact_card_header_classes }}'>
-                        <h2 class='fs-5 mb-0'>
-                            Related Services
-                        </h2>
-                    </div>
-                    <div class='{{ contact_card_body_classes }}'>
-                        {{ content.field_related_services }}
-                    </div>
-                </div>
+                {{ include('@utk_lib_main_d11/templates/components/utk--panel-card.html.twig', {
+                    title: 'Related Services',
+                    card_content: content.field_related_services,
+                    variant: 'contact',
+                }, with_context: false) }}
             {% endif %}
             {% if not node.field_about_this_service.isEmpty %}
-                <div class='utk-sidebar-card utk-service-sidebar-card'>
-                    <div class='utk-card-header utk-card-header--small-section'>
-                        <h2 class='fs-5 mb-0'>
-                            About this Service
-                        </h2>
+                {% set about_service_content %}
+                    <div class='link-link utk-search-selector'>
+                        {{ content.field_about_this_service }}
                     </div>
-                    <div class='utk-card-body'>
-                        <div class='link-link utk-search-selector'>
-                            {{ content.field_about_this_service }}
-                        </div>
-                    </div>
-                </div>
+                {% endset %}
+                {{ include('@utk_lib_main_d11/templates/components/utk--panel-card.html.twig', {
+                    title: 'About this Service',
+                    card_content: about_service_content,
+                    variant: 'sidebar',
+                }, with_context: false) }}
             {% endif %}
         </div>
         {% endif %}
