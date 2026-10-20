@@ -33,11 +33,7 @@ final class EnablePathautoState extends ActionBase
             $translation = $entity->getTranslation($langcode);
             $path_field = $translation->get('path');
 
-            // This is the value submitted by path[0][pathauto] on the node form.
-            if ($path_field->isEmpty()) {
-                $path_field->appendItem();
-            }
-            $path_field->first()->set('pathauto', PathautoState::CREATE);
+            $path_field->pathauto = PathautoState::CREATE;
         }
 
         $entity->save();
