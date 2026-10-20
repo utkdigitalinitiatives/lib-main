@@ -23,10 +23,8 @@ final class BulkUpdateAlias extends UpdateAction
         $cache_tags = [];
         foreach (array_keys($entity->getTranslationLanguages()) as $langcode) {
             $translation = $entity->getTranslation($langcode);
-            $result = $this->pathautoGenerator->updateEntityAlias($translation, 'bulkupdate', ['message' => false]);
-            if ($result) {
-                $cache_tags = array_merge($cache_tags, $translation->getCacheTagsToInvalidate());
-            }
+            $this->pathautoGenerator->updateEntityAlias($translation, 'bulkupdate', ['message' => false]);
+            $cache_tags = array_merge($cache_tags, $translation->getCacheTagsToInvalidate());
         }
 
         Cache::invalidateTags(array_unique($cache_tags));
