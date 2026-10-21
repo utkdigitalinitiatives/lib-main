@@ -14,8 +14,8 @@
 
 .utk-grid-card:hover,
 .utk-grid-card:focus-within {
-  transform: translateY(-4px) scale(1.005);
-  box-shadow: 0.625rem 0.625rem 1.25rem 0.1rem rgb(from var(--utk-black) r g b / 0.28);
+  transform: var(--utk-card-hover-transform);
+  box-shadow: var(--utk-card-hover-shadow);
 }
 
 .utk-grid-card__link {

@@ -4,6 +4,7 @@
   --utk-card-space-inline: 1.5rem;
   --utk-card-space-block: 1.25rem;
   --utk-card-border-accent: rgb(from var(--utk-logo--orange) r g b / 0.5);
+  --utk-card-border-subtle: rgb(from var(--utk-black) r g b / 0.16);
   --utk-card-surface-warm: linear-gradient(
     180deg,
     rgb(from var(--utk-logo--white) r g b / 0.995) 0%,
@@ -11,6 +12,8 @@
     rgb(from var(--utk-logo--orange) r g b / 0.035) 100%
   );
   --utk-card-shadow-offset: 0.35rem 0.35rem 0.9rem rgb(from var(--utk-black) r g b / 0.09);
+  --utk-card-hover-transform: translateY(-4px) scale(1.005);
+  --utk-card-hover-shadow: 0.625rem 0.625rem 1.25rem 0.1rem rgb(from var(--utk-black) r g b / 0.28);
 }
 
 /* These structural styles live here so cards do not depend on utility CSS. */
@@ -187,7 +190,7 @@
 
 .utk-card-surface {
   --utk-card-border-width: 1px;
-  --utk-card-border-color: rgb(from var(--utk-black) r g b / 0.16);
+  --utk-card-border-color: var(--utk-card-border-subtle);
   --utk-card-box-shadow: var(--utk-card-shadow-offset);
 }
 
