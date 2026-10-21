@@ -128,30 +128,24 @@
         <div class='container-fluid py-4 utk--striped-background text-smokey link-link'>
             <div class='max-row-width mx-auto px-3 department-people-block directory-container'>
                 <h2 class='mb-3'>People</h2>
-                {% if department_heads %}
-                    <div class='directory-head-group'>
-                        <div class='directory-people-grid'>
-                            {% for person in department_heads %}
-                                {{ include('@utk_lib_main_d11/templates/components/utk--department-person-card.html.twig', {
-                                    person: person,
-                                    is_department_head: true,
-                                }, with_context: false) }}
-                            {% endfor %}
-                        </div>
-                    </div>
-                {% endif %}
-                {% if department_members %}
-                    <div class='directory-members-group'>
-                        <div class='directory-people-grid'>
-                            {% for person in department_members %}
-                                {{ include('@utk_lib_main_d11/templates/components/utk--department-person-card.html.twig', {
-                                    person: person,
-                                    is_department_head: false,
-                                }, with_context: false) }}
-                            {% endfor %}
-                        </div>
-                    </div>
-                {% endif %}
+                <div class='directory-people-grid'>
+                    {% if department_heads %}
+                        {% for person in department_heads %}
+                            {{ include('@utk_lib_main_d11/templates/components/utk--department-person-card.html.twig', {
+                                person: person,
+                                is_department_head: true,
+                            }, with_context: false) }}
+                        {% endfor %}
+                    {% endif %}
+                    {% if department_members %}
+                        {% for person in department_members %}
+                            {{ include('@utk_lib_main_d11/templates/components/utk--department-person-card.html.twig', {
+                                person: person,
+                                is_department_head: false,
+                            }, with_context: false) }}
+                        {% endfor %}
+                    {% endif %}
+                </div>
             </div>
         </div>
     {% endif %}
