@@ -153,6 +153,12 @@
   background-color: var(--utk-logo--white);
 }
 
+.utk-card-item-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
 .utk-card-text--small {
   font-size: 0.95rem;
 }

@@ -100,8 +100,7 @@
 }
 
 .utk--webform fieldset>legend,
-.utk--webform details.webform-details>summary,
-.utk--webform .js-form-type-webform-markup h2 {
+.utk--webform details.webform-details>summary {
     display: block;
     margin-top: 15px;
     padding-bottom: 10px;

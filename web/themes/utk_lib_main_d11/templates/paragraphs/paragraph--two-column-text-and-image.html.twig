@@ -20,7 +20,7 @@
 {% if not paragraph.field_text.isEmpty or not paragraph.field_image.isEmpty %}
   <div class="row py-1">
     {% if not text_on_right and not paragraph.field_text.isEmpty %}
-      <div class="col-lg-6 utk-section-heading-content">
+      <div class="col-lg-6 utk-section-heading-content link-link">
         {{ content.field_text }}
       </div>
     {% endif %}
@@ -40,7 +40,7 @@
     {% endif %}
 
     {% if text_on_right and not paragraph.field_text.isEmpty %}
-      <div class="col-lg-6 utk-section-heading-content">
+      <div class="col-lg-6 utk-section-heading-content link-link">
         {{ content.field_text }}
       </div>
     {% endif %}

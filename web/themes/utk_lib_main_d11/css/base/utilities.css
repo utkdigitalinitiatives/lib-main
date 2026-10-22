@@ -16,6 +16,9 @@
   --utk-teal-weak: rgb(0 117 148 / 0.55);
   --utk-black: #000;
   --utk-link-underline-thickness: 0.8px;
+  --utk-heading-underline-thickness: 1.8px;
+  --utk-heading-underline-offset: 0.2em;
+  --utk-heading-underline-space-after: 0.75rem;
   --utk-radius-small: 0.25rem;
   --utk-radius-medium: 0.5rem;
   --utk-radius-large: 0.75rem;

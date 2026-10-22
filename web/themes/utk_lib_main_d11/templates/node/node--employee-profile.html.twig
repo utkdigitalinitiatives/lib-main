@@ -61,7 +61,7 @@ set classes = [
                 {% endif %}
 
                 {% if has_contact %}
-                    <h2 class="fs-5 mb-2 utk-section-heading">Contact Information</h2>
+                    <h2 class="fs-5 utk-section-heading">Contact Information</h2>
                     {% if not node.field_email.isEmpty %}
                         <div class="pb-1">
                             <a href="mailto:{{ node.field_email.value }}">{{ node.field_email.value }}</a>
@@ -81,7 +81,7 @@ set classes = [
                 {% endif %}
 
                 {% if not node.field_librarian_specialties.isEmpty %}
-                    <h2 class="fw-medium fs-3 mt-3 mb-2 utk-section-heading">Specialties</h2>
+                    <h2 class="fw-medium fs-3 mt-3 utk-section-heading">Specialties</h2>
                     <div>
                         {{ content.field_librarian_specialties }}
                     </div>

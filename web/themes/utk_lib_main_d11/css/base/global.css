@@ -20,9 +20,26 @@
   max-width: 20em;
 }
 
+.utk-file-attachment {
+  border: 1.5px solid var(--utk-logo--orange);
+  border-radius: var(--utk-radius-large);
+  box-shadow: var(--utk-card-shadow-offset);
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
 .utk-service--buttons:hover {
   color: var(--utk-logo--smokey);
   transform: scale(1.02);
+}
+
+.utk-file-attachment:hover,
+.utk-file-attachment:focus-visible {
+  border-color: rgb(from var(--utk-logo--orange) r g b / 0.85);
+  box-shadow: 0.45rem 0.45rem 1rem rgb(from var(--utk-black) r g b / 0.12);
+  transform: translateY(-2px) scale(1.002);
 }
 
 .btn.utk-smokey-button {

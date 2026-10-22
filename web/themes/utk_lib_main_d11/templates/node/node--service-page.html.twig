@@ -69,7 +69,7 @@ set classes = [
             </div>
         {% endif %}
             {% if content.field_sections is defined %}
-            <div class="service-content mb-4">
+            <div class="service-content mb-4 link-link">
                 {{ content.field_sections }}
             </div>
             {% endif %}
@@ -99,7 +99,7 @@ set classes = [
                 {{ include('@utk_lib_main_d11/templates/components/utk--panel-card.html.twig', {
                     title: 'About this Service',
                     card_content: about_service_content,
-                    variant: 'sidebar',
+                    variant: 'contact',
                 }, with_context: false) }}
             {% endif %}
         </div>
