@@ -8,7 +8,7 @@
   word-wrap: break-word;
   border: 1px solid;
   border-width: 1px 1px 1px 0; /* LTR */
-  border-radius: 2px;
+  border-radius: var(--utk-radius-small);
   background: no-repeat 10px 17px; /* LTR */
   overflow-wrap: break-word;
 }

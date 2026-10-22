@@ -1,6 +1,6 @@
 /* These shared rules let templates combine only the card styles they need. */
 :root {
-  --utk-card-radius-standard: 0.75rem;
+  --utk-card-radius-standard: var(--utk-radius-large);
   --utk-card-space-inline: 1.5rem;
   --utk-card-space-block: 1.25rem;
   --utk-card-border-accent: rgb(from var(--utk-logo--orange) r g b / 0.5);
@@ -26,8 +26,8 @@
     color-mix(in srgb, var(--utk-logo--smokey) 75%, var(--utk-logo--white))
   );
   border-top: 3px solid var(--utk-logo--orange);
-  border-bottom-right-radius: 17px;
-  border-bottom-left-radius: 17px;
+  border-bottom-right-radius: var(--utk-radius-xlarge);
+  border-bottom-left-radius: var(--utk-radius-xlarge);
 }
 
 .utk-card-header--small-section {
@@ -104,7 +104,7 @@
 }
 
 .utk-card-frame.utk-card-frame--radius-large {
-  --utk-card-radius: 0.875rem;
+  --utk-card-radius: var(--utk-radius-xlarge);
 }
 
 .utk-card-frame.utk-card-frame--surface-white {

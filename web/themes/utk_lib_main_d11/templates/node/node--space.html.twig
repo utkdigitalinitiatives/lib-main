@@ -64,8 +64,8 @@
     <div class='container-fluid utk--striped-background py-4'>
         <div class='d-flex justify-content-center row utk--1400px-width mx-auto'>
             {% if content.field_additional_space_photos|length > 3 %}
-            <div class="col-12 col-lg-6 rounded pt-2">
-                <div id="carouselExampleIndicators" class="carousel slide utk-carousel utk--spaces-images rounded">
+            <div class="col-12 col-lg-6 utk-radius-large pt-2">
+                <div id="carouselExampleIndicators" class="carousel slide utk-carousel utk--spaces-images utk-radius-large">
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
                             class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -100,7 +100,7 @@
             </div>
             {% else %}
             <div class='col-12 col-lg-6 utk--spaces-images d-flex justify-content-center pt-2'>
-                <img src="{{ node.field_space_featured_photo|file_url }}" class='img-fluid rounded'
+                <img src="{{ node.field_space_featured_photo|file_url }}" class='img-fluid utk-radius-large'
                     alt="{{ content.field_space_featured_photo['#items'].entity.field_media_image.alt }}" loading="lazy">
             </div>
             {% endif %}

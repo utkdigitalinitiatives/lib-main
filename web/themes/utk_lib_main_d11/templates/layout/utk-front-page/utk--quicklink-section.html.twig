@@ -107,17 +107,17 @@
     ]
 %}
 
-<div class='row mx-auto gx-3 max-row-width'>
+<div class='row mx-auto g-4 max-row-width'>
     {% for box in quicklink_boxes %}
-    <div class='col-lg-4'>
+    <div class='col-lg-4 d-flex'>
         <div class='container utk-quicklinks border bg-white quicklink-box'>
             <div class="quicklink-vertical-line" style="background-color: {{ box.vertical_line_color }};"></div>
             <div class="quicklink-horizontal-line" style="background-color: {{ box.horizontal_line_color }};"></div>
-            <h2 class='fs-4 fw-medium mt-2 pt-2 text-smokey'>{{ box.title }}</h2>
-            <div class='row mb-2 pb-2 text-smokey link-link utk-search-selector'>
+            <h2 class='utk-homepage-section-title mt-2 pt-2 text-smokey'>{{ box.title }}</h2>
+            <div class='utk-homepage-quicklink-list mb-2 pb-2 text-smokey link-link utk-search-selector'>
                 {% for link in box.links %}
-                    <div class='py-4 py-md-1 py-lg-0'>
-                        <a href="{{ link.url }}" class=''>{{ link.link_title }}
+                    <div class='utk-homepage-quicklink-item'>
+                        <a href="{{ link.url }}">{{ link.link_title }}
                         {% if link.outgoing|length > 0 %}
                             <span class='svg-settings {{ link.outgoing }}' style="width:12px; height:12px; display:inline-block; position:relative; top:1px; margin-left:2px;"></span>
                         {% endif %}

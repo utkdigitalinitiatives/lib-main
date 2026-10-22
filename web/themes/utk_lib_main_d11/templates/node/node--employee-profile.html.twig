@@ -50,7 +50,7 @@ set classes = [
         <div class="row d-flex justify-content-center">
             {% if has_profile_picture %}
             <div class="col-lg-6 d-flex justify-content-center utk--employee-img">
-                <img src="{{ image_src }}" alt="{{ image_alt }}" class="img-fluid rounded" loading="lazy">
+                <img src="{{ image_src }}" alt="{{ image_alt }}" class="img-fluid utk-radius-large" loading="lazy">
             </div>
             {% endif %}
             <div class="{% if has_profile_picture %}col-lg-6 pt-3 pt-lg-0{% else %}col-lg-8{% endif %} utk-search-selector">

@@ -38,7 +38,7 @@
         <div class="col-12 col-lg-6 pt-2">
           {% if image_urls|length > 1 %}
             {% set carousel_id = 'equipment-page-carousel-' ~ node.id %}
-            <div id="{{ carousel_id }}" class="carousel slide utk-carousel rounded overflow-hidden">
+            <div id="{{ carousel_id }}" class="carousel slide utk-carousel utk-radius-large overflow-hidden">
               <div class="carousel-indicators">
                 {% for image_url in image_urls %}
                   <button type="button" data-bs-target="#{{ carousel_id }}" data-bs-slide-to="{{ loop.index0 }}"{% if loop.first %} class="active" aria-current="true"{% endif %} aria-label="Show image {{ loop.index }}"></button>
@@ -63,7 +63,7 @@
               </button>
             </div>
           {% else %}
-            <div class="image-wrapper rounded overflow-hidden shadow-sm">
+            <div class="image-wrapper utk-radius-large overflow-hidden shadow-sm">
               <img src="{{ image_urls[0] }}" class="d-block w-100" alt="{{ alt_texts[0] }}" loading="lazy">
             </div>
           {% endif %}

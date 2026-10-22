@@ -27,7 +27,7 @@
 
     {% if not paragraph.field_image.isEmpty and image_media %}
       <figure class="figure col-lg-6">
-        <img class="img-fluid utk-in-section--image rounded"
+        <img class="img-fluid utk-in-section--image utk-radius-large"
              src="{{ paragraph.field_image|file_url }}"
              alt="{{ image_alt }}"
              loading="lazy">
