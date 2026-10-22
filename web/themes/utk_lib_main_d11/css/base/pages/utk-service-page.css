@@ -1,6 +1,4 @@
 #utk-service .service-content h2 {
-  border-bottom: 2px solid var(--utk-logo--orange);
-  padding-bottom: 0.5rem;
   margin-top: 1.5rem;
   margin-bottom: 1rem;
 }

@@ -53,16 +53,16 @@
 <article {{ attributes.addClass(classes) }} id='utk-article'>
     {% set hero_body %}
         <p class="utk-page-hero__subtitle utk-overlay-dark-chip mb-0">
-            {{ content.field_publishing_date.0["#markup"]|date('F j, Y') }}
+            {{ content.field_publishing_date.0['#markup']|date('F j, Y') }}
         </p>
     {% endset %}
 
-    {% include "@utk_lib_main_d11/templates/views/utk--page-hero.html.twig" with {
+    {{ include('@utk_lib_main_d11/templates/views/utk--page-hero.html.twig', {
         title: node.label,
         image_src: hero_image_src|default(''),
         image_alt: hero_image_alt|default(''),
-        body_content: hero_body
-    } %}
+        body_content: hero_body,
+    }) }}
 
     {% if node.field_update_label.value or node.field_update_text.value %}
         <div class='container-fluid d-lg-flex justify-content-center utk-article utk-article--update'>
@@ -87,7 +87,7 @@
             {% if not node.field_related_links.isEmpty %}
         <div class='col-lg-3'>
             <div class='row pt-2'>
-                <h2 class='text-center text-lg-start'>Related News:</h2>
+                <h2 class='text-center text-lg-start mx-auto mx-lg-0 utk-section-heading'>Related News:</h2>
                 <div class='row'>
                     {{ content.field_related_links }}
                 </div>

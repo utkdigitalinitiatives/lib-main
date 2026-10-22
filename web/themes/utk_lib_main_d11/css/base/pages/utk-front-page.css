@@ -157,13 +157,6 @@ a:hover .utk--hours-line {
     box-shadow: none;
 }
 
-.utk-homepage-news-events-card .utk-card-header h3 {
-    display: inline-block;
-    width: fit-content;
-    padding-bottom: 0.4rem;
-    border-bottom: 2px solid var(--utk-logo--orange);
-}
-
 .utk-homepage-news-events-card .utk-card-body {
     padding: 0.625rem 1.5rem 1.25rem;
 }
