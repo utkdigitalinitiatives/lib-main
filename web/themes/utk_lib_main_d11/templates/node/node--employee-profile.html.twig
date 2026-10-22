@@ -61,7 +61,7 @@ set classes = [
                 {% endif %}
 
                 {% if has_contact %}
-                    <h2 class="fs-5 mb-2">Contact Information</h2>
+                    <h2 class="fs-5 mb-2 utk-section-heading">Contact Information</h2>
                     {% if not node.field_email.isEmpty %}
                         <div class="pb-1">
                             <a href="mailto:{{ node.field_email.value }}">{{ node.field_email.value }}</a>
@@ -81,7 +81,7 @@ set classes = [
                 {% endif %}
 
                 {% if not node.field_librarian_specialties.isEmpty %}
-                    <h2 class="fw-medium fs-3 mt-3 mb-2">Specialties</h2>
+                    <h2 class="fw-medium fs-3 mt-3 mb-2 utk-section-heading">Specialties</h2>
                     <div>
                         {{ content.field_librarian_specialties }}
                     </div>
@@ -91,7 +91,7 @@ set classes = [
 
         {% if not node.field_profile_links_cards.isEmpty %}
             <div class="mt-4">
-                <h2>Resources</h2>
+                <h2 class="utk-section-heading">Resources</h2>
                 <div class="utk-card-grid utk-card-grid--auto-grid utk-card-grid__grid">
                     {% for key, item in content.field_profile_links_cards['#items']|default([]) %}
                         <div>{{ content.field_profile_links_cards[key] }}</div>

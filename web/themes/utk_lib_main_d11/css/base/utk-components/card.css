@@ -263,14 +263,14 @@
   );
   background-repeat: no-repeat;
   background-position: left bottom;
-  background-size: 0 1px;
+  background-size: 0 var(--utk-link-underline-thickness);
   transition: background-size 0.2s ease-out;
 }
 
 .utk-contact-card .utk-service-contact__link:hover .utk-service-contact__title,
 .utk-contact-card .utk-service-contact__link:focus-visible .utk-service-contact__title,
 .utk-contact-card .utk-service-contact__link:active .utk-service-contact__title {
-  background-size: 100% 1px;
+  background-size: 100% var(--utk-link-underline-thickness);
 }
 
 .utk-about-sidebar-card .field--name-field-parent-page,
@@ -361,18 +361,8 @@
 }
 
 .utk-portal-card__title {
-  width: fit-content;
   line-height: 1.1;
   text-align: left;
-}
-
-.utk-portal-card__title::after {
-  content: "";
-  display: block;
-  width: calc(100% + 1rem);
-  height: 0;
-  margin-top: 0.4rem;
-  border-top: 1px solid var(--utk-logo--orange);
 }
 
 .utk-portal-card .utk-card-header a {

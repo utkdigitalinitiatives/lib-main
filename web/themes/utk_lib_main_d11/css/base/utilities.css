@@ -15,6 +15,7 @@
   --utk-teal: rgb(0 117 148);
   --utk-teal-weak: rgb(0 117 148 / 0.55);
   --utk-black: #000;
+  --utk-link-underline-thickness: 0.8px;
 
   --font-family-base: "Montserrat", sans-serif;
 
@@ -31,6 +32,12 @@ body {
 
 a {
   text-decoration: none;
+  text-decoration-thickness: var(--utk-link-underline-thickness);
+}
+
+a:focus-visible {
+  outline: 2px solid rgb(from var(--utk-logo--orange) r g b / 0.7);
+  outline-offset: 2px;
 }
 
 /* Utility Classes */
@@ -111,7 +118,7 @@ a {
 .link-link.underline-active a {
   text-decoration: underline;
   text-decoration-color: var(--utk-link);
-  text-decoration-thickness: 2px;
+  text-decoration-thickness: var(--utk-link-underline-thickness);
   text-underline-offset: 4px;
 }
 
@@ -222,7 +229,7 @@ a {
     var(--utk-logo--white) 100%,
     var(--utk-logo--white) 100%
   );
-  background-size: 0 2px;
+  background-size: 0 var(--utk-link-underline-thickness);
   background-repeat: no-repeat;
   background-position: left bottom;
   transition:
@@ -241,7 +248,7 @@ a {
 .breadcrumb-search-selector a:active {
   color: var(--utk-logo--white, var(--utk-logo--white));
   text-decoration: none;
-  background-size: 100% 2px;
+  background-size: 100% var(--utk-link-underline-thickness);
 }
 
 /* Inset Shadow Class */
@@ -316,7 +323,7 @@ a {
 .utk-search-selector a:active {
   color: var(--hover-color, #ccc2c0);
   text-decoration: none;
-  background-size: 100% 2px;
+  background-size: 100% var(--utk-link-underline-thickness);
 }
 
 .utk-search-selector a {
@@ -330,7 +337,7 @@ a {
     var(--underline-color, var(--utk-logo--orange)) 100%,
     var(--underline-color, var(--utk-logo--orange)) 100%
   );
-  background-size: 0 2px;
+  background-size: 0 var(--utk-link-underline-thickness);
   background-repeat: no-repeat;
   background-position: left bottom;
   transition:
@@ -349,7 +356,7 @@ a {
   );
   background-repeat: no-repeat;
   background-position: left bottom;
-  background-size: 0 1px;
+  background-size: 0 var(--utk-link-underline-thickness);
   transition: background-size 0.2s ease-out;
 }
 
@@ -357,7 +364,7 @@ a {
 .utk-search-selector-thin a:focus-visible,
 .utk-search-selector-thin a:active {
   text-decoration: none;
-  background-size: 100% 1px;
+  background-size: 100% var(--utk-link-underline-thickness);
 }
 
 .max-row-width {
