@@ -2,7 +2,7 @@
 
 .directory-container {
   --directory-section-gap: 1.8rem;
-  --directory-card-radius: 10px;
+  --directory-card-radius: var(--utk-radius-large);
   --directory-card-border-color: var(--utk-card-border-subtle);
 }
 
@@ -151,7 +151,7 @@
   margin-left: -0.5rem;
   padding: 0.2rem 0.5rem;
   border: 1px solid var(--utk-logo--orange);
-  border-radius: 999px;
+  border-radius: var(--utk-radius-pill);
   color: rgb(from var(--utk-black) r g b / 0.87);
   background: rgb(from var(--utk-logo--orange) r g b / 0.1);
   font-size: 0.7rem;

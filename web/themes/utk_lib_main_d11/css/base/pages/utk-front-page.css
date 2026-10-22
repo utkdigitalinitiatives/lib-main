@@ -9,7 +9,7 @@
     width: 150px;
     min-height: 120px;
     border: 2px solid var(--utk-logo--orange);
-    border-radius: 10px;
+    border-radius: var(--utk-radius-large);
     border-image-slice: 1;
     box-shadow: 1px 1px 1px var(--utk-logo--orange);
     transition: .1s ease-in-out;
@@ -51,7 +51,7 @@ a:hover .utk--hours-line {
     background-color: var(--utk-logo--white);
     border: solid var(--utk-logo--orange);
     border-width: 1.5px;
-    border-radius: 8px;
+    border-radius: var(--utk-radius-medium);
     max-width: 60px;
     height: 60px;
     text-decoration: none;
@@ -97,7 +97,7 @@ a:hover .utk--hours-line {
 
 .utk-search-background {
     background-color: rgb(from var(--utk-black) r g b / 0.6);
-    border-radius: 10px;
+    border-radius: var(--utk-radius-large);
     backdrop-filter: var(--utk-overlay-dark-blur);
     -webkit-backdrop-filter: var(--utk-overlay-dark-blur);
 }
@@ -126,6 +126,17 @@ a:hover .utk--hours-line {
 .utk-homepage-subtle-overlay {
     backdrop-filter: blur(2.3px);
     -webkit-backdrop-filter: blur(2.3px);
+}
+
+.utk-homepage-section-title {
+    font-size: calc(1.3rem + 0.6vw);
+    font-weight: 500;
+}
+
+@media screen and (min-width: 1200px) {
+    .utk-homepage-section-title {
+        font-size: 1.75rem;
+    }
 }
 
 .utk-homepage-news-events-grid {
@@ -178,7 +189,7 @@ a:hover .utk--hours-line {
 }
 
 .utk-spotlight-section {
-    border-radius: 0.75rem;
+    border-radius: var(--utk-radius-large);
     border: 1px solid rgb(from var(--utk-logo--white) r g b / 0.15);
     padding: 2rem 1rem;
     box-shadow: 0 2px 12px rgb(from var(--utk-black) r g b / 0.06);
@@ -193,8 +204,6 @@ a:hover .utk--hours-line {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.8rem;
-    font-weight: 500;
     color: var(--utk-logo--smokey);
     text-align: center;
     margin: 0;

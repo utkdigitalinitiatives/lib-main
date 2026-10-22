@@ -57,7 +57,7 @@
   color: var(--utk-link);
   background-color: var(--utk-logo--white);
   border: solid 1px var(--utk-logo--orange);
-  border-radius: 5px;
+  border-radius: var(--utk-radius-medium);
   padding: 5px 10px;
   transition:
     background-color 0.3s ease,
@@ -118,7 +118,7 @@ blockquote::before {
 /* Service Preview on Department Pages */
 .utk--service-preview {
   border: 1px solid;
-  border-radius: 5px;
+  border-radius: var(--utk-radius-medium);
   border-color: var(--utk-logo--orange);
   transition: 0.2s ease-in;
 }
@@ -133,8 +133,8 @@ blockquote::before {
   max-width: 100px;
   max-height: 100px;
   object-fit: cover;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-top-left-radius: var(--utk-radius-medium);
+  border-bottom-left-radius: var(--utk-radius-medium);
 }
 
 .utk--service-preview:hover {
@@ -196,7 +196,7 @@ blockquote::before {
   background-color: rgb(from var(--utk-black) r g b / 0.5);
   color: var(--utk-logo--white);
   padding: 4px 10px;
-  border-radius: 12px;
+  border-radius: var(--utk-radius-pill);
   font-size: 14px;
   font-weight: 500;
   z-index: 1;
@@ -217,7 +217,7 @@ blockquote::before {
   overflow-y: auto;
   padding: 5px 10px 5px 0;
   background-color: rgb(248 248 248 / 0.3);
-  border-radius: 4px;
+  border-radius: var(--utk-radius-small);
   margin-top: 5px;
   scrollbar-width: thin;
   scrollbar-color: rgb(255 130 0 / 0.6) rgb(from var(--utk-black) r g b / 0.1);
@@ -234,16 +234,16 @@ blockquote::before {
 
 .utk-modal .description-scroll::-webkit-scrollbar-track {
   background: rgb(from var(--utk-black) r g b / 0.1);
-  border-radius: 3px;
+  border-radius: var(--utk-radius-small);
 }
 
 .utk-modal .description-scroll::-webkit-scrollbar-thumb {
   background: rgb(from var(--utk-logo--orange) r g b / 0.6);
-  border-radius: 3px;
+  border-radius: var(--utk-radius-small);
 }
 
 .utk-modal .modal-content {
-  border-radius: 8px;
+  border-radius: var(--utk-radius-large);
   animation: modal-fade-in 0.3s ease;
 }
 
@@ -262,8 +262,8 @@ blockquote::before {
 .utk-modal .modal-header {
   position: relative;
   background: linear-gradient(to right, #f8f8f8, #ffffff);
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
+  border-top-left-radius: var(--utk-radius-large);
+  border-top-right-radius: var(--utk-radius-large);
   padding-top: 15px;
 }
 
@@ -274,7 +274,7 @@ blockquote::before {
 .utk-modal__status-badge {
   display: inline-flex;
   padding: 0.25rem 0.55rem;
-  border-radius: 999px;
+  border-radius: var(--utk-radius-pill);
   font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.02em;
@@ -312,8 +312,8 @@ blockquote::before {
 .modal-footer {
   background: linear-gradient(to bottom, rgb(248 248 248 / 0), #f8f8f8);
   border-top: 1px solid rgb(from var(--utk-black) r g b / 0.05) !important;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: var(--utk-radius-large);
+  border-bottom-right-radius: var(--utk-radius-large);
   padding: 15px 20px;
 }
 
@@ -393,8 +393,8 @@ blockquote::before {
 
 .utk-search-filter-container input[type="text"] {
   flex: 1 1 auto;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-top-left-radius: var(--utk-radius-medium);
+  border-bottom-left-radius: var(--utk-radius-medium);
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   height: 38px;
@@ -406,8 +406,8 @@ blockquote::before {
 .utk-search-filter-container input[type="submit"].form-submit {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-top-right-radius: var(--utk-radius-medium);
+  border-bottom-right-radius: var(--utk-radius-medium);
   margin-left: -1px;
   padding: 0.375rem 0.75rem;
   height: 38px;
@@ -445,7 +445,7 @@ blockquote::before {
   color: var(--utk-logo--white);
   background-color: var(--utk-logo--smokey);
   border-color: var(--utk-logo--white);
-  border-radius: 5px 5px 0px 0px;
+  border-radius: var(--utk-radius-medium) var(--utk-radius-medium) 0 0;
   padding: 5px;
   transition:
     background-color 0.3s ease,

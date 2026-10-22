@@ -7,7 +7,7 @@
 
 .utk-service--buttons {
   border: 2px solid var(--utk-logo--orange);
-  border-radius: 6px;
+  border-radius: var(--utk-radius-medium);
   text-decoration: none;
   min-height: 5em;
   box-shadow: 2px 2px 2px var(--utk-blue--accent);
@@ -53,8 +53,8 @@
 }
 
 #utk-search-text .form-control {
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-top-left-radius: var(--utk-radius-medium);
+  border-bottom-left-radius: var(--utk-radius-medium);
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
@@ -62,13 +62,13 @@
 #utk-search-text .btn {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-top-right-radius: var(--utk-radius-medium);
+  border-bottom-right-radius: var(--utk-radius-medium);
 }
 
 #search-bar-input {
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-top-left-radius: var(--utk-radius-medium);
+  border-bottom-left-radius: var(--utk-radius-medium);
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
@@ -76,8 +76,8 @@
 #button-search {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-top-right-radius: var(--utk-radius-medium);
+  border-bottom-right-radius: var(--utk-radius-medium);
 }
 
 .utk-carousel {
@@ -111,7 +111,7 @@
   height: 330px;
   margin-top: 10px;
   border: 1.5px solid var(--utk-logo--orange);
-  border-radius: 6px;
+  border-radius: var(--utk-radius-large);
   box-shadow: var(--utk-card-shadow-offset);
   overflow: hidden;
   transition:
@@ -125,6 +125,11 @@
   border-color: rgb(from var(--utk-logo--orange) r g b / 0.85);
   box-shadow: 0.45rem 0.45rem 1rem rgb(from var(--utk-black) r g b / 0.12);
   transform: translateY(-2px) scale(1.002);
+}
+
+.utk--cards--spotlight:hover,
+.utk--cards--spotlight:focus-visible {
+  box-shadow: 0.5rem 0.5rem 1.1rem rgb(from var(--utk-black) r g b / 0.16);
 }
 
 .utk--cards img {

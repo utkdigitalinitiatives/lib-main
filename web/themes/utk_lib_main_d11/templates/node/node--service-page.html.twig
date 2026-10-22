@@ -64,7 +64,7 @@ set classes = [
         <div class='col-lg-8 mx-auto px-3'>
         {% endif %}
         {% if node.field_include_table_of_contents.value is defined and node.field_include_table_of_contents.value %}
-            <div class='row pe-2 mx-0 mb-4 p-1 rounded shadow-sm bg-light'>
+            <div class='row pe-2 mx-0 mb-4 p-1 utk-radius-medium shadow-sm bg-light'>
                 {{ drupal_view('jump_to_section', 'jump_to_block', node.id, related_links) }}
             </div>
         {% endif %}

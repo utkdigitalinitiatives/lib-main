@@ -16,6 +16,21 @@
   --utk-teal-weak: rgb(0 117 148 / 0.55);
   --utk-black: #000;
   --utk-link-underline-thickness: 0.8px;
+  --utk-radius-small: 0.25rem;
+  --utk-radius-medium: 0.5rem;
+  --utk-radius-large: 0.75rem;
+  --utk-radius-xlarge: 1rem;
+  --utk-radius-2xlarge: 2rem;
+  --utk-radius-pill: 999px;
+
+  /* Keep Bootstrap and Drupal-rendered components on the same radius scale. */
+  --bs-border-radius-sm: var(--utk-radius-small);
+  --bs-border-radius: var(--utk-radius-medium);
+  --bs-border-radius-lg: var(--utk-radius-large);
+  --bs-border-radius-xl: var(--utk-radius-xlarge);
+  --bs-border-radius-xxl: var(--utk-radius-2xlarge);
+  --bs-border-radius-2xl: var(--utk-radius-2xlarge);
+  --bs-border-radius-pill: var(--utk-radius-pill);
 
   --font-family-base: "Montserrat", sans-serif;
 
@@ -61,13 +76,13 @@ a:focus-visible {
 .utk-overlay-dark-chip {
   display: inline-block;
   padding: 0.5rem 1rem;
-  border-radius: 999px;
+  border-radius: var(--utk-radius-pill);
 }
 
 /* Contact Hover Effect */
 .utk-contact-hover {
   padding: 0.5rem 0.75rem;
-  border-radius: 4px;
+  border-radius: var(--utk-radius-small);
   transition: all 0.2s ease-in-out;
   border: 1px solid transparent;
   margin-bottom: 0.25rem;
@@ -213,7 +228,7 @@ a:focus-visible {
   backdrop-filter: var(--utk-overlay-dark-blur);
   -webkit-backdrop-filter: var(--utk-overlay-dark-blur);
   color: var(--utk-logo--white);
-  border-radius: 6px;
+  border-radius: var(--utk-radius-medium);
   display: inline-block;
   padding-bottom: 0 !important;
 }
@@ -276,6 +291,19 @@ a:focus-visible {
 
 .border-orange {
   border: 1px solid var(--utk-logo--orange);
+}
+
+/* Use the shared radius scale when component size determines corner treatment. */
+.utk-radius-medium {
+  border-radius: var(--utk-radius-medium);
+}
+
+.utk-radius-large {
+  border-radius: var(--utk-radius-large);
+}
+
+.utk-radius-large-top {
+  border-radius: var(--utk-radius-large) var(--utk-radius-large) 0 0;
 }
 
 /* Hover Effects */
@@ -372,9 +400,11 @@ a:focus-visible {
 }
 
 .quicklink-box {
+  display: flex;
+  flex-direction: column;
   position: relative;
   overflow: hidden;
-  border-radius: var(--bs-border-radius);
+  border-radius: var(--utk-radius-large);
   padding-top: 0.4rem;
 }
 
@@ -386,8 +416,8 @@ a:focus-visible {
   height: 10px;
   background-color: inherit;
   box-shadow: 0 0 10px rgb(from var(--utk-black) r g b / 0.1);
-  border-bottom-left-radius: var(--bs-border-radius);
-  border-bottom-right-radius: var(--bs-border-radius);
+  border-bottom-left-radius: var(--utk-radius-large);
+  border-bottom-right-radius: var(--utk-radius-large);
 }
 
 .quicklink-horizontal-line {
@@ -397,16 +427,26 @@ a:focus-visible {
   width: 100%;
   height: 2px;
   overflow: hidden;
-  border-top-left-radius: var(--bs-border-radius);
-  border-top-right-radius: var(--bs-border-radius);
+  border-top-left-radius: var(--utk-radius-large);
+  border-top-right-radius: var(--utk-radius-large);
 }
 
-.quicklink-box .utk-search-selector > div {
+.utk-homepage-quicklink-list {
+  display: grid;
+  flex: 1 1 auto;
+  grid-auto-rows: 1fr;
+  text-align: center;
+}
+
+.utk-homepage-quicklink-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
-  padding: 20px 0;
+  padding: 0.25rem 0;
 }
 
-.quicklink-box .utk-search-selector > div + div::before {
+.utk-homepage-quicklink-item + .utk-homepage-quicklink-item::before {
   content: "";
   position: absolute;
   left: 60px;
@@ -419,10 +459,7 @@ a:focus-visible {
 .quicklink-box h2 {
   text-align: center;
 }
-.quicklink-box .utk-search-selector {
-  text-align: center;
-}
-.quicklink-box .utk-search-selector a {
+.utk-homepage-quicklink-item a {
   display: inline-block;
   padding: 10px 0;
   margin-top: 5px;

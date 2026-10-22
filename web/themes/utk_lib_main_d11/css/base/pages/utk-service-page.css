@@ -19,7 +19,7 @@
   align-items: center;
   padding: 0.5rem;
   padding-left: 30px;
-  border-radius: 4px;
+  border-radius: var(--utk-radius-small);
   transition: none;
   background-repeat: no-repeat;
   background-position: 8px center;

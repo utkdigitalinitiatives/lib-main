@@ -23,7 +23,7 @@
 {% set image_src = fields.thumbnail__target_id.content|render|striptags|trim %}
 {% set image_alt = row._entity.field_spotlight_image.entity.field_media_image.alt %}
 <div class="d-flex justify-content-center align-items-center col col-sm-6 col-lg-4 pb-4">
-  <a class="utk--cards" href="{{ url }}">
+  <a class="utk--cards utk--cards--spotlight" href="{{ url }}">
     {% if image_src %}
       <img src="{{ image_src }}" alt="{{ image_alt }}" loading="lazy">
     {% endif %}

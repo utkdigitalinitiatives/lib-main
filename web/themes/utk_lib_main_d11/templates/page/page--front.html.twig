@@ -65,7 +65,7 @@
 
         <section class='container-fluid utk--inset-box-shadow py-5 my-5 utk-spotlight-section'>
             <div class='row justify-content-center align-items-center'>
-                <h2 class="utk-spotlight-title text-smokey mb-5">
+                <h2 class="utk-homepage-section-title utk-spotlight-title text-smokey mb-5">
                     SPOTLIGHT
                     {# Commenting out instead of deleting for now #}
                     {# <span class="utk-spotlight-flashlight ms-2" aria-hidden="true">🔦</span> #}
@@ -84,7 +84,7 @@
                         <div class='utk-homepage-news-events-grid__item'>
                             <div class='utk-card utk-card-frame utk-card-frame--border-subtle utk-card-frame--radius-large utk-card-frame--surface-white utk-card-frame--shadow-accent-subtle utk-card-frame--overflow-hidden utk-homepage-news-events-card'>
                                 <div class='utk-card-header utk-card-header--small-section'>
-                                    <h3 class='utk-section-heading'>Recent News</h3>
+                                    <h3 class='utk-homepage-section-title utk-section-heading'>Recent News</h3>
                                 </div>
                                 <div class='utk-card-body utk-news-events-block'>
                                     {{ drupal_view('news_view', 'news_block') }}
@@ -101,7 +101,7 @@
                         <div class='utk-homepage-news-events-grid__item'>
                             <div class='utk-card utk-card-frame utk-card-frame--border-subtle utk-card-frame--radius-large utk-card-frame--surface-white utk-card-frame--shadow-accent-subtle utk-card-frame--overflow-hidden utk-homepage-news-events-card'>
                                 <div class='utk-card-header utk-card-header--small-section'>
-                                    <h3 class='utk-section-heading'>Upcoming Events</h3>
+                                    <h3 class='utk-homepage-section-title utk-section-heading'>Upcoming Events</h3>
                                 </div>
                                 <div class='utk-card-body utk-news-events-block'>
                                     {{ drupal_view('events', 'events_block') }}
