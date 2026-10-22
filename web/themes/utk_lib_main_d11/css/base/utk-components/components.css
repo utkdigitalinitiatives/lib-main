@@ -52,17 +52,6 @@
   }
 }
 
-/* Modal Button */
-.utk--modal-btn {
-  border: 1px solid var(--utk-logo--orange);
-  border-radius: 5px;
-  transition: 0.2s ease-in;
-}
-
-.utk--modal-btn:hover {
-  background-color: #f6f6f6;
-}
-
 /* Blue Button  */
 .utk-blue-button {
   color: var(--utk-link);
@@ -279,10 +268,6 @@ blockquote::before {
 }
 
 .utk-modal .modal-title {
-  padding-bottom: 3px;
-  border-bottom: 2px solid var(--utk-logo--orange);
-  border-radius: 6px;
-  display: inline-block;
   margin-bottom: 10px;
 }
 
@@ -298,15 +283,15 @@ blockquote::before {
 }
 
 .utk-modal__status-badge--available {
-  color: var(--utk-logo--white);
-  background: rgb(from var(--utk-standard) r g b / 0.96);
-  border: 1px solid rgb(from var(--utk-standard) r g b / 0.8);
+  color: var(--utk-notification-standard);
+  background: var(--utk-notification-standard-background);
+  border: 1px solid rgb(from var(--utk-notification-standard) r g b / 0.8);
 }
 
 .utk-modal__status-badge--unavailable {
-  color: var(--utk-logo--white);
-  background: rgb(from var(--utk-danger) r g b / 0.96);
-  border: 1px solid rgb(from var(--utk-danger) r g b / 0.8);
+  color: var(--utk-notification-critical);
+  background: var(--utk-notification-critical-background);
+  border: 1px solid rgb(from var(--utk-notification-critical) r g b / 0.8);
 }
 
 .utk-modal .btn-close {

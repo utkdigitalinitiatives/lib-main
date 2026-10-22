@@ -110,15 +110,21 @@
   width: 330px;
   height: 330px;
   margin-top: 10px;
-  border: 2px solid var(--utk-logo--orange);
+  border: 1.5px solid var(--utk-logo--orange);
   border-radius: 6px;
+  box-shadow: var(--utk-card-shadow-offset);
   overflow: hidden;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
 }
 
 .utk--cards:hover,
 .utk--cards:focus-visible {
-  box-shadow: 0 4px 12px rgb(from var(--utk-logo--orange) r g b / 0.14);
-  border: 3px solid var(--utk-logo--orange);
+  border-color: rgb(from var(--utk-logo--orange) r g b / 0.85);
+  box-shadow: 0.45rem 0.45rem 1rem rgb(from var(--utk-black) r g b / 0.12);
+  transform: translateY(-2px) scale(1.002);
 }
 
 .utk--cards img {
