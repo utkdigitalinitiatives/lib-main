@@ -38,7 +38,7 @@
 }
 
 .notification-wrapper a {
-  color: var(--utk-logo--smokey);
+  color: var(--utk-link);
   font-weight: 600;
   text-underline-offset: 0.15em;
 }

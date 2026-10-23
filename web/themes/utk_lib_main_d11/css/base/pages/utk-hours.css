@@ -269,7 +269,7 @@
 
 .library-more-info a {
     font-size: 0.8rem;
-    color: #0066cc;
+    color: var(--utk-link);
     text-decoration: none;
 }
 
