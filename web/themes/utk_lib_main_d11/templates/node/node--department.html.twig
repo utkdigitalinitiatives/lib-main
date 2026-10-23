@@ -24,15 +24,13 @@
  */
 #}
 
-{%
-    set classes = [
-        'node',
-        'node--type-' ~ node.bundle|clean_class,
-        'container-fluid',
-        'px-0',
-        'text-smokey',
-    ]
-%}
+{% set classes = [
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    'container-fluid',
+    'px-0',
+    'text-smokey',
+] %}
 {% set hours = node.field_hours.entity|default(null) %}
 {% set hours_status = hours ? hours.field_status.value|default('') : '' %}
 {% set has_hours = hours_status in ['open', '24hours', 'closed'] %}
@@ -46,17 +44,20 @@
     }) }}
 
     <div class='container-fluid py-4 utk--striped-background'>
-        <div class='row max-row-width mx-auto px-3 gx-lg-5'>
-            <div class='col-lg-8 link-link utk-search-selector underline-active{% if not has_details %} mx-auto{% endif %}'>
-                {% if not node.field_department_summary.isEmpty %}
-                    <h2 class='utk-section-heading'>About</h2>
-                    {{ content.field_department_summary }}
-                {% endif %}
-            </div>
+        <div class='max-row-width mx-auto px-3'>
+            <div class='row gx-lg-5'>
+                <div class='col-lg-8 link-link utk-search-selector underline-active{% if not has_details %} mx-auto{% endif %}'>
+                    {% if not node.field_department_summary.isEmpty %}
+                        <h2 class='utk-section-heading mt-0'>About</h2>
+                        <div class='mt-3 utk-content-trim'>
+                            {{ content.field_department_summary }}
+                        </div>
+                    {% endif %}
+                </div>
 
-            {% if has_details %}
-                <div class='col-lg-4 pt-3 pt-lg-0 utk-card-stack utk-card-stack--narrow-right'>
-                    {% set contact_content %}
+                {% if has_details %}
+                    <div class='col-lg-4 pt-3 pt-lg-0 utk-card-stack utk-card-stack--narrow-right'>
+                        {% set contact_content %}
                             {% if not node.field_building_and_room_number.isEmpty %}
                                 <div class='mb-3'>
                                     <h3 class='utk-card-label mb-1'>Location</h3>
@@ -87,22 +88,23 @@
                                     {{ content.field_phone_numbers }}
                                 </div>
                             {% endif %}
-                    {% endset %}
-                    {{ include('@utk_lib_main_d11/templates/components/utk--panel-card.html.twig', {
-                        title: 'Contact and location',
-                        card_content: contact_content,
-                        variant: 'contact',
-                    }, with_context: false) }}
-                </div>
-            {% endif %}
+                        {% endset %}
+                        {{ include('@utk_lib_main_d11/templates/components/utk--panel-card.html.twig', {
+                            title: 'Contact and location',
+                            card_content: contact_content,
+                            variant: 'contact',
+                        }, with_context: false) }}
+                    </div>
+                {% endif %}
+            </div>
         </div>
     </div>
 
     {% if not node.field_department_links_cards.isEmpty %}
         <div class='container-fluid py-4 utk--striped-background text-smokey'>
             <div class='max-row-width mx-auto px-3'>
-                <h2 class='utk-section-heading'>Resources</h2>
-                <div class='utk-card-grid utk-card-grid--auto-grid utk-card-grid__grid'>
+                <h2 class='utk-section-heading mt-0'>Resources</h2>
+                <div class='utk-card-grid utk-card-grid--auto-grid utk-card-grid__grid mt-3'>
                     {% for key, item in content.field_department_links_cards['#items']|default([]) %}
                         <div>{{ content.field_department_links_cards[key] }}</div>
                     {% endfor %}
@@ -114,8 +116,8 @@
     {% if not node.field_spaces_catalog.isEmpty %}
         <div class='container-fluid py-4 utk--striped-background text-smokey'>
             <div class='max-row-width mx-auto px-3'>
-                <h2 class='utk-section-heading'>Department Spaces</h2>
-                <div class='d-lg-flex flex-row flex-wrap justify-content-evenly'>
+                <h2 class='utk-section-heading mt-0'>Department Spaces</h2>
+                <div class='utk-card-grid utk-card-grid--fixed-width utk-card-grid__grid mt-3'>
                     {% for key, item in content.field_spaces_catalog['#items']|default([]) %}
                         {{ content.field_spaces_catalog[key] }}
                     {% endfor %}
@@ -127,8 +129,8 @@
     {% if department_heads or department_members %}
         <div class='container-fluid py-4 utk--striped-background text-smokey link-link'>
             <div class='max-row-width mx-auto px-3 department-people-block directory-container'>
-                <h2 class='utk-section-heading'>People</h2>
-                <div class='directory-people-grid'>
+                <h2 class='utk-section-heading mt-0'>People</h2>
+                <div class='directory-people-grid mt-3'>
                     {% if department_heads %}
                         {% for person in department_heads %}
                             {{ include('@utk_lib_main_d11/templates/components/utk--department-person-card.html.twig', {

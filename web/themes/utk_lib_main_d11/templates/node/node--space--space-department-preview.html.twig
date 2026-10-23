@@ -32,7 +32,7 @@
 {% set normalized_location = location_label|lower|replace({' - ': ' ', '-': ' '}) %}
 {% set placeholder_image = (base_path|default('/', true)) ~ directory ~ '/images/placeholder-spaces.png' %}
 
-<a class="utk--cards mx-2" href="{{ url }}">
+<a class="utk--cards" href="{{ url }}">
     {% if node.field_space_featured_photo|length > 0 %}
         <img src="{{ node.field_space_featured_photo|file_url }}" alt="" loading="lazy">
     {% else %}

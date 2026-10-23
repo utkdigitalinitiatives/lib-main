@@ -12,6 +12,20 @@
   --utk-card-grid-gap: 2.5rem;
 }
 
+.utk-card-grid--fixed-width {
+  --utk-card-grid-columns: 1fr;
+  --utk-card-grid-gap: 1.8rem;
+  --utk-card-grid-item-width: 20.625rem;
+
+  justify-content: start;
+  justify-items: start;
+}
+
+.utk-card-grid--fixed-width > * {
+  max-width: 100%;
+  margin: 0;
+}
+
 .utk-card-grid__grid,
 .utk-card-grid__grid > .view-content {
   display: grid;
@@ -35,6 +49,10 @@
 }
 
 @media (min-width: 768px) {
+  .utk-card-grid--fixed-width {
+    --utk-card-grid-columns: repeat(auto-fill, var(--utk-card-grid-item-width));
+  }
+
   .utk-card-grid--three-up {
     --utk-card-grid-columns: repeat(2, minmax(0, 1fr));
   }

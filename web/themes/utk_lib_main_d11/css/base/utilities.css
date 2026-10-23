@@ -402,6 +402,19 @@ a:focus-visible {
   max-width: 1200px;
 }
 
+/* Let the surrounding layout control spacing at authored-content boundaries. */
+.utk-content-trim > :first-child,
+.utk-content-trim > .field__item > :first-child,
+.utk-content-trim > .field__items > .field__item:first-child > :first-child {
+  margin-top: 0;
+}
+
+.utk-content-trim > :last-child,
+.utk-content-trim > .field__item > :last-child,
+.utk-content-trim > .field__items > .field__item:last-child > :last-child {
+  margin-bottom: 0;
+}
+
 .quicklink-box {
   display: flex;
   flex-direction: column;

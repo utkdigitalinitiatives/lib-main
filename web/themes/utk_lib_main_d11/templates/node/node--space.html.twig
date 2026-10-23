@@ -39,20 +39,18 @@
  */
 #}
 
-{%
-    set classes = [
-        'node',
-        'node--type-' ~ node.id|clean_class,
-        'container-fluid',
-        'mb-4',
-        'pb-4',
-        'px-0',
-        'mx-0',
-        'text-smokey',
-        'link-link',
-    ]
-%}
-{% set alt = content.field_space_photo.alt %}
+{% set classes = [
+    'node',
+    'node--type-' ~ node.id|clean_class,
+    'container-fluid',
+    'mb-4',
+    'pb-4',
+    'px-0',
+    'mx-0',
+    'text-smokey',
+    'link-link',
+] %}
+{% set image_style = 'max_1300x1300' %}
 
 <article {{ attributes.addClass(classes) }}>
     {{ include('@utk_lib_main_d11/templates/views/utk--page-hero.html.twig', {
@@ -65,7 +63,7 @@
         <div class='d-flex justify-content-center row utk--1400px-width mx-auto'>
             {% if content.field_additional_space_photos|length > 3 %}
             <div class="col-12 col-lg-6 utk-radius-large pt-2">
-                <div id="carouselExampleIndicators" class="carousel slide utk-carousel utk--spaces-images utk-radius-large">
+                <div id="carouselExampleIndicators" class="carousel slide utk-carousel utk-node-media-frame utk-radius-large">
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
                             class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -77,12 +75,12 @@
                     </div>
                     <div class='carousel-inner'>
                         <div class='carousel-item active'>
-                            <img src="{{ node.field_space_featured_photo|file_url }}" class='d-block w-100 mx-auto' alt="{{ content.field_space_featured_photo['#items'].entity.field_media_image.alt }}" loading="lazy">
+                            <img src="{{ node.field_space_featured_photo.entity.field_media_image.entity.uri.value|image_style(image_style) }}" class='d-block w-100 mx-auto' alt="{{ content.field_space_featured_photo['#items'].entity.field_media_image.alt }}" loading="lazy">
                         </div>
                         {% for item in content.field_additional_space_photos['#items'] %}
                         <div class='carousel-item'>
-                            <img src="{{ item.entity|file_url }}" class='d-block w-100 mx-auto'
-                                alt="{{ content.field_additional_space_photos.0['#items'].entity.field_media_image.alt }}" loading="lazy">
+                            <img src="{{ item.entity.field_media_image.entity.uri.value|image_style(image_style) }}" class='d-block w-100 mx-auto'
+                                alt="{{ item.entity.field_media_image.alt }}" loading="lazy">
                         </div>
                         {% endfor %}
                     </div>
@@ -99,9 +97,11 @@
                 </div>
             </div>
             {% else %}
-            <div class='col-12 col-lg-6 utk--spaces-images d-flex justify-content-center pt-2'>
-                <img src="{{ node.field_space_featured_photo|file_url }}" class='img-fluid utk-radius-large'
-                    alt="{{ content.field_space_featured_photo['#items'].entity.field_media_image.alt }}" loading="lazy">
+            <div class='col-12 col-lg-6 d-flex justify-content-center pt-2'>
+                <div class='utk-node-media-frame utk-radius-large'>
+                    <img src="{{ node.field_space_featured_photo.entity.field_media_image.entity.uri.value|image_style(image_style) }}" class='img-fluid'
+                        alt="{{ content.field_space_featured_photo['#items'].entity.field_media_image.alt }}" loading="lazy">
+                </div>
             </div>
             {% endif %}
             <div class='col-12 col-lg-6 d-flex justify-content-lg-start justify-content-center text-smokey link-link pt-3 pt-lg-2'>
@@ -165,7 +165,7 @@
                             </div>
 
                             {% if not node.field_reservation_link_url.isEmpty %}
-                            <div class='d-flex justify-content-center my-3'>
+                            <div class='d-flex justify-content-center justify-content-md-end mt-4'>
                                 <a class='btn utk-blue-button' href="{{ content.field_reservation_link_url[0]['#plain_text'] }}">Reserve Now</a>
                             </div>
                             {% endif %}

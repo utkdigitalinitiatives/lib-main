@@ -181,11 +181,36 @@ blockquote::before {
 }
 
 /* Carousel image styles */
-.utk-carousel .carousel-item img,
-.utk--spaces-images img {
+.utk-node-media-frame {
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  max-width: 650px;
+  margin-inline: auto;
+  overflow: hidden;
+  background-color: var(--utk-white--accent);
+}
+
+.utk-node-media-frame .carousel-inner,
+.utk-node-media-frame .carousel-item {
+  height: 100%;
+}
+
+.utk-node-media-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.utk-carousel .carousel-item img {
   max-height: 500px;
   object-fit: cover;
   width: 100%;
+}
+
+.utk-carousel.utk-node-media-frame .carousel-item img {
+  height: 100%;
+  max-height: none;
 }
 
 .utk-carousel .carousel-counter {

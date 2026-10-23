@@ -103,6 +103,11 @@
   --utk-card-border-top-color: rgb(from var(--utk-black) r g b / 0.18);
 }
 
+.utk-card-frame.utk-card-frame--border-even {
+  --utk-card-border-top-width: var(--utk-card-border-width);
+  --utk-card-border-top-color: var(--utk-card-border-color);
+}
+
 .utk-card-frame.utk-card-frame--radius-large {
   --utk-card-radius: var(--utk-radius-xlarge);
 }
