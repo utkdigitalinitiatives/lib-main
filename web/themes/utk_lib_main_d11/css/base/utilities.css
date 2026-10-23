@@ -114,6 +114,12 @@ a:focus-visible {
   color: var(--utk-warning);
 }
 
+/* Use the site link color unless a component defines a contextual treatment. */
+a,
+a:hover {
+  color: var(--utk-link);
+}
+
 /* Link Text Colors */
 .link-smokey a {
   color: var(--utk-logo--smokey);

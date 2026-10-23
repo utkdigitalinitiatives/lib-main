@@ -58,8 +58,10 @@
 }
 
 .utk-card-body {
+  min-width: 0;
   padding: 1rem;
   background-color: var(--utk-logo--white);
+  overflow-wrap: anywhere;
 }
 
 .utk-card-frame {

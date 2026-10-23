@@ -1,10 +1,8 @@
 /*  Bookplate Styling */
 
 .bookplate-modal {
-  --bookplate-line: #d9dee5;
   --bookplate-gap: 9px;
   --bookplate-bg-orange: color-mix(in srgb, var(--utk-logo--orange) 11%, var(--utk-logo--white));
-  --bookplate-bg-grey: color-mix(in srgb, var(--utk-logo--smokey) 7%, var(--utk-logo--white));
 }
 
 /* Outer frame */
@@ -43,6 +41,7 @@
   box-sizing: border-box;
   width: 100%;
   object-fit: contain;
+  box-shadow: var(--utk-card-shadow-offset);
 }
 
 .bookplate-isauthor-badge {
@@ -55,9 +54,9 @@
   font-weight: 500;
   line-height: 1;
   border-radius: var(--utk-radius-pill);
-  background: #efd5a8e4;
-  color: #583904;
-  border: 2px solid rgb(140 72 0 / 0.35);
+  color: var(--utk-logo--smokey);
+  background-color: rgb(from var(--utk-logo--orange) r g b / 0.1);
+  border: 1.5px solid rgb(from var(--utk-logo--orange) r g b / 0.8);
   box-shadow: 0 1px 2px rgb(from var(--utk-black) r g b / 0.15);
   white-space: nowrap;
 }
@@ -71,11 +70,13 @@
   padding-left: var(--bookplate-gap) !important;
 }
 
-/* Honoree panel */
-.bookplate-modal .bookplate-pane--honoree {
-  background: var(--bookplate-bg-grey);
-  border: 1px solid var(--utk-logo--smokey);
+/* Keep both detail panels consistent with the shared card treatment. */
+.bookplate-modal .bookplate-pane--honoree,
+.bookplate-modal .bookplate-pane--details {
+  background: var(--utk-logo--white);
+  border: 1.2px solid var(--utk-card-border-accent);
   border-radius: var(--utk-radius-large);
+  box-shadow: var(--utk-card-shadow-offset);
 }
 
 .bookplate-modal .bookplate-pane--honoree header img {
@@ -85,13 +86,6 @@
   width: 95px;
   height: 95px;
   object-fit: cover;
-}
-
-/* Book Details */
-.bookplate-modal .bookplate-pane--details {
-  background: color-mix(in srgb, var(--utk-logo--orange) 4%, var(--utk-logo--white));
-  border: 1px solid var(--utk-logo--orange);
-  border-radius: var(--utk-radius-large);
 }
 
 /* Orange Accent line */
@@ -148,51 +142,6 @@
   font-size: 2rem;
   color: var(--utk-logo--orange);
   line-height: 1;
-}
-
-/* Bookplate View Exposed Filters */
-.bookplate-exposed-filters {
-  padding: 1rem 0;
-}
-
-.bookplate-exposed-filters label {
-  display: block;
-  font-weight: 600;
-  font-size: 0.95rem;
-  color: #333;
-  margin-bottom: 0.5rem;
-}
-
-.bookplate-exposed-filters .form-item {
-  margin: 0;
-}
-
-input.bookplate-input,
-select.bookplate-input {
-  display: block;
-  width: 100%;
-  padding: 0.5rem 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: var(--utk-radius-small);
-  font-size: 1rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-input.bookplate-input:focus,
-select.bookplate-input:focus {
-  border-color: var(--utk-logo--orange);
-  outline: 0;
-  box-shadow: 0 0 0 0.2rem color-mix(in srgb, var(--utk-logo--orange) 25%, transparent);
-}
-
-.bookplate-exposed-filters .form-actions {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.bookplate-exposed-filters .btn {
-  padding: 0.5rem 1.5rem;
-  font-weight: 600;
 }
 
 /* Grid card styles */
@@ -313,6 +262,15 @@ select.bookplate-input:focus {
   }
 }
 
-.bookplate-card {
-  max-width: fit-content;
+.bookplate-node-cover {
+  width: min(100%, 26rem);
+  aspect-ratio: 4 / 5;
+  background: var(--utk-logo--white);
+}
+
+.bookplate-node-cover img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
