@@ -36,29 +36,44 @@
         image_alt: 'University of Tennessee Libraries ' ~ node.label ~ ' background',
     }) }}
 
-    <div class="container-fluid utk-article bg-light-gray py-3 utk-search-selector">
-        <div class="row d-lg-flex justify-content-center utk-section-body mx-auto">
-            <div class="col-lg-6">
-                {% if position_department %}
-                    <div class="row mb-3">
-                        <p class="fs-5 fw-semibold py-0 my-0">Department</p>
-                        <div>
-                            <a href="{{ path('entity.node.canonical', {node: position_department.id}) }}">{{ position_department.label }}</a>
+    <div class="container-fluid utk--striped-background py-4">
+        <div class="row utk--1400px-width mx-auto">
+            <div class="col-12">
+                {% set position_summary_content %}
+                    <div class="row g-4 align-items-start">
+                        <div class="col-12 col-lg-4">
+                            {% if position_department %}
+                                {% set department_link %}
+                                    <a href="{{ path('entity.node.canonical', {node: position_department.id}) }}">{{ position_department.label }}</a>
+                                {% endset %}
+                                <div class="row g-4">
+                                    {{ include('@utk_lib_main_d11/templates/components/utk--detail-item.html.twig', {
+                                        label: 'Department',
+                                        value: department_link,
+                                        column_classes: ['col-12'],
+                                    }, with_context: false) }}
+                                </div>
+                            {% endif %}
+
+                            {% if position_application_url %}
+                                <div class="mt-4">
+                                    <a class="btn utk-blue-button px-4 py-2 fw-medium" href="{{ position_application_url }}">
+                                        Apply for Position
+                                    </a>
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="col-12 col-lg-8">
+                            {{ content.field_position_posting_details }}
                         </div>
                     </div>
-                {% endif %}
-
-                <div class="row">
-                    <div class="d-flex align-items-center">
-                        <a class="btn utk-blue-button px-4 py-2 fw-medium" href="{{ position_application_url }}">
-                            Apply for Position
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-6 pt-3 pt-lg-0">
-                {{ content.field_position_posting_details }}
+                {% endset %}
+                {{ include('@utk_lib_main_d11/templates/components/utk--panel-card.html.twig', {
+                    title: 'Position Details',
+                    card_content: position_summary_content,
+                    variant: 'details',
+                }, with_context: false) }}
             </div>
         </div>
     </div>
