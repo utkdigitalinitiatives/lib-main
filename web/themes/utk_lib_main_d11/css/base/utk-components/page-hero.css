@@ -49,6 +49,14 @@
   border-radius: var(--utk-radius-pill);
 }
 
+.utk-page-hero--news .utk-page-hero__body {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 100%;
+  transform: translateX(-50%);
+}
+
 .utk-page-hero .utk-search-filter-container {
   width: 40%;
   margin: 0 auto;
@@ -183,6 +191,10 @@
   .utk-page-hero--standard,
   .utk-page-hero-frame {
     min-height: 170px;
+  }
+
+  .utk-page-hero--standard.utk-page-hero--news {
+    min-height: 210px;
   }
 
   .utk-page-hero--short {

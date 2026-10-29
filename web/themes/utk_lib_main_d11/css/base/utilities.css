@@ -354,16 +354,16 @@ a:hover {
   color: var(--text-color, var(--utk-logo--white));
 } */
 
-/* Underline effect */
-.utk-search-selector a:hover,
-.utk-search-selector a:focus,
-.utk-search-selector a:active {
+/* Keep text-link underline effects from overriding button components. */
+.utk-search-selector a:not(.btn):hover,
+.utk-search-selector a:not(.btn):focus,
+.utk-search-selector a:not(.btn):active {
   color: var(--hover-color, #ccc2c0);
   text-decoration: none;
   background-size: 100% var(--utk-link-underline-thickness);
 }
 
-.utk-search-selector a {
+.utk-search-selector a:not(.btn) {
   text-decoration: none;
   position: relative;
   line-height: 16px;
