@@ -10,8 +10,8 @@
   margin: 0;
   color: var(--utk-logo--smokey);
   background-color: rgb(from var(--notification-accent) r g b / 0.1);
-  border: 1.5px solid rgb(from var(--notification-accent) r g b / 0.8);
-  border-left-width: 3px;
+  border: 1px solid rgb(from var(--notification-accent) r g b / 0.8);
+  border-left-width: 2px;
   border-radius: 0;
 }
 
