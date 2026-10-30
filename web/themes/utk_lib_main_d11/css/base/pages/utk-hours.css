@@ -19,7 +19,7 @@
     color: var(--utk-logo--white) !important;
     border-left: 3px solid var(--utk-link) !important;
     border-bottom: 3px solid var(--utk-link) !important;
-    border-radius: 3px;
+    border-radius: var(--utk-radius-small);
     font-weight: bold;
     text-align: center;
 }
@@ -27,7 +27,7 @@
 .s-lc-whw-today {
     background-color: rgb(0 102 204 / 0.1) !important;
     border-left: 3px solid var(--utk-link) !important;
-    border-radius: 3px;
+    border-radius: var(--utk-radius-small);
 }
 
 .s-lc-whw-bh {
@@ -73,7 +73,7 @@
     padding: 5px 10px;
     font-size: 12px;
     line-height: 1.5;
-    border-radius: 3px;
+    border-radius: var(--utk-radius-small);
     color: var(--utk-link);
     background-color: var(--utk-logo--white);
     border: solid 1px var(--utk-logo--orange);
@@ -105,7 +105,7 @@
     border-collapse: collapse;
     border-spacing: 0;
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: var(--utk-radius-small);
     overflow: hidden;
     padding-left: 0px;
     padding-right: 0px;
@@ -155,25 +155,45 @@
 
 .library-item {
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease;
     padding: 0.75rem 1rem;
-    border-bottom: 1px solid rgb(from var(--utk-black) r g b / 0.10);
+    border: 1px solid rgb(from var(--utk-logo--orange) r g b / 0.6);
+    border-radius: 0;
+    background: var(--utk-card-surface-warm);
     width: 100%;
 }
 
+.library-hours-item:first-child .library-item {
+    border-top-left-radius: var(--utk-radius-large);
+    border-top-right-radius: var(--utk-radius-large);
+}
+
+.library-hours-item:last-child .library-item {
+    border-bottom-right-radius: var(--utk-radius-large);
+    border-bottom-left-radius: var(--utk-radius-large);
+}
+
+.library-hours-item + .library-hours-item .library-item {
+    border-top: 0;
+}
+
 .library-item:hover {
-    background-color: rgb(from var(--utk-black) r g b / 0.05);
+    border-color: rgb(from var(--utk-logo--orange) r g b / 0.65);
+    background: rgb(from var(--utk-logo--orange) r g b / 0.05);
 }
 
 .library-item:focus,
 .library-item:focus-visible {
-    outline: 1px solid rgb(from var(--utk-black) r g b / 0.20);
+    outline: 1px solid rgb(from var(--utk-logo--orange) r g b / 0.65);
     outline-offset: -1px;
-    background-color: rgb(from var(--utk-black) r g b / 0.05);
+    background: rgb(from var(--utk-logo--orange) r g b / 0.05);
 }
 
 .library-item.active {
-    background-color: rgb(from var(--utk-black) r g b / 0.12);
+    border-color: rgb(from var(--utk-logo--orange) r g b / 0.65);
+    background: rgb(from var(--utk-logo--orange) r g b / 0.08);
 }
 
 .library-image-container {
@@ -181,6 +201,7 @@
     overflow: hidden;
     position: relative;
     border-left: 1px solid #dee2e6;
+    border-radius: var(--utk-radius-large);
 }
 
 /* Dark overlay styling */
@@ -232,15 +253,13 @@
 
 .library-hours-item {
     width: 100%;
-    background-image:
-    linear-gradient(to left, rgb(250 130 0 / 0.15), rgb(250 130 0 / 0.25)),
-    linear-gradient(var(--utk-logo--white), var(--utk-logo--white)); 
 }
 
 .library-list {
     max-height: 500px;
     overflow-y: auto;
     padding: 0;
+    border-radius: var(--utk-radius-large);
 }
 
 .status-indicator svg {
@@ -250,7 +269,7 @@
 
 .library-more-info a {
     font-size: 0.8rem;
-    color: #0066cc;
+    color: var(--utk-link);
     text-decoration: none;
 }
 

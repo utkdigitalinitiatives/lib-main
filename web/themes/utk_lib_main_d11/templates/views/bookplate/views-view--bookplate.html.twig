@@ -9,26 +9,28 @@
 
 {% set title = view.title %}
 
-{% include "@utk_lib_main_d11/templates/views/utk--page-hero.html.twig" with {
-  title: title
-} %}
+{{ include('@utk_lib_main_d11/templates/views/utk--page-hero.html.twig', {
+  title: title,
+}) }}
 
-<section class="container-fluid">
-  <div class="row d-flex justify-content-center bg-light-gray py-2">
-    {{ exposed }}
-  </div>
-</section>
+<div class="utk-page-hero-panel utk-page-hero-panel--curved">
+  <section class="container-fluid utk-page-hero-panel__section">
+    <div class="utk-page-hero-panel__content">
+      {{ exposed }}
+    </div>
+  </section>
+</div>
 
-<div class="container-fluid utk--inset-box-shadow">
-  <div class="row d-flex px-2 pt-2 justify-content-center justify-content-md-start row-cols-1 row-cols-md-2 row-cols-lg-3 utk--1400px-width mx-auto">
+<section class="container-fluid my-4 py-3">
+  <div class="bookplate-card-grid max-row-width mx-auto px-2">
     {% if rows %}
       {{ rows }}
     {% endif %}
   </div>
-</div>
+</section>
 
 {% if pager %}
-  <div class="p-2 m-3 utk-search-selector">
+  <div class="pb-2 mb-2 utk-search-selector">
     {{ pager }}
   </div>
 {% endif %}

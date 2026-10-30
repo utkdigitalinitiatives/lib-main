@@ -1,178 +1,289 @@
-.utk-grid-card {
-  height: 100%;
-  border: 1px solid rgb(from var(--utk-black) r g b / 0.12);
-  border-radius: 10px;
-  background: var(--utk-logo--white);
-  overflow: hidden;
-  width: 90%;
-  margin: 0 auto;
-  box-shadow: 0 10px 24px rgb(from var(--utk-black) r g b / 0.08),
-    0 2px 6px rgb(from var(--utk-black) r g b / 0.06);
-  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
-}
-
-.utk-grid-card:hover,
-.utk-grid-card:focus-within {
-  transform: translateY(-7px) scale(1.01);
-  border-color: rgb(from var(--utk-logo--orange) r g b / 0.28);
-  box-shadow: 0 24px 44px rgb(from var(--utk-black) r g b / 0.18),
-    0 10px 20px rgb(from var(--utk-black) r g b / 0.1),
-    0 0 22px rgb(from var(--utk-logo--orange) r g b / 0.24);
-}
-
-.utk-grid-card__link {
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-  color: inherit;
-  text-decoration: none;
-}
-
-.utk-grid-card__link:hover,
-.utk-grid-card__link:focus {
-  color: inherit;
-  text-decoration: none;
-}
-
-.utk-grid-card__link:focus-visible {
-  outline: 3px solid rgb(from var(--utk-logo--orange) r g b / 0.55);
-  outline-offset: 3px;
-}
-
-.utk-grid-card__media {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 222px;
-  padding: 0;
-  background: var(--utk-logo--white);
-}
-
-.utk-grid-card__media > * {
-  width: 100%;
-  margin: 0;
-}
-
-.utk-grid-card__media::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgb(from var(--utk-black) r g b / 0.12), transparent);
-}
-
-.utk-grid-card__media img {
-  display: block;
-  width: 100%;
-  max-width: none;
-  height: 100%;
-  max-height: none;
-  margin: 0;
-  object-fit: cover;
-  object-position: center;
-}
-
-.utk-grid-card__body {
-  display: flex;
-  flex: 1 1 auto;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 0.4rem;
-  position: relative;
-  z-index: 1;
-  margin-top: -10px;
-  padding: 1rem 22px;
-  background: linear-gradient(180deg, rgba(250, 248, 245, 0.98) 0%, rgba(244, 242, 238, 0.96) 100%);
-  border-top: 3px solid var(--utk-logo--orange);
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  box-shadow: inset 0 1px 0 rgb(from var(--utk-logo--white) r g b / 0.9);
-}
-
-.utk-grid-card__badge {
-  display: inline-flex;
-  align-self: flex-start;
-  padding: 0.25rem 0.55rem;
-  border: 1px solid var(--utk-logo--orange);
-  border-radius: 999px;
-  color: rgb(from var(--utk-black) r g b / 0.87);
-  background: rgb(from var(--utk-logo--orange) r g b / 0.1);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  line-height: 1.1;
-  box-shadow: 0 1px 2px rgb(from var(--utk-black) r g b / 0.05);
-}
-
-.utk-grid-card__title {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  margin: 0 0 0.15rem;
-  color: rgb(from var(--utk-black) r g b / 0.87);
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1.3;
-}
-
-.utk-grid-card__title-text {
-  min-width: 0;
-}
-
-.utk-grid-card__title-icon {
-  flex: 0 0 auto;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 12px;
-  height: 12px;
-  margin-left: 0.1rem;
-  position: relative;
-  top: 1px;
-}
-
-.utk-grid-card__summary,
-.utk-grid-card__summary > *:last-child {
-  margin-bottom: 0;
-}
-
-.utk-grid-card__summary {
-  color: var(--utk-logo--smokey);
-  font-size: 16px;
-  line-height: 1.45;
-}
-
-.utk-grid-card--text-only .utk-grid-card__body {
-  margin-top: 0;
-}
-
-.utk-card-surface,
-.utk-sidebar-card {
-  width: 100%;
-  margin: 0 auto;
-  border: 2px solid rgb(from var(--utk-logo--orange) r g b / 0.22);
-  border-radius: 12px;
-  background: linear-gradient(
+/* These shared rules let templates combine only the card styles they need. */
+:root {
+  --utk-card-radius-standard: var(--utk-radius-large);
+  --utk-card-space-inline: 1.5rem;
+  --utk-card-space-block: 1.25rem;
+  --utk-card-border-accent: rgb(from var(--utk-logo--orange) r g b / 0.5);
+  --utk-card-border-subtle: rgb(from var(--utk-black) r g b / 0.16);
+  --utk-card-surface-warm: linear-gradient(
     180deg,
     rgb(from var(--utk-logo--white) r g b / 0.995) 0%,
     rgb(from var(--utk-logo--white) r g b / 0.985) 58%,
     rgb(from var(--utk-logo--orange) r g b / 0.035) 100%
   );
-  box-shadow: 0 18px 38px rgb(from var(--utk-black) r g b / 0.1),
+  --utk-card-shadow-offset: 0.35rem 0.35rem 0.9rem rgb(from var(--utk-black) r g b / 0.09);
+  --utk-card-hover-transform: translateY(-4px) scale(1.005);
+  --utk-card-hover-shadow: 0.625rem 0.625rem 1.25rem 0.1rem rgb(from var(--utk-black) r g b / 0.28);
+}
+
+/* These structural styles live here so cards do not depend on utility CSS. */
+.utk-card-header {
+  padding: 1rem;
+  color: var(--utk-logo--white);
+  background: linear-gradient(
+    to right,
+    color-mix(in srgb, var(--utk-logo--smokey) 77%, var(--utk-black)),
+    color-mix(in srgb, var(--utk-logo--smokey) 75%, var(--utk-logo--white))
+  );
+  border-top: 3px solid var(--utk-logo--orange);
+  border-bottom-right-radius: var(--utk-radius-xlarge);
+  border-bottom-left-radius: var(--utk-radius-xlarge);
+}
+
+.utk-card-header--small-section {
+  color: var(--utk-logo--smokey) !important;
+  background:
+    radial-gradient(
+      circle at top left,
+      rgb(from var(--utk-logo--orange) r g b / 0.12) 0%,
+      transparent 42%
+    ),
+    linear-gradient(
+      180deg,
+      rgb(from var(--utk-logo--white) r g b / 0.985) 0%,
+      color-mix(in srgb, var(--utk-logo--orange) 6%, var(--utk-logo--white)) 52%,
+      color-mix(in srgb, var(--utk-logo--orange) 11%, var(--utk-logo--white)) 100%
+    );
+  border-bottom: 1px solid rgb(from var(--utk-logo--orange) r g b / 0.22);
+  box-shadow: inset 0 1px 0 rgb(from var(--utk-logo--white) r g b / 0.92);
+}
+
+.utk-card-header--small-section :is(h1, h2, h3, h4, h5, h6, p, a) {
+  margin: 0;
+  color: var(--utk-logo--smokey) !important;
+}
+
+.utk-card-header p {
+  margin-bottom: 0;
+}
+
+.utk-card-body {
+  min-width: 0;
+  padding: 1rem;
+  background-color: var(--utk-logo--white);
+  overflow-wrap: anywhere;
+}
+
+.utk-card-frame {
+  --utk-card-border-width: 0;
+  --utk-card-border-top-width: var(--utk-card-border-width);
+  --utk-card-border-color: transparent;
+  --utk-card-border-top-color: var(--utk-card-border-color);
+  --utk-card-radius: 0;
+  --utk-card-background: transparent;
+  --utk-card-box-shadow: none;
+  --utk-card-overflow: visible;
+
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: var(--utk-card-border-width);
+  border-color: var(--utk-card-border-color);
+  border-top-width: var(--utk-card-border-top-width);
+  border-top-color: var(--utk-card-border-top-color);
+  border-radius: var(--utk-card-radius);
+  background: var(--utk-card-background);
+  box-shadow: var(--utk-card-box-shadow);
+  overflow: var(--utk-card-overflow);
+}
+
+.utk-card-stack {
+  display: grid;
+  gap: var(--utk-card-space-block);
+  align-content: start;
+}
+
+.utk-card-stack--narrow-right > .utk-card-frame {
+  width: calc(100% - 0.75rem);
+  margin-left: auto;
+}
+
+/* These modifiers change the outer card without defining a complete design. */
+.utk-card-frame.utk-card-frame--border-subtle {
+  --utk-card-border-width: 1px;
+  --utk-card-border-top-width: 1px;
+  --utk-card-border-color: rgb(from var(--utk-black) r g b / 0.18);
+  --utk-card-border-top-color: rgb(from var(--utk-black) r g b / 0.18);
+}
+
+.utk-card-frame.utk-card-frame--border-even {
+  --utk-card-border-top-width: var(--utk-card-border-width);
+  --utk-card-border-top-color: var(--utk-card-border-color);
+}
+
+.utk-card-frame.utk-card-frame--radius-large {
+  --utk-card-radius: var(--utk-radius-xlarge);
+}
+
+.utk-card-frame.utk-card-frame--surface-white {
+  --utk-card-background: var(--utk-logo--white);
+}
+
+.utk-card-frame.utk-card-frame--shadow-accent-subtle {
+  --utk-card-box-shadow: 0.35rem 0.35rem 0 rgb(from var(--utk-logo--orange) r g b / 0.07),
+    0 0.25rem 0.75rem rgb(from var(--utk-black) r g b / 0.05);
+}
+
+.utk-card-frame.utk-card-frame--overflow-hidden {
+  --utk-card-overflow: hidden;
+}
+
+/* Header appearance and spacing can be selected separately. */
+.utk-card-header.utk-card-header--plain {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.utk-card-header.utk-card-header--spacing-compact {
+  padding: 0.95rem 1.21rem 0.87rem;
+}
+
+.utk-card-header.utk-card-header--spacing-standard {
+  padding: var(--utk-card-space-block) var(--utk-card-space-inline) 0.875rem;
+}
+
+/* Body background, spacing, and text size can be selected separately. */
+.utk-card-body--spacing-compact {
+  padding: 0 var(--utk-card-space-inline) var(--utk-card-space-block);
+}
+
+.utk-card-body--spacing-standard {
+  padding: 1rem;
+}
+
+.utk-card-body--transparent {
+  background-color: transparent;
+}
+
+.utk-card-body--white {
+  background-color: var(--utk-logo--white);
+}
+
+.utk-card-item-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.utk-card-text--small {
+  font-size: 0.95rem;
+}
+
+.utk-card-label {
+  font-size: inherit;
+}
+
+.utk-card-title--medium {
+  font-size: 1.25rem;
+}
+
+.utk-card-title--large {
+  font-size: calc(1.3rem + 0.6vw);
+}
+
+@media (min-width: 1200px) {
+  .utk-card-title--large {
+    font-size: 1.75rem;
+  }
+}
+
+/* These recipes preserve the established designs used by existing cards. */
+.utk-card-surface,
+.utk-sidebar-card,
+.utk-portal-card,
+.utk-contact-card,
+.utk-details-card {
+  width: 100%;
+  margin-inline: auto;
+  --utk-card-radius: var(--utk-card-radius-standard);
+  --utk-card-background: var(--utk-card-surface-warm);
+  --utk-card-overflow: hidden;
+}
+
+.utk-card-surface {
+  --utk-card-border-width: 1px;
+  --utk-card-border-color: var(--utk-card-border-subtle);
+  --utk-card-box-shadow: var(--utk-card-shadow-offset);
+}
+
+.utk-sidebar-card {
+  --utk-card-border-width: 2px;
+  --utk-card-border-color: rgb(from var(--utk-logo--orange) r g b / 0.22);
+  --utk-card-box-shadow: 0 18px 38px rgb(from var(--utk-black) r g b / 0.1),
     0 6px 16px rgb(from var(--utk-black) r g b / 0.08),
     0 1px 3px rgb(from var(--utk-black) r g b / 0.05);
-  overflow: hidden;
 }
 
-.utk-sidebar-card + .utk-sidebar-card {
-  margin-top: 1.25rem;
+.utk-portal-card,
+.utk-contact-card {
+  --utk-card-border-width: 0.7px;
+  --utk-card-border-top-width: 2px;
+  --utk-card-border-color: var(--utk-card-border-accent);
+  --utk-card-border-top-color: var(--utk-logo--orange);
+  --utk-card-box-shadow: var(--utk-card-shadow-offset);
 }
 
-.utk-sidebar-card .utk-card-header--small-section {
-  padding: 0.95rem 1.21rem 0.87rem;
+.utk-details-card {
+  --utk-card-border-width: 0.7px;
+  --utk-card-border-color: var(--utk-card-border-accent);
+  --utk-card-box-shadow: var(--utk-card-shadow-offset);
+}
+
+.utk-job-card__meta {
+  border: 0.5px solid var(--utk-logo--smokey);
+}
+
+.utk-details-card__status {
+  padding: 0.44rem 0.88rem;
+  font-size: 0.66em;
+  font-weight: 500;
+}
+
+.utk-details-card__status--reservable {
+  color: var(--utk-notification-standard);
+  background-color: var(--utk-notification-standard-background);
+  border: 1px solid rgb(from var(--utk-notification-standard) r g b / 0.8);
+}
+
+.utk-details-card__status--not-reservable {
+  color: var(--utk-notification-critical);
+  background-color: var(--utk-notification-critical-background);
+  border: 1px solid rgb(from var(--utk-notification-critical) r g b / 0.8);
+}
+
+.utk-contact-card__body a {
+  color: var(--utk-link);
+  text-decoration: none;
+}
+
+.utk-contact-card__body a:hover,
+.utk-contact-card__body a:focus-visible,
+.utk-contact-card__body a:active {
+  color: var(--utk-link);
+  text-decoration: none;
+}
+
+.utk-contact-card .utk-service-contact__link {
+  background-image: none;
+}
+
+.utk-contact-card .utk-service-contact__link .utk-service-contact__title {
+  display: inline;
+  background-image: linear-gradient(
+    var(--utk-logo--orange),
+    var(--utk-logo--orange)
+  );
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 0 var(--utk-link-underline-thickness);
+  transition: background-size 0.2s ease-out;
+}
+
+.utk-contact-card .utk-service-contact__link:hover .utk-service-contact__title,
+.utk-contact-card .utk-service-contact__link:focus-visible .utk-service-contact__title,
+.utk-contact-card .utk-service-contact__link:active .utk-service-contact__title {
+  background-size: 100% var(--utk-link-underline-thickness);
 }
 
 .utk-about-sidebar-card .field--name-field-parent-page,
@@ -194,7 +305,7 @@
 }
 
 .utk-card__media {
-  margin-bottom: 1.35rem;
+  margin-bottom: 0;
 }
 
 .utk-card__media img {
@@ -210,16 +321,16 @@
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
-  gap: 1rem;
-  padding: 1.5rem 1.75rem 1.75rem;
+  gap: 0.875rem;
+  padding: 1.25rem 1.5rem;
 }
 
 .utk-card__title {
   margin: 0;
   color: var(--utk-logo--smokey);
-  font-size: clamp(1.55rem, 2.3vw, 2.15rem);
-  font-weight: 600;
-  line-height: 1.22;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.2;
 }
 
 .utk-card__text,
@@ -229,8 +340,8 @@
 
 .utk-card__text {
   color: var(--utk-logo--smokey);
-  font-size: 1.05rem;
-  line-height: 1.55;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 .utk-card__actions {
@@ -239,20 +350,11 @@
   margin-top: auto;
 }
 
-.utk-portal-card {
-  width: 100%;
-  margin: 0 auto;
-  border-radius: 12px;
-  border-color: rgb(from var(--utk-black) r g b / 0.11);
-  border-right-width: 2px;
-  border-bottom-width: 2px;
-  border-left-width: 2px;
-  border-right-color: rgb(from var(--utk-logo--orange) r g b / 0.22);
-  border-bottom-color: rgb(from var(--utk-logo--orange) r g b / 0.22);
-  border-left-color: rgb(from var(--utk-logo--orange) r g b / 0.22);
-  box-shadow: 0 10px 24px rgb(from var(--utk-black) r g b / 0.06),
-    0 2px 6px rgb(from var(--utk-black) r g b / 0.05);
-  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+.utk-card--summary-only .utk-card__text {
+  color: var(--utk-logo--smokey);
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.2;
 }
 
 .utk-portal-card-column--featured {
@@ -260,17 +362,8 @@
   padding-bottom: 0.85rem;
 }
 
-.utk-portal-card:hover,
-.utk-portal-card:focus-within {
-  transform: translateY(-7px) scale(1.01);
-  border-color: rgb(from var(--utk-logo--orange) r g b / 0.28);
-  box-shadow: 0 24px 44px rgb(from var(--utk-black) r g b / 0.18),
-    0 10px 20px rgb(from var(--utk-black) r g b / 0.1),
-    0 0 22px rgb(from var(--utk-logo--orange) r g b / 0.24);
-}
-
-.utk-portal-card .utk-card-header {
-  padding: 0.78rem 1.85rem 0.72rem;
+.utk-card-header.utk-portal-card__header {
+  padding: 1.5rem 1.5rem 0.875rem;
 }
 
 .utk-portal-card__header-row {
@@ -280,8 +373,7 @@
   gap: 1.5rem;
 }
 
-.utk-portal-card .utk-card-header p {
-  font-size: clamp(2rem, 2.4vw, 2.45rem);
+.utk-portal-card__title {
   line-height: 1.1;
   text-align: left;
 }
@@ -291,40 +383,25 @@
   --hover-color: var(--utk-logo--smokey);
 }
 
-.utk-portal-card__header-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-  flex: 0 0 auto;
-  align-self: center;
-  padding: 0 0 0 1rem;
-  line-height: 1.1;
-  text-align: left;
-  white-space: nowrap;
-}
-
 .utk-portal-card__body-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.35rem 1.83rem;
   align-items: start;
-  padding: 1.11rem 1.57rem 1.02rem;
+  padding: 0 1.5rem 1.25rem;
+  background-color: transparent;
 }
 
 .utk-portal-card__body-grid > * {
   min-width: 0;
 }
 
-.utk-portal-card__body-grid .mx-2 {
-  margin-right: 0 !important;
-  margin-left: 0 !important;
-}
-
 .utk-portal-card__item-row {
+  display: flex;
+  align-items: flex-start;
   gap: 0.35rem;
   min-height: 0;
-  padding-top: 0.31rem !important;
-  padding-bottom: 0.31rem !important;
+  padding: 0.31rem 0;
 }
 
 .utk-portal-card__item-row .portal-icon {
@@ -333,8 +410,8 @@
   margin-top: 0.05rem;
 }
 
-.utk-portal-card__item-row .ps-2 {
-  padding-left: 0.42rem !important;
+.utk-portal-card__item-content {
+  padding-left: 0.42rem;
 }
 
 .utk-portal-card__item-row a {
@@ -344,8 +421,8 @@
 }
 
 @media (max-width: 767px) {
-  .utk-portal-card .utk-card-header {
-    padding: 0.72rem 1.15rem 0.66rem;
+  .utk-card-header.utk-portal-card__header {
+    padding: 1.25rem 1.15rem 0.75rem;
   }
 
   .utk-portal-card__header-row {
@@ -354,18 +431,9 @@
     gap: 0.65rem;
   }
 
-  .utk-portal-card__header-link {
-    padding-left: 0;
-  }
-
   .utk-portal-card__body-grid {
     grid-template-columns: 1fr;
     gap: 0.2rem;
-    padding: 0.94rem 0.98rem 0.85rem;
-  }
-
-  .utk-grid-card__media {
-    height: 188px;
-    padding: 0;
+    padding: 0 1.15rem 1rem;
   }
 }

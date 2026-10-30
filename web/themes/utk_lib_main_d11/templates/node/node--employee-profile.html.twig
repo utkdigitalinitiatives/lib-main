@@ -46,32 +46,18 @@ set classes = [
         image_alt: '',
     }) }}
 
-    <div class="container-fluid utk--1400px-width py-3 text-smokey link-link">
-        <div class="row d-flex justify-content-center">
+    <div class="container-fluid utk--1400px-width py-4 text-smokey link-link">
+        <div class="row g-4 justify-content-center">
             {% if has_profile_picture %}
             <div class="col-lg-6 d-flex justify-content-center utk--employee-img">
-                <img src="{{ image_src }}" alt="{{ image_alt }}" class="img-fluid rounded" loading="lazy">
+                <img src="{{ image_src }}" alt="{{ image_alt }}" class="img-fluid utk-radius-large" loading="lazy">
             </div>
             {% endif %}
-            <div class="{% if has_profile_picture %}col-lg-6 pt-3 pt-lg-0{% else %}col-lg-8{% endif %} utk-search-selector">
+            <div class="{% if has_profile_picture %}col-lg-6{% else %}col-lg-8{% endif %} utk-search-selector">
                 {% if not node.field_position.isEmpty %}
                     <div class="mb-3 fw-medium fs-3">
                         {{ content.field_position }}
                     </div>
-                {% endif %}
-
-                {% if has_contact %}
-                    <h2 class="fs-5 mb-2">Contact Information</h2>
-                    {% if not node.field_email.isEmpty %}
-                        <div class="pb-1">
-                            <a href="mailto:{{ node.field_email.value }}">{{ node.field_email.value }}</a>
-                        </div>
-                    {% endif %}
-                    {% if not node.field_phone.isEmpty %}
-                        <div class="pb-1">
-                            <a href="tel:{{ node.field_phone.value }}">{{ node.field_phone.value }}</a>
-                        </div>
-                    {% endif %}
                 {% endif %}
 
                 {% if not node.field_profile_bio.isEmpty %}
@@ -81,18 +67,41 @@ set classes = [
                 {% endif %}
 
                 {% if not node.field_librarian_specialties.isEmpty %}
-                    <h2 class="fw-medium fs-3 mt-3 mb-2">Specialties</h2>
-                    <div>
+                    <h2 class="fw-medium fs-3 mt-4 utk-section-heading">Specialties</h2>
+                    <div class="mt-3">
                         {{ content.field_librarian_specialties }}
                     </div>
+                {% endif %}
+
+                {% if has_contact %}
+                    {% set contact_content %}
+                        <div class="utk-card-item-stack">
+                            {% if not node.field_email.isEmpty %}
+                                <div>
+                                    <a href="mailto:{{ node.field_email.value }}">{{ node.field_email.value }}</a>
+                                </div>
+                            {% endif %}
+                            {% if not node.field_phone.isEmpty %}
+                                <div>
+                                    <a href="tel:{{ node.field_phone.value }}">{{ node.field_phone.value }}</a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endset %}
+                    {{ include('@utk_lib_main_d11/templates/components/utk--panel-card.html.twig', {
+                        title: 'Contact Information',
+                        card_content: contact_content,
+                        variant: 'contact',
+                        card_classes: ['mt-4', 'utk-card-frame--border-even'],
+                    }, with_context: false) }}
                 {% endif %}
             </div>
         </div>
 
         {% if not node.field_profile_links_cards.isEmpty %}
             <div class="mt-4">
-                <h2>Resources</h2>
-                <div class="utk-card-grid utk-card-grid--auto-grid utk-card-grid__grid">
+                <h2 class="utk-section-heading">Resources</h2>
+                <div class="utk-card-grid utk-card-grid--auto-grid utk-card-grid__grid mt-3">
                     {% for key, item in content.field_profile_links_cards['#items']|default([]) %}
                         <div>{{ content.field_profile_links_cards[key] }}</div>
                     {% endfor %}

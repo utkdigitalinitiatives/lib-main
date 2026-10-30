@@ -101,7 +101,7 @@
 .utk-department-transparent-bg {
     background-color: rgb(from var(--utk-logo--smokey) r g b / 0.80);
     color: var(--utk-logo--white);
-    border-radius: 8px;
+    border-radius: var(--utk-radius-medium);
     max-width: fit-content;
     margin-left: auto;
     margin-right: auto;

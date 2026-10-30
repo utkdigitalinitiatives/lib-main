@@ -131,10 +131,11 @@ content:
     weight: 5
     region: content
   field_spaces_catalog:
-    type: entity_reference_label
+    type: entity_reference_entity_view
     label: hidden
     settings:
-      link: true
+      view_mode: space_department_preview
+      link: false
     third_party_settings: {  }
     weight: 13
     region: content

@@ -20,14 +20,14 @@
 {% if not paragraph.field_text.isEmpty or not paragraph.field_image.isEmpty %}
   <div class="row py-1">
     {% if not text_on_right and not paragraph.field_text.isEmpty %}
-      <div class="col-lg-6">
+      <div class="col-lg-6 utk-section-heading-content link-link">
         {{ content.field_text }}
       </div>
     {% endif %}
 
     {% if not paragraph.field_image.isEmpty and image_media %}
       <figure class="figure col-lg-6">
-        <img class="img-fluid utk-in-section--image rounded"
+        <img class="img-fluid utk-in-section--image utk-radius-large"
              src="{{ paragraph.field_image|file_url }}"
              alt="{{ image_alt }}"
              loading="lazy">
@@ -40,7 +40,7 @@
     {% endif %}
 
     {% if text_on_right and not paragraph.field_text.isEmpty %}
-      <div class="col-lg-6">
+      <div class="col-lg-6 utk-section-heading-content link-link">
         {{ content.field_text }}
       </div>
     {% endif %}

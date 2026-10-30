@@ -65,7 +65,7 @@
 
         <section class='container-fluid utk--inset-box-shadow py-5 my-5 utk-spotlight-section'>
             <div class='row justify-content-center align-items-center'>
-                <h2 class="utk-spotlight-title text-smokey mb-5">
+                <h2 class="utk-homepage-section-title utk-spotlight-title text-smokey mb-5">
                     SPOTLIGHT
                     {# Commenting out instead of deleting for now #}
                     {# <span class="utk-spotlight-flashlight ms-2" aria-hidden="true">🔦</span> #}
@@ -82,14 +82,14 @@
                 <section class='container-fluid py-5 my-5'>
                     <div class='utk-homepage-news-events-grid mx-auto max-row-width'>
                         <div class='utk-homepage-news-events-grid__item'>
-                            <div class='utk-card'>
+                            <div class='utk-card utk-card-frame utk-card-frame--border-subtle utk-card-frame--radius-large utk-card-frame--surface-white utk-card-frame--shadow-accent-subtle utk-card-frame--overflow-hidden utk-homepage-news-events-card'>
                                 <div class='utk-card-header utk-card-header--small-section'>
-                                    <h3>Recent News</h3>
+                                    <h3 class='utk-homepage-section-title utk-section-heading'>Recent News</h3>
                                 </div>
                                 <div class='utk-card-body utk-news-events-block'>
                                     {{ drupal_view('news_view', 'news_block') }}
                                     <div class='d-flex align-items-end link-link utk-search-selector'>
-                                        <a href='/news' class='ms-auto mt-auto mb-0 pt-2'>More News
+                                        <a href='/news' class='utk-homepage-news-events-more-link ms-auto mt-auto mb-0 pt-2'>More News
                                             <svg width="24" height="24" fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-label='arrow-icon'>
                                                 <path d="M13.267 4.209a.75.75 0 0 0-1.034 1.086l6.251 5.955H3.75a.75.75 0 0 0 0 1.5h14.734l-6.251 5.954a.75.75 0 0 0 1.034 1.087l7.42-7.067a.996.996 0 0 0 .3-.58.758.758 0 0 0-.001-.29.995.995 0 0 0-.3-.578l-7.419-7.067Z" fill="#ff8200"/>
                                             </svg>
@@ -99,14 +99,14 @@
                             </div>
                         </div>
                         <div class='utk-homepage-news-events-grid__item'>
-                            <div class='utk-card'>
+                            <div class='utk-card utk-card-frame utk-card-frame--border-subtle utk-card-frame--radius-large utk-card-frame--surface-white utk-card-frame--shadow-accent-subtle utk-card-frame--overflow-hidden utk-homepage-news-events-card'>
                                 <div class='utk-card-header utk-card-header--small-section'>
-                                    <h3>Upcoming Events</h3>
+                                    <h3 class='utk-homepage-section-title utk-section-heading'>Upcoming Events</h3>
                                 </div>
                                 <div class='utk-card-body utk-news-events-block'>
                                     {{ drupal_view('events', 'events_block') }}
                                     <div class='d-flex align-items-end link-link utk-search-selector'>
-                                        <a href='https://calendar.utk.edu/department/libraries' class='ms-auto mt-auto mb-0 pt-2'>More Events
+                                        <a href='https://calendar.utk.edu/department/libraries' class='utk-homepage-news-events-more-link ms-auto mt-auto mb-0 pt-2'>More Events
                                             <svg width="24" height="24" fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M13.267 4.209a.75.75 0 0 0-1.034 1.086l6.251 5.955H3.75a.75.75 0 0 0 0 1.5h14.734l-6.251 5.954a.75.75 0 0 0 1.034 1.087l7.42-7.067a.996.996 0 0 0 .3-.58.758.758 0 0 0-.001-.29.995.995 0 0 0-.3-.578l-7.419-7.067Z" fill="#ff8200"/>
                                             </svg>

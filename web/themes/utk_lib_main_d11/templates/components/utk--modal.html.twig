@@ -33,7 +33,7 @@
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content border-0 shadow">
             <div class="modal-header border-bottom-0 pb-0">
-                <h1 class="modal-title fs-4 fw-bold" id="{{ modalLabel }}">{{ title }}</h1>
+                <h1 class="modal-title fs-4 fw-bold utk-section-heading" id="{{ modalLabel }}">{{ title }}</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" title="Close details"></button>
             </div>
             <div class="modal-body pt-2">
@@ -67,7 +67,7 @@
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Next</span>
                             </button>
-                            
+
                             <div class="carousel-counter d-none d-md-block">
                                 <span class="current-slide">1</span>/<span class="total-slides">{{ imageUrls|length }}</span>
                             </div>
@@ -100,7 +100,7 @@
                                     </div>
                                     {% endif %}
                                 {% endfor %}
-                                
+
                                 <div class="row">
                                 {% for label, value in details %}
                                     {% if label != 'Description' and label != 'Description/Specifications' and label != 'Reservable' %}
@@ -121,7 +121,7 @@
                                 </div>
                             {% if button_details.button_url|length > 0 %}
                             <div class='mt-4'>
-                                <a class='btn utk--modal-btn d-inline-flex align-items-center gap-2 px-4 py-2' href="{{ button_details.button_url }}">
+                                <a class='btn utk-blue-button d-inline-flex align-items-center gap-2 px-4 py-2' href="{{ button_details.button_url }}">
                                     <span>{{ button_details.button_title }}</span>
                                     <svg width="20" height="20" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -133,14 +133,14 @@
                             {% endif %}
                         </div>
                     </div>
-                    
+
                     {% set has_description = false %}
                     {% for label, value in details %}
                         {% if (label == 'Description' or label == 'Description/Specifications') and value|render|striptags|trim is not empty %}
                             {% set has_description = true %}
                         {% endif %}
                     {% endfor %}
-                    
+
                     {% if has_description %}
                     <div class='row mt-4'>
                         <div class='col-12'>
@@ -184,7 +184,7 @@
     var carousel = document.getElementById('{{ carouselId }}');
     if (carousel) {
       var currentSlideElement = carousel.querySelector('.current-slide');
-      
+
       carousel.addEventListener('slid.bs.carousel', function(event) {
         if (currentSlideElement) {
           currentSlideElement.textContent = (event.to + 1).toString();

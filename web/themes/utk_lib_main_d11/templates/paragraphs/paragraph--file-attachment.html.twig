@@ -30,12 +30,12 @@
 
 {% endif %}
 {% if extension == 'pdf' %}
-<a href="{{ paragraph.field_file|file_url }}" class='row utk-service--buttons utk-service--buttons--wide mx-auto my-3 py-2'>
+<a href="{{ paragraph.field_file|file_url }}" class='row utk-service--buttons utk-service--buttons--wide utk-file-attachment mx-auto my-3 py-2'>
 {% else %}
-<a href="{{ paragraph.field_file|file_url }}" class='row utk-service--buttons utk-service--buttons--wide mx-auto my-3 py-2' download>
+<a href="{{ paragraph.field_file|file_url }}" class='row utk-service--buttons utk-service--buttons--wide utk-file-attachment mx-auto my-3 py-2' download>
 {% endif %}
     <div class='col d-flex text-left align-items-center justify-content-center text-smokey text-break'>
-        {{ paragraph.field_file_name.value|length > 50 ? paragraph.field_file_name.value|slice(0,50) ~ '...':  paragraph.field_file_name.value}}
+        {{ paragraph.field_file_name.value|length > 50 ? paragraph.field_file_name.value|slice(0, 50) ~ '...' : paragraph.field_file_name.value }}
     </div>
     {% if extension == 'pdf' %}
     <div class='col-3 d-flex flex-row-reverse align-items-center'>
