@@ -3,11 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - node.type.about_page
-    - node.type.bookplate
-    - node.type.employee_profile
-    - node.type.service_page
-    - node.type.space
+    - node.type.equipment
     - user.role.administrator
   module:
     - node
@@ -228,11 +224,7 @@ display:
           plugin_id: bundle
           operator: in
           value:
-            about_page: about_page
-            bookplate: bookplate
-            employee_profile: employee_profile
-            service_page: service_page
-            space: space
+            equipment: equipment
           group: 1
           exposed: false
           expose:

@@ -1,0 +1,15 @@
+<?php
+
+declare(strict_types=1);
+
+use Drupal\enable_pathauto\Plugin\Action\BulkUpdateAlias;
+
+/**
+ * Implements hook_action_info_alter().
+ */
+function enable_pathauto_action_info_alter(array &$definitions): void
+{
+    if (isset($definitions['pathauto_update_alias'])) {
+        $definitions['pathauto_update_alias']['class'] = BulkUpdateAlias::class;
+    }
+}
