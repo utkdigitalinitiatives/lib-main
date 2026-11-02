@@ -127,6 +127,48 @@
   --utk-card-overflow: hidden;
 }
 
+/* Add reusable color bands without defining the rest of the card. */
+.utk-card-accent-lines {
+  --utk-card-accent-line-color: var(--utk-logo--orange);
+
+  position: relative;
+  overflow: hidden;
+}
+
+.utk-card-accent-lines::before,
+.utk-card-accent-lines::after {
+  position: absolute;
+  right: 0;
+  left: 0;
+  z-index: 1;
+  background-color: var(--utk-card-accent-line-color);
+  content: "";
+  pointer-events: none;
+}
+
+.utk-card-accent-lines::before {
+  top: 0;
+  height: 2px;
+}
+
+.utk-card-accent-lines::after {
+  bottom: 0;
+  height: 10px;
+  box-shadow: 0 0 10px rgb(from var(--utk-black) r g b / 0.1);
+}
+
+.utk-card-accent-lines--orange {
+  --utk-card-accent-line-color: var(--utk-logo--orange);
+}
+
+.utk-card-accent-lines--teal {
+  --utk-card-accent-line-color: var(--utk-teal);
+}
+
+.utk-card-accent-lines--smokey {
+  --utk-card-accent-line-color: var(--utk-logo--smokey);
+}
+
 /* Header appearance and spacing can be selected separately. */
 .utk-card-header.utk-card-header--plain {
   border: 0;

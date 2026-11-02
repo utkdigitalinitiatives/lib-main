@@ -11,12 +11,11 @@
  *   - links: An array of links, each containing:
  *     - link_title: The text of the link.
  *     - url: The URL the link points to.
- *   - vertical_line_color: The color of the vertical line in the box.
- *   - horizontal_line_color: The color of the horizontal line in the box.
+ *   - accent_class: The color modifier for the card's accent lines.
  *
  * Customizations:
  * - Displays a grid of quicklink boxes with titles and links.
- * - Includes vertical and horizontal colored lines for visual separation.
+ * - Includes top and bottom colored lines for visual separation.
  * - Ensures responsive design for proper alignment and spacing across devices.
  * - Applies consistent styling for links and text.
  *
@@ -50,8 +49,7 @@
                     url: '/services/adaptive-technology-and-services',
                 },
             ],
-            vertical_line_color: 'var(--utk-logo--orange)',
-            horizontal_line_color: 'var(--utk-logo--orange)',
+            accent_class: 'utk-card-accent-lines--orange',
         },
         {
             title: 'Research',
@@ -78,8 +76,7 @@
                     url: '/services/data-services',
                 },
             ],
-            vertical_line_color: 'var(--utk-teal)',
-            horizontal_line_color: 'var(--utk-teal)',
+            accent_class: 'utk-card-accent-lines--teal',
         },
         {
             title: 'Request',
@@ -101,8 +98,7 @@
                     url: '/services/suggest-purchase',
                 },
             ],
-            vertical_line_color: 'var(--utk-logo--smokey)',
-            horizontal_line_color: 'var(--utk-logo--smokey)',
+            accent_class: 'utk-card-accent-lines--smokey',
         },
     ]
 %}
@@ -110,9 +106,7 @@
 <div class='row mx-auto g-4 max-row-width'>
     {% for box in quicklink_boxes %}
     <div class='col-lg-4 d-flex'>
-        <div class='container utk-quicklinks border bg-white quicklink-box'>
-            <div class="quicklink-vertical-line" style="background-color: {{ box.vertical_line_color }};"></div>
-            <div class="quicklink-horizontal-line" style="background-color: {{ box.horizontal_line_color }};"></div>
+        <div class='container utk-quicklinks border bg-white quicklink-box utk-card-accent-lines {{ box.accent_class }}'>
             <h2 class='utk-homepage-section-title mt-2 pt-2 text-smokey'>{{ box.title }}</h2>
             <div class='utk-homepage-quicklink-list mb-2 pb-2 text-smokey link-link utk-search-selector'>
                 {% for link in box.links %}

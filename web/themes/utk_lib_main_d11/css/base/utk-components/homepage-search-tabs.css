@@ -3,6 +3,7 @@
 .utk-search-tabs {
   display: flex;
   gap: 1px;
+  transform: translateX(15px);
 }
 
 /* Individual tab styles. */
@@ -26,7 +27,7 @@
 
   border-style: solid;
   border-width: 2px;
-  border-color: var(--utk-logo--white);
+  border-color: var(--utk-logo--smokey);
   border-radius: var(--utk-radius-medium) var(--utk-radius-medium) 0 0;
   box-sizing: border-box;
 }

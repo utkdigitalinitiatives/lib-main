@@ -1,6 +1,6 @@
 /* UTK Page Header Components */
 
-/* Keep section-heading underlines and their surrounding space consistent. */
+/* Distinguish section headings from links with a centered accent. */
 .utk-section-heading,
 .utk-section-heading-content h2,
 .utk--webform .js-form-type-webform-markup h2 {
@@ -8,13 +8,22 @@
   width: fit-content;
   max-width: 100%;
   margin-block: 0.5rem 0;
-  padding-bottom: var(--utk-heading-underline-space-after);
+  padding-bottom: var(--utk-heading-accent-space-after);
   line-height: 1.3;
-  text-decoration-line: underline;
-  text-decoration-color: var(--utk-logo--orange);
-  text-decoration-thickness: var(--utk-heading-underline-thickness);
-  text-decoration-skip-ink: none;
-  text-underline-offset: var(--utk-heading-underline-offset);
+  text-decoration: none;
+}
+
+.utk-section-heading::after,
+.utk-section-heading-content h2::after,
+.utk--webform .js-form-type-webform-markup h2::after {
+  display: block;
+  width: var(--utk-heading-accent-width);
+  height: var(--utk-heading-accent-thickness);
+  margin: var(--utk-heading-accent-offset) auto 0;
+  border-radius: var(--utk-radius-pill);
+  background-color: var(--utk-logo--orange);
+  box-shadow: var(--utk-heading-accent-shadow);
+  content: "";
 }
 
 .utk-header {

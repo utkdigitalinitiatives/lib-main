@@ -161,7 +161,8 @@
     padding: 0.75rem 1rem;
     border: 1px solid rgb(from var(--utk-logo--orange) r g b / 0.6);
     border-radius: 0;
-    background: var(--utk-card-surface-warm);
+    background-color: var(--utk-logo--white);
+    background-image: var(--utk-card-surface-warm);
     width: 100%;
 }
 
@@ -179,21 +180,30 @@
     border-top: 0;
 }
 
-.library-item:hover {
+.library-item:hover,
+.library-item:focus,
+.library-item:focus-visible {
     border-color: rgb(from var(--utk-logo--orange) r g b / 0.65);
-    background: rgb(from var(--utk-logo--orange) r g b / 0.05);
+    background-color: var(--utk-logo--white);
+    background-image: linear-gradient(
+        rgb(from var(--utk-logo--orange) r g b / 0.05),
+        rgb(from var(--utk-logo--orange) r g b / 0.05)
+    );
 }
 
 .library-item:focus,
 .library-item:focus-visible {
     outline: 1px solid rgb(from var(--utk-logo--orange) r g b / 0.65);
     outline-offset: -1px;
-    background: rgb(from var(--utk-logo--orange) r g b / 0.05);
 }
 
 .library-item.active {
     border-color: rgb(from var(--utk-logo--orange) r g b / 0.65);
-    background: rgb(from var(--utk-logo--orange) r g b / 0.08);
+    background-color: var(--utk-logo--white);
+    background-image: linear-gradient(
+        rgb(from var(--utk-logo--orange) r g b / 0.08),
+        rgb(from var(--utk-logo--orange) r g b / 0.08)
+    );
 }
 
 .library-image-container {
