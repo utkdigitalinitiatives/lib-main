@@ -47,9 +47,11 @@
   font-weight: 500;
   background-color: rgb(from var(--utk-black) r g b / 0.65);
   border: 1px solid var(--utk-logo--white);
-  transition: color 0.2s ease-in;
   padding: 0.5rem 1rem;
-  transition: all 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .btn.utk-smokey-button:hover,

@@ -156,7 +156,6 @@
     --bs-btn-font-weight: 400;
     --bs-btn-line-height: 1.5;
     --bs-btn-border-width: var(--bs-border-width);
-    --bs-btn-border-color: transparent;
     --bs-btn-border-radius: var(--bs-border-radius);
 
     --bs-btn-box-shadow: inset 0 1px 0 rgb(from var(--utk-logo--white) r g b / 0.15), 0 1px 1px rgb(from var(--utk-black) r g b / 0.075);

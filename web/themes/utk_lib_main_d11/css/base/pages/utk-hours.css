@@ -33,7 +33,7 @@
 .s-lc-whw-bh {
     text-align: center;
     white-space: nowrap;
-    font-weight: F500;
+    font-weight: 500;
     color: var(--utk-logo--smokey);
 }
 
@@ -100,8 +100,6 @@
     width: 100%;
     max-width: 100%;
     background-color: transparent;
-    border-bottom: none;
-    border-left: none;
     border-collapse: collapse;
     border-spacing: 0;
     border: 1px solid #ddd;

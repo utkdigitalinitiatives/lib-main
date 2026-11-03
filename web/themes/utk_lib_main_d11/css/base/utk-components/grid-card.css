@@ -151,6 +151,5 @@
   /* A shorter image keeps the card content balanced on small screens. */
   .utk-grid-card__media {
     height: 188px;
-    padding: 0;
   }
 }
