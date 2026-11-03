@@ -38,6 +38,7 @@ set classes = [
     {% set image_alt = profile_media.field_media_image.alt|default('') %}
 {% endif %}
 {% set has_contact = not node.field_email.isEmpty or not node.field_phone.isEmpty %}
+{% set has_departments = employee_departments|default([]) is not empty %}
 
 <article {{ attributes.addClass(classes) }} id="utk-article">
     {{ include('@utk_lib_main_d11/templates/views/utk--page-hero.html.twig', {
@@ -55,8 +56,17 @@ set classes = [
             {% endif %}
             <div class="{% if has_profile_picture %}col-lg-6{% else %}col-lg-8{% endif %} utk-search-selector">
                 {% if not node.field_position.isEmpty %}
-                    <div class="mb-3 fw-medium fs-3">
+                    <div class="utk-section-heading fw-medium fs-3">
                         {{ content.field_position }}
+                    </div>
+                {% endif %}
+
+                {% if has_departments %}
+                    <div class="mb-3 utk-card-title--medium utk-search-selector-thin">
+                        <span class="fw-medium">Department:</span>
+                        {% for department in employee_departments %}
+                            <a class="fw-normal" href="{{ path('entity.node.canonical', {node: department.id}) }}">{{ department.label }}</a>{{ not loop.last ? ', ' }}
+                        {% endfor %}
                     </div>
                 {% endif %}
 

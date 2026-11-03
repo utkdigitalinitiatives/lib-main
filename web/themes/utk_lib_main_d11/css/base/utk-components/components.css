@@ -185,6 +185,7 @@ blockquote::before {
   margin-inline: auto;
   overflow: hidden;
   background-color: var(--utk-white--accent);
+  box-shadow: var(--utk-card-shadow-offset);
 }
 
 .utk-node-media-frame .carousel-inner,
