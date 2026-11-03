@@ -28,18 +28,21 @@
 
   <div class="modal-dialog modal-xl modal-dialog-centered">
     <div class="modal-content">
+      <button type="button" class="btn-close utk-modal-close bookplate-modal__close" data-bs-dismiss="modal" aria-label="Close" title="Close details"></button>
 
       <div class="modal-body p-0">
-        <div class="row g-0 align-items-start">
-          <div class="col-lg-6 p-4 d-flex justify-content-center align-items-start bookplate-pane--cover">
-            <img src="{{ cover_src }}" alt="{{ cover_alt }}" class="img-fluid" loading="lazy" />
+        <div class="bookplate-modal__layout">
+          <div class="d-flex justify-content-center align-items-start bookplate-pane--cover">
+            <div class="bookplate-cover-frame">
+              <img src="{{ cover_src }}" alt="{{ cover_alt }}" loading="lazy" />
 
-            {% if is_author %}
-              <span class="bookplate-isauthor-badge">Written by the Honoree</span>
-            {% endif %}
+              {% if is_author %}
+                <span class="bookplate-isauthor-badge">Written by the Honoree</span>
+              {% endif %}
+            </div>
           </div>
 
-          <div class="col-lg-6 p-4 bookplate-stack">
+          <div class="bookplate-stack">
            <section class="bookplate-pane--honoree p-3 p-lg-4">
             <header class="d-flex justify-content-between align-items-start">
             <div class="pe-3">

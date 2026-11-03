@@ -1,8 +1,10 @@
 /*  Bookplate Styling */
 
 .bookplate-modal {
-  --bookplate-gap: 9px;
-  --bookplate-bg-orange: color-mix(in srgb, var(--utk-logo--orange) 11%, var(--utk-logo--white));
+  --bookplate-section-gap: 1rem;
+  --bookplate-modal-padding: 1.5rem;
+  --bookplate-column-gap: var(--bookplate-modal-padding);
+  --bookplate-bg-orange: color-mix(in srgb, var(--utk-logo--orange) 6.6%, var(--utk-logo--white));
 }
 
 /* Outer frame */
@@ -12,42 +14,50 @@
   overflow: hidden;
 }
 
-/* 2px between sections */
+.bookplate-modal__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 3;
+}
+
+/* Modal surface and responsive section layout. */
 .bookplate-modal .modal-body {
   background: var(--bookplate-bg-orange);
 }
 
-.bookplate-modal .modal-body .row.g-0 {
-  --bs-gutter-x: var(--bookplate-gap);
-  --bs-gutter-y: var(--bookplate-gap);
-  border-radius: var(--utk-radius-large);
-  overflow: hidden;
+.bookplate-modal__layout {
+  display: grid;
+  grid-template-columns: minmax(220px, 300px) minmax(0, 1fr);
+  align-items: start;
+  column-gap: var(--bookplate-column-gap);
+  row-gap: var(--bookplate-section-gap);
+  padding: var(--bookplate-modal-padding);
 }
 
 /* Left Section */
-.bookplate-modal .bookplate-pane--cover {
+.bookplate-modal .bookplate-cover-frame {
   position: relative;
-  overflow: hidden;
+  width: min(100%, 300px);
+  aspect-ratio: 2 / 3;
 }
 
 .bookplate-modal .bookplate-pane--cover img {
   display: block;
-  max-width: 100%;
-  height: auto;
-  max-height: 450px;
+  width: 100%;
+  height: 100%;
   background: color-mix(in srgb, var(--utk-logo--orange) 3%, var(--utk-logo--white));
   border-radius: var(--utk-radius-xlarge);
   padding: 14px;
   box-sizing: border-box;
-  width: 100%;
   object-fit: contain;
   box-shadow: var(--utk-card-shadow-offset);
 }
 
 .bookplate-isauthor-badge {
   position: absolute;
-  bottom: 30px;
-  left: 45px;
+  bottom: 14px;
+  left: 14px;
   z-index: 2;
   padding: .25rem .5rem;
   font-size: 0.8rem;
@@ -66,8 +76,17 @@
 .bookplate-modal .bookplate-stack {
   display: flex;
   flex-direction: column;
-  gap: var(--bookplate-gap);
-  padding-left: var(--bookplate-gap) !important;
+  gap: var(--bookplate-section-gap);
+}
+
+@media (max-width: 991.98px) {
+  .bookplate-modal {
+    --bookplate-modal-padding: 1rem;
+  }
+
+  .bookplate-modal__layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 /* Keep both detail panels consistent with the shared card treatment. */
@@ -262,15 +281,7 @@
   }
 }
 
-.bookplate-node-cover {
-  width: min(100%, 26rem);
-  aspect-ratio: 4 / 5;
-  background: var(--utk-logo--white);
-}
-
-.bookplate-node-cover img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+.bookplate-node-cover-image {
+  width: min(100%, 20rem);
+  height: auto;
 }
