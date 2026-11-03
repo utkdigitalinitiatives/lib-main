@@ -16,7 +16,7 @@
 {% endif %}
   <div class="row g-0 d-flex align-items-center utk-service-contact{% if is_public_profile %} utk-contact-hover{% endif %}">
     <div class="col-12 px-0">
-      <div class="utk-service-contact__title fw-semibold">{{ node.label }}</div>
+      <div class="utk-service-contact__title{% if not is_public_profile %} fw-semibold{% endif %}">{{ node.label }}</div>
       {% if not node.field_position.isEmpty %}
         <div class="text-muted small">{{ node.field_position.value }}</div>
       {% endif %}
