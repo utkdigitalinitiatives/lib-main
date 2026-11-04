@@ -8,6 +8,7 @@
 use Drupal\Core\Cache\Cache;
 use Drupal\image\ImageStyleInterface;
 use Drupal\media\Entity\Media;
+use Drupal\node\NodeInterface;
 use Drupal\taxonomy\Entity\Term;
 
 /**
@@ -15,11 +16,24 @@ use Drupal\taxonomy\Entity\Term;
  */
 function utk_lib_main_d11_preprocess_webform_submission_form(array &$variables): void
 {
-    $variables['is_standalone_webform'] = \Drupal::routeMatch()->getRouteName() === 'entity.webform.canonical';
+    $route_match = \Drupal::routeMatch();
+    $route_node = $route_match->getParameter('node');
+    $variables['use_webform_page_hero'] =
+        $route_match->getRouteName() === 'entity.webform.canonical'
+        || ($route_node instanceof NodeInterface && $route_node->bundle() === 'webform');
     $variables['form']['#cache']['contexts'] = Cache::mergeContexts(
         $variables['form']['#cache']['contexts'] ?? [],
         ['route'],
     );
+
+    if (isset($variables['form']['actions']['submit'])) {
+        $submit_classes = $variables['form']['actions']['submit']['#attributes']['class'] ?? [];
+        $variables['form']['actions']['submit']['#attributes']['class'] = array_values(array_unique([
+            ...(array) $submit_classes,
+            'btn',
+            'utk-smokey-button',
+        ]));
+    }
 }
 
 /**
@@ -166,6 +180,41 @@ function utk_lib_main_d11_preprocess_node(&$variables)
 
         foreach ($node->get('field_hours')->referencedEntities() as $hours_entity) {
             $renderer->addCacheableDependency($variables, $hours_entity);
+        }
+    }
+
+    if ($bundle === 'employee_profile' && $variables['view_mode'] === 'full') {
+        $variables['employee_departments'] = [];
+        $node_storage = \Drupal::entityTypeManager()->getStorage('node');
+        $query = $node_storage->getQuery()
+            ->accessCheck(FALSE)
+            ->condition('type', 'department')
+            ->condition('status', 1)
+            ->sort('title');
+        $department_reference = $query->orConditionGroup()
+            ->condition('field_department_heads', $node->id())
+            ->condition('field_department_members', $node->id());
+        $department_ids = $query
+            ->condition($department_reference)
+            ->execute();
+
+        $variables['#cache']['tags'] = Cache::mergeTags(
+            $variables['#cache']['tags'] ?? [],
+            ['node_list:department'],
+        );
+
+        if ($department_ids) {
+            $renderer = \Drupal::service('renderer');
+            foreach ($node_storage->loadMultiple($department_ids) as $department) {
+                $renderer->addCacheableDependency($variables, $department);
+                $access = $department->access('view', NULL, TRUE);
+                $renderer->addCacheableDependency($variables, $access);
+                if (!$access->isAllowed()) {
+                    continue;
+                }
+
+                $variables['employee_departments'][] = $department;
+            }
         }
     }
 

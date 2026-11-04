@@ -25,6 +25,8 @@
 
 .utk-dropdown-menu ul {
   min-width: 20rem;
+  --bs-dropdown-link-active-color: var(--utk-logo--smokey);
+  --bs-dropdown-link-active-bg: var(--bs-dropdown-link-hover-bg);
 }
 
 .utk-footer--svg {
@@ -54,7 +56,7 @@
 .utk-button--give {
   text-decoration: none;
   border: solid 2px var(--utk-logo--orange);
-  border-radius: 10px;
+  border-radius: var(--utk-radius-medium);
   box-shadow: 2px 2px 10px var(--utk-blue--accent);
   min-height: 50px;
 }

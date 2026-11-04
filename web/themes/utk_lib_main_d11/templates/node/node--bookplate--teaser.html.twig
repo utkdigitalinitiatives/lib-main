@@ -44,13 +44,13 @@
   {% set record_url = content.field_link_to_record[0]['#url'] %}
 {% endif %}
 
-<div class="col d-none d-md-flex justify-content-center align-items-center">
+<div class="col d-none d-md-flex justify-content-center align-items-stretch">
   <a class="bookplate--card" href="#{{ modal_id }}" data-bs-toggle="modal" data-bs-target="#{{ modal_id }}" aria-label="View details of {{ book_title ?: safe_label }}">
     <img src="{{ cover_src }}" alt="{{ cover_alt }}" loading="lazy">
     <div class="bookplate--card-text-body">
-      <p class="fs-6 fw-medium m-0">{{ book_title ?: safe_label }}</p>
-      <p class="fw-light mb-0">Honoree Details -</p>
-      <p class="m-0">
+      <p class="bookplate--card-title fs-6 fw-medium">{{ book_title ?: safe_label }}</p>
+      <p class="bookplate--card-honoree-label fw-light mb-0">Honoree Details -</p>
+      <p class="bookplate--card-honoree m-0">
         {% if honoree_name %}{{ honoree_name }}{% endif %}
         {% if award_year %} · {{ award_year }}{% endif %}
       </p>
@@ -58,13 +58,13 @@
   </a>
 </div>
 
-<div class="col d-flex d-md-none justify-content-center align-items-center">
+<div class="col d-flex d-md-none justify-content-center align-items-stretch">
   <a class="bookplate--card" href="{{ url }}">
     <img src="{{ cover_src }}" alt="{{ cover_alt }}" loading="lazy">
     <div class="bookplate--card-text-body">
-      <p class="fs-6 fw-medium m-0">{{ book_title ?: safe_label }}</p>
-      <p class="fw-light mb-0">Honoree Details -</p>
-      <p class="honoree-details m-0">
+      <p class="bookplate--card-title fs-6 fw-medium">{{ book_title ?: safe_label }}</p>
+      <p class="bookplate--card-honoree-label fw-light mb-0">Honoree Details -</p>
+      <p class="bookplate--card-honoree m-0">
         {% if honoree_name %}{{ honoree_name }}{% endif %}
         {% if award_year %} · {{ award_year }}{% endif %}
       </p>
@@ -72,7 +72,7 @@
   </a>
 </div>
 
-{% include "@utk_lib_main_d11/templates/components/utk--bookplate-modal.html.twig" with {
+{{ include('@utk_lib_main_d11/templates/components/utk--bookplate-modal.html.twig', {
   modalId: modal_id,
   modalLabel: modal_label,
   cover_src: cover_src,
@@ -90,5 +90,5 @@
   why_chosen: why_chosen,
   record_url: record_url,
   ebook: is_ebook,
-  url: url
-} %}
+  url: url,
+}) }}

@@ -1,0 +1,33 @@
+{#
+/**
+ * @file
+ * UTK Custom - Detail Item template.
+ *
+ * Renders one label and value inside a responsive details grid.
+ *
+ * Available variables:
+ * - label: The detail label.
+ * - value: The rendered detail value.
+ * - icon_class: Optional Fluent icon class.
+ * - column_classes: Optional responsive grid classes.
+ */
+#}
+
+{% set detail_column_classes = column_classes|default(['col-12', 'col-sm-6']) %}
+
+<div class="{{ detail_column_classes|join(' ')|trim }}">
+  {% if icon_class %}
+    <div class="detail-item d-flex flex-row align-items-start">
+      <div class="detail-icon me-3 text-smokey">
+        <span class="{{ icon_class }}" aria-hidden="true"></span>
+      </div>
+      <div class="detail-content">
+        <h3 class="utk-card-label mb-1 fw-semibold">{{ label }}</h3>
+        {{ value }}
+      </div>
+    </div>
+  {% else %}
+    <h3 class="utk-card-label mb-1 fw-semibold">{{ label }}</h3>
+    {{ value }}
+  {% endif %}
+</div>
