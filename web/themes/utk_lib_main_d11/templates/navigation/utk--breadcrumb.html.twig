@@ -69,6 +69,9 @@
 {% elseif node.bundle is defined and node.bundle == "equipment" %}
     {% set content_url = "equipment" %}
     {% set content_url_name = "equipment" %}
+{% elseif node.bundle is defined and node.bundle == "space" %}
+    {% set content_url = "spaces" %}
+    {% set content_url_name = "spaces" %}
 {% elseif split_path[1] == "department" or split_path[1] == "employee" or split_path[1] == "contact" %}
     {% set content_url = "directory" %}
     {% set content_url_name = "directory" %}

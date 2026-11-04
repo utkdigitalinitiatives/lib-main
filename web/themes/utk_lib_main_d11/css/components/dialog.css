@@ -61,7 +61,7 @@
   height: 24px;
   padding: 4px;
   opacity: 0.9;
-  border-radius: 7px;
+  border-radius: var(--utk-radius-medium);
   background-color: #232323;
   background-image: url(../../images/icons/loading-small.svg);
   background-repeat: no-repeat;

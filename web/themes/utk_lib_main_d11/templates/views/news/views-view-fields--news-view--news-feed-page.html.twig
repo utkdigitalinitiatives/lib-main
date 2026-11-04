@@ -29,7 +29,7 @@
 {% set section_text = fields.field_sections.content|render|striptags %}
 {% set publish_date = fields.field_publishing_date.content|render|striptags|trim %}
 {% set image_src = row._entity.field_featured_news_image|file_url %}
-{% set image_class = 'img-fluid rounded shadow-sm' %}
+{% set image_class = 'img-fluid utk-radius-large shadow-sm' %}
 
 <div class="row utk-section-body py-3 mb-4 border-bottom">
   <div class="row mx-0 mb-2 px-0 link-link">

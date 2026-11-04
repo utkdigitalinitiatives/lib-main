@@ -11,8 +11,8 @@
 #}
 
 {% if not paragraph.field_link_image.isEmpty and not paragraph.field_link_target.isEmpty %}
-  <div class="d-flex justify-content-center">
-    <a href="{{ paragraph.field_link_target.0.url }}" class="d-inline-block">
+  <div class="d-flex justify-content-center utk-linked-image">
+    <a href="{{ paragraph.field_link_target.0.url }}" class="d-inline-block utk-linked-image__link">
       {{ content.field_link_image }}
     </a>
   </div>

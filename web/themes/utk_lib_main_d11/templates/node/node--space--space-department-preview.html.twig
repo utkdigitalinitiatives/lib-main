@@ -25,17 +25,23 @@
  */
 #}
 
-<a class='utk--cards mx-2' href={{ url }}>
+{% set location = node.field_location.entity.label|default('')|trim %}
+{% set room_number = node.field_room_number.value|default('')|trim %}
+{% set location_label = location ~ (room_number ? ' - ' ~ room_number : '') %}
+{% set normalized_title = node.label|lower|replace({' - ': ' ', '-': ' '}) %}
+{% set normalized_location = location_label|lower|replace({' - ': ' ', '-': ' '}) %}
+{% set placeholder_image = (base_path|default('/', true)) ~ directory ~ '/images/placeholder-spaces.png' %}
+
+<a class="utk--cards" href="{{ url }}">
     {% if node.field_space_featured_photo|length > 0 %}
-        <img src="{{ node.field_space_featured_photo|file_url}}" class='' alt="" loading="lazy"/>
+        <img src="{{ node.field_space_featured_photo|file_url }}" alt="" loading="lazy">
     {% else %}
-        <img src="/themes/utk_lib_main_d11/images/placeholder-spaces.png" alt="" {{attributes.addClass(image_class) }}>
+        <img src="{{ placeholder_image }}" alt="" loading="lazy">
     {% endif %}
-    <div class='utk--cards-text-body'>
-        <p class='fs-6 fw-medium'>{{ node.label }} </p>
-        <p class='flex-row'>{{ content.field_location.0["#plain_text"] }} 
-        {% if content.field_room_number.0["#context"].value|length > 0 %}
-        - {{ content.field_room_number.0["#context"].value }} </p>
+    <div class="utk--cards-text-body">
+        <p class="fs-6 fw-medium">{{ node.label }}</p>
+        {% if location_label and normalized_location != normalized_title %}
+            <p class="flex-row">{{ location_label }}</p>
         {% endif %}
     </div>
 </a>

@@ -40,13 +40,21 @@
   padding: 0.25rem 0.625rem 0.35rem;
   color: var(--utk-logo--white);
   border-bottom: 2px solid var(--utk-logo--orange);
-  border-radius: 6px;
+  border-radius: var(--utk-radius-medium);
 }
 
 .utk-page-hero__subtitle.utk-overlay-dark-chip {
   padding: 0.5rem 1rem;
   border-bottom: 0;
-  border-radius: 999px;
+  border-radius: var(--utk-radius-pill);
+}
+
+.utk-page-hero--news .utk-page-hero__body {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 100%;
+  transform: translateX(-50%);
 }
 
 .utk-page-hero .utk-search-filter-container {
@@ -183,6 +191,10 @@
   .utk-page-hero--standard,
   .utk-page-hero-frame {
     min-height: 170px;
+  }
+
+  .utk-page-hero--standard.utk-page-hero--news {
+    min-height: 210px;
   }
 
   .utk-page-hero--short {
