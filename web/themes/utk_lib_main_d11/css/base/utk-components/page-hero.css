@@ -49,7 +49,13 @@
   border-radius: var(--utk-radius-pill);
 }
 
-.utk-page-hero--news .utk-page-hero__body {
+.utk-page-hero__date.utk-overlay-dark-chip {
+  padding: 0.375rem 0.75rem;
+  font-size: 75%;
+  font-weight: 600;
+}
+
+.utk-page-hero__body {
   position: absolute;
   top: 100%;
   left: 50%;
@@ -188,12 +194,11 @@
     padding-bottom: 0;
   }
 
-  .utk-page-hero--standard,
   .utk-page-hero-frame {
     min-height: 170px;
   }
 
-  .utk-page-hero--standard.utk-page-hero--news {
+  .utk-page-hero--standard {
     min-height: 210px;
   }
 
