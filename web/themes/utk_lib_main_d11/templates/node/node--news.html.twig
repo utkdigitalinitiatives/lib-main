@@ -50,7 +50,7 @@
 
 <article {{ attributes.addClass(classes) }} id='utk-article'>
     {% set hero_body %}
-        <p class="utk-page-hero__subtitle utk-overlay-dark-chip mb-0">
+        <p class="utk-page-hero__subtitle utk-page-hero__date utk-overlay-dark-chip mb-0">
             {{ content.field_publishing_date.0['#markup']|date('F j, Y') }}
         </p>
     {% endset %}
@@ -60,7 +60,6 @@
         image_src: hero_image_src|default(''),
         image_alt: hero_image_alt|default(''),
         body_content: hero_body,
-        hero_classes: ['utk-page-hero--news'],
     }) }}
 
     {% if node.field_update_label.value or node.field_update_text.value %}

@@ -54,8 +54,9 @@ a {
 }
 
 a:focus-visible {
-  outline: 2px solid rgb(from var(--utk-logo--orange) r g b / 0.7);
+  outline: 2px solid var(--utk-link);
   outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--utk-logo--white);
 }
 
 /* Utility Classes */
