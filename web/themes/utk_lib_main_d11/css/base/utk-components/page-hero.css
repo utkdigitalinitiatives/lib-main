@@ -55,6 +55,14 @@
   font-weight: 600;
 }
 
+.utk-page-hero__body {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 100%;
+  transform: translateX(-50%);
+}
+
 .utk-page-hero .utk-search-filter-container {
   width: 40%;
   margin: 0 auto;
