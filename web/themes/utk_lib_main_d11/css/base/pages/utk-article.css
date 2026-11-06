@@ -133,6 +133,20 @@
     display: block;
 }
 
+@media screen and (max-width: 767px) {
+    .utk-news-feed {
+        font-size: 0.875rem;
+    }
+
+    .utk-news-feed .utk-news-feed__title {
+        font-size: 1.125rem !important;
+    }
+
+    .utk-news-feed .btn {
+        font-size: 0.875rem;
+    }
+}
+
 @media screen and (min-width: 850px) {
 
     .utk-article--title,
