@@ -35,9 +35,17 @@ final class BookplateDownload extends ProcessPluginBase {
     $directory = $scheme . '://bookplate-migrate/' . $row->getSourceProperty('fid');
     $destination = $directory . '/' . basename($value);
     $file_system = \Drupal::service('file_system');
+    $timeout = Settings::get('custom_bookplate_migrate_http_timeout', 300);
+    if (!is_numeric($timeout) || !is_finite((float) $timeout) || (float) $timeout <= 0 || (float) $timeout >= 900) {
+      throw new MigrateException('Bookplate download timeout must be greater than zero and less than 900 seconds.');
+    }
+    $timeout = (float) $timeout;
 
     try {
-      $data = (string) \Drupal::httpClient()->get($url)->getBody();
+      $data = (string) \Drupal::httpClient()->get($url, [
+        'connect_timeout' => min(10, $timeout),
+        'timeout' => $timeout,
+      ])->getBody();
       if ($data === '') {
         throw new MigrateException(sprintf('Downloaded bookplate file is empty: %s', $url));
       }

@@ -35,7 +35,7 @@ abstract class BookplateSourceBase extends SqlBase {
    * Resolves the selected year without requiring exported configuration.
    */
   protected function awardYear(): string {
-    $year = $this->configuration['selected_year'] ?? $this->state->get('custom_bookplate_migrate.award_year', $this->configuration['award_year'] ?? 2026);
+    $year = $this->configuration['selected_year'] ?? \Drupal::state()->get('custom_bookplate_migrate.award_year', $this->configuration['award_year'] ?? 2026);
     if ((!is_int($year) && !is_string($year)) || !preg_match('/^[1-9][0-9]{3}$/D', (string) $year)) {
       throw new MigrateException('Bookplate award year must be a four-digit year.');
     }

@@ -917,6 +917,6 @@ $databases["migrate"]["default"] ??= [
     "prefix" => "",
     "host" => "dbhost",
     "port" => "dbport",
-    "namespace" => "Drupal\\Core\\Database\\Driver\\mysql",
+    "namespace" => "Drupal\\mysql\\Driver\\Database\\mysql",
     "driver" => "mysql",
 ];
