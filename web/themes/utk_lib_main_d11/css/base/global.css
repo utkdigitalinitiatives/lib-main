@@ -179,7 +179,8 @@
   transition: transform 0.3s ease;
 }
 
-.utk--cards-text-body p.fs-6.fw-medium {
+.utk--cards-text-body p.fs-6.fw-medium,
+.utk--cards-text-body .utk-spotlight-card-title {
   white-space: normal;
   word-break: break-word;
   overflow-wrap: break-word;
