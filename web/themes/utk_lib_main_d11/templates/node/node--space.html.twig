@@ -59,7 +59,7 @@
         responsive_image_base: hero_responsive_image_base|default(''),
         image_alt: hero_image_alt|default(''),
     }) }}
-    <div class='container-fluid utk--striped-background py-4'>
+    <div class='container-fluid utk--striped-background py-4 utk-mobile-text-container'>
         <div class='d-flex justify-content-center row utk--1400px-width mx-auto'>
             {% if content.field_additional_space_photos|length > 3 %}
             <div class="col-12 col-lg-6 utk-radius-large pt-2">
@@ -189,7 +189,7 @@
         </div>
     </div>
     {% if not node.field_service_catalog.isEmpty %}
-    <div class='container-fluid py-3 utk--striped-background text-smokey utk--inset-box-shadow'>
+    <div class='container-fluid py-3 utk--striped-background text-smokey utk--inset-box-shadow utk-mobile-text-container'>
         <div class="utk--1400px-width mx-auto">
             <h2 class='fs-3 utk-section-heading'>
                 Services
