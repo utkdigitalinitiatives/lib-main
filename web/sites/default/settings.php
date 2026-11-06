@@ -910,7 +910,7 @@ if (file_exists($app_root . "/" . $site_path . "/settings.local.php")) {
  * Values for vars from Pantheon Live env
  */
 
-$databases["migrate"]["default"] = [
+$databases["migrate"]["default"] ??= [
     "database" => "dbname",
     "username" => "dbun",
     "password" => "dbpass",
