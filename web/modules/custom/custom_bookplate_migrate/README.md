@@ -150,7 +150,8 @@ $settings['custom_bookplate_migrate_source_public_prefix'] = 'https://lib.utk.ed
 Only legacy `public://` image files are supported. HTTP/storage errors are
 reported as migration failures. Requests have a 300-second overall timeout
 and a 10-second connect timeout by default. Override the overall timeout in
-local settings with a positive value below the 900-second batch lock duration:
+local settings with a positive value below 840 seconds. The 900-second batch
+lock retains at least 60 seconds for storage writes and migration bookkeeping:
 
 ```php
 $settings['custom_bookplate_migrate_http_timeout'] = 300;
