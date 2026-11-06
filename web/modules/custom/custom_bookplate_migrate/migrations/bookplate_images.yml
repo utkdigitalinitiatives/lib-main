@@ -1,4 +1,6 @@
 id: bookplate_images
+idMap:
+  plugin: bookplate_sql
 label: Bookplate image media
 migration_tags:
   - Bookplates

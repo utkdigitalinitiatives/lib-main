@@ -58,8 +58,14 @@ required to select a year, import, inspect messages, retry failures, or roll bac
    again. Only failed rows eligible for that year are marked for retry;
    successful and skipped rows are not deliberately updated.
 
-Only one operator should run migrations at a time. GUI runs reserve the module
-until finished; do not run Drush migrations concurrently with a GUI batch.
+Only one operator should run migrations at a time. An execution event subscriber
+guards both imports and rollbacks through GUI, Drush, and core migration
+executables. It rejects non-GUI execution while a GUI batch is reserved and holds
+the shared request lock throughout non-GUI execution. The guarded SQL map plugin
+also blocks Drush `--update` map preparation before the import event; existing
+map table names and contents are unchanged. Do not force-reset an
+active CLI worker. After deploying this change to an already-enabled module,
+clear caches so Drupal registers the subscriber service.
 Web-server access to the source files and writable destination storage are still
 required. Batching cannot prevent a timeout on a single unusually slow download.
 
@@ -176,3 +182,13 @@ already have map tables. It requires a PostgreSQL destination so schema changes
 can also be rolled back, and PDO SQLite for in-memory source-query fixtures.
 Synthetic image downloads are mocked; any real 2025 images needed for new
 bookplates are downloaded normally.
+
+If the configured remote legacy database is unavailable, you can use a running
+local DDEV MySQL/MariaDB legacy snapshot for the regression process only,
+without editing site settings. The source must contain 2025 bookplates and use
+DDEV's standard `db` database/user credentials:
+
+```sh
+ddev exec env BOOKPLATE_MIGRATE_TEST_DDEV_SOURCE=libraries-mainsite \
+  vendor/bin/drush php:script web/modules/custom/custom_bookplate_migrate/tests/migration-regression.php
+```

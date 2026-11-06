@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Drupal\custom_bookplate_migrate\Plugin\migrate\source;
 
 use Drupal\Core\Database\Query\SelectInterface;
+use Drupal\Core\Database\Statement\FetchAs;
 use Drupal\custom_bookplate_migrate\BookplateIdentity;
 use Drupal\migrate\MigrateException;
 use Drupal\migrate\Plugin\MigrateIdMapInterface;
@@ -65,7 +66,9 @@ abstract class BookplateSourceBase extends SqlBase {
    */
   protected function images(): SelectInterface {
     $node_ids = [];
-    foreach ($this->bookplates()->execute() as $node) {
+    $statement = $this->bookplates()->execute();
+    $statement->setFetchMode(FetchAs::Associative);
+    foreach ($statement as $node) {
       if (trim($node['title']) !== '' && trim($node['book_title'] ?? '') !== ''
         && !BookplateIdentity::findExisting($node['title'], $node['book_title'])) {
         $node_ids[] = $node['nid'];

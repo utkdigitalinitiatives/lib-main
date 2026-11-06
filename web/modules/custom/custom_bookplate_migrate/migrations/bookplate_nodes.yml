@@ -1,4 +1,6 @@
 id: bookplate_nodes
+idMap:
+  plugin: bookplate_sql
 label: Bookplate nodes
 migration_tags:
   - Bookplates

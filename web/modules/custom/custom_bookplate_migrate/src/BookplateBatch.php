@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Drupal\custom_bookplate_migrate;
 
+use Drupal\Core\Database\Statement\FetchAs;
 use Drupal\migrate\Event\MigrateEvents;
 use Drupal\migrate\Event\MigrateMapDeleteEvent;
 use Drupal\migrate\Event\MigrateMapSaveEvent;
@@ -95,11 +96,16 @@ final class BookplateBatch {
       if (empty($context['sandbox']['initialized'])) {
         if ($operation === 'import' && $retry_failed) {
           $source = $migration->getSourcePlugin();
-          foreach ($source->query()->execute() as $row) {
+          $statement = $source->query()->execute();
+          $statement->setFetchMode(FetchAs::Associative);
+          foreach ($statement as $row) {
             $source_ids = array_intersect_key($row, $source->getIds());
             $mapped = $map->getRowBySource($source_ids);
             if ($mapped && (int) $mapped['source_row_status'] === MigrateIdMapInterface::STATUS_FAILED) {
-              $map->setUpdate($source_ids);
+              \Drupal::service('custom_bookplate_migrate.execution_guard')->executeGui($token, static function () use ($map, $source_ids): int {
+                $map->setUpdate($source_ids);
+                return 0;
+              });
             }
           }
         }
@@ -128,7 +134,10 @@ final class BookplateBatch {
       $dispatcher->addListener($event_name, $listener);
       try {
         $executable = new MigrateExecutable($migration, new MigrateMessage());
-        $result = $operation === 'import' ? $executable->import() : $executable->rollback();
+        $result = \Drupal::service('custom_bookplate_migrate.execution_guard')->executeGui(
+          $token,
+          static fn(): int => $operation === 'import' ? $executable->import() : $executable->rollback(),
+        );
       }
       finally {
         $dispatcher->removeListener($event_name, $listener);

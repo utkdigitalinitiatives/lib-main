@@ -8,13 +8,18 @@
 declare(strict_types=1);
 
 use Drupal\Core\Database\Database;
+use Drupal\Core\Database\Statement\FetchAs;
+use Drupal\Core\Lock\DatabaseLockBackend;
 use Drupal\Core\Extension\Extension;
 use Drupal\custom_bookplate_migrate\BookplateIdentity;
 use Drupal\custom_bookplate_migrate\BookplateBatch;
 use Drupal\custom_bookplate_migrate\Controller\BookplateMessages;
 use Drupal\custom_bookplate_migrate\Form\BookplateMigrationForm;
+use Drupal\custom_bookplate_migrate\EventSubscriber\BookplateExecutionGuard;
 use Drupal\Core\Form\FormState;
 use Drupal\migrate\Event\MigrateEvents;
+use Drupal\migrate\Event\MigrateImportEvent;
+use Drupal\migrate\Event\MigrateRollbackEvent;
 use Drupal\migrate\Event\MigratePreRowSaveEvent;
 use Drupal\file\FileInterface;
 use Drupal\migrate\MigrateException;
@@ -25,6 +30,7 @@ use Drupal\migrate\Plugin\MigrateIdMapInterface;
 use Drupal\migrate\Plugin\MigrationInterface;
 use Drupal\migrate\Row;
 use Drupal\node\NodeInterface;
+use Drupal\migrate_tools\MigrateExecutable as ToolsMigrateExecutable;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
@@ -54,7 +60,10 @@ $original_modules = $handler->getModuleList();
 $handler->setModuleList($original_modules + [$module => new Extension(DRUPAL_ROOT, 'module', $path . '/' . $module . '.info.yml')]);
 \Drupal::service('container.namespaces')['Drupal\\' . $module] = DRUPAL_ROOT . '/' . $path . '/src';
 \Drupal::service('class_loader')->addPsr4('Drupal\\' . $module . '\\', DRUPAL_ROOT . '/' . $path . '/src');
-foreach (['plugin.manager.migrate.source', 'plugin.manager.migrate.process', 'plugin.manager.migration'] as $service) {
+foreach ([
+  'plugin.manager.migrate.source', 'plugin.manager.migrate.process',
+  'plugin.manager.migrate.id_map', 'plugin.manager.migration',
+] as $service) {
   \Drupal::service($service)->clearCachedDefinitions();
 }
 
@@ -64,6 +73,14 @@ $node_storage = \Drupal::entityTypeManager()->getStorage('node');
 $media_storage = \Drupal::entityTypeManager()->getStorage('media');
 $file_storage = \Drupal::entityTypeManager()->getStorage('file');
 $http_client = \Drupal::httpClient();
+$registered_guard = \Drupal::hasService('custom_bookplate_migrate.execution_guard');
+$guard = $registered_guard
+  ? \Drupal::service('custom_bookplate_migrate.execution_guard')
+  : new BookplateExecutionGuard(\Drupal::lock(), \Drupal::state());
+if (!$registered_guard) {
+  \Drupal::getContainer()->set('custom_bookplate_migrate.execution_guard', $guard);
+  \Drupal::service('event_dispatcher')->addSubscriber($guard);
+}
 $migrations = [];
 $directories = [];
 $run = static function (MigrationInterface $migration): MigrateExecutable {
@@ -78,6 +95,33 @@ $run_batch = static function (string $operation, int $year, bool $retry = FALSE)
   BookplateBatch::start($operation, $year, $retry);
   $token = \Drupal::state()->get(BookplateBatch::RUN_KEY)['token'];
   \Drupal::state()->set('custom_bookplate_migrate.award_year', $year + 1);
+  foreach (['core', 'drush'] as $entry_point) {
+    foreach (['import', 'rollback'] as $attempt) {
+      $migration = \Drupal::service('plugin.manager.migration')->createInstance('bookplate_nodes');
+      $executable = $entry_point === 'core'
+        ? new MigrateExecutable($migration, new MigrateMessage())
+        : new ToolsMigrateExecutable($migration, new MigrateMessage(), \Drupal::service('keyvalue'), \Drupal::time(), \Drupal::service('string_translation'));
+      $before = $migration->getIdMap()->processedCount();
+      try {
+        $executable->$attempt();
+        throw new RuntimeException('Non-GUI execution unexpectedly accepted during a GUI reservation.');
+      }
+      catch (MigrateException $e) {
+        $check(str_contains($e->getMessage(), 'reserved'), "$entry_point $attempt is rejected while the GUI reservation exists.");
+      }
+      $map = \Drupal::service('plugin.manager.migration')->createInstance('bookplate_nodes')->getIdMap();
+      foreach (['prepareUpdate', 'setUpdate'] as $update) {
+        try {
+          $update === 'prepareUpdate' ? $map->prepareUpdate() : $map->setUpdate(['nid' => 1]);
+          throw new RuntimeException('Pre-import map update unexpectedly accepted during a GUI reservation.');
+        }
+        catch (MigrateException $e) {
+          $check(str_contains($e->getMessage(), 'reserved'), "Drush $update is guarded before the import event.");
+        }
+      }
+      $check($migration->getStatus() === MigrationInterface::STATUS_IDLE && $migration->getIdMap()->processedCount() === $before, 'Rejected execution leaves status and maps unchanged.');
+    }
+  }
   try {
     BookplateBatch::start('import', $year);
     throw new RuntimeException('Concurrent GUI batch unexpectedly accepted.');
@@ -111,6 +155,45 @@ try {
   foreach (['database', 'host', 'port', 'username', 'password'] as $key) {
     $check(($connection_info[$key] ?? NULL) === ($databases['migrate']['default'][$key] ?? NULL), "Effective migration connection preserves local $key setting.");
   }
+  $test_source = getenv('BOOKPLATE_MIGRATE_TEST_DDEV_SOURCE');
+  if ($test_source !== FALSE) {
+    if (!preg_match('/^[a-z0-9][a-z0-9-]*$/D', $test_source)) {
+      throw new RuntimeException('BOOKPLATE_MIGRATE_TEST_DDEV_SOURCE must be a DDEV project name.');
+    }
+    Database::removeConnection('migrate');
+    Database::addConnectionInfo('migrate', 'default', [
+      'driver' => 'mysql',
+      'namespace' => 'Drupal\\mysql\\Driver\\Database\\mysql',
+      'database' => 'db',
+      'host' => 'ddev-' . $test_source . '-db',
+      'port' => 3306,
+      'username' => 'db',
+      'password' => 'db',
+      'prefix' => '',
+    ]);
+    echo "Using the local DDEV legacy snapshot for this test process only.\n";
+  }
+  $contender = new DatabaseLockBackend($database);
+  foreach ([MigrateImportEvent::class, MigrateRollbackEvent::class] as $event_class) {
+    $migration = $manager->createInstance('bookplate_nodes');
+    $event = $event_class === MigrateImportEvent::class
+      ? new MigrateImportEvent($migration, new MigrateMessage())
+      : new MigrateRollbackEvent($migration);
+    $guard->before($event);
+    $check(!$contender->acquire(BookplateBatch::LOCK), 'Non-GUI execution holds the shared lock against other requests.');
+    $guard->after($event);
+    $check($contender->acquire(BookplateBatch::LOCK), 'Completion releases the non-GUI execution lock.');
+    try {
+      $guard->before($event);
+      throw new RuntimeException('Execution unexpectedly accepted while another request holds the lock.');
+    }
+    catch (MigrateException $e) {
+      $check(str_contains($e->getMessage(), 'running'), 'A competing request blocks non-GUI execution.');
+    }
+    finally {
+      $contender->release(BookplateBatch::LOCK);
+    }
+  }
   \Drupal::state()->delete('custom_bookplate_migrate.award_year');
   $default_source = $manager->createInstance('bookplate_nodes')->getSourcePlugin();
   $check(in_array('2026', $default_source->query()->getArguments(), TRUE), 'Unconfigured year defaults to 2026.');
@@ -123,7 +206,7 @@ try {
     $check(str_contains($e->getMessage(), 'four-digit'), 'Invalid year is explicitly rejected.');
   }
   \Drupal::state()->set('custom_bookplate_migrate.award_year', 2025);
-  $source_nodes = $manager->createInstance('bookplate_nodes')->getSourcePlugin()->query()->execute()->fetchAll();
+  $source_nodes = $manager->createInstance('bookplate_nodes')->getSourcePlugin()->query()->execute()->fetchAll(FetchAs::Associative);
   $check(count($source_nodes) > 0, 'Real 2025 bookplates are available for the trial.');
   $existing = 0;
   $preserved = [];
@@ -515,9 +598,15 @@ finally {
     $file_storage->resetCache();
     \Drupal::entityTypeManager()->getStorage('taxonomy_term')->resetCache();
     \Drupal::state()->resetCache();
+    if (!$registered_guard) {
+      \Drupal::service('event_dispatcher')->removeSubscriber($guard);
+    }
     Database::removeConnection('bookplate_fixture');
     $handler->setModuleList($original_modules);
-    foreach (['plugin.manager.migrate.source', 'plugin.manager.migrate.process', 'plugin.manager.migration'] as $service) {
+    foreach ([
+      'plugin.manager.migrate.source', 'plugin.manager.migrate.process',
+      'plugin.manager.migrate.id_map', 'plugin.manager.migration',
+    ] as $service) {
       \Drupal::service($service)->clearCachedDefinitions();
     }
   }
