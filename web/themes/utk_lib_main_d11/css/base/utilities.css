@@ -447,11 +447,17 @@ a:hover {
 .utk-homepage-quicklink-item + .utk-homepage-quicklink-item::before {
   content: "";
   position: absolute;
-  left: 60px;
-  right: 60px;
+  right: 10%;
+  left: 10%;
   top: 0;
   height: 1px;
-  box-shadow: 0 1px 2px rgb(from var(--utk-black) r g b / 0.12);
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgb(from var(--utk-black) r g b / 0.08) 25%,
+    rgb(from var(--utk-black) r g b / 0.08) 75%,
+    transparent
+  );
 }
 
 .quicklink-box h2 {
