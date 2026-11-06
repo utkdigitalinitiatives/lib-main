@@ -1,0 +1,6 @@
+services:
+  custom_bookplate_migrate.execution_guard:
+    class: Drupal\custom_bookplate_migrate\EventSubscriber\BookplateExecutionGuard
+    arguments: ['@lock', '@state']
+    tags:
+      - { name: event_subscriber }
