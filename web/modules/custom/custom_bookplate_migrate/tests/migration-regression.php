@@ -354,6 +354,19 @@ try {
   ] as $table => $columns) {
     $source_database->query('CREATE TABLE {' . $table . '} (' . $columns . ')');
   }
+  foreach ([
+    'field_book_author' => 'field_book_author_value TEXT, field_book_author_format TEXT',
+    'field_bp_department' => 'field_bp_department_value TEXT, field_bp_department_format TEXT',
+    'field_ebook' => 'field_ebook_value TEXT',
+    'field_is_author' => 'field_is_author_value TEXT',
+    'field_isbn' => 'field_isbn_value TEXT',
+    'field_occasion' => 'field_occasion_value TEXT, field_occasion_format TEXT',
+    'field_position_role' => 'field_position_role_value TEXT, field_position_role_format TEXT',
+    'field_why_chosen' => 'field_why_chosen_value TEXT, field_why_chosen_format TEXT',
+    'field_link_to_record' => 'field_link_to_record_uri TEXT, field_link_to_record_title TEXT, field_link_to_record_options TEXT',
+  ] as $field => $columns) {
+    $source_database->query('CREATE TABLE {node__' . $field . '} (' . $common . ', ' . $columns . ')');
+  }
   $insert = static function (string $table, array $values) use ($source_database): void {
     $source_database->insert($table)->fields($values)->execute();
   };
@@ -383,6 +396,17 @@ try {
       'field_book_cover_target_id' => $nid === 1 ? 201 : $nid + 201,
     ]);
   }
+  $insert('node__field_book_author', [
+    'entity_id' => 1,
+    'field_book_author_value' => 'Fixture author',
+    'field_book_author_format' => 'editor_html',
+  ]);
+  $insert('node__field_link_to_record', [
+    'entity_id' => 1,
+    'field_link_to_record_uri' => 'https://example.com/fixture',
+    'field_link_to_record_title' => 'Fixture catalog',
+    'field_link_to_record_options' => '{}',
+  ]);
   $insert('node__field_honoree_photo', ['entity_id' => 1, 'field_honoree_photo_target_id' => 202]);
   $insert('node_field_data', [
     'nid' => 1,
@@ -421,6 +445,20 @@ try {
     $source = $manager->createInstance($id, ['source' => ['key' => 'bookplate_fixture']])->getSourcePlugin();
     $actual_ids = array_map('intval', $source->query()->execute()->fetchCol());
     $check($actual_ids === $expected_ids, "$id source filters year, publication, language, existing pairs, and shared assets correctly.");
+    if ($id === 'bookplate_nodes') {
+      $statement = $source->query()->execute();
+      $statement->setFetchMode(FetchAs::Associative);
+      $row = new Row($statement->fetch(), $source->getIds());
+      $check($source->prepareRow($row), 'Bookplate source prepares joined field data.');
+      $check($row->getSourceProperty('field_book_author') === ['value' => 'Fixture author', 'format' => 'editor_html'], 'Joined field rows preserve their value and format.');
+      $check($row->getSourceProperty('field_link_to_record') === [
+        'uri' => 'https://example.com/fixture',
+        'title' => 'Fixture catalog',
+        'options' => '{}',
+      ], 'Joined link rows preserve all source properties.');
+      $missing_row = new Row($statement->fetch(), $source->getIds());
+      $check($source->prepareRow($missing_row) && $missing_row->getSourceProperty('field_book_author') === [], 'Missing joined fields remain empty arrays.');
+    }
   }
 
   $bytes = base64_decode('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+a0ioAAAAASUVORK5CYII=');

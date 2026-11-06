@@ -65,13 +65,22 @@ abstract class BookplateSourceBase extends SqlBase {
    * Selects images only for bookplates not already in the destination.
    */
   protected function images(): SelectInterface {
-    $node_ids = [];
+    $nodes = [];
     $statement = $this->bookplates()->execute();
     $statement->setFetchMode(FetchAs::Associative);
     foreach ($statement as $node) {
-      if (trim($node['title']) !== '' && trim($node['book_title'] ?? '') !== ''
-        && !BookplateIdentity::findExisting($node['title'], $node['book_title'])) {
-        $node_ids[] = $node['nid'];
+      if (trim($node['title']) !== '' && trim($node['book_title'] ?? '') !== '') {
+        $nodes[] = [$node['nid'], $node['title'], $node['book_title']];
+      }
+    }
+    $existing_pairs = BookplateIdentity::findExistingPairs(array_map(
+      static fn(array $node): array => [$node[1], $node[2]],
+      $nodes,
+    ));
+    $node_ids = [];
+    foreach ($nodes as $index => [$node_id]) {
+      if (!isset($existing_pairs[$index])) {
+        $node_ids[] = $node_id;
       }
     }
 
