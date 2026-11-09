@@ -77,12 +77,6 @@
   .utk-page-hero--news .utk-page-hero__title {
     font-size: clamp(1.75rem, 4.5vw, 2.1rem);
   }
-
-  .utk-page-hero--news .utk-page-hero__body {
-    position: static;
-    width: auto;
-    transform: none;
-  }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -105,6 +99,12 @@
     flex: 1 1 auto;
     flex-direction: column;
     justify-content: center;
+  }
+
+  .utk-page-hero--news .utk-page-hero__body {
+    position: static;
+    width: auto;
+    transform: none;
   }
 }
 
@@ -211,6 +211,12 @@
     flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;
+  }
+
+  .utk-page-hero__body {
+    position: static;
+    width: auto;
+    transform: none;
   }
 
   .utk-page-hero__breadcrumb .breadcrumb-item {
