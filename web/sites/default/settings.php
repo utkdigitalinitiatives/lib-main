@@ -910,13 +910,13 @@ if (file_exists($app_root . "/" . $site_path . "/settings.local.php")) {
  * Values for vars from Pantheon Live env
  */
 
-$databases["migrate"]["default"] = [
+$databases["migrate"]["default"] ??= [
     "database" => "dbname",
     "username" => "dbun",
     "password" => "dbpass",
     "prefix" => "",
     "host" => "dbhost",
     "port" => "dbport",
-    "namespace" => "Drupal\\Core\\Database\\Driver\\mysql",
+    "namespace" => "Drupal\\mysql\\Driver\\Database\\mysql",
     "driver" => "mysql",
 ];

@@ -1,0 +1,36 @@
+id: bookplate_images
+idMap:
+  plugin: bookplate_sql
+label: Bookplate image media
+migration_tags:
+  - Bookplates
+source:
+  plugin: bookplate_images
+  key: migrate
+  award_year: 2026
+  cache_counts: false
+process:
+  bundle:
+    plugin: default_value
+    default_value: image
+  uid:
+    plugin: default_value
+    default_value: 1
+  name: name
+  status: status
+  created: created
+  changed: changed
+  field_media_image/target_id:
+    plugin: bookplate_lookup
+    migration: bookplate_files
+    source: image_target_id
+  field_media_image/alt: image_alt
+  field_media_image/title: image_title
+  field_media_image/width: image_width
+  field_media_image/height: image_height
+destination:
+  plugin: entity:media
+  default_bundle: image
+migration_dependencies:
+  required:
+    - bookplate_files

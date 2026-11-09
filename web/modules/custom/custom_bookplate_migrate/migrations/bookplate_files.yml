@@ -1,0 +1,26 @@
+id: bookplate_files
+idMap:
+  plugin: bookplate_sql
+label: Bookplate image files
+migration_tags:
+  - Bookplates
+source:
+  plugin: bookplate_files
+  key: migrate
+  award_year: 2026
+  cache_counts: false
+process:
+  uid:
+    plugin: default_value
+    default_value: 1
+  filename: filename
+  uri:
+    plugin: bookplate_download
+    source: uri
+  filemime: filemime
+  status: status
+  created: created
+  changed: changed
+destination:
+  plugin: entity:file
+migration_dependencies: {}

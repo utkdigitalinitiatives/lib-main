@@ -1,0 +1,16 @@
+custom_bookplate_migrate.run:
+  path: '/admin/structure/bookplate-migrate'
+  defaults:
+    _form: '\Drupal\custom_bookplate_migrate\Form\BookplateMigrationForm'
+    _title: 'Bookplate migration'
+  requirements:
+    _permission: 'administer migrations'
+
+custom_bookplate_migrate.messages:
+  path: '/admin/structure/bookplate-migrate/{migration_id}/messages'
+  defaults:
+    _controller: '\Drupal\custom_bookplate_migrate\Controller\BookplateMessages::overview'
+    _title: 'Bookplate migration messages'
+  requirements:
+    _permission: 'administer migrations'
+    migration_id: 'bookplate_(files|images|nodes)'

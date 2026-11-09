@@ -1,0 +1,14 @@
+name: Custom Bookplate Migrate
+type: module
+description: Year-scoped bookplate migrations that preserve existing bookplates.
+core_version_requirement: ^11
+package: Custom
+configure: custom_bookplate_migrate.run
+dependencies:
+  - drupal:file
+  - drupal:media
+  - drupal:migrate
+  - drupal:node
+  - drupal:taxonomy
+  - migrate_plus:migrate_plus
+  - migrate_tools:migrate_tools
