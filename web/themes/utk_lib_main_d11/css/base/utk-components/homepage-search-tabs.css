@@ -88,6 +88,25 @@
   }
 }
 
+@media (max-width: 359px) {
+  .utk-search-tabs .nav-link,
+  .utk-search-tabs .nav-link.active {
+    gap: 0.125rem;
+    padding-right: 0.125rem;
+    padding-left: 0.125rem;
+    font-size: var(--utk-homepage-supporting-font-size, 0.75rem);
+  }
+
+  .utk-search-tabs .nav-link img {
+    max-height: 14px;
+  }
+
+  .utk-search-tabs .nav-link svg {
+    width: 12px;
+    height: 12px;
+  }
+}
+
 @media (max-width: 575px) {
   #search-bar-input,
   #button-search {
