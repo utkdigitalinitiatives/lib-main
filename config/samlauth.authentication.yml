@@ -1,13 +1,65 @@
 _core:
   default_config_hash: U_osGwFmSBlCxLj13jTNB0qVtGbS876-wUPqWc74K6A
+login_menu_item_title: ''
+logout_menu_item_title: ''
+login_link_title: 'Log in with SSO'
+login_auto_redirect: false
+login_redirect_url: ''
+logout_redirect_url: ''
+error_redirect_url: ''
+error_throw: false
+login_error_keep_session: true
 local_login_saml_error: false
+logout_drupal_idp: false
+logout_different_user: false
+drupal_login_roles:
+  administrator: administrator
+sp_entity_id: 'https://lib.utk.edu/saml/metadata'
+sp_x509_certificate: ''
+sp_new_certificate: ''
+sp_private_key: ''
 metadata_valid_secs: 60
 metadata_cache_http: false
+idp_entity_id: 'https://sts.windows.net/515813d9-717d-45dd-9eca-9aa19c09d6f9/'
+idp_single_sign_on_service: 'https://sts.windows.net/515813d9-717d-45dd-9eca-9aa19c09d6f9/'
+idp_single_log_out_service: 'https://sts.windows.net/515813d9-717d-45dd-9eca-9aa19c09d6f9/'
+idp_change_password_service: ''
+idp_certs:
+  - MIIC8DCCAdigAwIBAgIQQhLd/aWye5JAPHFq/vkDATANBgkqhkiG9w0BAQsFADA0MTIwMAYDVQQDEylNaWNyb3NvZnQgQXp1cmUgRmVkZXJhdGVkIFNTTyBDZXJ0aWZpY2F0ZTAeFw0yNjExMDMxODE3MTRaFw0yOTExMDMxNzE3MTRaMDQxMjAwBgNVBAMTKU1pY3Jvc29mdCBBenVyZSBGZWRlcmF0ZWQgU1NPIENlcnRpZmljYXRlMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAypsGLKcctWcudmC4vyjrHFCobOVGCoyttyl+8hVZVSRH42MQdgd824j+1bxX2KrRiELhg7CHMBLdogSczVeVtohxRzkaBV7iaXXryqnZSvnygX5i2+soo66mAK6chK8IpHphxvu6lF+Wuulq4r3jCrYJ4C42tzmoZ9kTeBgVYEYnQxlDr/UQ2CNBjM2kt9eeijri+FpIIIuB/CCgY0Ffu5WUn2Yu4MHSyuop2pD3+qjn4pu3iGkvebo6RbG+xJwyWtgc7dLLjtlG5blTj5Y2TYp2p6WHuhb10vpwNH2ohijkLMuSRNJv/5bmUZHnXsh+e3aNav2VB1VSDMDm50SNbQIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQCYUJqfxcGfYPF3bLVzh6hGb0BQNj7TQNI20mrJ4SgiOuoSSP0ShvbCc6NBQ2r383YAgkQLJej/7MQu+Jdh+qUGn6TuXRqK5NYJNC2IKAkCwvBtMu0YYjSIqca+iL+BWryZmhZSNJCgogUEOLdi7iQSIy1MWUSznqg0NVEVtJBiy6zF4awgHoZMSCdl1SSAJBUtgp93V68WtZXBbpB2DSUFmkiKpXt8t4NL/X4bCRAuAwO/irrX0O/vtLYM0V++7yi2sGyLJg0VoflkT40xXjUfw8/AhK8L3S5nwKtbAhF0AEAs7jKP+RXnm1jwRiqsFHgKwS5jyGDpfPTcb/ZeURJt
+idp_cert_encryption: ''
+unique_id_attribute: objectidentifier
+map_users: false
+map_users_name: false
+map_users_mail: false
+map_users_roles: {  }
+create_users: true
+sync_name: false
+sync_mail: true
+user_name_attribute: netid
+user_mail_attribute: emailaddress
+request_set_name_id_policy: true
 strict: true
+security_metadata_sign: false
 security_authn_requests_sign: true
 security_logout_requests_sign: true
 security_logout_responses_sign: true
+security_nameid_encrypt: false
+security_signature_algorithm: ''
+security_encryption_algorithm: ''
 security_messages_sign: true
+security_assertions_signed: false
+security_assertions_encrypt: false
+security_nameid_encrypted: false
+security_want_name_id: true
 security_request_authn_context: true
 security_lowercase_url_encoding: true
+security_logout_reuse_sigs: false
+security_allow_repeat_attribute_name: false
+debug_display_error_details: false
+debug_log_in: false
+debug_log_saml_in: false
+debug_log_saml_out: false
+debug_phpsaml: false
+use_proxy_headers: false
 use_base_url: true
+bypass_relay_state_check: false

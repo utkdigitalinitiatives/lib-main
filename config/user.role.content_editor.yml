@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - filter.format.basic_html
     - filter.format.editor_html
     - taxonomy.vocabulary.tags
   module:
@@ -10,6 +11,8 @@ dependencies:
     - file
     - filter
     - group
+    - media
+    - shortcut
     - system
     - taxonomy
     - toolbar
@@ -24,9 +27,12 @@ permissions:
   - 'access contextual links'
   - 'access files overview'
   - 'access group overview'
+  - 'access shortcuts'
   - 'access toolbar'
   - 'create terms in tags'
   - 'delete own files'
   - 'edit terms in tags'
+  - 'use text format basic_html'
   - 'use text format editor_html'
+  - 'view media'
   - 'view the administration theme'
