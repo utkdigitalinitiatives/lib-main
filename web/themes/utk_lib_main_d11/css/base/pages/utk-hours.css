@@ -288,6 +288,19 @@
 
 
 @media (max-width: 768px) {
+    .library-image-info h3 {
+        font-size: 1.125rem;
+    }
+
+    .library-image-info p {
+        font-size: 0.875rem;
+    }
+
+    .library-more-info a,
+    .utk-library-subtitle {
+        font-size: 0.75rem;
+    }
+
     .s-lc-whw-cont .table-responsive {
         width: 100%;
         margin-bottom: 15px;
@@ -310,7 +323,7 @@
 
     .s-lc-whw td {
         white-space: normal;
-        font-size: 0.9rem;
+        font-size: 0.875rem;
         padding: 8px 5px !important;
     }
 }

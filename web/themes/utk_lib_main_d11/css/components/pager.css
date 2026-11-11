@@ -14,3 +14,9 @@
 .pager__item.is-active {
   font-weight: bold;
 }
+
+@media (max-width: 767px) {
+  .pager__items {
+    font-size: 0.875rem;
+  }
+}

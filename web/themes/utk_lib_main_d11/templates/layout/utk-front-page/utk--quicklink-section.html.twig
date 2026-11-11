@@ -103,12 +103,12 @@
     ]
 %}
 
-<div class='row mx-auto g-4 max-row-width'>
+<div class='row gx-0 gy-3 g-md-4 max-row-width mx-auto'>
     {% for box in quicklink_boxes %}
     <div class='col-lg-4 d-flex'>
-        <div class='container utk-quicklinks border bg-white quicklink-box utk-card-accent-lines {{ box.accent_class }}'>
-            <h2 class='utk-homepage-section-title mt-2 pt-2 text-smokey'>{{ box.title }}</h2>
-            <div class='utk-homepage-quicklink-list mb-2 pb-2 text-smokey link-link utk-search-selector'>
+        <div class='w-100 utk-quicklinks border bg-white quicklink-box utk-card-accent-lines {{ box.accent_class }}'>
+            <h2 class='utk-homepage-section-title mt-1 mt-md-2 pt-1 pt-md-2 text-smokey'>{{ box.title }}</h2>
+            <div class='utk-homepage-quicklink-list mb-1 mb-md-2 pb-1 pb-md-2 text-smokey link-link utk-search-selector'>
                 {% for link in box.links %}
                     <div class='utk-homepage-quicklink-item'>
                         <a href="{{ link.url }}">{{ link.link_title }}

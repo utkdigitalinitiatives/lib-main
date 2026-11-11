@@ -12,6 +12,18 @@
     background-color: var(--utk-logo--white);
 }
 
+@media (max-width: 767px) {
+    .utk--webform {
+        font-size: 0.875rem;
+    }
+
+    .webform-title,
+    .webform-paragraph .webform-title,
+    .utk--webform .js-form-type-webform-markup h2 {
+        font-size: 1.125rem;
+    }
+}
+
 .utk--webform input,
 .utk--webform textarea,
 .utk--webform select {
