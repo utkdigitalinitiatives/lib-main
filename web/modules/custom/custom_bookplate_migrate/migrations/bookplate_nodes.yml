@@ -1,0 +1,77 @@
+id: bookplate_nodes
+idMap:
+  plugin: bookplate_sql
+label: Bookplate nodes
+migration_tags:
+  - Bookplates
+source:
+  plugin: bookplate_nodes
+  key: migrate
+  award_year: 2026
+  cache_counts: false
+process:
+  title:
+    plugin: bookplate_unique
+    source:
+      - title
+      - book_title
+  type:
+    plugin: default_value
+    default_value: bookplate
+  uid:
+    plugin: default_value
+    default_value: 1
+  status: status
+  created: created
+  changed: changed
+  field_award_year/target_id:
+    plugin: entity_generate
+    source: award_year
+    entity_type: taxonomy_term
+    value_key: name
+    bundle_key: vid
+    bundle: bookplate_year
+    access_check: false
+  field_book_title/value: book_title
+  field_book_title/format:
+    plugin: default_value
+    default_value: editor_html
+  field_book_author/value: field_book_author/value
+  field_book_author/format:
+    plugin: default_value
+    default_value: editor_html
+  field_bp_department/value: field_bp_department/value
+  field_bp_department/format:
+    plugin: default_value
+    default_value: editor_html
+  field_position_role/value: field_position_role/value
+  field_position_role/format:
+    plugin: default_value
+    default_value: editor_html
+  field_occasion/value: field_occasion/value
+  field_occasion/format:
+    plugin: default_value
+    default_value: editor_html
+  field_why_chosen/value: field_why_chosen/value
+  field_why_chosen/format:
+    plugin: default_value
+    default_value: editor_html
+  field_is_author: field_is_author/value
+  field_ebook: field_ebook/value
+  field_isbn: field_isbn/value
+  field_link_to_record/uri: field_link_to_record/uri
+  field_link_to_record/title: field_link_to_record/title
+  field_book_cover/target_id:
+    plugin: bookplate_lookup
+    migration: bookplate_images
+    source: field_book_cover/target_id
+  field_honoree_photo/target_id:
+    plugin: bookplate_lookup
+    migration: bookplate_images
+    source: field_honoree_photo/target_id
+destination:
+  plugin: entity:node
+  default_bundle: bookplate
+migration_dependencies:
+  required:
+    - bookplate_images

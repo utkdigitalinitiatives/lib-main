@@ -1,0 +1,5 @@
+custom_bookplate_migrate.run:
+  title: 'Bookplate migration'
+  description: 'Select an award year and import bookplates, images, and files.'
+  route_name: custom_bookplate_migrate.run
+  parent: system.admin_structure
