@@ -152,4 +152,17 @@
   .utk-grid-card__media {
     height: 188px;
   }
+
+  .utk-grid-card__title,
+  .utk-grid-card__title-text {
+    font-size: 0.875rem;
+  }
+
+  .utk-grid-card__summary {
+    font-size: 0.875rem;
+  }
+
+  .utk-grid-card__badge {
+    font-size: 0.75rem;
+  }
 }
