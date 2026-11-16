@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Drupal\custom_bookplate_migrate\Form;
 
 use Drupal\Component\Datetime\TimeInterface;
-use Drupal\Core\Database\DatabaseExceptionWrapper;
+use Drupal\Core\Database\DatabaseException;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Link;
@@ -143,7 +143,7 @@ final class BookplateMigrationForm extends FormBase {
           $form_state->setErrorByName('award_year', $this->t('No published source bookplates were found for this year. Nothing was imported.'));
         }
       }
-      catch (MigrateException | DatabaseExceptionWrapper | \PDOException $e) {
+      catch (MigrateException | DatabaseException | \PDOException $e) {
         $this->getLogger('custom_bookplate_migrate')->error('Bookplate source check failed: @message', ['@message' => $e->getMessage()]);
         $form_state->setErrorByName('operation', $this->t('Cannot read the legacy bookplate database. Ask the site administrator to check the migrate connection and source schema; details were logged.'));
       }

@@ -234,6 +234,19 @@ try {
   $gui_form->validateForm($built, $form_state);
   $check(isset($form_state->getErrors()['award_year']), 'GUI prevents empty-year imports.');
   $form_state->clearErrors();
+  $unavailable_manager = new class extends \Drupal\migrate\Plugin\MigrationPluginManager {
+    public function __construct() {}
+
+    public function createInstance($plugin_id, array $configuration = []) {
+      throw new \Drupal\Core\Database\DatabaseConnectionRefusedException('Intentional source connection failure for regression testing.');
+    }
+  };
+  $unavailable_form = new BookplateMigrationForm($unavailable_manager, \Drupal::state(), \Drupal::lock(), \Drupal::time());
+  $form_state->setValues(['operation' => 'import', 'award_year' => 2025]);
+  $unavailable_form->validateForm($built, $form_state);
+  $check(isset($form_state->getErrors()['operation']), 'GUI reports a refused source connection as a form error instead of a fatal error.');
+  $check(\Drupal::state()->get(BookplateBatch::RUN_KEY) === NULL, 'A refused source connection does not reserve a batch.');
+  $form_state->clearErrors();
   \Drupal::state()->set(BookplateBatch::RUN_KEY, [
     'token' => 'abandoned-fixture',
     'touched' => \Drupal::time()->getCurrentTime(),

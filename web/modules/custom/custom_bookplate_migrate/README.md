@@ -15,6 +15,23 @@ Production must be able to reach that database and the legacy public files URL.
 Deployment of the module code and database credentials still requires the normal
 sysadmin/deployment process; the browser cannot configure database credentials.
 
+### Production connection refused
+
+`SQLSTATE[HY000] [2002] Connection refused` means the web server cannot connect
+to the configured MySQL endpoint. Check the effective
+`$databases['migrate']['default']` in production's `settings.local.php`, including
+the hostname and TCP port. The checked-in `settings.php` fallback contains
+placeholder values, not a working production connection. A local DDEV hostname
+or `localhost` will not reach a separate legacy database server.
+
+Have the server administrator verify that MySQL is listening on the configured
+address/port and that firewall rules allow connections from the production PHP
+runtime. Test from that runtime/container, not just a developer's laptop. Do not
+change the destination's `$databases['default']['default']` to point at the source.
+If ordinary site pages also fail, investigate the destination connection too.
+The import form reports source connection failures without starting a batch;
+fixing the error message does not restore database connectivity.
+
 ## GUI-only walkthrough (production)
 
 No Drush, command shell, configuration import, or migration config entities are
