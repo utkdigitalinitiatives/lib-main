@@ -6,3 +6,17 @@
 .search-results {
   list-style: none;
 }
+
+@media (max-width: 767px) {
+  .search-results {
+    padding-inline: var(--utk-mobile-text-gutter) !important;
+  }
+
+  .search-result__title {
+    font-size: 1.125rem;
+  }
+
+  .search-result__snippet-info {
+    font-size: 0.875rem;
+  }
+}

@@ -9,7 +9,7 @@
  */
 #}
 
-<div class="container-fluid my-3">
+<div class="container-fluid my-3 utk-mobile-text-container">
   {% if content.field_tab_introduction is defined %}
     <div class="row pt-1">
       <div class="px-0">{{ content.field_tab_introduction }}</div>
@@ -47,7 +47,7 @@
                role="tabpanel"
                aria-labelledby="tab-{{ node.id }}-{{ key }}">
             {% if not tab['#paragraph'].field_tab_heading.isEmpty %}
-              <div class="fs-3 fw-medium mx-auto">
+              <div class="fs-3 fw-medium mx-auto utk-node-section-title">
                 {{ tab['#paragraph'].field_tab_heading.0.value }}
               </div>
             {% endif %}

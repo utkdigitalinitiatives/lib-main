@@ -251,13 +251,36 @@
   line-height: 1.3em;
 }
 
-@media (max-width: 575.98px) {
+@media (max-width: 767px) {
   .bookplate-card-grid {
-    grid-template-columns: minmax(0, 1fr);
+    --bookplate-card-width: clamp(220px, 65vw, 260px);
+    --bookplate-card-gap: 1.25rem;
+
+    grid-template-columns: minmax(0, var(--bookplate-card-width));
   }
 
   .bookplate--card {
-    max-width: 100%;
+    min-height: 0;
+    max-width: var(--bookplate-card-width);
+  }
+
+  .bookplate--card-text-body {
+    min-height: 6.5rem;
+    padding: 0.625rem;
+  }
+
+  .bookplate--card-title {
+    margin-bottom: 0.375rem;
+    font-size: 1rem !important;
+    line-height: 1.3;
+  }
+
+  .bookplate--card-honoree {
+    font-size: 0.8125rem;
+  }
+
+  .bookplate--card-honoree-label {
+    font-size: 0.6875rem;
   }
 }
 

@@ -14,6 +14,37 @@
   text-decoration: none;
 }
 
+@media (max-width: 767px) {
+  body[class*="page-node-type-"] #main-content {
+    --utk-node-section-heading-font-size: 1.125rem;
+    --utk-node-body-font-size: 0.875rem;
+
+    font-size: var(--utk-node-body-font-size);
+  }
+
+  body[class*="page-node-type-"] #main-content .utk-section-heading:not(h1),
+  body[class*="page-node-type-"] #main-content .utk-section-heading-content h2,
+  body[class*="page-node-type-"] #main-content .utk--webform .js-form-type-webform-markup h2,
+  body[class*="page-node-type-"] #main-content .utk-node-section-title,
+  body[class*="page-node-type-"] #main-content .utk-article--update h2 {
+    font-size: var(--utk-node-section-heading-font-size) !important;
+  }
+
+  .utk-view-group-title {
+    font-size: 1.125rem;
+  }
+
+  .utk-blue-button,
+  .btn.utk-smokey-button,
+  .utk--dropbtn,
+  .utk--dropdown-content a,
+  .nav-tabs .nav-link,
+  .views-table,
+  #main-content .table-responsive > .table {
+    font-size: 0.875rem;
+  }
+}
+
 .utk-header {
   position: relative;
   border-bottom: 4px solid var(--utk-logo--orange);

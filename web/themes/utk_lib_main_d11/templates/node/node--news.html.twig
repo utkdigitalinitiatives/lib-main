@@ -50,7 +50,7 @@
 
 <article {{ attributes.addClass(classes) }} id='utk-article'>
     {% set hero_body %}
-        <p class="utk-page-hero__subtitle utk-overlay-dark-chip mb-0">
+        <p class="utk-page-hero__subtitle utk-page-hero__date utk-overlay-dark-chip mb-0">
             {{ content.field_publishing_date.0['#markup']|date('F j, Y') }}
         </p>
     {% endset %}
@@ -64,7 +64,7 @@
     }) }}
 
     {% if node.field_update_label.value or node.field_update_text.value %}
-        <div class='container-fluid d-lg-flex justify-content-center utk-article utk-article--update'>
+        <div class='container-fluid d-lg-flex justify-content-center utk-article utk-article--update utk-mobile-text-container'>
             <div class='text-start text-break py-3 justify-content-center utk-search-selector link-link underline-active'>
                 <span class='exclamation'>!</span>
                 {% if node.field_update_label.value %}
@@ -75,7 +75,7 @@
         </div>
     {% endif %}
 
-    <div class='container-fluid d-lg-flex justify-content-center utk-article'>
+    <div class='container-fluid d-lg-flex justify-content-center utk-article utk-mobile-text-container'>
         <div class='col-lg-9'>
             <div class='row pt-2'>
                 <div class='d-lg-flex justify-content-center'>

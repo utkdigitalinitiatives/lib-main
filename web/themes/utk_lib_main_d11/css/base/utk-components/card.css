@@ -148,12 +148,12 @@
 
 .utk-card-accent-lines::before {
   top: 0;
-  height: 2px;
+  height: 1px;
 }
 
 .utk-card-accent-lines::after {
   bottom: 0;
-  height: 10px;
+  height: 5px;
   box-shadow: 0 0 10px rgb(from var(--utk-black) r g b / 0.1);
 }
 
@@ -463,6 +463,34 @@
 }
 
 @media (max-width: 767px) {
+  .utk-card-title--medium,
+  .utk-card-title--large,
+  .utk-card__title,
+  .utk-job-card__title,
+  .utk-portal-card__title {
+    font-size: 1.125rem !important;
+  }
+
+  .utk-card-text--small,
+  .utk-card-body,
+  .utk-card__body,
+  .utk-card__text,
+  .utk-card--summary-only .utk-card__text,
+  .utk-job-card__meta,
+  .utk-portal-card__item-content,
+  .utk-portal-card__item-row a {
+    font-size: 0.875rem;
+  }
+
+  .utk-card-label,
+  .utk-details-card__status {
+    font-size: 0.75rem;
+  }
+
+  .utk-job-card__meta h3 {
+    font-size: 0.75rem !important;
+  }
+
   .utk-card-header.utk-portal-card__header {
     padding: 1.25rem 1.15rem 0.75rem;
   }

@@ -53,7 +53,7 @@
         responsive_image_base: hero_responsive_image_base|default(''),
         image_alt: hero_image_alt|default(''),
     }) }}
-    <div class='container-fluid py-4'>
+    <div class='container-fluid py-4 utk-mobile-text-container'>
     <div class='row max-row-width mx-auto text-smokey link-link'>
         <div class='col-lg-8 px-4{% if node.field_parent_page.isEmpty %} mx-auto{% endif %}'>
             {% if node.field_include_table_of_contents.value %}
@@ -61,7 +61,7 @@
                     {{ drupal_view('jump_to_section', 'jump_to_block', node.id, related_links) }}
                 </div>
             {% endif %}
-            <div class='row pt-2 px-3'>
+            <div class='row pt-2 px-0 px-md-3'>
                 <div class='mx-auto'>
                 {{ content.field_sections }}
                 </div>

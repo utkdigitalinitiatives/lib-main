@@ -125,6 +125,26 @@
   z-index: 2;
 }
 
+@media (max-width: 767px) {
+  .utk-contact-directory,
+  .directory-container .person-info {
+    font-size: 0.875rem;
+  }
+
+  .utk-contact-directory h3,
+  .directory-container .person-info h4 {
+    font-size: 1.125rem;
+  }
+
+  .directory-container.department-people-block .person-info h4 {
+    font-size: 0.875rem;
+  }
+
+  .directory-container .directory-role-pill {
+    font-size: 0.75rem;
+  }
+}
+
 @media (max-width: 575px) {
   .directory-container .person-info {
     height: auto;
@@ -134,7 +154,6 @@
   }
 
   .directory-container .person-info h4 {
-    font-size: 1.1rem;
     margin-bottom: 0.4rem;
   }
 

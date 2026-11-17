@@ -36,7 +36,7 @@
         image_alt: 'University of Tennessee Libraries ' ~ node.label ~ ' background',
     }) }}
 
-    <div class="container-fluid utk--striped-background py-4">
+    <div class="container-fluid utk--striped-background py-4 utk-mobile-text-container">
         <div class="row utk--1400px-width mx-auto">
             <div class="col-12">
                 {% set position_summary_content %}
@@ -79,7 +79,7 @@
     </div>
 
     {% if not node.field_position_description.isEmpty %}
-        <section class="container-fluid d-lg-flex justify-content-center utk-article">
+        <section class="container-fluid d-lg-flex justify-content-center utk-article utk-mobile-text-container">
             <div class="row pt-4 px-2 d-lg-flex justify-content-center utk-section-body">
                 <h2 class="text-start px-0 utk-section-heading">Description</h2>
                 <div class="d-lg-flex justify-content-center">
@@ -90,7 +90,7 @@
     {% endif %}
 
     {% if not node.field_responsibilities.isEmpty %}
-        <section class="container-fluid d-lg-flex justify-content-center utk-article">
+        <section class="container-fluid d-lg-flex justify-content-center utk-article utk-mobile-text-container">
             <div class="row pt-4 px-2 d-lg-flex justify-content-center utk-section-body">
                 <h2 class="text-start px-0 utk-section-heading">Responsibilities &amp; Duties</h2>
                 <div class="d-lg-flex justify-content-center">
@@ -101,7 +101,7 @@
     {% endif %}
 
     {% if not node.field_required_qualifications.isEmpty %}
-        <section class="container-fluid d-lg-flex justify-content-center utk-article">
+        <section class="container-fluid d-lg-flex justify-content-center utk-article utk-mobile-text-container">
             <div class="row pt-4 px-2 d-lg-flex justify-content-center utk-section-body">
                 <h2 class="text-start px-0 utk-section-heading">Required Qualifications</h2>
                 <div class="d-lg-flex justify-content-center">
@@ -112,7 +112,7 @@
     {% endif %}
 
     {% if not node.field_preferred_qualifications.isEmpty %}
-        <section class="container-fluid d-lg-flex justify-content-center utk-article">
+        <section class="container-fluid d-lg-flex justify-content-center utk-article utk-mobile-text-container">
             <div class="row pt-4 px-2 d-lg-flex justify-content-center utk-section-body">
                 <h2 class="text-start px-0 utk-section-heading">Preferred Qualifications</h2>
                 <div class="d-lg-flex justify-content-center">
@@ -123,7 +123,7 @@
     {% endif %}
 
     {% if not node.field_environment.isEmpty %}
-        <section class="container-fluid d-lg-flex justify-content-center utk-article">
+        <section class="container-fluid d-lg-flex justify-content-center utk-article utk-mobile-text-container">
             <div class="row pt-4 px-2 d-lg-flex justify-content-center utk-section-body">
                 <h2 class="text-start px-0 utk-section-heading">Environment</h2>
                 <div class="d-lg-flex justify-content-center">
@@ -134,7 +134,7 @@
     {% endif %}
 
     {% if not node.field_benefits.isEmpty %}
-        <section class="container-fluid d-lg-flex justify-content-center utk-article">
+        <section class="container-fluid d-lg-flex justify-content-center utk-article utk-mobile-text-container">
             <div class="row pt-4 px-2 d-lg-flex justify-content-center utk-section-body">
                 <h2 class="text-start px-0 utk-section-heading">Benefits</h2>
                 <div class="d-lg-flex justify-content-center">
@@ -145,7 +145,7 @@
     {% endif %}
 
     {% if not node.field_application_procedures.isEmpty %}
-        <section class="container-fluid d-lg-flex justify-content-center utk-article">
+        <section class="container-fluid d-lg-flex justify-content-center utk-article utk-mobile-text-container">
             <div class="row pt-4 px-2 d-lg-flex justify-content-center utk-section-body">
                 <h2 class="text-start px-0 utk-section-heading">Application Procedures</h2>
                 <div class="d-lg-flex justify-content-center">
@@ -155,7 +155,7 @@
         </section>
     {% endif %}
 
-    <div class="container-fluid d-lg-flex justify-content-center utk-article pt-4">
+    <div class="container-fluid d-lg-flex justify-content-center utk-article pt-4 utk-mobile-text-container">
         <div class="row utk-section-body">
             <div class="d-flex align-items-center px-0">
                 <a class="btn utk-blue-button px-4 py-2 fw-medium" href="{{ position_application_url }}">

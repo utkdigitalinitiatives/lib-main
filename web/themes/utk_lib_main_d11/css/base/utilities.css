@@ -19,6 +19,7 @@
   --utk-heading-accent-thickness: 1px;
   --utk-heading-accent-offset: 0.3rem;
   --utk-heading-accent-space-after: 0.75rem;
+  --utk-mobile-text-gutter: 1rem;
   --utk-radius-small: 0.25rem;
   --utk-radius-medium: 0.5rem;
   --utk-radius-large: 0.75rem;
@@ -54,8 +55,9 @@ a {
 }
 
 a:focus-visible {
-  outline: 2px solid rgb(from var(--utk-logo--orange) r g b / 0.7);
+  outline: 2px solid var(--utk-link);
   outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--utk-logo--white);
 }
 
 /* Utility Classes */
@@ -408,6 +410,27 @@ a:hover {
   max-width: 1200px;
 }
 
+@media (max-width: 767px) {
+  .utk-mobile-text-container {
+    padding-inline: var(--utk-mobile-text-gutter) !important;
+  }
+
+  .utk-mobile-text-container > .row {
+    --bs-gutter-x: 0;
+
+    padding-inline: 0 !important;
+  }
+
+  .utk-mobile-text-container > .row > [class*="col-"] {
+    padding-inline: 0 !important;
+  }
+
+  .utk-mobile-text-fill {
+    width: 100% !important;
+    margin-inline: 0 !important;
+  }
+}
+
 /* Let the surrounding layout control spacing at authored-content boundaries. */
 .utk-content-trim > :first-child,
 .utk-content-trim > .field__item > :first-child,
@@ -446,11 +469,17 @@ a:hover {
 .utk-homepage-quicklink-item + .utk-homepage-quicklink-item::before {
   content: "";
   position: absolute;
-  left: 60px;
-  right: 60px;
+  right: 10%;
+  left: 10%;
   top: 0;
   height: 1px;
-  box-shadow: 0 1px 2px rgb(from var(--utk-black) r g b / 0.12);
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgb(from var(--utk-black) r g b / 0.08) 25%,
+    rgb(from var(--utk-black) r g b / 0.08) 75%,
+    transparent
+  );
 }
 
 .quicklink-box h2 {

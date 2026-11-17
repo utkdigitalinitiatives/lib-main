@@ -179,7 +179,8 @@
   transition: transform 0.3s ease;
 }
 
-.utk--cards-text-body p.fs-6.fw-medium {
+.utk--cards-text-body p.fs-6.fw-medium,
+.utk--cards-text-body .utk-spotlight-card-title {
   white-space: normal;
   word-break: break-word;
   overflow-wrap: break-word;
@@ -210,6 +211,21 @@
     transparent
   );
   z-index: -1;
+}
+
+@media (max-width: 767px) {
+  .utk-file-attachment {
+    font-size: 0.875rem;
+  }
+
+  .utk--cards-text-body {
+    font-size: 0.875rem;
+  }
+
+  .utk--cards-text-body p.fs-6.fw-medium,
+  .utk--cards-text-body .utk-spotlight-card-title {
+    font-size: 1.125rem !important;
+  }
 }
 
 /* Placeholder fix until Gin figures it out */
