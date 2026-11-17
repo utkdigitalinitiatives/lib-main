@@ -30,3 +30,11 @@ New to this project? See the [Developer Onboarding Guide](onboarding.md) for ste
 ## Deployment
 
 Production deployments are managed via GitHub Actions in the [lib-main-infra](https://github.com/utkdigitalinitiatives/lib-main-infra) repository.
+
+## Linkchecker PostgreSQL compatibility
+
+The Composer-managed [Linkchecker patch](patches/linkchecker-3203329.patch) supports
+string entity IDs on PostgreSQL. Update `8010` repairs the stored field schema
+metadata omitted by update `8009`, resolving the status report's Entity ID
+definition mismatch without changing columns or link data. After installing
+dependencies, run `drush updb` and `drush cr` (`ddev drush` locally).
