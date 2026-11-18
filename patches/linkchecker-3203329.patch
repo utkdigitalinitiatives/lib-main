@@ -11,7 +11,7 @@ diff --git a/linkchecker.install b/linkchecker.install
          'not null' => TRUE,
          'description' => 'Entity ID.',
        ],
-@@ -218,3 +219,48 @@ function linkchecker_update_8007(&$sandbox) {
+@@ -218,3 +219,59 @@ function linkchecker_update_8007(&$sandbox) {
      return t('The entity_id field storage definition successfully uninstalled.');
    }
  }
@@ -59,6 +59,17 @@ diff --git a/linkchecker.install b/linkchecker.install
 +    ->setRequired(TRUE);
 +  \Drupal::service('entity.last_installed_schema.repository')
 +    ->setLastInstalledFieldStorageDefinition($definition);
++}
++
++/**
++ * Record the string field's binary setting omitted by update 8009.
++ */
++function linkchecker_update_8010() {
++  $key_value = \Drupal::keyValue('entity.storage_schema.sql');
++  $key = 'linkcheckerlink.field_schema_data.parent_entity_id';
++  $data = $key_value->get($key);
++  $data['linkchecker_link']['fields']['parent_entity_id']['binary'] = FALSE;
++  $key_value->set($key, $data);
 +}
 diff --git a/src/Entity/LinkCheckerLink.php b/src/Entity/LinkCheckerLink.php
 --- a/src/Entity/LinkCheckerLink.php
