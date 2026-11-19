@@ -52,6 +52,10 @@
   margin: 0;
 }
 
+.view-resource-links .utk-grid-card__media > * {
+  height: 100%;
+}
+
 .utk-grid-card__media::after {
   content: "";
   position: absolute;
