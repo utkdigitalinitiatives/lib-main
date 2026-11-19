@@ -1,0 +1,51 @@
+{#
+/**
+ * @file
+ * Resource Link card rendered in teaser view mode.
+ */
+#}
+
+{% set link_url = node.field_link.0.url ?? null %}
+{% set link_title = node.title.value ?? node.label %}
+{% set is_external = link_url and link_url.isExternal() %}
+{% set external_flag = node.field_external_link.value ?? 0 %}
+{% set show_external_icon = external_flag or is_external %}
+{% set link_aria_label = show_external_icon ? ('@title (external site)'|t({'@title': link_title})) : link_title %}
+{% set has_image = node.field_image is defined and not node.field_image.isEmpty %}
+{% set has_summary = node.field_summary is defined and not node.field_summary.isEmpty %}
+{% set is_online_exhibit = (node.field_card_group.value ?? '') == 'online_exhibits' %}
+
+<article{{ attributes.addClass('utk-grid-card', not has_image ? 'utk-grid-card--text-only', 'h-100') }}>
+  {% if link_url %}
+    <a class="utk-grid-card__link" href="{{ link_url }}" aria-label="{{ link_aria_label }}">
+  {% endif %}
+
+    {% if has_image %}
+      <div class="utk-grid-card__media">
+        {{ content.field_image }}
+      </div>
+    {% endif %}
+
+    <div class="utk-grid-card__body">
+      <h2 class="utk-grid-card__title">
+        <span class="utk-grid-card__title-text">{{ label }}</span>
+        {% if show_external_icon %}
+          <span class="utk-grid-card__title-icon svg-settings fluent-icon-external" aria-hidden="true"></span>
+        {% endif %}
+      </h2>
+
+      {% if is_online_exhibit %}
+        <span class="utk-grid-card__badge">{{ 'Online Exhibits'|t }}</span>
+      {% endif %}
+
+      {% if has_summary %}
+        <div class="utk-grid-card__summary">
+          {{ content.field_summary }}
+        </div>
+      {% endif %}
+    </div>
+
+  {% if link_url %}
+    </a>
+  {% endif %}
+</article>

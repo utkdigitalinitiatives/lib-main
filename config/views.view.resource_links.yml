@@ -4,11 +4,8 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - entityqueue.entity_queue.login_queue
-    - entityqueue.entity_queue.unique_resources_queue
     - node.type.resource_link
   module:
-    - entityqueue
     - node
     - options
     - user
@@ -99,21 +96,21 @@ display:
         options: {  }
       empty: {  }
       sorts:
-        entityqueue_relationship:
-          id: entityqueue_relationship
+        title:
+          id: title
           table: node_field_data
-          field: entityqueue_relationship
+          field: title
           relationship: none
           group_type: group
           admin_label: ''
           entity_type: node
-          plugin_id: entity_queue_position
+          entity_field: title
+          plugin_id: standard
           order: ASC
           expose:
             label: ''
             field_identifier: ''
           exposed: false
-          queue_relationship: null
       arguments: {  }
       filters:
         status:
@@ -191,19 +188,7 @@ display:
           distinct: false
           replica: false
           query_tags: {  }
-      relationships:
-        entityqueue_relationship:
-          id: entityqueue_relationship
-          table: node_field_data
-          field: entityqueue_relationship
-          relationship: none
-          group_type: group
-          admin_label: 'Content queue'
-          entity_type: node
-          plugin_id: entity_queue
-          required: true
-          limit_queue:
-            - login_queue
+      relationships: {  }
       header: {  }
       footer: {  }
       display_extenders: {  }
@@ -214,8 +199,7 @@ display:
         - 'languages:language_interface'
         - 'user.node_grants:view'
         - user.permissions
-      tags:
-        - 'config:entityqueue.entity_queue.login_queue'
+      tags: {  }
   page_1:
     id: page_1
     display_title: 'My Accounts'
@@ -232,14 +216,14 @@ display:
         - 'languages:language_interface'
         - 'user.node_grants:view'
         - user.permissions
-      tags:
-        - 'config:entityqueue.entity_queue.login_queue'
+      tags: {  }
   page_2:
     id: page_2
     display_title: 'Unique Resources'
     display_plugin: page
     position: 2
     display_options:
+      title: 'Unique Resources'
       filters:
         status:
           id: status
@@ -307,22 +291,11 @@ display:
         groups:
           1: AND
       defaults:
+        title: false
         relationships: false
         filters: false
         filter_groups: false
-      relationships:
-        entityqueue_relationship:
-          id: entityqueue_relationship
-          table: node_field_data
-          field: entityqueue_relationship
-          relationship: none
-          group_type: group
-          admin_label: 'Content queue'
-          entity_type: node
-          plugin_id: entity_queue
-          required: true
-          limit_queue:
-            - unique_resources_queue
+      relationships: {  }
       display_description: ''
       display_extenders: {  }
       path: unique-resources
@@ -333,5 +306,4 @@ display:
         - 'languages:language_interface'
         - 'user.node_grants:view'
         - user.permissions
-      tags:
-        - 'config:entityqueue.entity_queue.unique_resources_queue'
+      tags: {  }
